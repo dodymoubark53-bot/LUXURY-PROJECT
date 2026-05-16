@@ -1,0 +1,75 @@
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
+import { staggerContainer, fadeInUp } from '../animations/variants';
+import Button from '../components/ui/Button';
+
+const Contact = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="w-full bg-obsidian-50 pb-24">
+      <Helmet>
+        <title>{t('contact.title', 'Contact Us | Luxury Travel')}</title>
+        <meta name="description" content={t('contact.seoDesc', 'Get in touch with our luxury travel concierges to start crafting your bespoke journey to Egypt, Jordan, and Turkey.')} />
+      </Helmet>
+      <section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-obsidian-900"></div>
+        <motion.div className="relative z-10 text-center" variants={staggerContainer} initial="hidden" animate="visible">
+          <motion.h1 variants={fadeInUp} className="text-display-xl text-ivory-50">{t('nav.contact')}</motion.h1>
+        </motion.div>
+      </section>
+
+      <section className="container mx-auto px-6 py-24 -mt-16 relative z-20">
+        <div className="bg-ivory-50 rounded-2xl shadow-card overflow-hidden flex flex-col lg:flex-row">
+          
+          {/* Contact Info & Map placeholder */}
+          <div className="lg:w-1/2 bg-obsidian-900 text-ivory-50 p-12 flex flex-col justify-between relative overflow-hidden">
+            <div className="relative z-10">
+              <h2 className="text-display-md text-3xl mb-8">{t('contact.getInTouch', 'Get in Touch')}</h2>
+              <div className="flex flex-col gap-6 mb-12">
+                <div>
+                  <h4 className="text-caption text-gold-500 uppercase tracking-widest mb-2">{t('contact.office', 'Cairo Office')}</h4>
+                  <p className="text-body-md text-ivory-300">
+                    {t('contact.address1', '123 Luxury Avenue, Zamalek')}<br/>
+                    {t('contact.address2', 'Cairo, Egypt')}
+                  </p>
+                </div>
+                <div>
+                  <h4 className="text-caption text-gold-500 uppercase tracking-widest mb-2">{t('contact.details', 'Contact Details')}</h4>
+                  <p className="text-body-md text-ivory-300">
+                    {t('contact.email', 'Email:')} info@luxurytravel.com<br/>
+                    {t('contact.phone', 'Phone:')} +20 100 414 6843
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Map Placeholder */}
+            <div className="w-full h-64 bg-obsidian-700 rounded-xl relative overflow-hidden flex items-center justify-center border border-ivory-50/10">
+              <span className="text-body-md text-ivory-300 opacity-50">{t('contact.map', 'Interactive Map Placeholder')}</span>
+            </div>
+          </div>
+
+          {/* Form */}
+          <div className="lg:w-1/2 p-12">
+            <h3 className="text-display-md text-obsidian-900 mb-6">{t('contact.sendMessage', 'Send us a message')}</h3>
+            <form className="flex flex-col gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input type="text" placeholder={t('contact.firstName', 'First Name')} required className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors" />
+                <input type="text" placeholder={t('contact.lastName', 'Last Name')} required className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors" />
+              </div>
+              <input type="email" placeholder={t('contact.emailPlaceholder', 'Email Address')} required className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors" />
+              <input type="tel" placeholder={t('contact.phonePlaceholder', 'Phone Number')} className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors" />
+              <textarea placeholder={t('contact.messagePlaceholder', 'How can we help you craft your perfect journey?')} rows="5" required className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors resize-none"></textarea>
+              <Button variant="gold-glow" className="self-start px-8">{t('contact.sendBtn', 'Send Message')}</Button>
+            </form>
+          </div>
+
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Contact;

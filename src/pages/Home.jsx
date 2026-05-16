@@ -1,0 +1,804 @@
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { FaStar, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { fadeInUp, staggerContainer } from '../animations/variants';
+import Button from '../components/ui/Button';
+import TourCard from '../components/tour/TourCard';
+import { tours } from '../data/tours';
+import { services } from '../data/services';
+import { transportation } from '../data/transportation';
+
+const destinationsData = [
+  {
+    id: 'egypt',
+    name: 'Egypt',
+    desc: 'The Land of Pharaohs',
+    image: 'https://images.pexels.com/photos/262780/pexels-photo-262780.jpeg?auto=compress&cs=tinysrgb&w=800&fit=crop'
+  },
+  {
+    id: 'jordan',
+    name: 'Jordan',
+    desc: 'The Hashemite Kingdom',
+    image: 'https://images.pexels.com/photos/1658967/pexels-photo-1658967.jpeg?auto=compress&cs=tinysrgb&w=800&fit=crop'
+  },
+  {
+    id: 'turkey',
+    name: 'Turkey',
+    desc: 'Where Continents Meet',
+    image: 'https://images.pexels.com/photos/1481180/pexels-photo-1481180.jpeg?auto=compress&cs=tinysrgb&w=800&fit=crop'
+  }
+];
+
+const Home = () => {
+  const { t } = useTranslation();
+  const [activeDestination, setActiveDestination] = useState(null);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
+
+  // Transportation State
+  const [vehicleFilter, setVehicleFilter] = useState('all');
+  const [resForm, setResForm] = useState({
+    vehicle: '', date: '', time: '', adults: 1, children: 0,
+    pickup: '', dropoff: '', name: '', phone: '', email: ''
+  });
+  const [resSuccess, setResSuccess] = useState(false);
+
+  const handleResSubmit = (e) => {
+    e.preventDefault();
+    setResSuccess(true);
+    setTimeout(() => setResSuccess(false), 5000);
+    setResForm({
+      vehicle: '', date: '', time: '', adults: 1, children: 0,
+      pickup: '', dropoff: '', name: '', phone: '', email: ''
+    });
+  };
+
+  const filteredVehicles = vehicleFilter === 'all' 
+    ? transportation 
+    : transportation.filter(v => v.category === vehicleFilter);
+
+  const galleryImages = [
+    { src: 'https://images.unsplash.com/photo-1534446435640-5e8841ba4bc5', dest: 'Egypt', tag: 'Safari' },
+    { src: 'https://images.unsplash.com/photo-1604107567885-32e65d21464c', dest: 'Jordan', tag: 'Tour' },
+    { src: 'https://images.unsplash.com/photo-1524231757712-24ef81156828', dest: 'Turkey', tag: 'Tour' },
+    { src: 'https://images.unsplash.com/photo-1590523277543-a9b6cb65d082', dest: 'Global', tag: 'Hotel' },
+    { src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b4b0', dest: 'Jordan', tag: 'Camping' },
+    { src: 'https://images.unsplash.com/photo-1585093113110-38827eb09de2', dest: 'Egypt', tag: 'Cruise' },
+    { src: 'https://images.unsplash.com/photo-1518002621062-87034b07fb7b', dest: 'Turkey', tag: 'Culture' },
+    { src: 'https://images.unsplash.com/photo-1605330386767-1ed287bfebff', dest: 'Jordan', tag: 'Safari' },
+    { src: 'https://images.unsplash.com/photo-1584144358508-e737c3da3747', dest: 'Global', tag: 'Hotel' },
+    { src: 'https://images.unsplash.com/photo-1608681285226-c2eb8c2c8f8b', dest: 'Egypt', tag: 'Culture' },
+    { src: 'https://images.unsplash.com/photo-1540193630-f8f41334812f', dest: 'Turkey', tag: 'Cruise' },
+    { src: 'https://images.unsplash.com/photo-1551882547-ff40c0d139f1', dest: 'Global', tag: 'Camping' },
+  ];
+
+  const openLightbox = (index) => {
+    setActiveGalleryIndex(index);
+    setIsLightboxOpen(true);
+  };
+  
+  const nextImage = (e) => {
+    e.stopPropagation();
+    setActiveGalleryIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+  };
+  
+  const prevImage = (e) => {
+    e.stopPropagation();
+    setActiveGalleryIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+  };
+
+  const featuredHotels = services.filter(s => s.category === 'hotels').slice(0, 2);
+  const availableSafaris = services.filter(s => s.category === 'safari').slice(0, 2);
+
+  const activeTours = activeDestination ? tours.filter(t => t.destination === activeDestination) : [];
+  
+  // Pick 4 tours for the Featured section
+  const featuredToursList = [
+    tours.find(t => t.destination === 'egypt'),
+    tours.find(t => t.destination === 'jordan'),
+    tours.find(t => t.destination === 'turkey'),
+    tours.find(t => t.destination === 'egypt' && t.id !== tours.find(x => x.destination === 'egypt').id) || tours[3]
+  ].filter(Boolean);
+
+  const handleDestinationClick = (id) => {
+    setActiveDestination(prev => prev === id ? null : id);
+  };
+
+  return (
+    <div className="w-full">
+      <Helmet>
+        <title>{t('home.metaTitle', 'Luxury Travel | Award-Winning Experiences in Egypt, Jordan, Turkey')}</title>
+        <meta name="description" content={t('home.metaDesc', 'Experience true luxury with curated journeys through the timeless wonders of Egypt, Jordan, and Turkey.')} />
+      </Helmet>
+
+      {/* Hero Section */}
+      <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.pexels.com/photos/2387877/pexels-photo-2387877.jpeg?auto=compress&cs=tinysrgb&w=1600&fit=crop" 
+            alt="Luxury Travel Hero" 
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-obsidian-900/60 bg-gradient-to-t from-obsidian-900 via-transparent to-obsidian-900/40"></div>
+        </div>
+
+        <motion.div 
+          className="relative z-10 container mx-auto px-6 text-center mt-12"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.span 
+            variants={fadeInUp}
+            className="inline-block font-body text-gold-500 tracking-[0.2em] uppercase text-sm mb-4"
+          >
+            {t('home.award')}
+          </motion.span>
+          
+          <motion.h1 
+            variants={fadeInUp}
+            className="text-display-xl text-ivory-50 mb-6 max-w-4xl mx-auto drop-shadow-lg whitespace-pre-line"
+          >
+            {t('home.heroTitle')}
+          </motion.h1>
+          
+          <motion.p 
+            variants={fadeInUp}
+            className="text-body-lg text-ivory-300 mb-8 max-w-2xl mx-auto"
+          >
+            {t('home.heroDesc')}
+          </motion.p>
+          
+          <motion.div 
+            variants={fadeInUp}
+            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+          >
+            <Link to="/destinations">
+              <Button variant="gold-glow" className="w-full sm:w-auto px-8 py-4 text-lg">
+                {t('home.exploreDest')}
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button variant="glass" className="w-full sm:w-auto px-8 py-4 text-lg">
+                {t('home.bookJourney')}
+              </Button>
+            </Link>
+          </motion.div>
+        </motion.div>
+
+
+      </section>
+
+      {/* NEW SECTION - About the Company */}
+      <section className="py-12 bg-ivory-50">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="w-full lg:w-1/2"
+            >
+              <span className="text-gold-500 uppercase tracking-widest text-caption block mb-4">{t('home.whoWeAre', 'WHO WE ARE')}</span>
+              <h2 className="text-display-lg text-obsidian-900 mb-6">{t('home.aboutTitle', 'Crafting Journeys, Creating Memories')}</h2>
+              <p className="text-body-lg text-obsidian-700 mb-8 leading-relaxed">
+                {t('home.aboutDesc', 'We are a premium luxury travel agency specializing in Egypt, Jordan, and Turkey. Our passion is crafting highly curated tours, exclusive safaris, boutique cruises, and hand-picked hotel experiences for discerning travelers who seek the extraordinary. Let us transform your travel dreams into timeless memories.')}
+              </p>
+              <Link to="/about">
+                <Button variant="outline-gold" className="px-8 py-3">{t('home.learnMore', 'Learn More About Us')}</Button>
+              </Link>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="w-full lg:w-1/2"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=compress&cs=tinysrgb&w=1000&fit=crop" 
+                alt="Pyramids of Giza golden hour" 
+                className="w-full h-[280px] lg:h-[450px] object-cover rounded-[16px] shadow-[0_0_32px_rgba(201,162,39,0.2)] transition-transform duration-500 hover:-translate-y-2"
+                loading="lazy"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 1 - Destinations & Their Tours */}
+      <section className="py-10 bg-obsidian-900">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-8">
+            <span className="text-gold-500 uppercase tracking-widest text-caption block mb-4">{t('home.discoverMagic')}</span>
+            <h2 className="text-display-lg text-ivory-50">{t('home.destTitle')}</h2>
+            <div className="w-24 h-1 bg-gold-500 mx-auto mt-6"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {destinationsData.map((dest) => {
+              const tourCount = tours.filter(t => t.destination === dest.id).length;
+              const isActive = activeDestination === dest.id;
+
+              return (
+                <motion.div
+                  key={dest.id}
+                  onClick={() => handleDestinationClick(dest.id)}
+                  whileHover={{ y: -6, boxShadow: "0 0 32px rgba(201,162,39,0.22)", transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }}
+                  className={`relative h-[300px] rounded-2xl overflow-hidden cursor-pointer group transition-all duration-500 ${isActive ? 'ring-2 ring-gold-500 shadow-[0_0_20px_rgba(201,162,39,0.4)] scale-[1.02]' : 'hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(201,162,39,0.2)]'}`}
+                >
+                  <img src={dest.image} alt={dest.name} className="w-full h-full object-cover cinematic-transition group-hover:scale-[1.06]" loading="lazy" />
+                  <div className={`absolute inset-0 transition-colors duration-500 ${isActive ? 'bg-obsidian-900/40' : 'bg-obsidian-900/60 group-hover:bg-obsidian-900/40'}`}></div>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+                    <h3 className="text-display-lg text-ivory-50 mb-2">{t(`data.${dest.name}`, dest.name)}</h3>
+                    <p className="text-body-lg text-gold-500 font-medium mb-4">{t(`data.${dest.desc}`, dest.desc)}</p>
+                    <span className="text-caption text-ivory-300 uppercase tracking-wider bg-obsidian-900/50 backdrop-blur-sm px-4 py-2 rounded-full border border-ivory-50/10">{tourCount} {t('home.toursAvailable')}</span>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <AnimatePresence>
+            {activeDestination && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                className="overflow-hidden"
+              >
+                <div className="pt-12">
+                  <h3 className="text-display-md text-ivory-50 mb-8 text-center capitalize">{t(`data.${activeDestination.charAt(0).toUpperCase() + activeDestination.slice(1)}`, activeDestination.charAt(0).toUpperCase() + activeDestination.slice(1))} {t('nav.tours')}</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {activeTours.map((tour) => (
+                      <TourCard key={tour.id} tour={tour} />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </section>
+
+      {/* NEW SECTION - Featured Tours */}
+      <section className="py-12 bg-ivory-100 overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="text-gold-500 uppercase tracking-widest text-caption block mb-4">{t('home.handpicked', 'HANDPICKED FOR YOU')}</span>
+            <h2 className="text-display-lg text-obsidian-900">{t('home.lovedJourneys', 'Our Most Loved Journeys')}</h2>
+            <div className="w-24 h-1 bg-gold-500 mx-auto mt-6"></div>
+          </div>
+
+          <div className="flex gap-6 overflow-x-auto pb-8 pt-4 snap-x snap-mandatory no-scrollbar w-full px-4 md:px-0">
+            {featuredToursList.map((tData, idx) => (
+              <motion.div 
+                key={tData.id} 
+                className="min-w-[320px] md:min-w-[400px] snap-center shrink-0 group relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] transition-all duration-500 h-[450px]"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                whileHover={{ y: -6, boxShadow: "0 0 32px rgba(201,162,39,0.22)", transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }}
+              >
+                <img 
+                  src={`${tData.images[0]}?auto=compress&cs=tinysrgb&w=800&fit=crop&crop=center`} 
+                  alt={tData.title} 
+                  className="w-full h-full object-cover cinematic-transition group-hover:scale-[1.06]"
+                  loading="lazy" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-obsidian-900/90 via-obsidian-900/20 to-transparent"></div>
+                
+                <div className="absolute top-4 left-4 bg-gold-500/90 backdrop-blur-sm text-obsidian-900 text-caption font-bold px-3 py-1 rounded shadow-md uppercase">
+                  {t(`data.${tData.destination}`, tData.destination)}
+                </div>
+
+                <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end h-full">
+                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <h3 className="text-display-md text-ivory-50 mb-2 leading-tight">{t(`data.${tData.title}`, tData.title)}</h3>
+                    
+                    <div className="flex items-center justify-between text-caption text-ivory-300 mb-4">
+                      <span>{t(`data.${tData.duration}`, tData.duration)}</span>
+                      <span className="text-gold-500 font-semibold">${tData.price}</span>
+                    </div>
+
+                    <div className="flex items-center gap-1 text-gold-500 mb-4">
+                      {[...Array(Math.floor(tData.rating))].map((_, i) => <FaStar key={i} size={12} />)}
+                      <span className="text-ivory-50 ml-1 text-xs">({tData.reviewCount})</span>
+                    </div>
+
+                    <Link to={`/tours/${tData.slug}`} className="block opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <Button variant="outline-gold" className="w-full py-2">{t('home.viewTour', 'View Tour')}</Button>
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-8">
+            <Link to="/destinations">
+              <Button variant="gold-glow" className="px-8 py-3">{t('home.exploreAllTours', 'Explore All Tours')}</Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+      {/* SECTION 2 - Featured Hotels & Safaris */}
+      <section className="py-12 bg-obsidian-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="text-gold-500 uppercase tracking-widest text-caption block mb-4">{t('home.premiumSelection')}</span>
+            <h2 className="text-display-lg text-obsidian-900">{t('home.exclusiveServices')}</h2>
+            <div className="w-24 h-1 bg-gold-500 mx-auto mt-6"></div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+            {/* Featured Hotels */}
+            <div>
+              <h3 className="text-display-sm text-obsidian-900 mb-6 pb-4 border-b border-obsidian-900/10">{t('home.featuredHotels')}</h3>
+              <div className="flex flex-col gap-6">
+                {featuredHotels.map(hotel => (
+                  <motion.div key={hotel.id} whileHover={{ y: -6, boxShadow: "0 0 32px rgba(201,162,39,0.22)", transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }} className="flex flex-col sm:flex-row bg-ivory-50 rounded-2xl overflow-hidden shadow-card hover:shadow-lg transition-shadow border border-obsidian-900/5 group">
+                    <div className="w-full sm:w-2/5 h-40 sm:h-auto relative overflow-hidden">
+                      <div className="absolute top-3 left-3 z-10 bg-gold-500 text-obsidian-900 text-[10px] uppercase font-bold px-2 py-1 rounded shadow-md">{t(`data.${hotel.location}`, hotel.location) || hotel.location}</div>
+                      <img src={`${hotel.images[0]}?auto=compress&cs=tinysrgb&w=800&fit=crop&crop=center`} alt={hotel.title} className="w-full h-full object-cover cinematic-transition group-hover:scale-[1.06]" loading="lazy" />
+                    </div>
+                    <div className="w-full sm:w-3/5 p-6 flex flex-col justify-between">
+                      <div>
+                        <h4 className="text-xl font-display text-obsidian-900 mb-2 line-clamp-1 group-hover:text-gold-500 transition-colors">{t(`data.${hotel.title}`, hotel.title) || hotel.title}</h4>
+                        <p className="text-sm text-obsidian-500 line-clamp-2">{t(`data.${hotel.shortDesc}`, hotel.shortDesc) || hotel.shortDesc}</p>
+                      </div>
+                      <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+                        <div>
+                          <span className="block text-xs text-obsidian-300 uppercase tracking-wider">{t('home.perNight')}</span>
+                          <span className="text-lg font-semibold text-obsidian-900">${hotel.price}</span>
+                        </div>
+                        <Link to={`/services/hotels/${hotel.slug}`}>
+                          <Button variant="outline-gold" className="px-4 py-1.5 text-sm">{t('home.viewHotel')}</Button>
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Available Safaris */}
+            <div>
+              <h3 className="text-display-sm text-obsidian-900 mb-6 pb-4 border-b border-obsidian-900/10">{t('home.availableSafaris')}</h3>
+              <div className="flex flex-col gap-6">
+                {availableSafaris.map(safari => (
+                  <motion.div key={safari.id} whileHover={{ y: -6, boxShadow: "0 0 32px rgba(201,162,39,0.22)", transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }} className="flex flex-col sm:flex-row bg-ivory-50 rounded-2xl overflow-hidden shadow-card hover:shadow-lg transition-shadow border border-obsidian-900/5 group">
+                    <div className="w-full sm:w-2/5 h-40 sm:h-auto relative overflow-hidden">
+                      <div className="absolute top-3 left-3 z-10 bg-gold-500 text-obsidian-900 text-[10px] uppercase font-bold px-2 py-1 rounded shadow-md">{t(`data.${safari.location}`, safari.location) || safari.location}</div>
+                      <img src={`${safari.images[0]}?auto=compress&cs=tinysrgb&w=800&fit=crop&crop=center`} alt={safari.title} className="w-full h-full object-cover cinematic-transition group-hover:scale-[1.06]" loading="lazy" />
+                    </div>
+                    <div className="w-full sm:w-3/5 p-6 flex flex-col justify-between">
+                      <div>
+                        <h4 className="text-xl font-display text-obsidian-900 mb-2 line-clamp-1 group-hover:text-gold-500 transition-colors">{t(`data.${safari.title}`, safari.title) || safari.title}</h4>
+                        <p className="text-sm text-obsidian-500 line-clamp-2">{t(`data.${safari.shortDesc}`, safari.shortDesc) || safari.shortDesc}</p>
+                      </div>
+                      <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+                        <div>
+                          <span className="block text-xs text-obsidian-300 uppercase tracking-wider">{t('home.duration')}</span>
+                          <span className="text-sm font-medium text-obsidian-700">{t(`data.${safari.duration}`, safari.duration) || safari.duration || 'Full Day'}</span>
+                        </div>
+                        <Link to={`/services/safari/${safari.slug}`}>
+                          <Button variant="outline-gold" className="px-4 py-1.5 text-sm">{t('home.viewSafari')}</Button>
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-center">
+            <Link to="/services">
+              <Button variant="gold-glow" className="px-8 py-3">{t('home.viewAll')}</Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW SECTION - Transportation & Transfers */}
+      <section className="py-12 bg-ivory-50 relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-gold-500 uppercase tracking-widest text-caption block mb-4"
+            >
+              GET AROUND IN STYLE
+            </motion.span>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-display-lg text-obsidian-900 mb-6"
+            >
+              Premium Transportation Services
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-body-lg text-obsidian-700 max-w-2xl mx-auto"
+            >
+              Luxury vehicles and professional drivers — available across Egypt, Jordan & Turkey
+            </motion.p>
+            <motion.div 
+              initial={{ width: 0 }}
+              whileInView={{ width: 96 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="h-1 bg-gold-500 mx-auto mt-6"
+            ></motion.div>
+          </div>
+
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {['all', 'sedan', 'suv', 'bus'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setVehicleFilter(tab)}
+                className={`px-6 py-2 rounded-full border transition-all duration-300 font-medium tracking-wide ${
+                  vehicleFilter === tab 
+                    ? 'bg-gold-500 text-obsidian-900 border-gold-500 shadow-[0_0_15px_rgba(201,162,39,0.4)]' 
+                    : 'bg-transparent text-obsidian-700 border-obsidian-900/20 hover:border-gold-500 hover:text-gold-500'
+                }`}
+              >
+                {tab === 'all' ? 'All' : tab === 'sedan' ? 'Sedans' : tab === 'suv' ? 'SUVs' : 'Buses'}
+              </button>
+            ))}
+          </div>
+
+          {/* Vehicles Grid */}
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <AnimatePresence>
+              {filteredVehicles.map((vehicle) => (
+                <motion.div
+                  layout
+                  key={vehicle.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4 }}
+                  whileHover={{ y: -6, boxShadow: "0 0 32px rgba(201,162,39,0.22)", transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }}
+                  className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-lg border border-obsidian-900/5 group"
+                >
+                  <div className="relative h-48 overflow-hidden bg-obsidian-50">
+                    <img 
+                      src={`${vehicle.image}?auto=compress&cs=tinysrgb&w=600&fit=crop`} 
+                      alt={vehicle.name} 
+                      className="w-full h-full object-cover cinematic-transition group-hover:scale-[1.06]"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-3 left-3 bg-obsidian-900/80 backdrop-blur text-gold-500 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded">
+                      {vehicle.category}
+                    </div>
+                    <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/10 transition-colors duration-300"></div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="font-display text-xl text-obsidian-900 group-hover:text-gold-500 transition-colors">{vehicle.name}</h3>
+                      <div className="flex items-center gap-1 mt-1">
+                        <FaStar className="text-gold-500 w-3 h-3" />
+                        <span className="text-sm font-semibold text-obsidian-900">{vehicle.rating}</span>
+                        <span className="text-xs text-obsidian-500">({vehicle.reviews})</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
+                      <span className="text-xs text-obsidian-500 flex items-center gap-1">
+                        <svg className="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                        {vehicle.seats} Seats
+                      </span>
+                      <span className="text-xs text-obsidian-500 flex items-center gap-1">
+                        <svg className="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        {vehicle.transmission}
+                      </span>
+                      <span className="text-xs text-obsidian-500 flex items-center gap-1">
+                        <svg className="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                        {vehicle.doors} Doors
+                      </span>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-2 mb-4 text-[10px] text-obsidian-700 font-medium">
+                      {vehicle.features.slice(0, 4).map((feature, idx) => (
+                        <span key={idx} className="flex items-center gap-1 bg-obsidian-50 px-2 py-1 rounded">
+                          <svg className="w-3 h-3 text-gold-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="text-xs text-obsidian-300 uppercase tracking-wider">From</span>
+                      <span className="text-xl font-semibold text-gold-500">${vehicle.pricePerDay}<span className="text-sm text-obsidian-500 font-normal"> / day</span></span>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <Link to={`/transportation/${vehicle.id}`}>
+                        <Button variant="outline-gold" className="w-full py-2 text-sm text-center block h-full flex items-center justify-center">View Details</Button>
+                      </Link>
+                      <button 
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setResForm({...resForm, vehicle: vehicle.id});
+                          document.getElementById('home-reservation-form')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="w-full py-2 text-sm text-center block bg-gold-500 text-obsidian-900 rounded-full font-semibold hover:bg-gold-600 transition-colors h-full flex items-center justify-center"
+                      >
+                        Reserve Now
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Reservation Form */}
+          <motion.div 
+            id="home-reservation-form"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-5xl mx-auto glass-dark rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden bg-obsidian-900 border border-[rgba(201,162,39,0.2)]"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/10 rounded-full blur-[80px] -mr-32 -mt-32"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold-500/10 rounded-full blur-[80px] -ml-32 -mb-32"></div>
+            
+            <div className="relative z-10">
+              <div className="text-center mb-10">
+                <h3 className="text-display-md text-ivory-50 mb-2">Book Your Transfer</h3>
+                <p className="text-body-md text-ivory-300">Fill out the details below and our concierge will confirm your reservation.</p>
+              </div>
+
+              {resSuccess ? (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-16"
+                >
+                  <div className="w-20 h-20 bg-sage-500/20 text-sage-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  </div>
+                  <h4 className="text-2xl font-display text-ivory-50 mb-2">Reservation Received</h4>
+                  <p className="text-ivory-300">We will contact you shortly to confirm the details.</p>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleResSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Select Vehicle */}
+                  <div className="md:col-span-2">
+                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Select Vehicle *</label>
+                    <select required value={resForm.vehicle} onChange={e => setResForm({...resForm, vehicle: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all">
+                      <option value="">Choose a vehicle</option>
+                      {transportation.map(v => <option key={v.id} value={v.id}>{v.name} ({v.seats} Seats) - ${v.pricePerDay}/day</option>)}
+                    </select>
+                  </div>
+                  
+                  {/* Date & Time */}
+                  <div>
+                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Trip Date *</label>
+                    <input type="date" required value={resForm.date} onChange={e => setResForm({...resForm, date: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all [color-scheme:dark]" />
+                  </div>
+                  <div>
+                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Pick Up Time *</label>
+                    <input type="time" required value={resForm.time} onChange={e => setResForm({...resForm, time: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all [color-scheme:dark]" />
+                  </div>
+
+                  {/* Passengers */}
+                  <div>
+                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Adults *</label>
+                    <input type="number" min="1" max="20" required value={resForm.adults} onChange={e => setResForm({...resForm, adults: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
+                  </div>
+                  <div>
+                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Children (0-20)</label>
+                    <input type="number" min="0" max="20" value={resForm.children} onChange={e => setResForm({...resForm, children: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
+                  </div>
+
+                  {/* Locations */}
+                  <div>
+                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Pick Up Location *</label>
+                    <input type="text" required placeholder="Hotel, Airport, etc." value={resForm.pickup} onChange={e => setResForm({...resForm, pickup: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/30 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
+                  </div>
+                  <div>
+                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Drop Off Location *</label>
+                    <input type="text" required placeholder="Hotel, Airport, etc." value={resForm.dropoff} onChange={e => setResForm({...resForm, dropoff: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/30 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
+                  </div>
+
+                  {/* Contact Info */}
+                  <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                      <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Full Name *</label>
+                      <input type="text" required placeholder="John Doe" value={resForm.name} onChange={e => setResForm({...resForm, name: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/30 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
+                    </div>
+                    <div>
+                      <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Phone Number *</label>
+                      <input type="tel" required placeholder="+1 234 567 890" value={resForm.phone} onChange={e => setResForm({...resForm, phone: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/30 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
+                    </div>
+                    <div>
+                      <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Email *</label>
+                      <input type="email" required placeholder="john@example.com" value={resForm.email} onChange={e => setResForm({...resForm, email: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/30 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
+                    </div>
+                  </div>
+
+                  <div className="md:col-span-2 flex justify-center mt-6 pt-6 border-t border-ivory-50/10">
+                    <Button variant="gold-glow" type="submit" className="w-full md:w-auto px-12 py-4 text-lg rounded-full">
+                      Reserve Now
+                    </Button>
+                  </div>
+                </form>
+              )}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* NEW SECTION - Photo Gallery */}
+      <section className="py-10 bg-[#0F0D0B] overflow-hidden">
+        <div className="container mx-auto px-6 mb-8 text-center">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-gold-500 uppercase tracking-widest text-caption block mb-4"
+          >
+            {t('home.galleryLabel', 'CAPTURED MOMENTS')}
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-display-lg text-ivory-50"
+          >
+            {t('home.galleryHeading', 'A Glimpse Into Your Journey')}
+          </motion.h2>
+          <motion.div 
+            initial={{ width: 0 }}
+            whileInView={{ width: 96 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="h-1 bg-gold-500 mx-auto mt-6"
+          ></motion.div>
+        </div>
+
+        <div className="w-full px-4 md:px-8">
+          <div className="columns-1 md:columns-2 lg:columns-4 gap-4 space-y-4">
+            {galleryImages.map((img, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: (idx % 4) * 0.1 }}
+                className="relative overflow-hidden group cursor-pointer break-inside-avoid rounded-xl"
+                onClick={() => openLightbox(idx)}
+              >
+                <img 
+                  src={`${img.src}?auto=compress&cs=tinysrgb&w=800&fit=crop&q=80`}
+                  alt={`${img.dest} ${img.tag}`}
+                  loading="lazy"
+                  className="w-full h-auto object-cover transform transition-transform duration-400 ease-in-out group-hover:scale-[1.06]"
+                />
+                
+                {/* Dark Overlay & Border Glow */}
+                <div className="absolute inset-0 bg-obsidian-900/0 group-hover:bg-obsidian-900/60 transition-colors duration-400"></div>
+                <div className="absolute inset-0 border-2 border-gold-500 opacity-0 group-hover:opacity-100 group-hover:shadow-[inset_0_0_20px_rgba(201,162,39,0.4)] transition-all duration-400 z-10 pointer-events-none rounded-xl"></div>
+                
+                {/* Text Reveal */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-400 z-20">
+                  <span className="text-gold-500 tracking-widest text-xs uppercase mb-2 font-semibold drop-shadow-md">{t(`data.${img.tag}`, img.tag)}</span>
+                  <span className="text-ivory-50 text-2xl font-display drop-shadow-lg">{t(`data.${img.dest}`, img.dest)}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* NEW SECTION - CTA Section */}
+      <section className="relative py-12 lg:py-16 bg-obsidian-900 bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=compress&cs=tinysrgb&w=1600&fit=crop')" }}>
+        <div className="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-obsidian-900/60 to-transparent"></div>
+        <div className="relative z-10 container mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="font-display italic text-4xl md:text-5xl lg:text-6xl text-ivory-50 mb-6 drop-shadow-lg">
+              {t('home.ctaTitle', 'Your Next Adventure Awaits')}
+            </h2>
+            <p className="text-body-lg text-ivory-300 mb-10 max-w-xl mx-auto drop-shadow-md">
+              {t('home.ctaDesc', 'Let us craft a journey tailored entirely to you')}
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <Link to="/contact">
+                <Button variant="gold-glow" className="px-8 py-4 text-lg w-full sm:w-auto">
+                  {t('home.ctaStart', 'Start Planning')}
+                </Button>
+              </Link>
+              <Link to="/destinations">
+                <Button variant="glass" className="px-8 py-4 text-lg w-full sm:w-auto">
+                  {t('home.ctaBrowse', 'Browse Tours')}
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {isLightboxOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 z-[100] bg-obsidian-900/95 flex items-center justify-center backdrop-blur-md"
+            onClick={() => setIsLightboxOpen(false)}
+          >
+            <button 
+              className="absolute top-6 right-6 text-ivory-50 hover:text-gold-500 transition-colors z-[101]"
+              onClick={(e) => { e.stopPropagation(); setIsLightboxOpen(false); }}
+            >
+              <FaTimes size={32} />
+            </button>
+            
+            <button 
+              className="absolute left-4 md:left-10 text-ivory-50 hover:text-gold-500 transition-colors z-[101] p-4"
+              onClick={prevImage}
+            >
+              <FaChevronLeft size={40} />
+            </button>
+
+            <motion.img 
+              key={activeGalleryIndex}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              src={`${galleryImages[activeGalleryIndex].src}?auto=compress&cs=tinysrgb&w=1600&fit=crop&q=90`} 
+              alt={galleryImages[activeGalleryIndex].dest} 
+              className="max-w-[85vw] max-h-[85vh] object-contain shadow-[0_0_50px_rgba(0,0,0,0.5)] rounded-md"
+              onClick={e => e.stopPropagation()}
+            />
+
+            <button 
+              className="absolute right-4 md:right-10 text-ivory-50 hover:text-gold-500 transition-colors z-[101] p-4"
+              onClick={nextImage}
+            >
+              <FaChevronRight size={40} />
+            </button>
+
+            <div className="absolute bottom-10 left-0 right-0 text-center text-ivory-50">
+              <p className="font-display text-2xl mb-1">{t(`data.${galleryImages[activeGalleryIndex].dest}`, galleryImages[activeGalleryIndex].dest)}</p>
+              <p className="text-gold-500 tracking-widest text-xs uppercase">{t(`data.${galleryImages[activeGalleryIndex].tag}`, galleryImages[activeGalleryIndex].tag)}</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export default Home;
