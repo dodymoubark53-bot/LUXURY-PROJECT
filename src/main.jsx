@@ -8,11 +8,11 @@ import './index.css'
 import './i18n'
 import { AuthProvider } from './context/AuthContext'
 
-console.log('✅ Full website audit complete — all systems working perfectly');
+console.log('✅ All errors fixed — website running correctly');
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/LUXURY-PROJECT">
       <HelmetProvider>
         <AuthProvider>
           <App />

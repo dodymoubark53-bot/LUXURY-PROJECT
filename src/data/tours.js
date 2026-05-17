@@ -22,7 +22,7 @@ export const tours = [
     "rating": 4.8,
     "reviewCount": 124,
     "images": [
-      "/imgs/egypt/Nile Legacy .webp"
+      "/LUXURY-PROJECT/imgs/egypt/Nile Legacy .webp"
     ],
     "itinerary": [
       {
@@ -117,7 +117,7 @@ export const tours = [
     "rating": 4.9,
     "reviewCount": 89,
     "images": [
-      "/imgs/egypt/Pharaohs & Pyramid.jpg"
+      "/LUXURY-PROJECT/imgs/egypt/Pharaohs & Pyramid.jpg"
     ],
     "itinerary": [
       {
@@ -181,8 +181,8 @@ export const tours = [
     "rating": 4.7,
     "reviewCount": 210,
     "images": [
-      "/imgs/egypt/Jewels of the Red Sea.webp",
-      "/imgs/egypt/Jewels of the Red Se.jpg"
+      "/LUXURY-PROJECT/imgs/egypt/Jewels of the Red Sea.webp",
+      "/LUXURY-PROJECT/imgs/egypt/Jewels of the Red Se.jpg"
     ],
     "itinerary": [
       {
@@ -260,8 +260,8 @@ export const tours = [
     "rating": 4.6,
     "reviewCount": 65,
     "images": [
-      "/imgs/egypt/Alexandria & The North Coast.jpg",
-      "/imgs/egypt/Alexandria & The North Coast1.jpg"
+      "/LUXURY-PROJECT/imgs/egypt/Alexandria & The North Coast.jpg",
+      "/LUXURY-PROJECT/imgs/egypt/Alexandria & The North Coast1.jpg"
     ],
     "itinerary": [
       {
@@ -317,7 +317,7 @@ export const tours = [
     "rating": 4.9,
     "reviewCount": 42,
     "images": [
-      "/imgs/egypt/Oasis & Desert Adventur.webp"
+      "/LUXURY-PROJECT/imgs/egypt/Oasis & Desert Adventur.webp"
     ],
     "itinerary": [
       {
@@ -388,7 +388,7 @@ export const tours = [
     "rating": 5,
     "reviewCount": 31,
     "images": [
-      "/imgs/egypt/Ultimate Royal Egypt..JPG"
+      "/LUXURY-PROJECT/imgs/egypt/Ultimate Royal Egypt..JPG"
     ],
     "itinerary": [
       {
@@ -502,7 +502,7 @@ export const tours = [
     "rating": 4.9,
     "reviewCount": 98,
     "images": [
-      "/imgs/jordan/The Petra Experience.jpg"
+      "/LUXURY-PROJECT/imgs/jordan/The Petra Experience.jpg"
     ],
     "itinerary": [
       {
@@ -572,7 +572,7 @@ export const tours = [
     "rating": 4.8,
     "reviewCount": 145,
     "images": [
-      "/imgs/jordan/Wadi Rum Desert Safari.webp"
+      "/LUXURY-PROJECT/imgs/jordan/Wadi Rum Desert Safari.webp"
     ],
     "itinerary": [
       {
@@ -621,7 +621,7 @@ export const tours = [
     "rating": 4.7,
     "reviewCount": 76,
     "images": [
-      "/imgs/jordan/Dead Sea Wellness Retreat.webp"
+      "/LUXURY-PROJECT/imgs/jordan/Dead Sea Wellness Retreat.webp"
     ],
     "itinerary": [
       {
@@ -678,7 +678,7 @@ export const tours = [
     "rating": 4.6,
     "reviewCount": 54,
     "images": [
-      "/imgs/jordan/Biblical Journey.webp"
+      "/LUXURY-PROJECT/imgs/jordan/Biblical Journey.webp"
     ],
     "itinerary": [
       {
@@ -742,7 +742,7 @@ export const tours = [
     "rating": 4.5,
     "reviewCount": 112,
     "images": [
-      "/imgs/jordan/Amman City Break.webp"
+      "/LUXURY-PROJECT/imgs/jordan/Amman City Break.webp"
     ],
     "itinerary": [
       {
@@ -792,7 +792,7 @@ export const tours = [
     "rating": 5,
     "reviewCount": 41,
     "images": [
-      "/imgs/jordan/Ultimate Jordan Grand Tour.webp"
+      "/LUXURY-PROJECT/imgs/jordan/Ultimate Jordan Grand Tour.webp"
     ],
     "itinerary": [
       {
@@ -891,7 +891,7 @@ export const tours = [
     "rating": 4.9,
     "reviewCount": 188,
     "images": [
-      "/imgs/turkey/Bosphorus & Palaces.jpg"
+      "/LUXURY-PROJECT/imgs/turkey/Bosphorus & Palaces.jpg"
     ],
     "itinerary": [
       {
@@ -954,7 +954,7 @@ export const tours = [
     "rating": 5,
     "reviewCount": 342,
     "images": [
-      "/imgs/turkey/Cappadocia Hot Air Ballooning.webp"
+      "/LUXURY-PROJECT/imgs/turkey/Cappadocia Hot Air Ballooning.webp"
     ],
     "itinerary": [
       {
@@ -1011,7 +1011,7 @@ export const tours = [
     "rating": 4.8,
     "reviewCount": 120,
     "images": [
-      "/imgs/turkey/Ephesus & The Aegean Coast.jpg"
+      "/LUXURY-PROJECT/imgs/turkey/Ephesus & The Aegean Coast.jpg"
     ],
     "itinerary": [
       {
@@ -1089,7 +1089,7 @@ export const tours = [
     "rating": 4.7,
     "reviewCount": 89,
     "images": [
-      "/imgs/turkey/Antalya Turquoise Escape.jpg"
+      "/LUXURY-PROJECT/imgs/turkey/Antalya Turquoise Escape.jpg"
     ],
     "itinerary": [
       {
@@ -1159,7 +1159,7 @@ export const tours = [
     "rating": 4.9,
     "reviewCount": 67,
     "images": [
-      "/imgs/turkey/Culinary Delights of Istanbul.jpeg"
+      "/LUXURY-PROJECT/imgs/turkey/Culinary Delights of Istanbul.jpeg"
     ],
     "itinerary": [
       {
@@ -1216,7 +1216,7 @@ export const tours = [
     "rating": 4.9,
     "reviewCount": 156,
     "images": [
-      "/imgs/turkey/Grand Tour of Turkey.jpg"
+      "/LUXURY-PROJECT/imgs/turkey/Grand Tour of Turkey.jpg"
     ],
     "itinerary": [
       {
