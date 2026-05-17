@@ -24,7 +24,7 @@ const destinationsData = [
     id: 'turkey',
     name: 'Turkey',
     tag: 'Where Continents Meet',
-    image: 'https://images.pexels.com/photos/1481180/pexels-photo-1481180.jpeg?auto=compress&cs=tinysrgb&w=1600&fit=crop'
+    image: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=1600&q=80'
   }
 ];
 

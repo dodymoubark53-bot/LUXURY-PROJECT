@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCheckCircle } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 import Button from '../ui/Button';
 import { fadeInUp } from '../../animations/variants';
 import { transportation } from '../../data/transportation';
 
 const TransportationForm = ({ preSelectedVehicleId = '' }) => {
+  const { t } = useTranslation();
   const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success'
   const [formData, setFormData] = useState({
     vehicleId: preSelectedVehicleId,
@@ -51,7 +53,7 @@ const TransportationForm = ({ preSelectedVehicleId = '' }) => {
   };
 
   return (
-    <div className="relative bg-ivory-50 rounded-2xl p-8 w-full shadow-card">
+    <div className="relative mx-auto md:mx-0 bg-ivory-50 rounded-2xl p-8 w-full shadow-card">
       <AnimatePresence mode="wait">
         {status === 'success' ? (
           <motion.div 
@@ -67,9 +69,9 @@ const TransportationForm = ({ preSelectedVehicleId = '' }) => {
             >
               <FaCheckCircle className="text-gold-500 text-6xl mb-4" />
             </motion.div>
-            <h3 className="text-display-md text-obsidian-900 mb-2">Reservation Confirmed</h3>
+            <h3 className="text-display-md text-obsidian-900 mb-2 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t('booking.reservationConfirmed', 'Reservation Confirmed')}</h3>
             <p className="text-body-md text-obsidian-500">
-              Thank you for your booking. Our luxury travel concierges will contact you shortly to finalize the details.
+              {t('booking.reservationSuccessDesc', 'Thank you for your booking. Our luxury travel concierges will contact you shortly to finalize the details.')}
             </p>
           </motion.div>
         ) : (
@@ -82,8 +84,8 @@ const TransportationForm = ({ preSelectedVehicleId = '' }) => {
             className="flex flex-col gap-5"
           >
             <div className="mb-2">
-              <h3 className="text-display-md text-obsidian-900 mb-2">Book Your Transfer</h3>
-              <p className="text-caption text-obsidian-500">Reserve your premium vehicle and professional driver.</p>
+              <h3 className="text-display-md text-obsidian-900 mb-2 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t('booking.bookYourTransfer', 'Book Your Transfer')}</h3>
+              <p className="text-caption text-obsidian-500">{t('booking.transferDesc', 'Reserve your premium vehicle and professional driver.')}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -92,11 +94,11 @@ const TransportationForm = ({ preSelectedVehicleId = '' }) => {
                 value={formData.vehicleId} 
                 onChange={handleChange}
                 required
-                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors bg-white md:col-span-2"
+                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors bg-white md:col-span-2 text-[16px]"
               >
-                <option value="" disabled>Select Vehicle</option>
+                <option value="" disabled>{t('booking.selectVehicle', 'Select Vehicle')}</option>
                 {transportation.map(v => (
-                  <option key={v.id} value={v.id}>{v.name}</option>
+                  <option key={v.id} value={v.id}>{t(`data.${v.name}`, v.name)}</option>
                 ))}
               </select>
 
@@ -106,7 +108,7 @@ const TransportationForm = ({ preSelectedVehicleId = '' }) => {
                 value={formData.tripDate}
                 onChange={handleChange}
                 required
-                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors"
+                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors text-[16px]"
               />
               <input 
                 type="time" 
@@ -114,12 +116,12 @@ const TransportationForm = ({ preSelectedVehicleId = '' }) => {
                 value={formData.pickupTime}
                 onChange={handleChange}
                 required
-                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors"
+                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors text-[16px]"
               />
 
               <div className="flex gap-4">
                 <div className="w-1/2">
-                  <label className="block text-caption text-obsidian-500 mb-1">Adults</label>
+                  <label className="block text-caption text-obsidian-500 mb-1">{t('booking.adults', 'Adults')}</label>
                   <input 
                     type="number" 
                     name="adults"
@@ -127,11 +129,11 @@ const TransportationForm = ({ preSelectedVehicleId = '' }) => {
                     value={formData.adults}
                     onChange={handleChange}
                     required
-                    className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors"
+                    className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors text-[16px]"
                   />
                 </div>
                 <div className="w-1/2">
-                  <label className="block text-caption text-obsidian-500 mb-1">Children</label>
+                  <label className="block text-caption text-obsidian-500 mb-1">{t('booking.children', 'Children')}</label>
                   <input 
                     type="number" 
                     name="children"
@@ -139,7 +141,7 @@ const TransportationForm = ({ preSelectedVehicleId = '' }) => {
                     value={formData.children}
                     onChange={handleChange}
                     required
-                    className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors"
+                    className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors text-[16px]"
                   />
                 </div>
               </div>
@@ -147,58 +149,58 @@ const TransportationForm = ({ preSelectedVehicleId = '' }) => {
               <input 
                 type="text" 
                 name="pickupLocation"
-                placeholder="Pick Up Location"
+                placeholder={t('booking.pickupLocation', 'Pick Up Location')}
                 value={formData.pickupLocation}
                 onChange={handleChange}
                 required
-                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors"
+                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors text-[16px]"
               />
               <input 
                 type="text" 
                 name="dropoffLocation"
-                placeholder="Drop Off Location"
+                placeholder={t('booking.dropoffLocation', 'Drop Off Location')}
                 value={formData.dropoffLocation}
                 onChange={handleChange}
                 required
-                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors md:col-span-2"
+                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors md:col-span-2 text-[16px]"
               />
 
               <input 
                 type="text" 
                 name="fullName"
-                placeholder="Full Name" 
+                placeholder={t('booking.fullName', 'Full Name')} 
                 value={formData.fullName}
                 onChange={handleChange}
                 required
-                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors"
+                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors text-[16px]"
               />
               <input 
                 type="tel" 
                 name="phone"
-                placeholder="Phone Number" 
+                placeholder={t('booking.phone', 'Phone Number')} 
                 value={formData.phone}
                 onChange={handleChange}
                 required
-                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors"
+                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors text-[16px]"
               />
               <input 
                 type="email" 
                 name="email"
-                placeholder="Email Address" 
+                placeholder={t('booking.email', 'Email Address')} 
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors md:col-span-2"
+                className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors md:col-span-2 text-[16px]"
               />
             </div>
 
             <textarea 
               name="specialRequest"
-              placeholder="Special Request..." 
+              placeholder={t('booking.specialRequestPlaceholder', 'Special Request...')} 
               value={formData.specialRequest}
               onChange={handleChange}
               rows="3"
-              className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors resize-none"
+              className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors resize-none text-[16px]"
             ></textarea>
             
             <div className="flex justify-end mt-4">
@@ -208,7 +210,7 @@ const TransportationForm = ({ preSelectedVehicleId = '' }) => {
                 disabled={status === 'submitting'}
                 className="w-full py-4 text-lg rounded-full"
               >
-                {status === 'submitting' ? 'Processing...' : 'Reserve Now'}
+                {status === 'submitting' ? t('common.processing', 'Processing...') : t('transportation.reserveNow', 'Reserve Now')}
               </Button>
             </div>
           </motion.form>

@@ -53,7 +53,7 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
   ];
 
   return (
-    <div className="relative bg-ivory-50 rounded-2xl p-8 max-w-2xl w-full shadow-card max-h-[90vh] overflow-y-auto no-scrollbar">
+    <div className="relative mx-auto w-full box-border rounded-[20px] bg-[rgba(15,13,11,0.85)] backdrop-blur-[24px] border border-[rgba(201,162,39,0.2)] shadow-[0_0_40px_rgba(201,162,39,0.1)] px-4 py-8 md:p-8 lg:p-10 max-w-full md:max-w-[480px] lg:max-w-[560px] max-h-[90vh] overflow-y-auto no-scrollbar text-left" onClick={(e) => e.stopPropagation()}>
       <AnimatePresence mode="wait">
         {status === 'success' ? (
           <motion.div
@@ -69,8 +69,8 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
             >
               <FaCheckCircle className="text-gold-500 text-6xl mb-4" />
             </motion.div>
-            <h3 className="text-display-md text-obsidian-900 mb-2">Booking Confirmed</h3>
-            <p className="text-body-md text-obsidian-500">
+            <h3 className="text-display-md text-ivory-50 mb-2 font-display">Booking Confirmed</h3>
+            <p className="text-body-md text-ivory-300">
               Your reservation request for {tourTitle} has been received. Our team will contact you to finalize the payment and details.
             </p>
           </motion.div>
@@ -81,82 +81,80 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
             initial="hidden"
             animate="visible"
             onSubmit={handleSubmit}
-            className="flex flex-col gap-6"
+            className="flex flex-col gap-6 w-full"
           >
-            <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-gray-100 pb-4">
+            <div className="flex flex-col text-center border-b border-ivory-50/10 pb-6">
+              <h3 className="text-display-md text-ivory-50 mb-1 font-display">Advanced Booking</h3>
+              <p className="text-caption text-gold-500 mb-4">{tourTitle}</p>
               <div>
-                <h3 className="text-display-md text-obsidian-900 mb-1">Advanced Booking</h3>
-                <p className="text-caption text-obsidian-500">{tourTitle}</p>
-              </div>
-              <div className="text-right mt-4 md:mt-0">
-                <span className="block text-caption text-obsidian-500">Total Price</span>
+                <span className="block text-caption text-ivory-300">Total Price</span>
                 <span className="text-display-md text-gold-500 text-2xl">${totalPrice.toFixed(2)}</span>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="flex flex-col gap-1">
-                <label className="text-caption text-obsidian-700 font-medium">Arrival Date</label>
+              <div className="flex flex-col gap-1 text-left w-full">
+                <label className="text-caption text-gold-500 font-medium">Arrival Date</label>
                 <input
                   type="date"
                   name="arrivalDate"
                   value={formData.arrivalDate}
                   onChange={handleInputChange}
                   required
-                  className="w-full p-3 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors text-body-md"
+                  className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)] [color-scheme:dark]"
                 />
               </div>
-              <div className="flex flex-col gap-1">
-                <label className="text-caption text-obsidian-700 font-medium">Departure Date</label>
+              <div className="flex flex-col gap-1 text-left w-full">
+                <label className="text-caption text-gold-500 font-medium">Departure Date</label>
                 <input
                   type="date"
                   name="departureDate"
                   value={formData.departureDate}
                   onChange={handleInputChange}
                   required
-                  className="w-full p-3 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors text-body-md"
+                  className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)] [color-scheme:dark]"
                 />
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
-              <div className="flex flex-col gap-1">
-                <label className="text-caption text-obsidian-700 font-medium">Adults</label>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="flex flex-col gap-1 text-left w-full">
+                <label className="text-caption text-gold-500 font-medium">Adults</label>
                 <input
                   type="number"
                   name="adults"
                   min="1"
                   value={formData.adults}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors text-body-md"
+                  className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)]"
                 />
               </div>
-              <div className="flex flex-col gap-1">
-                <label className="text-caption text-obsidian-700 font-medium">Children (2-12)</label>
+              <div className="flex flex-col gap-1 text-left w-full">
+                <label className="text-caption text-gold-500 font-medium">Children (2-12)</label>
                 <input
                   type="number"
                   name="children"
                   min="0"
                   value={formData.children}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors text-body-md"
+                  className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)]"
                 />
               </div>
-              <div className="flex flex-col gap-1">
-                <label className="text-caption text-obsidian-700 font-medium">Infants (&lt;2)</label>
+              <div className="flex flex-col gap-1 text-left w-full">
+                <label className="text-caption text-gold-500 font-medium">Infants (&lt;2)</label>
                 <input
                   type="number"
                   name="infants"
                   min="0"
                   value={formData.infants}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors text-body-md"
+                  className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)]"
                 />
               </div>
             </div>
 
-            <div className="flex flex-col gap-1">
-              <label className="text-caption text-obsidian-700 font-medium">Email Address</label>
+            <div className="flex flex-col gap-1 text-left w-full">
+              <label className="text-caption text-gold-500 font-medium">Email Address</label>
               <input
                 type="email"
                 name="email"
@@ -164,44 +162,45 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
                 onChange={handleInputChange}
                 required
                 placeholder="Where should we send the confirmation?"
-                className="w-full p-3 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors text-body-md"
+                className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)]"
               />
             </div>
 
             {guestFields.length > 0 && (
-              <div className="pt-4 border-t border-gray-100">
-                <h4 className="text-caption font-semibold text-obsidian-900 mb-3 uppercase tracking-wide">Guest Details</h4>
+              <div className="pt-6 border-t border-ivory-50/10 text-left w-full">
+                <h4 className="text-caption font-semibold text-gold-500 mb-4 uppercase tracking-wide">Guest Details</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {guestFields.map((field, idx) => (
-                    <input
-                      key={idx}
-                      type="text"
-                      placeholder={`${field} Full Name`}
-                      required
-                      onChange={(e) => handleGuestNameChange(field, e.target.value)}
-                      className="w-full p-3 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors text-body-md"
-                    />
+                    <div key={idx} className="flex flex-col gap-1 w-full">
+                      <label className="text-caption text-ivory-300 font-medium">{field} Full Name</label>
+                      <input
+                        type="text"
+                        placeholder={`${field} Full Name`}
+                        required
+                        onChange={(e) => handleGuestNameChange(field, e.target.value)}
+                        className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)]"
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
             )}
 
-            <div className="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-100">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-6 pt-6 border-t border-ivory-50/10 w-full">
               <button
                 type="button"
                 onClick={onClose}
-                className="text-body-md text-obsidian-500 hover:text-obsidian-900 transition-colors px-4"
+                className="w-full md:w-auto px-6 py-3 rounded-full border border-ivory-300/30 text-ivory-300 hover:text-ivory-50 transition-colors text-[16px]"
               >
                 Cancel
               </button>
-              <Button
-                variant="gold-glow"
+              <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="w-full md:w-auto px-8"
+                className="w-full md:w-auto px-8 py-3 bg-gold-500 text-obsidian-900 font-semibold rounded-full shadow-[0_0_20px_rgba(201,162,39,0.4)] hover:scale-105 transition-transform text-[16px]"
               >
-                {status === 'submitting' ? 'Processing...' : 'Confirm Booking'}
-              </Button>
+                {status === 'submitting' ? 'Processing...' : 'Book Now'}
+              </button>
             </div>
           </motion.form>
         )}

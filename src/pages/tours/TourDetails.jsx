@@ -109,8 +109,7 @@ const TourDetails = () => {
               <div className="flex gap-8 border-b border-gray-200 mb-8 overflow-x-auto no-scrollbar">
                 {[
                   { id: 'description', label: t('tour.tabDescription', 'Description') },
-                  { id: 'highlights', label: t('tour.tabHighlights', 'Highlights') },
-                  { id: 'itinerary', label: t('tour.tabItinerary', 'Itinerary') }
+                  { id: 'highlights', label: t('tour.tabHighlights', 'Highlights') }
                 ].map(tab => (
                   <button 
                     key={tab.id}
@@ -160,21 +159,52 @@ const TourDetails = () => {
                     </ul>
                   )}
 
-                  {/* 5. Detailed Itinerary */}
-                  {activeTab === 'itinerary' && (
-                    <div className="flex flex-col gap-4">
-                      {tour.itinerary.length > 0 ? tour.itinerary.map((day) => (
-                        <div key={day.day} className="border border-gray-200 rounded-lg overflow-hidden">
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Cinematic Itinerary Section */}
+              <div className="mt-16 pt-12 border-t border-gray-200">
+                <div className="mb-10">
+                  <span className="text-caption text-gold-500 uppercase tracking-widest font-semibold block mb-2">{t('tour.journeyDayByDay', 'YOUR JOURNEY DAY BY DAY')}</span>
+                  <h2 className="text-display-md text-3xl text-obsidian-900 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t('tour.detailedItinerary', 'Detailed Itinerary')}</h2>
+                </div>
+
+                <div className="relative pl-6 md:pl-10">
+                  {/* Golden Timeline Line */}
+                  <div className="absolute left-[11px] md:left-[19px] top-8 bottom-8 w-[2px] bg-[rgba(201,162,39,0.2)]"></div>
+
+                  <div className="flex flex-col gap-6">
+                    {tour.itinerary && tour.itinerary.map((day) => (
+                      <div key={day.day} className="relative">
+                        {/* Timeline Dot */}
+                        <motion.div
+                          animate={{
+                            boxShadow: [
+                              '0 0 0 0 rgba(201,162,39,0.4)',
+                              '0 0 0 8px rgba(201,162,39,0)',
+                              '0 0 0 0 rgba(201,162,39,0.4)',
+                            ],
+                          }}
+                          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                          className="absolute -left-6 md:-left-10 top-[26px] w-3 h-3 bg-gold-500 rounded-full transform -translate-x-1/2 z-10"
+                        />
+
+                        <div 
+                          className="rounded-xl overflow-hidden group" 
+                          style={{ 
+                            backgroundColor: expandedDay === day.day ? 'rgba(201,162,39,0.08)' : 'rgba(201,162,39,0.04)',
+                            borderLeft: '2px solid rgba(201,162,39,0.3)',
+                            boxShadow: expandedDay === day.day ? '-3px 0 12px rgba(201,162,39,0.3)' : 'none',
+                            transition: 'all 0.3s ease'
+                          }}
+                        >
                           <button 
                             onClick={() => setExpandedDay(expandedDay === day.day ? null : day.day)}
-                            className="w-full flex items-center justify-between p-6 bg-obsidian-50 hover:bg-gold-50 transition-colors text-left"
+                            className="w-full flex items-center justify-between p-6 text-left"
                           >
-                            <div className="flex items-center gap-4">
-                              <span className="w-10 h-10 rounded-full bg-gold-500 text-obsidian-900 flex items-center justify-center font-bold">
-                                {day.day}
-                              </span>
-                              <span className="text-display-md text-xl text-obsidian-900">{t(`data.${day.title}`, day.title)}</span>
-                            </div>
+                            <h3 className="text-body-lg font-semibold text-obsidian-900">
+                              <span className="text-gold-600 mr-2 font-display">{t('tour.day', 'Day')} {day.day} &mdash;</span> {t(`data.${day.title}`, day.title)}
+                            </h3>
                             <motion.div animate={{ rotate: expandedDay === day.day ? 180 : 0 }}>
                               <FaChevronDown className="text-gold-500" />
                             </motion.div>
@@ -183,35 +213,34 @@ const TourDetails = () => {
                           <AnimatePresence>
                             {expandedDay === day.day && (
                               <motion.div 
-                                variants={accordionContent}
-                                initial="collapsed"
-                                animate="expanded"
-                                exit="collapsed"
-                                className="px-6 bg-ivory-50 overflow-hidden"
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }}
+                                exit={{ height: 0, opacity: 0, transition: { duration: 0.3 } }}
+                                className="px-6 pb-6 overflow-hidden"
                               >
-                                <div className="py-6 flex flex-col gap-6 relative before:absolute before:left-[11px] before:top-8 before:bottom-8 before:w-[2px] before:bg-gray-100">
-                                  {/* Timeline Item: Morning */}
-                                  <div className="flex gap-6 relative">
-                                    <div className="w-6 h-6 rounded-full bg-ivory-50 border-2 border-gold-500 shadow-[0_0_10px_rgba(201,162,39,0.5)] z-10 flex-shrink-0 mt-1"></div>
+                                <div className="bg-obsidian-900 p-6 rounded-xl flex flex-col gap-4 shadow-inner">
+                                  {/* Morning */}
+                                  <div className="flex items-start gap-4 pb-4 border-b border-[rgba(201,162,39,0.1)]">
+                                    <span className="text-2xl mt-1">🌅</span>
                                     <div>
-                                      <h4 className="text-caption font-bold text-obsidian-900 uppercase tracking-wide mb-2">{t('tour.morning', 'Morning')}</h4>
-                                      <p className="text-body-md text-obsidian-700">{t(`data.${day.morning}`, day.morning)}</p>
+                                      <span className="font-bold text-[#C9A227] block mb-1">{t('tour.morning', 'Morning')}</span>
+                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{t(`data.${day.morning}`, day.morning)}</p>
                                     </div>
                                   </div>
-                                  {/* Timeline Item: Afternoon */}
-                                  <div className="flex gap-6 relative">
-                                    <div className="w-6 h-6 rounded-full bg-ivory-50 border-2 border-gold-500 shadow-[0_0_10px_rgba(201,162,39,0.5)] z-10 flex-shrink-0 mt-1"></div>
+                                  {/* Afternoon */}
+                                  <div className="flex items-start gap-4 pb-4 border-b border-[rgba(201,162,39,0.1)]">
+                                    <span className="text-2xl mt-1">☀️</span>
                                     <div>
-                                      <h4 className="text-caption font-bold text-obsidian-900 uppercase tracking-wide mb-2">{t('tour.afternoon', 'Afternoon')}</h4>
-                                      <p className="text-body-md text-obsidian-700">{t(`data.${day.afternoon}`, day.afternoon)}</p>
+                                      <span className="font-bold text-[#C9A227] block mb-1">{t('tour.afternoon', 'Afternoon')}</span>
+                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{t(`data.${day.afternoon}`, day.afternoon)}</p>
                                     </div>
                                   </div>
-                                  {/* Timeline Item: Evening */}
-                                  <div className="flex gap-6 relative">
-                                    <div className="w-6 h-6 rounded-full bg-ivory-50 border-2 border-gold-500 shadow-[0_0_10px_rgba(201,162,39,0.5)] z-10 flex-shrink-0 mt-1"></div>
+                                  {/* Evening */}
+                                  <div className="flex items-start gap-4">
+                                    <span className="text-2xl mt-1">🌙</span>
                                     <div>
-                                      <h4 className="text-caption font-bold text-obsidian-900 uppercase tracking-wide mb-2">{t('tour.evening', 'Evening')}</h4>
-                                      <p className="text-body-md text-obsidian-700">{t(`data.${day.evening}`, day.evening)}</p>
+                                      <span className="font-bold text-[#C9A227] block mb-1">{t('tour.evening', 'Evening')}</span>
+                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{t(`data.${day.evening}`, day.evening)}</p>
                                     </div>
                                   </div>
                                 </div>
@@ -219,13 +248,11 @@ const TourDetails = () => {
                             )}
                           </AnimatePresence>
                         </div>
-                      )) : (
-                        <p className="text-body-md text-obsidian-500">{t('tour.itinerarySoon', 'Detailed itinerary will be available soon.')}</p>
-                      )}
-                    </div>
-                  )}
-                </motion.div>
-              </AnimatePresence>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
               {/* 6. Included / Excluded */}
               <div className="mt-16 pt-12 border-t border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -310,7 +337,7 @@ const TourDetails = () => {
                   <Button variant="gold-glow" className="w-full py-4 text-lg" onClick={() => setActiveForm('booking')}>
                     {t('nav.bookNow', 'Book Now')}
                   </Button>
-                  <Button variant="glass" className="w-full py-4" onClick={() => setActiveForm('inquiry')}>
+                  <Button variant="glass" className="w-full py-4 text-lg" onClick={() => setActiveForm('inquiry')}>
                     {t('tour.inquire', 'Inquire Availability')}
                   </Button>
                 </div>
@@ -327,7 +354,7 @@ const TourDetails = () => {
 
       {/* 8. Suggested Tours */}
       <section className="container mx-auto px-6 py-24">
-        <h2 className="text-display-lg text-obsidian-900 mb-12 text-center">{t('tour.youMayAlsoLike', 'You May Also Like')}</h2>
+        <h2 className="text-display-lg text-obsidian-900 mb-12 text-center font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t('tour.youMayAlsoLike', 'You May Also Like')}</h2>
         <div className="flex gap-8 overflow-x-auto pb-8 snap-x no-scrollbar">
           {suggestedTours.map(tData => (
             <div key={tData.id} className="min-w-[320px] md:min-w-[400px] snap-center">
@@ -336,7 +363,7 @@ const TourDetails = () => {
                   <img src={`${tData.images[0]}?auto=compress&cs=tinysrgb&w=800&fit=crop&crop=center`} alt={tData.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian-900/90 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 right-6">
-                    <h3 className="text-display-md text-ivory-50 mb-2">{t(`data.${tData.title}`, tData.title)}</h3>
+                    <h3 className="text-display-md text-ivory-50 mb-2 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t(`data.${tData.title}`, tData.title)}</h3>
                     <div className="flex items-center justify-between text-caption text-ivory-300">
                       <span>{t(`data.${tData.duration}`, tData.duration)}</span>
                       <span className="text-gold-500">${tData.price}</span>
@@ -357,6 +384,7 @@ const TourDetails = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] bg-obsidian-900/80 flex items-center justify-center backdrop-blur-sm p-4"
+            onClick={() => setActiveForm(null)}
           >
             {activeForm === 'inquiry' && (
               <InquiryForm onClose={() => setActiveForm(null)} tourTitle={tour.title} />

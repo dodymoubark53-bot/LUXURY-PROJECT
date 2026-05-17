@@ -9,7 +9,8 @@ export const transportation = [
     reviews: 124,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: 'https://images.unsplash.com/photo-1550355291-bbee04aed9c2',
+    image: '/imgs/Transportation/OIP.webp',
+    heroImage: 'https://images.unsplash.com/photo-1638618164682-12b986ec2a75?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver']
   },
   {
@@ -22,7 +23,8 @@ export const transportation = [
     reviews: 89,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: 'https://images.unsplash.com/photo-1555215695-30049fa57833',
+    image: '/imgs/Transportation/OIP (1).webp',
+    heroImage: 'https://images.unsplash.com/photo-1652890041546-2de2829c43b5?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Leather Seats']
   },
   {
@@ -35,7 +37,8 @@ export const transportation = [
     reviews: 156,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: 'https://images.unsplash.com/photo-1617531653332-bd46c24f2068',
+    image: '/imgs/Transportation/OIP (2).webp',
+    heroImage: 'https://images.unsplash.com/photo-1753281796773-43247bf56b8e?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Premium Audio']
   },
   {
@@ -48,7 +51,8 @@ export const transportation = [
     reviews: 210,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8',
+    image: '/imgs/Transportation/OIP (3).webp',
+    heroImage: 'https://images.unsplash.com/photo-1624085568108-36410cfe4d24?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Executive Space']
   },
   {
@@ -61,7 +65,8 @@ export const transportation = [
     reviews: 342,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: 'https://images.unsplash.com/photo-1506015391300-415c14e128dc',
+    image: '/imgs/Transportation/OIP (4).webp',
+    heroImage: 'https://images.unsplash.com/photo-1596321687344-547d323f094a?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'VIP Luxury']
   },
   {
@@ -74,7 +79,8 @@ export const transportation = [
     reviews: 95,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: 'https://images.unsplash.com/photo-1533473353681-ef0664733959',
+    image: '/imgs/Transportation/OIP (5).webp',
+    heroImage: 'https://images.unsplash.com/photo-1575090536203-2a6193126514?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Spacious Trunk']
   },
   {
@@ -87,7 +93,8 @@ export const transportation = [
     reviews: 112,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: 'https://images.unsplash.com/photo-1563720223090-87fc74ecd5c6',
+    image: '/imgs/Transportation/OIP (6).webp',
+    heroImage: 'https://images.unsplash.com/photo-1641431616381-3f0613d82ca7?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Off-road Capable']
   },
   {
@@ -100,7 +107,8 @@ export const transportation = [
     reviews: 178,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: 'https://images.unsplash.com/photo-1519641471654-79ce0107a1b1',
+    image: '/imgs/Transportation/OIP (7).webp',
+    heroImage: 'https://images.unsplash.com/photo-1618353482480-61ca5a9a7879?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Luxury SUV']
   },
   {
@@ -113,7 +121,8 @@ export const transportation = [
     reviews: 245,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: 'https://images.unsplash.com/photo-1552553940-5bbcb0bd51ed',
+    image: '/imgs/Transportation/OIP (8).webp',
+    heroImage: 'https://images.unsplash.com/photo-1554841649-de947c4b954a?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Desert Ready']
   },
   {
@@ -126,7 +135,8 @@ export const transportation = [
     reviews: 88,
     transmission: 'Auto',
     pricePerDay: 50,
-    image: 'https://images.unsplash.com/photo-1570125909202-e2f0d0b3ea1c',
+    image: '/imgs/Transportation/OIP.jpg',
+    heroImage: 'https://images.unsplash.com/photo-1650807486050-a142ea418b19?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Group Transfer']
   },
   {
@@ -139,7 +149,8 @@ export const transportation = [
     reviews: 105,
     transmission: 'Auto',
     pricePerDay: 50,
-    image: 'https://images.unsplash.com/photo-1610996847427-023a9d590ab8',
+    image: '/imgs/Transportation/OIP (1).jpg',
+    heroImage: 'https://images.unsplash.com/photo-1669887058626-77dea2765b79?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Tour Group']
   },
   {
@@ -152,7 +163,8 @@ export const transportation = [
     reviews: 310,
     transmission: 'Auto',
     pricePerDay: 50,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a4d59cb',
+    image: '/imgs/Transportation/OIP (2).jpg',
+    heroImage: 'https://images.unsplash.com/photo-1621651752332-a0c3954b8752?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Large Group']
   }
 ];

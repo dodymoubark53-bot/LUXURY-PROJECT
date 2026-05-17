@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useScroll } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import Layout from './components/layout/Layout';
+import Logo from './components/ui/Logo';
 
 // Lazy loaded pages for performance
 const Home = lazy(() => import('./pages/Home'));
@@ -44,27 +45,12 @@ const CinematicLoader = ({ onComplete }) => (
   >
     <div aria-live="polite" className="sr-only">Loading Luxury Travel experiences...</div>
     <div className="flex flex-col items-center">
-      {/* Fake Logo Mark */}
-      <motion.div 
-        className="w-12 h-12 mb-6"
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-gold-500">
-          <path d="M16 2L2 30L16 22L30 30L16 2M16 2V22" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-        </svg>
-      </motion.div>
-      
-      {/* Brand & Tagline */}
-      <motion.div
-        className="text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <h1 className="font-display text-2xl text-ivory-50 tracking-[0.08em] mb-2 uppercase">Lumina</h1>
-        <p className="font-body text-caption text-gold-500 tracking-[0.12em] uppercase">The World, Curated.</p>
+        <Logo theme="dark" height={80} />
       </motion.div>
 
       {/* Gold Line Expands */}

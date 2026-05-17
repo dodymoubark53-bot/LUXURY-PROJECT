@@ -5,6 +5,7 @@ import { FaBars, FaTimes, FaGlobe, FaChevronDown, FaUserCircle, FaSignOutAlt, Fa
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import LoginModal from '../auth/LoginModal';
+import Logo from '../ui/Logo';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -75,11 +76,8 @@ const Navbar = () => {
         style={{ alignItems: 'center' }}
       >
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 z-50">
-          <div className="w-8 h-8 rounded-full border-2 border-gold-500 flex items-center justify-center">
-            <div className="w-3 h-3 bg-gold-500 rounded-sm rotate-45"></div>
-          </div>
-          <span className="font-display font-semibold text-xl tracking-[0.08em] text-ivory-50">LUXURY</span>
+        <Link to="/" className="flex items-center z-50">
+          <Logo theme="dark" height={40} />
         </Link>
 
         {/* Desktop Nav */}
@@ -153,13 +151,13 @@ const Navbar = () => {
                         <p className="text-[10px] text-ivory-300 truncate">{user.email}</p>
                       </div>
                       <Link to="/profile" className="w-full text-left px-4 py-3 text-ivory-50 hover:text-obsidian-900 hover:bg-gold-500 transition-colors text-body-md border-b border-ivory-50/5 flex items-center gap-2">
-                        <FaUserCircle /> My Profile
+                        <FaUserCircle /> {t('nav.myProfile', 'My Profile')}
                       </Link>
                       <Link to="/bookings" className="w-full text-left px-4 py-3 text-ivory-50 hover:text-obsidian-900 hover:bg-gold-500 transition-colors text-body-md border-b border-ivory-50/5 flex items-center gap-2">
-                        <FaBookmark /> My Bookings
+                        <FaBookmark /> {t('nav.myBookings', 'My Bookings')}
                       </Link>
                       <button onClick={() => { logout(); setProfileDropdownOpen(false); }} className="w-full text-left px-4 py-3 text-red-400 hover:text-obsidian-900 hover:bg-red-400 transition-colors text-body-md flex items-center gap-2">
-                        <FaSignOutAlt /> Logout
+                        <FaSignOutAlt /> {t('nav.logout', 'Logout')}
                       </button>
                     </motion.div>
                   )}

@@ -8,7 +8,7 @@ export const services = [
     location: 'Cairo, Egypt',
     price: 350,
     rating: 5.0,
-    images: ['https://images.pexels.com/photos/3354452/pexels-photo-3354452.jpeg', 'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg', 'https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg'],
+    images: ['/imgs/hotels/Marriott Mena House 1.webp', '/imgs/hotels/Marriott Mena House 2.webp'],
     shortDesc: 'Wake up to breathtaking views of the Great Pyramids from this historic 5-star luxury resort.',
     overview: [
       "Nestled in the shadow of the Great Pyramids of Giza, the Marriott Mena House is not just a hotel; it is a vital part of Egyptian history. Originally built as a hunting lodge for Khedive Ismail in 1869, this palatial estate has hosted kings, emperors, and heads of state. The lush, sprawling gardens offer an oasis of tranquility just steps away from the ancient wonders of the world.",
@@ -27,7 +27,7 @@ export const services = [
     location: 'Dead Sea, Jordan',
     price: 450,
     rating: 4.9,
-    images: ['https://images.pexels.com/photos/1670770/pexels-photo-fallback.jpeg', 'https://images.pexels.com/photos/2161629/pexels-photo-fallback.jpeg', 'https://images.pexels.com/photos/549881/pexels-photo-fallback.jpeg'],
+    images: ['/imgs/hotels/16015431-external-view-kempinski-ishtar-dead-sea.jpg', '/imgs/hotels/Kempinski Hotel Ishtar 2.webp'],
     shortDesc: 'A lavish Babylonian-inspired resort offering floating infinity pools and the largest spa in the Middle East.',
     overview: [
       "Situated on the edge of the famous salt lake at the lowest point on Earth, the Kempinski Hotel Ishtar Dead Sea offers an extraordinary wellness and luxury experience. The hotel's architecture is a stunning tribute to the Hanging Gardens of Babylon, featuring cascading terraces, grand stone facades, and olive trees that dot the expansive property.",
@@ -46,7 +46,7 @@ export const services = [
     location: 'Istanbul, Turkey',
     price: 850,
     rating: 5.0,
-    images: ['https://images.pexels.com/photos/4586595/pexels-photo-fallback.jpeg', 'https://images.pexels.com/photos/2251679/pexels-photo-fallback.jpeg', 'https://images.pexels.com/photos/5611655/pexels-photo-fallback.jpeg'],
+    images: ['/imgs/hotels/Çırağan Palace Kempinski 1.jpg', '/imgs/hotels/Çırağan Palace Kempinski 2.jpg'],
     shortDesc: 'Experience royal Ottoman luxury in an actual 19th-century palace located directly on the Bosphorus strait.',
     overview: [
       "The Çırağan Palace Kempinski is the epitome of Istanbul luxury, occupying a genuine 19th-century Ottoman imperial palace right on the shores of the Bosphorus. It is the only Ottoman Imperial Palace and Hotel situated on the strait that divides Europe and Asia, offering guests an experience steeped in absolute royal grandeur.",
@@ -67,7 +67,7 @@ export const services = [
     location: 'South Sinai, Egypt',
     price: 150,
     rating: 4.7,
-    images: ['https://images.pexels.com/photos/5040995/pexels-photo-5040995.jpeg', 'https://images.pexels.com/photos/1122413/pexels-photo-1122413.jpeg', 'https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg'],
+    images: ['/imgs/safari/Sinai Desert Safari 1.jpg', '/imgs/safari/Sinai Desert Safari 2.jpg'],
     shortDesc: 'A thrilling off-road jeep adventure through the rugged mountains of Sinai, complete with a traditional Bedouin dinner.',
     overview: [
       "Escape the coastal resorts of Sharm El-Sheikh and venture deep into the rugged, arid heart of the Sinai Peninsula. The Sinai Desert Safari is an exhilarating off-road adventure conducted in robust 4x4 vehicles, expertly navigated by local Bedouin guides. The journey takes you through dramatic canyons, vast sand dunes, and towering granite mountains that have stood unchanged for millennia.",
@@ -86,7 +86,7 @@ export const services = [
     location: 'Wadi Rum, Jordan',
     price: 180,
     rating: 4.9,
-    images: ['https://images.pexels.com/photos/4426027/pexels-photo-4426027.jpeg', 'https://images.pexels.com/photos/210018/pexels-photo-210018.jpeg', 'https://images.pexels.com/photos/210017/pexels-photo-210017.jpeg'],
+    images: ['/imgs/safari/Wadi Rum Jeep Safari 1.webp', '/imgs/safari/Wadi Rum Jeep Safari 2.webp'],
     shortDesc: 'Traverse the Martian landscapes of the Valley of the Moon, exploring ancient petroglyphs and massive rock bridges.',
     overview: [
       "Wadi Rum, famously known as the Valley of the Moon and the filming location for Lawrence of Arabia and The Martian, is best explored via a private, open-air jeep safari. This journey takes you deep into the protected desert wilderness, far beyond the reach of standard tourist buses, allowing you to experience the sheer scale and silence of this UNESCO World Heritage site.",
@@ -105,7 +105,7 @@ export const services = [
     location: 'Cappadocia, Turkey',
     price: 120,
     rating: 4.8,
-    images: ['https://images.pexels.com/photos/1805698/pexels-photo-fallback.jpeg', 'https://images.pexels.com/photos/6394239/pexels-photo-fallback.jpeg', 'https://images.pexels.com/photos/337371/pexels-photo-fallback.jpeg'],
+    images: ['/imgs/safari/Cappadocia ATV Safari 1.webp', '/imgs/safari/Cappadocia ATV Safari 2.webp'],
     shortDesc: 'Ride through the surreal fairy chimneys and lunar valleys of Cappadocia on an exhilarating quad bike sunset tour.',
     overview: [
       "While hot air balloons offer a majestic view from above, the Cappadocia ATV Safari provides an adrenaline-pumping, up-close exploration of this bizarre and beautiful landscape. Riding an All-Terrain Vehicle (quad bike) allows you to effortlessly navigate the dusty, undulating dirt trails that wind through the region's famous valleys, which are inaccessible to larger vehicles.",
@@ -126,7 +126,7 @@ export const services = [
     location: 'Farafra, Egypt',
     price: 250,
     rating: 4.9,
-    images: ['https://images.pexels.com/photos/5459231/pexels-photo-fallback.jpeg', 'https://images.pexels.com/photos/5740926/pexels-photo-fallback.jpeg', 'https://images.pexels.com/photos/986602/pexels-photo-fallback.jpeg'],
+    images: ['/imgs/camping/pngtree-groups-of-people-gathered-around-a-campfire-at-night-picture-image_2646283.jpg', '/imgs/camping/shutterstock_625918454.jpg', '/imgs/camping/pngtree-night-camping-on-a-grassy-pasture-picture-image_2650533.jpg'],
     shortDesc: 'Sleep under the stars amidst surreal, chalk-white rock formations that look like snow in the middle of the Sahara.',
     overview: [
       "The White Desert (Sahara el Beyda) is one of Egypt's best-kept secrets and offers a camping experience unlike anywhere else on Earth. Located far in the western desert near the Farafra Oasis, this protected national park is famous for its bizarre, chalk-white rock formations that have been sculpted by wind and sand over millions of years into shapes resembling mushrooms, chickens, and alien spires.",
@@ -145,7 +145,7 @@ export const services = [
     location: 'Wadi Rum, Jordan',
     price: 320,
     rating: 5.0,
-    images: ['https://images.pexels.com/photos/4390059/pexels-photo-4390059.jpeg', 'https://images.pexels.com/photos/210012/pexels-photo-210012.jpeg', 'https://images.pexels.com/photos/210011/pexels-photo-210011.jpeg'],
+    images: ['/imgs/camping/OIP.webp', '/imgs/camping/OIP (1).webp', '/imgs/camping/OIP (2).webp'],
     shortDesc: 'Experience the ultimate desert glamping in a transparent dome tent, offering unobstructed views of the starry night sky.',
     overview: [
       "Wadi Rum has redefined desert camping with the introduction of 'Martian Domes' or Bubble Tents. These high-tech, luxury geodesic domes are designed to blend into the red desert landscape while providing 5-star hotel comfort. Featuring massive transparent panoramic panels, these tents allow you to immerse yourself in the desert environment without sacrificing air conditioning or a private en-suite bathroom.",
@@ -164,7 +164,7 @@ export const services = [
     location: 'Adıyaman, Turkey',
     price: 180,
     rating: 4.7,
-    images: ['https://images.pexels.com/photos/32420951/pexels-photo-32420951.jpeg', 'https://images.pexels.com/photos/32519788/pexels-photo-32519788.jpeg', 'https://images.pexels.com/photos/32420949/pexels-photo-32420949.jpeg'],
+    images: ['/imgs/camping/camping-kampcilik-nedir.webp', '/imgs/camping/camping-stars-with-beautiful-view-mountains_604472-38600.jpg', '/imgs/camping/pngtree-camping-on-the-top-of-the-mountain-peaceful-recreation-in-the-photo-image_3035672.jpg'],
     shortDesc: 'A high-altitude adventure camping near the ancient, massive stone heads of King Antiochus to catch a legendary sunrise.',
     overview: [
       "Mount Nemrut in southeastern Turkey is home to one of the most mysterious and awe-inspiring archaeological sites in the world. At the 2,134-meter summit lies the tomb-sanctuary of King Antiochus I, flanked by massive, decapitated stone heads of ancient gods. Camping near the summit provides the unique opportunity to witness the legendary Mount Nemrut sunrise without having to make the grueling middle-of-the-night drive from the city.",
@@ -185,7 +185,7 @@ export const services = [
     location: 'Luxor to Aswan, Egypt',
     price: 1200,
     rating: 4.9,
-    images: ['https://images.pexels.com/photos/4620407/pexels-photo-fallback.jpeg', 'https://images.pexels.com/photos/6504782/pexels-photo-fallback.jpeg', 'https://images.pexels.com/photos/666936/pexels-photo-fallback.jpeg'],
+    images: ['/imgs/nile cruises/IMG-20171013-WA0000(1).jpg', '/imgs/nile cruises/OIP.webp', '/imgs/nile cruises/OIP (1).webp'],
     shortDesc: 'Sail the lifeblood of Egypt on a 5-star floating hotel, stopping to explore ancient temples along the riverbanks.',
     overview: [
       "A luxury Nile River Cruise is the quintessential Egyptian experience, combining the relaxation of a 5-star resort with the adventure of an archaeological expedition. Sailing between Luxor and Aswan (usually over 4 to 5 days), these multi-deck ships serve as your floating luxury hotel, allowing you to unpack just once while the wonders of ancient Egypt glide past your panoramic cabin window.",
@@ -204,7 +204,7 @@ export const services = [
     location: 'Aqaba, Jordan',
     price: 90,
     rating: 4.6,
-    images: ['https://images.pexels.com/photos/7727256/pexels-photo-fallback.jpeg', 'https://images.pexels.com/photos/4687790/pexels-photo-fallback.jpeg', 'https://images.pexels.com/photos/6565954/pexels-photo-fallback.jpeg'],
+    images: ['/imgs/nile cruises/OIP (2).webp', '/imgs/nile cruises/OIP (3).webp', '/imgs/nile cruises/OIP (4).webp'],
     shortDesc: 'Discover the vibrant marine life and coral reefs of the Red Sea on a relaxing glass-bottom boat cruise.',
     overview: [
       "The Red Sea coast of Aqaba boasts some of the most pristine, vibrant coral reefs in the world. For those who want to experience this underwater marvel without scuba diving, a luxury Glass-Bottom Boat cruise is the perfect solution. These specialized vessels feature large, clear viewing panels set into the hull, offering a literal window into the bustling marine ecosystem below.",
@@ -223,7 +223,7 @@ export const services = [
     location: 'Istanbul, Turkey',
     price: 150,
     rating: 4.9,
-    images: ['https://images.pexels.com/photos/2031705/pexels-photo-2031705.jpeg', 'https://images.pexels.com/photos/210004/pexels-photo-210004.jpeg', 'https://images.pexels.com/photos/210003/pexels-photo-210003.jpeg'],
+    images: ['/imgs/nile cruises/OIP (5).webp', '/imgs/nile cruises/download.webp', '/imgs/nile cruises/download (1).webp'],
     shortDesc: 'Sail between two continents as the sun sets over Istanbul, enjoying an elegant dinner and traditional entertainment.',
     overview: [
       "The Bosphorus Strait is the geographical and spiritual heart of Istanbul, slicing the city in half and separating the continents of Europe and Asia. A private or VIP sunset cruise on this legendary waterway is an unforgettable way to witness the sheer scale and beauty of the city. As the yacht departs from the pier, you are immediately flanked by centuries of history on both shores.",

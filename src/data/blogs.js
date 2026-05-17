@@ -8,7 +8,7 @@ export const blogs = [
     readTime: '6 min read',
     author: 'Amir Hassan',
     excerpt: 'Beyond Karnak and the Valley of the Kings lie incredible, lesser-known temples waiting to be explored. Discover the secrets of ancient Thebes without the crowds.',
-    img: 'https://images.pexels.com/photos/2530752/pexels-photo-2530752.jpeg',
+    img: 'https://images.unsplash.com/photo-1596130535979-eedea4278d29?w=800&q=80&fit=crop',
     content: [
       "Luxor, often described as the world's greatest open-air museum, is undeniably famous for the colossal Karnak Temple and the pharaohs' tombs in the Valley of the Kings. However, for the discerning traveler, the true magic of this ancient city lies off the beaten path, hidden amongst the sugar cane fields and lesser-visited desert valleys. These secondary temples offer a profound, uncrowded connection to Egypt's majestic past.",
       "One such marvel is the Temple of Medinet Habu. Second only to Karnak in size, this magnificent mortuary temple of Ramses III is remarkably well-preserved. Its deeply carved hieroglyphs retain much of their original vibrant coloring, providing a vivid glimpse into ancient artistry. The towering pylons and massive courtyards are often devoid of the large tour groups, allowing visitors to wander in serene contemplation.",
@@ -25,7 +25,7 @@ export const blogs = [
     readTime: '5 min read',
     author: 'Sarah Jenkins',
     excerpt: 'Experiencing the rose-red city illuminated by thousands of candles is a bucket-list event. Here is everything you need to know to plan your magical evening.',
-    img: 'https://images.pexels.com/photos/1145657/pexels-photo-1145657.jpeg',
+    img: 'https://images.unsplash.com/photo-1662747974561-f2f5ea3825a6?w=800&q=80&fit=crop',
     content: [
       "There are few travel experiences as universally acclaimed yet deeply moving as Petra by Night. Operating only three times a week—Mondays, Wednesdays, and Thursdays—this after-dark excursion transforms the already mystical ancient Nabatean city into a scene straight out of a desert fairy tale. The journey begins at the visitor center, but the true magic starts as you step into the Siq.",
       "The Siq, a narrow 1.2-kilometer gorge flanked by towering 80-meter-high sandstone cliffs, is lit only by the soft, flickering glow of paper lanterns lining the path. Walking through this winding canyon in near silence, accompanied only by the whisper of the wind and the crunch of gravel beneath your feet, builds an incredible sense of anticipation. It is a meditative walk that prepares you for the grand reveal.",
@@ -42,7 +42,7 @@ export const blogs = [
     readTime: '7 min read',
     author: 'Leyla Yilmaz',
     excerpt: 'Navigate the labyrinthine alleys of one of the world\'s oldest and largest covered markets. From Turkish delight to antique kilims, here is your ultimate shopping guide.',
-    img: 'https://images.pexels.com/photos/3373201/pexels-photo-3373201.jpeg',
+    img: 'https://images.unsplash.com/photo-1547057365-90f38124c65b?w=800&q=80&fit=crop',
     content: [
       "The Grand Bazaar (Kapalıçarşı) in Istanbul is not merely a market; it is a chaotic, colorful, and sensory labyrinth that has pulsed as the commercial heart of the city for over half a millennium. Spanning 61 covered streets and housing over 4,000 shops, it is one of the largest and oldest covered markets in the world. Stepping through its grand archways is like stepping into an Ottoman era time capsule.",
       "Navigating the bazaar can feel overwhelming to the uninitiated. The key is to embrace the art of getting lost. The market is roughly organized by trade—one alley shimmers with gold jewelry, another is draped in vibrant textiles and carpets, while others are filled with the rich aromas of leather goods or the clinking of hand-painted ceramics. Allow your senses to guide you, and do not be afraid to wander off the main thoroughfares into the quieter, more specialized courtyards (han).",
@@ -59,7 +59,7 @@ export const blogs = [
     readTime: '5 min read',
     author: 'Omar Tariq',
     excerpt: 'Step away from the massive cruise ships and experience the lifeblood of Egypt on a traditional wooden felucca. A peaceful, authentic journey awaits.',
-    img: 'https://images.pexels.com/photos/3216050/pexels-photo-3216050.jpeg',
+    img: 'https://images.unsplash.com/photo-1684100096410-fd39cdff91a3?w=800&q=80&fit=crop',
     content: [
       "While multi-story luxury cruise ships offer undeniable comfort, there is no more authentic or peaceful way to experience the Nile River than aboard a traditional felucca. These simple, wooden sailing boats, distinguished by their lateen (triangular) sails, have navigated the waters of the Nile since the time of the pharaohs. A felucca trip strips away the noise and haste of modern travel, replacing it with the gentle lap of water and the whispering of the wind.",
       "A felucca relies entirely on the wind and the river's current, meaning the journey dictates its own pace. You will recline on soft cushions laid across the deck, shielded from the Egyptian sun by a canvas canopy. As you drift silently past lush riverbanks, local fishermen casting their nets, and the timeless silhouettes of mud-brick villages, you gain a perspective of rural Egyptian life that is impossible to see from the deck of a large ship.",
@@ -76,7 +76,7 @@ export const blogs = [
     readTime: '6 min read',
     author: 'David Chen',
     excerpt: 'Towering sandstone mountains, crimson sands, and a sky exploding with stars. Discover why camping in Jordan\'s Valley of the Moon is the ultimate desert escape.',
-    img: 'https://images.pexels.com/photos/4386340/pexels-photo-4386340.jpeg',
+    img: 'https://images.unsplash.com/photo-1612892483236-52d32a0e0ac1?w=800&q=80&fit=crop',
     content: [
       "Wadi Rum, known as the Valley of the Moon, is a landscape of such alien beauty that it has served as the backdrop for countless science fiction films. Located in southern Jordan, this vast expanse of crimson sand and towering, monolith-like sandstone mountains offers one of the most spectacular desert environments on earth. However, a daytime jeep tour only scratches the surface; to truly understand Wadi Rum, you must spend the night.",
       "Luxury glamping has transformed the Wadi Rum experience. You no longer need to sacrifice comfort to immerse yourself in the wilderness. High-end camps offer geodesic dome tents—often referred to as 'Martian Domes'—featuring transparent panoramic panels. From the comfort of a king-sized bed adorned with premium linens, you can watch the sun set the desert ablaze in reds and purples before giving way to the darkest, most star-filled sky you will ever witness.",
@@ -93,7 +93,7 @@ export const blogs = [
     readTime: '8 min read',
     author: 'Aisha Demir',
     excerpt: 'Turkish food is a rich fusion of Central Asian, Middle Eastern, and Mediterranean flavors. Here are the iconic dishes you absolutely must taste during your visit.',
-    img: 'https://images.pexels.com/photos/3180633/pexels-photo-3180633.jpeg',
+    img: 'https://images.unsplash.com/photo-1748540459503-19efc015143b?w=800&q=80&fit=crop',
     content: [
       "Turkish cuisine is a magnificent tapestry woven from the historical influences of the Ottoman Empire, bridging Central Asian traditions with Mediterranean and Middle Eastern flavors. It is a culinary culture that reveres fresh ingredients, masterful spicing, and the joy of communal dining. A journey to Turkey is as much an exploration of taste as it is of history, and missing out on its authentic dishes is missing out on the country's soul.",
       "The day inevitably begins with the legendary Turkish Breakfast (Kahvaltı). This is not merely a meal, but a lavish morning ritual. A traditional kahvaltı spread covers the entire table with small plates: a variety of cheeses (like salty feta and mild kashkaval), black and green olives, fresh tomatoes, cucumbers, thick clotted cream (kaymak) drenched in local honey, spicy sujuk (sausage), and endless glasses of black tea, all accompanied by freshly baked simit—a sesame-encrusted bread ring.",
@@ -110,7 +110,7 @@ export const blogs = [
     readTime: '4 min read',
     author: 'Amir Hassan',
     excerpt: 'Planning your dream trip to the Pyramids? Weather plays a crucial role. Read our comprehensive month-by-month guide to choosing the perfect season.',
-    img: 'https://images.pexels.com/photos/3354455/pexels-photo-3354455.jpeg',
+    img: 'https://images.unsplash.com/photo-1623674587543-9c7564de99d1?w=800&q=80&fit=crop',
     content: [
       "Timing is everything when planning a journey to Egypt. With a climate defined by scorching desert summers and mild, pleasant winters, choosing the right month can drastically alter your experience at open-air historical sites. The general consensus is that the prime tourist season runs from October to April, but each season offers its own unique advantages and challenges for the luxury traveler.",
       "The 'Peak Season' occurs during the winter months of December, January, and February. During this time, the weather is incredibly pleasant, with daytime temperatures in Cairo and Luxor hovering around a comfortable 20°C to 25°C (68°F to 77°F). This is the absolute best weather for exploring the Valley of the Kings or wandering around the Giza plateau without suffering from heat exhaustion. However, because the weather is ideal, this is also when the crowds are thickest and luxury hotel rates are at their premium.",
@@ -127,7 +127,7 @@ export const blogs = [
     readTime: '5 min read',
     author: 'Sarah Jenkins',
     excerpt: 'It is the lowest point on earth and the world\'s largest natural spa. Discover the incredible health benefits of floating in Jordan\'s hypersaline lake.',
-    img: 'https://images.pexels.com/photos/3676649/pexels-photo-3676649.jpeg',
+    img: 'https://images.unsplash.com/photo-1743943932415-947f79353387?w=800&q=80&fit=crop',
     content: [
       "Sitting at 430 meters below sea level, the Dead Sea is the lowest point on the surface of the Earth. Bordering Jordan to the east, this landlocked body of water is one of the world's most unique natural phenomena and has been revered as a sanctuary of health and healing since the days of King Herod and Cleopatra. Today, it remains the ultimate destination for wellness-focused luxury travelers.",
       "The most famous aspect of the Dead Sea is, of course, the buoyancy. The water is nearly ten times saltier than the ocean. This extreme hypersalinity means that swimming is practically impossible; instead, you effortlessly bob on the surface like a cork. Reading a newspaper or a book while floating on your back is the quintessential Dead Sea photo opportunity. However, it is the composition of the water, rich in magnesium, calcium, potassium, and bromide, that provides remarkable therapeutic benefits for the skin and joints.",
@@ -144,7 +144,7 @@ export const blogs = [
     readTime: '6 min read',
     author: 'Leyla Yilmaz',
     excerpt: 'Drifting silently over fairy chimneys at sunrise is a transcendent experience. Here is everything you need to know about booking a balloon flight in Turkey.',
-    img: 'https://images.pexels.com/photos/2031706/pexels-photo-2031706.jpeg',
+    img: 'https://images.unsplash.com/photo-1559783510-c448bd7d686b?w=800&q=80&fit=crop',
     content: [
       "The image of hundreds of colorful hot air balloons ascending simultaneously over the surreal, lunar-like landscape of Cappadocia is one of travel's most iconic visuals. This central Turkish region, famous for its 'fairy chimneys' (tall, cone-shaped rock formations), ancient cave dwellings, and underground cities, is arguably the best place in the world for hot air ballooning. For the luxury traveler, this is an absolute, non-negotiable bucket list experience.",
       "The magic begins before dawn. You are picked up from your luxury cave hotel while the stars are still out and driven to the launch site. As you sip hot coffee in the crisp morning air, you watch the massive nylon envelopes inflate, glowing like giant lightbulbs against the dark landscape as the burners roar to life. The anticipation builds until you step into the woven wicker basket and gently, almost imperceptibly, leave the earth behind.",

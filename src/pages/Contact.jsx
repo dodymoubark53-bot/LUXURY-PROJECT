@@ -27,27 +27,48 @@ const Contact = () => {
           <div className="lg:w-1/2 bg-obsidian-900 text-ivory-50 p-12 flex flex-col justify-between relative overflow-hidden">
             <div className="relative z-10">
               <h2 className="text-display-md text-3xl mb-8">{t('contact.getInTouch', 'Get in Touch')}</h2>
-              <div className="flex flex-col gap-6 mb-12">
-                <div>
-                  <h4 className="text-caption text-gold-500 uppercase tracking-widest mb-2">{t('contact.office', 'Cairo Office')}</h4>
-                  <p className="text-body-md text-ivory-300">
-                    {t('contact.address1', '123 Luxury Avenue, Zamalek')}<br/>
-                    {t('contact.address2', 'Cairo, Egypt')}
-                  </p>
+              <div className="flex flex-col gap-6 mb-8">
+                <div className="flex items-start gap-4">
+                  <svg className="w-6 h-6 text-gold-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  <div>
+                    <h4 className="text-caption text-gold-500 uppercase tracking-widest mb-1">{t('contact.office', 'Address')}</h4>
+                    <p className="text-body-md text-ivory-300">
+                      {t('contact.address', '75 Hossary Square, Central Spine, 6 October, Giza, Egypt')}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-caption text-gold-500 uppercase tracking-widest mb-2">{t('contact.details', 'Contact Details')}</h4>
-                  <p className="text-body-md text-ivory-300">
-                    {t('contact.email', 'Email:')} info@luxurytravel.com<br/>
-                    {t('contact.phone', 'Phone:')} +20 100 414 6843
-                  </p>
+                <div className="flex items-start gap-4">
+                  <svg className="w-6 h-6 text-gold-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  <div>
+                    <h4 className="text-caption text-gold-500 uppercase tracking-widest mb-1">{t('contact.phoneLabel', 'Phone')}</h4>
+                    <p className="text-body-md text-ivory-300">
+                      {t('contact.phoneVal', '+201004146843')}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <svg className="w-6 h-6 text-gold-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  <div>
+                    <h4 className="text-caption text-gold-500 uppercase tracking-widest mb-1">{t('contact.emailLabel', 'Email')}</h4>
+                    <p className="text-body-md text-ivory-300">
+                      {t('contact.emailVal', 'dinahefny2000@gmail.com')}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
             
-            {/* Map Placeholder */}
-            <div className="w-full h-64 bg-obsidian-700 rounded-xl relative overflow-hidden flex items-center justify-center border border-ivory-50/10">
-              <span className="text-body-md text-ivory-300 opacity-50">{t('contact.map', 'Interactive Map Placeholder')}</span>
+            {/* Real Google Map */}
+            <div className="w-full h-[300px] lg:h-[450px] rounded-[16px] overflow-hidden border border-[rgba(201,162,39,0.2)] shadow-[0_0_32px_rgba(201,162,39,0.1)]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453!2d31.2180!3d30.0090!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDA1JzMyLjQiTiAzMcKwMTMnMDQuOCJF!5e0!3m2!1sen!2seg!4v1234567890"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
 

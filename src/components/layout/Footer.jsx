@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { FaFacebook, FaInstagram, FaTwitter, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import Logo from '../ui/Logo';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -12,11 +13,8 @@ const Footer = () => {
           
           {/* Brand & Socials */}
           <div>
-            <Link to="/" className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 rounded-full border-2 border-gold-500 flex items-center justify-center">
-                <div className="w-3 h-3 bg-gold-500 rounded-sm rotate-45"></div>
-              </div>
-              <span className="font-display font-semibold text-xl tracking-[0.08em] text-ivory-50">LUXURY</span>
+            <Link to="/" className="flex items-center mb-6">
+              <Logo theme="dark" height={48} />
             </Link>
             <p className="text-body-md mb-6 opacity-80">
               {t('footer.desc', 'Curating award-winning luxury travel experiences across Egypt, Jordan, and Turkey since 2010.')}
@@ -42,7 +40,7 @@ const Footer = () => {
               <li><Link to="/services" className="hover:text-gold-500 transition-colors">{t('nav.services')}</Link></li>
               <li><Link to="/blogs" className="hover:text-gold-500 transition-colors">{t('nav.blogs')}</Link></li>
               <li><Link to="/contact" className="hover:text-gold-500 transition-colors">{t('nav.contact')}</Link></li>
-              <li><Link to="/faq" className="hover:text-gold-500 transition-colors">FAQs</Link></li>
+              <li><Link to="/faq" className="hover:text-gold-500 transition-colors">{t('footer.faq', 'FAQs')}</Link></li>
             </ul>
           </div>
 

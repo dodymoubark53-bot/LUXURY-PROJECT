@@ -28,7 +28,7 @@ const destinationsData = [
     id: 'turkey',
     name: 'Turkey',
     desc: 'Where Continents Meet',
-    image: 'https://images.pexels.com/photos/1481180/pexels-photo-1481180.jpeg?auto=compress&cs=tinysrgb&w=800&fit=crop'
+    image: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=800&q=80'
   }
 ];
 
@@ -61,18 +61,18 @@ const Home = () => {
     : transportation.filter(v => v.category === vehicleFilter);
 
   const galleryImages = [
-    { src: 'https://images.unsplash.com/photo-1534446435640-5e8841ba4bc5', dest: 'Egypt', tag: 'Safari' },
-    { src: 'https://images.unsplash.com/photo-1604107567885-32e65d21464c', dest: 'Jordan', tag: 'Tour' },
-    { src: 'https://images.unsplash.com/photo-1524231757712-24ef81156828', dest: 'Turkey', tag: 'Tour' },
-    { src: 'https://images.unsplash.com/photo-1590523277543-a9b6cb65d082', dest: 'Global', tag: 'Hotel' },
-    { src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b4b0', dest: 'Jordan', tag: 'Camping' },
-    { src: 'https://images.unsplash.com/photo-1585093113110-38827eb09de2', dest: 'Egypt', tag: 'Cruise' },
-    { src: 'https://images.unsplash.com/photo-1518002621062-87034b07fb7b', dest: 'Turkey', tag: 'Culture' },
-    { src: 'https://images.unsplash.com/photo-1605330386767-1ed287bfebff', dest: 'Jordan', tag: 'Safari' },
-    { src: 'https://images.unsplash.com/photo-1584144358508-e737c3da3747', dest: 'Global', tag: 'Hotel' },
-    { src: 'https://images.unsplash.com/photo-1608681285226-c2eb8c2c8f8b', dest: 'Egypt', tag: 'Culture' },
-    { src: 'https://images.unsplash.com/photo-1540193630-f8f41334812f', dest: 'Turkey', tag: 'Cruise' },
-    { src: 'https://images.unsplash.com/photo-1551882547-ff40c0d139f1', dest: 'Global', tag: 'Camping' },
+    { src: '/imgs/gallery/Ephesus & The Aegean Coast.jpg', dest: 'Turkey', tag: 'Tour' },
+    { src: '/imgs/gallery/Grand Tour of Turkey.jpg', dest: 'Turkey', tag: 'Tour' },
+    { src: '/imgs/gallery/OIP (1).webp', dest: 'Gallery', tag: 'Photo' },
+    { src: '/imgs/gallery/OIP (2).webp', dest: 'Gallery', tag: 'Photo' },
+    { src: '/imgs/gallery/OIP (3).webp', dest: 'Gallery', tag: 'Photo' },
+    { src: '/imgs/gallery/OIP (4).webp', dest: 'Gallery', tag: 'Photo' },
+    { src: '/imgs/gallery/OIP (5).webp', dest: 'Gallery', tag: 'Photo' },
+    { src: '/imgs/gallery/OIP.webp', dest: 'Gallery', tag: 'Photo' },
+    { src: '/imgs/gallery/Pharaohs & Pyramid.jpg', dest: 'Egypt', tag: 'Tour' },
+    { src: '/imgs/gallery/Ultimate Jordan Grand Tour.webp', dest: 'Jordan', tag: 'Tour' },
+    { src: '/imgs/gallery/Ultimate Royal Egypt..jpg', dest: 'Egypt', tag: 'Tour' },
+    { src: '/imgs/gallery/Wadi Rum Desert Safari.webp', dest: 'Jordan', tag: 'Safari' },
   ];
 
   const openLightbox = (index) => {
@@ -203,9 +203,9 @@ const Home = () => {
               className="w-full lg:w-1/2"
             >
               <img 
-                src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=compress&cs=tinysrgb&w=1000&fit=crop" 
-                alt="Pyramids of Giza golden hour" 
-                className="w-full h-[280px] lg:h-[450px] object-cover rounded-[16px] shadow-[0_0_32px_rgba(201,162,39,0.2)] transition-transform duration-500 hover:-translate-y-2"
+                src="/images/crafting-journeys.jpg" 
+                alt="Crafting Journeys" 
+                className="w-full h-[300px] lg:h-[480px] object-cover rounded-[16px] shadow-[0_0_40px_rgba(201,162,39,0.25)] transition-transform duration-400 ease hover:-translate-y-[8px]"
                 loading="lazy"
               />
             </motion.div>
@@ -389,7 +389,9 @@ const Home = () => {
                       <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
                         <div>
                           <span className="block text-xs text-obsidian-300 uppercase tracking-wider">{t('home.duration')}</span>
-                          <span className="text-sm font-medium text-obsidian-700">{t(`data.${safari.duration}`, safari.duration) || safari.duration || 'Full Day'}</span>
+                          <span className="text-sm font-medium text-obsidian-700">
+                            {safari.duration ? (t(`data.${safari.duration}`, safari.duration) || safari.duration) : 'Full Day'}
+                          </span>
                         </div>
                         <Link to={`/services/safari/${safari.slug}`}>
                           <Button variant="outline-gold" className="px-4 py-1.5 text-sm">{t('home.viewSafari')}</Button>
@@ -461,96 +463,57 @@ const Home = () => {
                     : 'bg-transparent text-obsidian-700 border-obsidian-900/20 hover:border-gold-500 hover:text-gold-500'
                 }`}
               >
-                {tab === 'all' ? 'All' : tab === 'sedan' ? 'Sedans' : tab === 'suv' ? 'SUVs' : 'Buses'}
+                {tab === 'all' ? t('home.allVehicles', 'All') : tab === 'sedan' ? t('home.sedans', 'Sedans') : tab === 'suv' ? t('home.suvs', 'SUVs') : t('home.buses', 'Buses')}
               </button>
             ))}
           </div>
 
-          {/* Vehicles Grid */}
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <AnimatePresence>
-              {filteredVehicles.map((vehicle) => (
-                <motion.div
-                  layout
-                  key={vehicle.id}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.4 }}
-                  whileHover={{ y: -6, boxShadow: "0 0 32px rgba(201,162,39,0.22)", transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-lg border border-obsidian-900/5 group"
+          {/* Vehicles Strip */}
+          <div className="w-full relative overflow-hidden mb-12">
+            <div 
+              className="flex gallery-strip w-max"
+              style={{ 
+                animation: 'scrollStrip 80s linear infinite',
+                gap: '16px'
+              }}
+            >
+              {Array.from({ length: 4 }).flatMap(() => filteredVehicles).map((vehicle, idx) => (
+                <div
+                  key={`${vehicle.id}-${idx}`}
+                  className="flex-shrink-0 flex flex-col rounded-[16px] overflow-hidden group relative w-[280px] h-[220px] md:h-[380px] transition-all duration-[350ms] ease-out hover:scale-[1.08] hover:-translate-y-[12px] hover:shadow-[0_12px_40px_rgba(201,162,39,0.35)] hover:z-10"
                 >
-                  <div className="relative h-48 overflow-hidden bg-obsidian-50">
-                    <img 
-                      src={`${vehicle.image}?auto=compress&cs=tinysrgb&w=600&fit=crop`} 
-                      alt={vehicle.name} 
-                      className="w-full h-full object-cover cinematic-transition group-hover:scale-[1.06]"
-                      loading="lazy"
-                    />
-                    <div className="absolute top-3 left-3 bg-obsidian-900/80 backdrop-blur text-gold-500 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded">
-                      {vehicle.category}
-                    </div>
-                    <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/10 transition-colors duration-300"></div>
+                  <img 
+                    src={vehicle.image} 
+                    alt={vehicle.name} 
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-obsidian-900/40 to-transparent"></div>
+                  
+                  <div className="absolute top-4 left-4 bg-gold-500 text-obsidian-900 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded shadow-md">
+                    {vehicle.category}
                   </div>
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-display text-xl text-obsidian-900 group-hover:text-gold-500 transition-colors">{vehicle.name}</h3>
-                      <div className="flex items-center gap-1 mt-1">
-                        <FaStar className="text-gold-500 w-3 h-3" />
-                        <span className="text-sm font-semibold text-obsidian-900">{vehicle.rating}</span>
-                        <span className="text-xs text-obsidian-500">({vehicle.reviews})</span>
-                      </div>
-                    </div>
 
-                    <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
-                      <span className="text-xs text-obsidian-500 flex items-center gap-1">
-                        <svg className="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                        {vehicle.seats} Seats
-                      </span>
-                      <span className="text-xs text-obsidian-500 flex items-center gap-1">
-                        <svg className="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                        {vehicle.transmission}
-                      </span>
-                      <span className="text-xs text-obsidian-500 flex items-center gap-1">
-                        <svg className="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
-                        {vehicle.doors} Doors
-                      </span>
+                  <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col justify-end">
+                    <h3 className="font-display text-xl text-ivory-50 mb-1 drop-shadow-md">{vehicle.name}</h3>
+                    <div className="flex items-center text-xs text-ivory-300 mb-3 gap-1">
+                      <svg className="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                      {vehicle.seats} {t('transportation.seatsCount', 'Seats')}
                     </div>
-
-                    <div className="flex flex-wrap items-center gap-2 mb-4 text-[10px] text-obsidian-700 font-medium">
-                      {vehicle.features.slice(0, 4).map((feature, idx) => (
-                        <span key={idx} className="flex items-center gap-1 bg-obsidian-50 px-2 py-1 rounded">
-                          <svg className="w-3 h-3 text-gold-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                          {feature}
-                        </span>
-                      ))}
+                    
+                    <div className="flex items-center justify-between mb-4 border-t border-ivory-50/20 pt-3 mt-1">
+                      <span className="text-xs text-ivory-300 uppercase tracking-wider">{t('tourCard.from', 'From')}</span>
+                      <span className="text-lg font-semibold text-gold-500">${vehicle.pricePerDay}<span className="text-xs text-ivory-300 font-normal"> / {t('transportation.day', 'day')}</span></span>
                     </div>
-
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="text-xs text-obsidian-300 uppercase tracking-wider">From</span>
-                      <span className="text-xl font-semibold text-gold-500">${vehicle.pricePerDay}<span className="text-sm text-obsidian-500 font-normal"> / day</span></span>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      <Link to={`/transportation/${vehicle.id}`}>
-                        <Button variant="outline-gold" className="w-full py-2 text-sm text-center block h-full flex items-center justify-center">View Details</Button>
-                      </Link>
-                      <button 
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setResForm({...resForm, vehicle: vehicle.id});
-                          document.getElementById('home-reservation-form')?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                        className="w-full py-2 text-sm text-center block bg-gold-500 text-obsidian-900 rounded-full font-semibold hover:bg-gold-600 transition-colors h-full flex items-center justify-center"
-                      >
-                        Reserve Now
-                      </button>
-                    </div>
+                    
+                    <Link to={`/transportation/${vehicle.id}`}>
+                      <Button variant="outline-gold" className="w-full py-2 text-sm text-center flex items-center justify-center bg-obsidian-900/40 backdrop-blur-sm">{t('tourCard.viewDetails', 'View Details')}</Button>
+                    </Link>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </AnimatePresence>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Reservation Form */}
           <motion.div 
@@ -566,8 +529,8 @@ const Home = () => {
             
             <div className="relative z-10">
               <div className="text-center mb-10">
-                <h3 className="text-display-md text-ivory-50 mb-2">Book Your Transfer</h3>
-                <p className="text-body-md text-ivory-300">Fill out the details below and our concierge will confirm your reservation.</p>
+                <h3 className="text-display-md text-ivory-50 mb-2">{t('home.bookTransfer', 'Book Your Transfer')}</h3>
+                <p className="text-body-md text-ivory-300">{t('home.bookTransferDesc', 'Fill out the details below and our concierge will confirm your reservation.')}</p>
               </div>
 
               {resSuccess ? (
@@ -579,69 +542,69 @@ const Home = () => {
                   <div className="w-20 h-20 bg-sage-500/20 text-sage-500 rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                   </div>
-                  <h4 className="text-2xl font-display text-ivory-50 mb-2">Reservation Received</h4>
-                  <p className="text-ivory-300">We will contact you shortly to confirm the details.</p>
+                  <h4 className="text-2xl font-display text-ivory-50 mb-2">{t('home.resSuccess', 'Reservation Received')}</h4>
+                  <p className="text-ivory-300">{t('home.resSuccessDesc', 'We will contact you shortly to confirm the details.')}</p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleResSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Select Vehicle */}
                   <div className="md:col-span-2">
-                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Select Vehicle *</label>
+                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">{t('home.selectVehicle', 'Select Vehicle *')}</label>
                     <select required value={resForm.vehicle} onChange={e => setResForm({...resForm, vehicle: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all">
-                      <option value="">Choose a vehicle</option>
-                      {transportation.map(v => <option key={v.id} value={v.id}>{v.name} ({v.seats} Seats) - ${v.pricePerDay}/day</option>)}
+                      <option value="">{t('home.chooseVehicle', 'Choose a vehicle')}</option>
+                      {transportation.map(v => <option key={v.id} value={v.id}>{v.name} ({v.seats} {t('transportation.seatsCount', 'Seats')}) - ${v.pricePerDay}/{t('transportation.day', 'day')}</option>)}
                     </select>
                   </div>
                   
                   {/* Date & Time */}
                   <div>
-                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Trip Date *</label>
+                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">{t('home.tripDate', 'Trip Date *')}</label>
                     <input type="date" required value={resForm.date} onChange={e => setResForm({...resForm, date: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all [color-scheme:dark]" />
                   </div>
                   <div>
-                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Pick Up Time *</label>
+                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">{t('home.pickupTime', 'Pick Up Time *')}</label>
                     <input type="time" required value={resForm.time} onChange={e => setResForm({...resForm, time: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all [color-scheme:dark]" />
                   </div>
 
                   {/* Passengers */}
                   <div>
-                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Adults *</label>
+                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">{t('home.adultsCount', 'Adults *')}</label>
                     <input type="number" min="1" max="20" required value={resForm.adults} onChange={e => setResForm({...resForm, adults: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
                   </div>
                   <div>
-                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Children (0-20)</label>
+                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">{t('home.childrenCount', 'Children (0-20)')}</label>
                     <input type="number" min="0" max="20" value={resForm.children} onChange={e => setResForm({...resForm, children: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
                   </div>
 
                   {/* Locations */}
                   <div>
-                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Pick Up Location *</label>
-                    <input type="text" required placeholder="Hotel, Airport, etc." value={resForm.pickup} onChange={e => setResForm({...resForm, pickup: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/30 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
+                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">{t('home.pickupLocation', 'Pick Up Location *')}</label>
+                    <input type="text" required placeholder={t('home.pickupPlaceholder', 'Hotel, Airport, etc.')} value={resForm.pickup} onChange={e => setResForm({...resForm, pickup: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/30 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
                   </div>
                   <div>
-                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Drop Off Location *</label>
-                    <input type="text" required placeholder="Hotel, Airport, etc." value={resForm.dropoff} onChange={e => setResForm({...resForm, dropoff: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/30 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
+                    <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">{t('home.dropoffLocation', 'Drop Off Location *')}</label>
+                    <input type="text" required placeholder={t('home.dropoffPlaceholder', 'Hotel, Airport, etc.')} value={resForm.dropoff} onChange={e => setResForm({...resForm, dropoff: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/30 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
                   </div>
 
                   {/* Contact Info */}
                   <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
-                      <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Full Name *</label>
+                      <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">{t('contact.fullName', 'Full Name *')}</label>
                       <input type="text" required placeholder="John Doe" value={resForm.name} onChange={e => setResForm({...resForm, name: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/30 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
                     </div>
                     <div>
-                      <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Phone Number *</label>
+                      <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">{t('contact.phoneNumber', 'Phone Number *')}</label>
                       <input type="tel" required placeholder="+1 234 567 890" value={resForm.phone} onChange={e => setResForm({...resForm, phone: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/30 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
                     </div>
                     <div>
-                      <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">Email *</label>
+                      <label className="block text-caption text-ivory-300 uppercase tracking-widest mb-2">{t('contact.email', 'Email *')}</label>
                       <input type="email" required placeholder="john@example.com" value={resForm.email} onChange={e => setResForm({...resForm, email: e.target.value})} className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/30 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all" />
                     </div>
                   </div>
 
                   <div className="md:col-span-2 flex justify-center mt-6 pt-6 border-t border-ivory-50/10">
                     <Button variant="gold-glow" type="submit" className="w-full md:w-auto px-12 py-4 text-lg rounded-full">
-                      Reserve Now
+                      {t('home.reserveNow', 'Reserve Now')}
                     </Button>
                   </div>
                 </form>
@@ -653,6 +616,17 @@ const Home = () => {
 
       {/* NEW SECTION - Photo Gallery */}
       <section className="py-10 bg-[#0F0D0B] overflow-hidden">
+        <style>
+          {`
+            @keyframes scrollStrip {
+              0%   { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            .gallery-strip:hover {
+              animation-play-state: paused;
+            }
+          `}
+        </style>
         <div className="container mx-auto px-6 mb-8 text-center">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
@@ -668,6 +642,7 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="text-display-lg text-ivory-50"
+            style={{ fontFamily: "'Playfair Display', serif" }}
           >
             {t('home.galleryHeading', 'A Glimpse Into Your Journey')}
           </motion.h2>
@@ -680,36 +655,32 @@ const Home = () => {
           ></motion.div>
         </div>
 
-        <div className="w-full px-4 md:px-8">
-          <div className="columns-1 md:columns-2 lg:columns-4 gap-4 space-y-4">
-            {galleryImages.map((img, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: (idx % 4) * 0.1 }}
-                className="relative overflow-hidden group cursor-pointer break-inside-avoid rounded-xl"
-                onClick={() => openLightbox(idx)}
-              >
-                <img 
-                  src={`${img.src}?auto=compress&cs=tinysrgb&w=800&fit=crop&q=80`}
-                  alt={`${img.dest} ${img.tag}`}
-                  loading="lazy"
-                  className="w-full h-auto object-cover transform transition-transform duration-400 ease-in-out group-hover:scale-[1.06]"
-                />
-                
-                {/* Dark Overlay & Border Glow */}
-                <div className="absolute inset-0 bg-obsidian-900/0 group-hover:bg-obsidian-900/60 transition-colors duration-400"></div>
-                <div className="absolute inset-0 border-2 border-gold-500 opacity-0 group-hover:opacity-100 group-hover:shadow-[inset_0_0_20px_rgba(201,162,39,0.4)] transition-all duration-400 z-10 pointer-events-none rounded-xl"></div>
-                
-                {/* Text Reveal */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-400 z-20">
-                  <span className="text-gold-500 tracking-widest text-xs uppercase mb-2 font-semibold drop-shadow-md">{t(`data.${img.tag}`, img.tag)}</span>
-                  <span className="text-ivory-50 text-2xl font-display drop-shadow-lg">{t(`data.${img.dest}`, img.dest)}</span>
+        <div className="w-full mt-10 relative">
+          <div 
+            className="flex gallery-strip w-max"
+            style={{ 
+              animation: 'scrollStrip 80s linear infinite',
+              gap: '16px'
+            }}
+          >
+            {/* Duplicate all images in the DOM so the loop is seamless */}
+            {[...galleryImages, ...galleryImages].map((img, idx) => {
+              const originalIndex = idx % galleryImages.length;
+              return (
+                <div 
+                  key={idx}
+                  className="flex-shrink-0 cursor-pointer overflow-hidden rounded-[12px] group relative transition-all duration-[350ms] ease-out hover:scale-[1.08] hover:-translate-y-[12px] hover:shadow-[0_12px_40px_rgba(201,162,39,0.35)] hover:z-10"
+                  onClick={() => openLightbox(originalIndex)}
+                >
+                  <img 
+                    src={img.src}
+                    alt={img.dest}
+                    loading="lazy"
+                    className="h-[220px] md:h-[380px] w-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
                 </div>
-              </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -777,7 +748,7 @@ const Home = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              src={`${galleryImages[activeGalleryIndex].src}?auto=compress&cs=tinysrgb&w=1600&fit=crop&q=90`} 
+              src={galleryImages[activeGalleryIndex].src} 
               alt={galleryImages[activeGalleryIndex].dest} 
               className="max-w-[85vw] max-h-[85vh] object-contain shadow-[0_0_50px_rgba(0,0,0,0.5)] rounded-md"
               onClick={e => e.stopPropagation()}
