@@ -46,7 +46,7 @@ const Services = () => {
           ) : service === 'cruises' ? (
             <>
               <img
-                src="/LUXURY-PROJECT/imgs/nile cruises/IMG-20171013-WA0000(1).jpg"
+                src="/imgs/nile cruises/img-20171013-wa0000(1).jpg"
                 alt="Nile River Cruise Luxury Egypt Sunset"
                 className="w-full h-full object-cover object-center"
                 loading="lazy"
@@ -72,7 +72,7 @@ const Services = () => {
           ) : service === 'hotels' ? (
             <>
               <img
-                src="/LUXURY-PROJECT/imgs/hotels/16015431-external-view-kempinski-ishtar-dead-sea.jpg"
+                src="/imgs/hotels/16015431-external-view-kempinski-ishtar-dead-sea.jpg"
                 alt="Luxury Hotel Exterior"
                 className="w-full h-full object-cover object-center"
                 loading="lazy"

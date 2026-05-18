@@ -61,18 +61,18 @@ const Home = () => {
     : transportation.filter(v => v.category === vehicleFilter);
 
   const galleryImages = [
-    { src: '/LUXURY-PROJECT/imgs/gallery/Ephesus & The Aegean Coast.jpg', dest: 'Turkey', tag: 'Tour' },
-    { src: '/LUXURY-PROJECT/imgs/gallery/Grand Tour of Turkey.jpg', dest: 'Turkey', tag: 'Tour' },
-    { src: '/LUXURY-PROJECT/imgs/gallery/OIP (1).webp', dest: 'Gallery', tag: 'Photo' },
-    { src: '/LUXURY-PROJECT/imgs/gallery/OIP (2).webp', dest: 'Gallery', tag: 'Photo' },
-    { src: '/LUXURY-PROJECT/imgs/gallery/OIP (3).webp', dest: 'Gallery', tag: 'Photo' },
-    { src: '/LUXURY-PROJECT/imgs/gallery/OIP (4).webp', dest: 'Gallery', tag: 'Photo' },
-    { src: '/LUXURY-PROJECT/imgs/gallery/OIP (5).webp', dest: 'Gallery', tag: 'Photo' },
-    { src: '/LUXURY-PROJECT/imgs/gallery/OIP.webp', dest: 'Gallery', tag: 'Photo' },
-    { src: '/LUXURY-PROJECT/imgs/gallery/Pharaohs & Pyramid.jpg', dest: 'Egypt', tag: 'Tour' },
-    { src: '/LUXURY-PROJECT/imgs/gallery/Ultimate Jordan Grand Tour.webp', dest: 'Jordan', tag: 'Tour' },
-    { src: '/LUXURY-PROJECT/imgs/gallery/Ultimate Royal Egypt..jpg', dest: 'Egypt', tag: 'Tour' },
-    { src: '/LUXURY-PROJECT/imgs/gallery/Wadi Rum Desert Safari.webp', dest: 'Jordan', tag: 'Safari' },
+    { src: '/imgs/gallery/ephesus & the aegean coast.jpg', dest: 'Turkey', tag: 'Tour' },
+    { src: '/imgs/gallery/grand tour of turkey.jpg', dest: 'Turkey', tag: 'Tour' },
+    { src: '/imgs/gallery/oip (1).webp', dest: 'Gallery', tag: 'Photo' },
+    { src: '/imgs/gallery/oip (2).webp', dest: 'Gallery', tag: 'Photo' },
+    { src: '/imgs/gallery/oip (3).webp', dest: 'Gallery', tag: 'Photo' },
+    { src: '/imgs/gallery/oip (4).webp', dest: 'Gallery', tag: 'Photo' },
+    { src: '/imgs/gallery/oip (5).webp', dest: 'Gallery', tag: 'Photo' },
+    { src: '/imgs/gallery/oip.webp', dest: 'Gallery', tag: 'Photo' },
+    { src: '/imgs/gallery/pharaohs & pyramid.jpg', dest: 'Egypt', tag: 'Tour' },
+    { src: '/imgs/gallery/ultimate jordan grand tour.webp', dest: 'Jordan', tag: 'Tour' },
+    { src: '/imgs/gallery/ultimate royal egypt..jpg', dest: 'Egypt', tag: 'Tour' },
+    { src: '/imgs/gallery/wadi rum desert safari.webp', dest: 'Jordan', tag: 'Safari' },
   ];
 
   const openLightbox = (index) => {
@@ -203,7 +203,7 @@ const Home = () => {
               className="w-full lg:w-1/2"
             >
               <img 
-                src="/LUXURY-PROJECT/images/crafting-journeys.jpg" 
+                src="/images/crafting-journeys.jpg" 
                 alt="Crafting Journeys" 
                 className="w-full h-[300px] lg:h-[480px] object-cover rounded-[16px] shadow-[0_0_40px_rgba(201,162,39,0.25)] transition-transform duration-400 ease hover:-translate-y-[8px]"
                 loading="lazy"

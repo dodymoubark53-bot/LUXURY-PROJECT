@@ -38,7 +38,7 @@ const Transportation = () => {
       <section className="relative w-full h-[400px] md:h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/LUXURY-PROJECT/imgs/Transportation/OIP (4).webp" 
+            src="/imgs/transportation/oip (4).webp" 
             alt="Transportation Hero" 
             className="w-full h-full object-cover object-center"
             loading="lazy"

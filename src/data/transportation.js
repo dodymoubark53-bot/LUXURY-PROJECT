@@ -9,7 +9,7 @@ export const transportation = [
     reviews: 124,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: '/LUXURY-PROJECT/imgs/Transportation/OIP.webp',
+    image: '/imgs/transportation/oip.webp',
     heroImage: 'https://images.unsplash.com/photo-1638618164682-12b986ec2a75?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver']
   },
@@ -23,7 +23,7 @@ export const transportation = [
     reviews: 89,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: '/LUXURY-PROJECT/imgs/Transportation/OIP (1).webp',
+    image: '/imgs/transportation/oip (1).webp',
     heroImage: 'https://images.unsplash.com/photo-1652890041546-2de2829c43b5?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Leather Seats']
   },
@@ -37,7 +37,7 @@ export const transportation = [
     reviews: 156,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: '/LUXURY-PROJECT/imgs/Transportation/OIP (2).webp',
+    image: '/imgs/transportation/oip (2).webp',
     heroImage: 'https://images.unsplash.com/photo-1753281796773-43247bf56b8e?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Premium Audio']
   },
@@ -51,7 +51,7 @@ export const transportation = [
     reviews: 210,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: '/LUXURY-PROJECT/imgs/Transportation/OIP (3).webp',
+    image: '/imgs/transportation/oip (3).webp',
     heroImage: 'https://images.unsplash.com/photo-1624085568108-36410cfe4d24?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Executive Space']
   },
@@ -65,7 +65,7 @@ export const transportation = [
     reviews: 342,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: '/LUXURY-PROJECT/imgs/Transportation/OIP (4).webp',
+    image: '/imgs/transportation/oip (4).webp',
     heroImage: 'https://images.unsplash.com/photo-1596321687344-547d323f094a?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'VIP Luxury']
   },
@@ -79,7 +79,7 @@ export const transportation = [
     reviews: 95,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: '/LUXURY-PROJECT/imgs/Transportation/OIP (5).webp',
+    image: '/imgs/transportation/oip (5).webp',
     heroImage: 'https://images.unsplash.com/photo-1575090536203-2a6193126514?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Spacious Trunk']
   },
@@ -93,7 +93,7 @@ export const transportation = [
     reviews: 112,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: '/LUXURY-PROJECT/imgs/Transportation/OIP (6).webp',
+    image: '/imgs/transportation/oip (6).webp',
     heroImage: 'https://images.unsplash.com/photo-1641431616381-3f0613d82ca7?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Off-road Capable']
   },
@@ -107,7 +107,7 @@ export const transportation = [
     reviews: 178,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: '/LUXURY-PROJECT/imgs/Transportation/OIP (7).webp',
+    image: '/imgs/transportation/oip (7).webp',
     heroImage: 'https://images.unsplash.com/photo-1618353482480-61ca5a9a7879?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Luxury SUV']
   },
@@ -121,7 +121,7 @@ export const transportation = [
     reviews: 245,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: '/LUXURY-PROJECT/imgs/Transportation/OIP (8).webp',
+    image: '/imgs/transportation/oip (8).webp',
     heroImage: 'https://images.unsplash.com/photo-1554841649-de947c4b954a?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Desert Ready']
   },
@@ -135,7 +135,7 @@ export const transportation = [
     reviews: 88,
     transmission: 'Auto',
     pricePerDay: 50,
-    image: '/LUXURY-PROJECT/imgs/Transportation/OIP.jpg',
+    image: '/imgs/transportation/oip.jpg',
     heroImage: 'https://images.unsplash.com/photo-1650807486050-a142ea418b19?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Group Transfer']
   },
@@ -149,7 +149,7 @@ export const transportation = [
     reviews: 105,
     transmission: 'Auto',
     pricePerDay: 50,
-    image: '/LUXURY-PROJECT/imgs/Transportation/OIP (1).jpg',
+    image: '/imgs/transportation/oip (1).jpg',
     heroImage: 'https://images.unsplash.com/photo-1669887058626-77dea2765b79?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Tour Group']
   },
@@ -163,7 +163,7 @@ export const transportation = [
     reviews: 310,
     transmission: 'Auto',
     pricePerDay: 50,
-    image: '/LUXURY-PROJECT/imgs/Transportation/OIP (2).jpg',
+    image: '/imgs/transportation/oip (2).jpg',
     heroImage: 'https://images.unsplash.com/photo-1621651752332-a0c3954b8752?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Large Group']
   }

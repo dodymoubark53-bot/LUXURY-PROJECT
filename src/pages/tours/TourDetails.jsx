@@ -64,7 +64,7 @@ const TourDetails = () => {
       {/* 2. Photo Gallery */}
       <section className="relative w-full h-[50vh] lg:h-[70vh] overflow-hidden group cursor-pointer" onClick={() => setIsLightboxOpen(true)}>
         <motion.img 
-          src={tour.images[activeImage] || '/LUXURY-PROJECT/images/tour-1.png'} 
+          src={tour.images[activeImage] || '/images/tour-1.png'} 
           alt={t(`data.${tour.title}`, tour.title)}
           className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
           loading="lazy"
@@ -410,7 +410,7 @@ const TourDetails = () => {
               <FaTimes size={32} />
             </button>
             <img 
-              src={tour.images[activeImage] || '/LUXURY-PROJECT/images/tour-1.png'} 
+              src={tour.images[activeImage] || '/images/tour-1.png'} 
               alt={tour.title} 
               className="max-w-[90vw] max-h-[90vh] object-contain"
               onClick={e => e.stopPropagation()}
