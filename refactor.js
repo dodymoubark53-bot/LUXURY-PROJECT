@@ -36,7 +36,7 @@ replaceInFile('pages/services/ServiceDetails.jsx', /src=\{activeImage\}/g, 'src=
 replaceInFile('pages/services/ServiceDetails.jsx', /src=\{relService\.images\[0\]\}/g, 'src={`${relService.images[0]}?w=600&q=80&fit=crop&crop=center`}');
 
 const pagesWithHero = [
-  { path: 'pages/Home.jsx', alt: 'Luxury Travel Hero', url: 'https://images.unsplash.com/photo-1539667468225-eebb663053e6?w=1600&q=90&fit=crop' },
+  { path: 'pages/Home.jsx', alt: 'DUNAS TRAVEL Hero', url: 'https://images.unsplash.com/photo-1539667468225-eebb663053e6?w=1600&q=90&fit=crop' },
   { path: 'pages/destinations/Egypt.jsx', alt: 'Egypt Pyramids Hero', url: 'https://images.unsplash.com/photo-1553835695-1f95aab2e4b4?w=1600&q=90&fit=crop' },
   { path: 'pages/destinations/Jordan.jsx', alt: 'Jordan Petra Hero', url: 'https://images.unsplash.com/photo-1560946285-d85c18e19c36?w=1600&q=90&fit=crop' },
   { path: 'pages/destinations/Turkey.jsx', alt: 'Turkey Cappadocia Hero', url: 'https://images.unsplash.com/photo-1541359695-167d4fdfb08d?w=1600&q=90&fit=crop' },

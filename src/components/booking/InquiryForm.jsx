@@ -40,7 +40,7 @@ const InquiryForm = ({ onClose, tourTitle }) => {
             </motion.div>
             <h3 className="text-display-md text-ivory-50 mb-2 font-display">{t('booking.inquirySent', 'Inquiry Sent')}</h3>
             <p className="text-body-md text-ivory-300">
-              {t('booking.inquirySuccessDesc', 'Thank you for your interest in the {{tourTitle}}. Our luxury travel concierges will contact you shortly.', { tourTitle: t(`data.${tourTitle}`, tourTitle) })}
+              {t('booking.inquirySuccessDesc', 'Thank you for your interest in the {{tourTitle}}. Our DUNAS TRAVEL concierges will contact you shortly.', { tourTitle: t(`data.${tourTitle}`, tourTitle) })}
             </p>
           </motion.div>
         ) : (

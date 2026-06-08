@@ -38,8 +38,8 @@ const Services = () => {
                 className="w-full h-full object-cover object-center"
                 loading="lazy"
               />
-              <div 
-                className="absolute inset-0" 
+              <div
+                className="absolute inset-0"
                 style={{ backgroundImage: 'linear-gradient(to bottom, rgba(15,13,11,0.3), rgba(15,13,11,0.65))' }}
               ></div>
             </>
@@ -51,8 +51,8 @@ const Services = () => {
                 className="w-full h-full object-cover object-center"
                 loading="lazy"
               />
-              <div 
-                className="absolute inset-0" 
+              <div
+                className="absolute inset-0"
                 style={{ backgroundImage: 'linear-gradient(to bottom, rgba(15,13,11,0.3), rgba(15,13,11,0.65))' }}
               ></div>
             </>
@@ -64,8 +64,8 @@ const Services = () => {
                 className="w-full h-full object-cover object-center"
                 loading="lazy"
               />
-              <div 
-                className="absolute inset-0" 
+              <div
+                className="absolute inset-0"
                 style={{ backgroundImage: 'linear-gradient(to bottom, rgba(15,13,11,0.3), rgba(15,13,11,0.65))' }}
               ></div>
             </>
@@ -77,8 +77,8 @@ const Services = () => {
                 className="w-full h-full object-cover object-center"
                 loading="lazy"
               />
-              <div 
-                className="absolute inset-0" 
+              <div
+                className="absolute inset-0"
                 style={{ backgroundImage: 'linear-gradient(to bottom, rgba(15,13,11,0.3), rgba(15,13,11,0.65))' }}
               ></div>
             </>
@@ -90,8 +90,8 @@ const Services = () => {
                 className="w-full h-full object-cover object-center"
                 loading="lazy"
               />
-              <div 
-                className="absolute inset-0" 
+              <div
+                className="absolute inset-0"
                 style={{ backgroundImage: 'linear-gradient(to bottom, rgba(15,13,11,0.3), rgba(15,13,11,0.65))' }}
               ></div>
             </>
@@ -103,8 +103,8 @@ const Services = () => {
                 className="w-full h-full object-cover object-center"
                 loading="lazy"
               />
-              <div 
-                className="absolute inset-0" 
+              <div
+                className="absolute inset-0"
                 style={{ backgroundImage: 'linear-gradient(to bottom, rgba(15,13,11,0.4), rgba(15,13,11,0.7))' }}
               ></div>
             </>
@@ -112,16 +112,16 @@ const Services = () => {
         </div>
         <motion.div className="relative z-10 text-center px-6 mt-20" variants={staggerContainer} initial="hidden" animate="visible">
           <motion.span variants={fadeInUp} className="text-gold-500 uppercase tracking-widest text-caption block mb-4">{t('services.subtitle', 'Tailored Experiences')}</motion.span>
-          <motion.h1 
-            variants={fadeInUp} 
+          <motion.h1
+            variants={fadeInUp}
             className="text-display-xl text-ivory-50"
             style={['safari', 'cruises', 'camping', 'hotels', 'transportation'].includes(service) ? { fontFamily: "'Playfair Display', serif" } : {}}
           >
-            {service === 'safari' ? t('nav.safari', 'Desert Safari') : 
-             service === 'cruises' ? t('nav.cruises', 'Nile Cruises') :
-             service === 'camping' ? t('nav.camping', 'Glamping') : 
-             service === 'hotels' ? t('nav.hotels', 'Luxury Hotels') : 
-             service === 'transportation' ? t('nav.transportation', 'Transportation') : t('services.ourServices', 'Our Services')}
+            {service === 'safari' ? t('nav.safari', 'Desert Safari') :
+              service === 'cruises' ? t('nav.cruises', 'Nile Cruises') :
+                service === 'camping' ? t('nav.camping', 'Glamping') :
+                  service === 'hotels' ? t('nav.hotels', 'Luxury Hotels') :
+                    service === 'transportation' ? t('nav.transportation', 'Transportation') : t('services.ourServices', 'Our Services')}
           </motion.h1>
           {service === 'safari' ? (
             <motion.p variants={fadeInUp} className="text-body-lg text-ivory-300 mt-4 max-w-2xl mx-auto">
@@ -166,7 +166,7 @@ const Services = () => {
 
         {/* Services Grid */}
         {filteredServices.length > 0 && (
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={staggerContainer}
             initial="hidden"
@@ -174,8 +174,8 @@ const Services = () => {
             viewport={{ once: true, margin: "-50px" }}
           >
             {filteredServices.map((item) => (
-              <motion.div 
-                key={item.id} 
+              <motion.div
+                key={item.id}
                 variants={fadeInUp}
                 className="bg-ivory-50 rounded-2xl overflow-hidden shadow-card group h-full flex flex-col transition-all"
               >
@@ -209,7 +209,7 @@ const Services = () => {
         {(!service || service === 'transportation') && (
           <div className={!service ? "mt-20" : ""}>
             {!service && <h2 className="text-display-lg text-obsidian-900 mb-8 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>{t('nav.transportation', 'Transportation')}</h2>}
-            <motion.div 
+            <motion.div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
               variants={staggerContainer}
               initial="hidden"
@@ -217,8 +217,8 @@ const Services = () => {
               viewport={{ once: true, margin: "-50px" }}
             >
               {transportation.map((item) => (
-                <motion.div 
-                   key={item.id} 
+                <motion.div
+                  key={item.id}
                   variants={fadeInUp}
                   className="bg-ivory-50 rounded-2xl overflow-hidden shadow-card group h-full flex flex-col transition-all"
                 >

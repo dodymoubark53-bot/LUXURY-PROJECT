@@ -142,7 +142,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                 <p className="text-caption text-ivory-300">
                   {view === 'login' 
                     ? 'Sign in to access your bespoke itineraries.' 
-                    : 'Join us to curate your luxury travel experiences.'}
+                    : 'Join us to curate your DUNAS TRAVEL experiences.'}
                 </p>
               </div>
 

@@ -89,7 +89,7 @@ const pexelsData = {
 const getPexelsUrl = (id) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1600&fit=crop`;
 
 const pagesWithHero = [
-  { path: 'pages/Home.jsx', alt: 'Luxury Travel Hero', url: getPexelsUrl(pexelsData['hero-home']) },
+  { path: 'pages/Home.jsx', alt: 'DUNAS TRAVEL Hero', url: getPexelsUrl(pexelsData['hero-home']) },
   { path: 'pages/destinations/Egypt.jsx', alt: 'Egypt Pyramids Hero', url: getPexelsUrl(pexelsData['hero-egypt']) },
   { path: 'pages/destinations/Jordan.jsx', alt: 'Jordan Petra Hero', url: getPexelsUrl(pexelsData['hero-jordan']) },
   { path: 'pages/destinations/Turkey.jsx', alt: 'Turkey Cappadocia Hero', url: getPexelsUrl(pexelsData['hero-turkey']) },

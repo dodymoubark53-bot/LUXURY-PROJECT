@@ -32,8 +32,8 @@ const Navbar = () => {
   const navLinks = [
     { name: t('nav.home'), path: '/' },
     { name: t('nav.blogs'), path: '/blogs' },
-    { 
-      name: t('nav.services'), 
+    {
+      name: t('nav.services'),
       dropdown: [
         { name: t('nav.hotels'), path: '/services/hotels' },
         { name: t('nav.safari'), path: '/services/safari' },
@@ -42,8 +42,8 @@ const Navbar = () => {
         { name: t('nav.transportation', { defaultValue: 'Transportation' }), path: '/transportation' },
       ]
     },
-    { 
-      name: t('nav.destinations'), 
+    {
+      name: t('nav.destinations'),
       dropdown: [
         { name: t('nav.egypt'), path: '/destinations/egypt' },
         { name: t('nav.jordan'), path: '/destinations/jordan' },
@@ -61,21 +61,20 @@ const Navbar = () => {
   };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 h-16 lg:h-20 flex items-center ${
-        scrolled ? 'shadow-glass' : ''
-      }`}
-      style={{ 
-        backgroundColor: 'rgba(15, 13, 11, 0.95)', 
-        backdropFilter: 'blur(18px)', 
+    <header
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 h-16 lg:h-20 flex items-center ${scrolled ? 'shadow-lg border-b border-white/5' : ''
+        }`}
+      style={{
+        backgroundColor: 'rgba(26, 26, 46, 0.95)', // نفس لون الفوتر تماماً #1A1A2E
+        backdropFilter: 'blur(18px)',
         WebkitBackdropFilter: 'blur(18px)'
       }}
     >
-      <div 
+      <div
         className="container mx-auto px-6 h-full flex justify-between"
         style={{ alignItems: 'center' }}
       >
-        {/* Logo */}
+        {/* Logo - متناسق تماماً مع الخلفية الغامقة */}
         <Link to="/" className="flex items-center z-50">
           <Logo theme="dark" height={40} />
         </Link>
@@ -83,18 +82,18 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <div 
-              key={link.name} 
+            <div
+              key={link.name}
               className="relative group"
               onMouseEnter={() => link.dropdown && setActiveDropdown(link.name)}
               onMouseLeave={() => link.dropdown && setActiveDropdown(null)}
             >
               {link.dropdown ? (
-                <button className="flex items-center gap-1 text-ivory-50 hover:text-gold-500 transition-colors text-body-md">
+                <button className="flex items-center gap-1 text-white hover:text-[#F5A623] transition-colors text-body-md font-medium">
                   {link.name} <FaChevronDown className="text-xs" />
                 </button>
               ) : (
-                <Link to={link.path} className="text-ivory-50 hover:text-gold-500 transition-colors text-body-md">
+                <Link to={link.path} className="text-white hover:text-[#F5A623] transition-colors text-body-md font-medium">
                   {link.name}
                 </Link>
               )}
@@ -107,13 +106,13 @@ const Navbar = () => {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="absolute top-full left-0 mt-4 w-48 bg-obsidian-900/90 backdrop-blur-[18px] border border-[rgba(201,162,39,0.2)] rounded-lg overflow-hidden shadow-glass"
+                    className="absolute top-full left-0 mt-4 w-48 bg-[#1A1A2E] border border-white/10 rounded-lg overflow-hidden shadow-xl"
                   >
                     {link.dropdown.map((item) => (
-                      <Link 
-                        key={item.name} 
+                      <Link
+                        key={item.name}
                         to={item.path}
-                        className="block px-4 py-3 text-ivory-50 hover:text-obsidian-900 hover:bg-gold-500 transition-colors text-body-md border-b border-ivory-50/5 last:border-0"
+                        className="block px-4 py-3 text-white hover:text-[#1A1A2E] hover:bg-[#F5A623] transition-colors text-body-md border-b border-white/5 last:border-0"
                       >
                         {item.name}
                       </Link>
@@ -131,9 +130,9 @@ const Navbar = () => {
           <div className="relative">
             {user ? (
               <>
-                <button 
+                <button
                   onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-                  className="w-10 h-10 rounded-full border border-gold-500/50 flex items-center justify-center text-ivory-50 hover:text-gold-500 hover:border-gold-500 transition-all shadow-[0_0_15px_rgba(201,162,39,0.15)] bg-obsidian-900/50"
+                  className="w-10 h-10 rounded-full border border-[#F5A623]/50 flex items-center justify-center text-white hover:text-[#F5A623] hover:border-[#F5A623] transition-all bg-white/5"
                 >
                   <span className="font-display font-semibold text-sm">{user.avatar}</span>
                 </button>
@@ -144,19 +143,19 @@ const Navbar = () => {
                       initial="hidden"
                       animate="visible"
                       exit="exit"
-                      className="absolute top-full right-0 mt-4 w-48 bg-obsidian-900/90 backdrop-blur-[18px] border border-[rgba(201,162,39,0.2)] rounded-lg overflow-hidden shadow-glass"
+                      className="absolute top-full right-0 mt-4 w-48 bg-[#1A1A2E] border border-white/10 rounded-lg overflow-hidden shadow-xl"
                     >
-                      <div className="px-4 py-3 border-b border-ivory-50/10">
-                        <p className="text-caption text-ivory-50 font-medium">{user.name}</p>
-                        <p className="text-[10px] text-ivory-300 truncate">{user.email}</p>
+                      <div className="px-4 py-3 border-b border-white/5">
+                        <p className="text-caption text-white font-semibold">{user.name}</p>
+                        <p className="text-[10px] text-gray-400 truncate">{user.email}</p>
                       </div>
-                      <Link to="/profile" className="w-full text-left px-4 py-3 text-ivory-50 hover:text-obsidian-900 hover:bg-gold-500 transition-colors text-body-md border-b border-ivory-50/5 flex items-center gap-2">
+                      <Link to="/profile" className="w-full text-left px-4 py-3 text-white hover:text-[#1A1A2E] hover:bg-[#F5A623] transition-colors text-body-md border-b border-white/5 flex items-center gap-2">
                         <FaUserCircle /> {t('nav.myProfile', 'My Profile')}
                       </Link>
-                      <Link to="/bookings" className="w-full text-left px-4 py-3 text-ivory-50 hover:text-obsidian-900 hover:bg-gold-500 transition-colors text-body-md border-b border-ivory-50/5 flex items-center gap-2">
+                      <Link to="/bookings" className="w-full text-left px-4 py-3 text-white hover:text-[#1A1A2E] hover:bg-[#F5A623] transition-colors text-body-md border-b border-white/5 flex items-center gap-2">
                         <FaBookmark /> {t('nav.myBookings', 'My Bookings')}
                       </Link>
-                      <button onClick={() => { logout(); setProfileDropdownOpen(false); }} className="w-full text-left px-4 py-3 text-red-400 hover:text-obsidian-900 hover:bg-red-400 transition-colors text-body-md flex items-center gap-2">
+                      <button onClick={() => { logout(); setProfileDropdownOpen(false); }} className="w-full text-left px-4 py-3 text-red-400 hover:text-white hover:bg-red-500 transition-colors text-body-md flex items-center gap-2">
                         <FaSignOutAlt /> {t('nav.logout', 'Logout')}
                       </button>
                     </motion.div>
@@ -164,9 +163,9 @@ const Navbar = () => {
                 </AnimatePresence>
               </>
             ) : (
-              <button 
+              <button
                 onClick={() => setIsLoginModalOpen(true)}
-                className="text-ivory-50 hover:text-gold-500 transition-colors p-2 flex items-center gap-2"
+                className="text-white hover:text-[#F5A623] transition-colors p-2 flex items-center gap-2"
                 title="Login"
               >
                 <FaUserCircle size={20} />
@@ -175,14 +174,14 @@ const Navbar = () => {
           </div>
 
           <div className="relative">
-            <button 
+            <button
               onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-              className="text-ivory-50 hover:text-gold-500 transition-colors p-2 flex items-center gap-2"
+              className="text-white hover:text-[#F5A623] transition-colors p-2 flex items-center gap-2"
             >
-              <FaGlobe /> <span className="text-caption uppercase hidden sm:block">{
-                i18n.language === 'ar' ? 'العربية' : 
-                i18n.language === 'es' ? 'Español' : 
-                i18n.language === 'pt' ? 'Português' : 'English'
+              <FaGlobe /> <span className="text-caption uppercase hidden sm:block font-medium">{
+                i18n.language === 'ar' ? 'العربية' :
+                  i18n.language === 'es' ? 'Español' :
+                    i18n.language === 'pt' ? 'Português' : 'English'
               }</span>
             </button>
 
@@ -193,7 +192,7 @@ const Navbar = () => {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="absolute top-full right-0 mt-4 w-40 bg-obsidian-900/90 backdrop-blur-[18px] border border-[rgba(201,162,39,0.2)] rounded-lg overflow-hidden shadow-glass"
+                  className="absolute top-full right-0 mt-4 w-40 bg-[#1A1A2E] border border-white/10 rounded-lg overflow-hidden shadow-xl"
                 >
                   {[
                     { code: 'en', label: 'English', flag: '🇬🇧' },
@@ -204,13 +203,13 @@ const Navbar = () => {
                     <button
                       key={lang.code}
                       onClick={() => changeLanguage(lang.code)}
-                      className={`w-full text-left px-4 py-3 flex items-center justify-between text-body-md border-b border-ivory-50/5 last:border-0 transition-colors ${i18n.language === lang.code ? 'text-gold-500 bg-obsidian-900' : 'text-ivory-50 hover:text-obsidian-900 hover:bg-gold-500'}`}
+                      className={`w-full text-left px-4 py-3 flex items-center justify-between text-body-md border-b border-white/5 last:border-0 transition-colors ${i18n.language === lang.code ? 'text-[#F5A623] font-semibold bg-white/5' : 'text-white hover:text-[#1A1A2E] hover:bg-[#F5A623]'}`}
                     >
                       <span className="flex items-center gap-2">
                         <span className="text-lg">{lang.flag}</span>
                         <span>{lang.label}</span>
                       </span>
-                      {i18n.language === lang.code && <span className="text-gold-500">✓</span>}
+                      {i18n.language === lang.code && <span className="text-[#F5A623]">✓</span>}
                     </button>
                   ))}
                 </motion.div>
@@ -222,14 +221,14 @@ const Navbar = () => {
         {/* Mobile Hamburger & Login */}
         <div className="lg:hidden flex items-center gap-4 z-50">
           {!user ? (
-             <button onClick={() => setIsLoginModalOpen(true)} className="text-ivory-50 hover:text-gold-500 transition-colors">
-                <FaUserCircle size={22} />
-             </button>
+            <button onClick={() => setIsLoginModalOpen(true)} className="text-white hover:text-[#F5A623] transition-colors">
+              <FaUserCircle size={22} />
+            </button>
           ) : (
-             <span className="w-8 h-8 rounded-full border border-gold-500/50 flex items-center justify-center text-ivory-50 bg-obsidian-900/50 font-display text-xs">{user.avatar}</span>
+            <span className="w-8 h-8 rounded-full border border-[#F5A623]/50 flex items-center justify-center text-white bg-white/5 font-display text-xs">{user.avatar}</span>
           )}
-          <button 
-            className="text-ivory-50 p-2"
+          <button
+            className="text-white p-2 hover:text-[#F5A623]"
             onClick={() => setMobileMenuOpen(true)}
           >
             <FaBars size={24} />
@@ -257,36 +256,36 @@ const Navbar = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 paddingTop: '70px',
-                background: 'rgba(15, 13, 11, 0.98)',
+                background: 'rgba(26, 26, 46, 0.98)', // نفس خلفية الفوتر تماماً لقائمة الموبايل
                 backdropFilter: 'blur(24px)',
                 WebkitBackdropFilter: 'blur(24px)'
               }}
               className="gap-8"
             >
-              <button 
+              <button
                 onClick={() => setMobileMenuOpen(false)}
                 style={{ position: 'absolute', top: '16px', right: '16px' }}
-                className="text-ivory-50 hover:text-gold-500 transition-colors p-2"
+                className="text-white hover:text-[#F5A623] transition-colors p-2"
               >
                 <FaTimes size={24} />
               </button>
               {navLinks.map((link) => (
                 <div key={link.name} className="text-center">
-                  <Link 
-                    to={link.path || '#'} 
+                  <Link
+                    to={link.path || '#'}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-display-md text-ivory-50 hover:text-gold-500 transition-colors"
+                    className="text-display-md text-white hover:text-[#F5A623] transition-colors font-medium"
                   >
                     {link.name}
                   </Link>
                   {link.dropdown && (
                     <div className="mt-4 flex flex-col gap-3">
                       {link.dropdown.map(item => (
-                        <Link 
+                        <Link
                           key={item.name}
                           to={item.path}
                           onClick={() => setMobileMenuOpen(false)}
-                          className="text-body-lg text-ivory-300 hover:text-gold-300"
+                          className="text-body-lg text-gray-400 hover:text-[#F5A623]"
                         >
                           {item.name}
                         </Link>

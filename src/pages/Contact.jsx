@@ -22,7 +22,7 @@ const Contact = () => {
 
       <section className="container mx-auto px-6 py-24 -mt-16 relative z-20">
         <div className="bg-ivory-50 rounded-2xl shadow-card overflow-hidden flex flex-col lg:flex-row">
-          
+
           {/* Contact Info & Map placeholder */}
           <div className="lg:w-1/2 bg-obsidian-900 text-ivory-50 p-12 flex flex-col justify-between relative overflow-hidden">
             <div className="relative z-10">
@@ -57,7 +57,7 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Real Google Map */}
             <div className="w-full h-[300px] lg:h-[450px] rounded-[16px] overflow-hidden border border-[rgba(201,162,39,0.2)] shadow-[0_0_32px_rgba(201,162,39,0.1)]">
               <iframe

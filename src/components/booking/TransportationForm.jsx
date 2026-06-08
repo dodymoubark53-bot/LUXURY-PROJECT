@@ -71,7 +71,7 @@ const TransportationForm = ({ preSelectedVehicleId = '' }) => {
             </motion.div>
             <h3 className="text-display-md text-obsidian-900 mb-2 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t('booking.reservationConfirmed', 'Reservation Confirmed')}</h3>
             <p className="text-body-md text-obsidian-500">
-              {t('booking.reservationSuccessDesc', 'Thank you for your booking. Our luxury travel concierges will contact you shortly to finalize the details.')}
+              {t('booking.reservationSuccessDesc', 'Thank you for your booking. Our DUNAS TRAVEL concierges will contact you shortly to finalize the details.')}
             </p>
           </motion.div>
         ) : (
