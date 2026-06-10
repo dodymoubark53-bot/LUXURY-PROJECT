@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTimes, FaEye, FaEyeSlash, FaUserCircle } from 'react-icons/fa';
 import { useAuth } from '../../context/AuthContext';
 import Button from '../ui/Button';
 
 const LoginModal = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
   const [view, setView] = useState('login'); // 'login' | 'register'
   
   // Form State
@@ -44,7 +46,7 @@ const LoginModal = ({ isOpen, onClose }) => {
       onClose();
       window.location.href = '/'; // Redirect to home
     } catch (err) {
-      setError('Invalid email or password');
+      setError(t('auth.invalidCredentials', 'Invalid email or password'));
     } finally {
       setIsLoading(false);
     }
@@ -57,27 +59,27 @@ const LoginModal = ({ isOpen, onClose }) => {
     
     // Validations
     if (!name || !email || !phone || !password || !confirmPassword) {
-      return setError('All fields are required');
+      return setError(t('auth.allFieldsRequired', 'All fields are required'));
     }
     if (password.length < 8) {
-      return setError('Password must be at least 8 characters');
+      return setError(t('auth.passwordLengthError', 'Password must be at least 8 characters'));
     }
     if (password !== confirmPassword) {
-      return setError('Passwords do not match');
+      return setError(t('auth.passwordsDoNotMatch', 'Passwords do not match'));
     }
     if (!termsAccepted) {
-      return setError('You must accept the Terms and Conditions');
+      return setError(t('auth.acceptTermsError', 'You must accept the Terms and Conditions'));
     }
     
     setIsLoading(true);
     try {
       await register(name, email, phone, password);
-      setSuccess('Account created successfully! Please log in.');
+      setSuccess(t('auth.accountCreatedSuccess', 'Account created successfully! Please log in.'));
       // Switch back to login view but keep email filled
       setTimeout(() => switchView('login'), 2000);
     } catch (err) {
       if (err.message.toLowerCase().includes('already exists') || err.message.toLowerCase().includes('duplicate')) {
-        setError('This email is already in use');
+        setError(t('auth.emailInUse', 'This email is already in use'));
       } else {
         setError(err.message);
       }
@@ -137,12 +139,12 @@ const LoginModal = ({ isOpen, onClose }) => {
                   <FaUserCircle size={32} className="text-obsidian-900" />
                 </div>
                 <h2 className="text-display-md text-ivory-50 font-semibold mb-2">
-                  {view === 'login' ? 'Welcome Back' : 'Create Account'}
+                  {view === 'login' ? t('auth.welcomeBack', 'Welcome Back') : t('auth.createAccount', 'Create Account')}
                 </h2>
                 <p className="text-caption text-ivory-300">
                   {view === 'login' 
-                    ? 'Sign in to access your bespoke itineraries.' 
-                    : 'Join us to curate your DUNAS TRAVEL experiences.'}
+                    ? t('auth.signInDesc', 'Sign in to access your bespoke itineraries.') 
+                    : t('auth.registerDesc', 'Join us to curate your DUNAS TRAVEL experiences.')}
                 </p>
               </div>
 
@@ -162,19 +164,19 @@ const LoginModal = ({ isOpen, onClose }) => {
               {view === 'login' && (
                 <form onSubmit={handleLoginSubmit} className="space-y-5">
                   <div className="space-y-1">
-                    <label className="text-caption text-ivory-300 uppercase tracking-wider font-medium">Email Address</label>
+                    <label className="text-caption text-ivory-300 uppercase tracking-wider font-medium">{t('auth.emailAddress', 'Email Address')}</label>
                     <input 
                       type="email" 
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 focus:outline-none transition-all"
-                      placeholder="Enter your email"
+                      placeholder={t('auth.emailPlaceholder', 'Enter your email')}
                     />
                   </div>
 
                   <div className="space-y-1 relative">
-                    <label className="text-caption text-ivory-300 uppercase tracking-wider font-medium">Password</label>
+                    <label className="text-caption text-ivory-300 uppercase tracking-wider font-medium">{t('auth.password', 'Password')}</label>
                     <div className="relative">
                       <input 
                         type={showPassword ? "text" : "password"} 
@@ -182,7 +184,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 focus:outline-none transition-all"
-                        placeholder="Enter your password"
+                        placeholder={t('auth.passwordPlaceholder', 'Enter your password')}
                       />
                       <button 
                         type="button"
@@ -197,10 +199,10 @@ const LoginModal = ({ isOpen, onClose }) => {
                   <div className="flex items-center justify-between mt-2">
                     <label className="flex items-center gap-2 cursor-pointer group">
                       <input type="checkbox" className="w-4 h-4 rounded border-ivory-50/20 bg-transparent text-gold-500 focus:ring-gold-500 focus:ring-offset-obsidian-900 accent-gold-500" />
-                      <span className="text-caption text-ivory-300 group-hover:text-ivory-50 transition-colors">Remember me</span>
+                      <span className="text-caption text-ivory-300 group-hover:text-ivory-50 transition-colors">{t('auth.rememberMe', 'Remember me')}</span>
                     </label>
                     <button type="button" className="text-caption text-gold-500 hover:text-gold-300 transition-colors">
-                      Forgot Password?
+                      {t('auth.forgotPassword', 'Forgot Password?')}
                     </button>
                   </div>
 
@@ -214,7 +216,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                       {isLoading ? (
                         <div className="w-5 h-5 border-2 border-obsidian-900 border-t-transparent rounded-full animate-spin"></div>
                       ) : (
-                        'Login'
+                        t('auth.loginButton', 'Login')
                       )}
                     </Button>
                   </div>
@@ -225,43 +227,43 @@ const LoginModal = ({ isOpen, onClose }) => {
               {view === 'register' && (
                 <form onSubmit={handleRegisterSubmit} className="space-y-4">
                   <div className="space-y-1">
-                    <label className="text-caption text-ivory-300 uppercase tracking-wider font-medium">Full Name</label>
+                    <label className="text-caption text-ivory-300 uppercase tracking-wider font-medium">{t('auth.fullName', 'Full Name')}</label>
                     <input 
                       type="text" 
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 focus:outline-none transition-all"
-                      placeholder="Enter your full name"
+                      placeholder={t('auth.fullNamePlaceholder', 'Enter your full name')}
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-caption text-ivory-300 uppercase tracking-wider font-medium">Email Address</label>
+                    <label className="text-caption text-ivory-300 uppercase tracking-wider font-medium">{t('auth.emailAddress', 'Email Address')}</label>
                     <input 
                       type="email" 
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 focus:outline-none transition-all"
-                      placeholder="Enter your email"
+                      placeholder={t('auth.emailPlaceholder', 'Enter your email')}
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-caption text-ivory-300 uppercase tracking-wider font-medium">Phone Number</label>
+                    <label className="text-caption text-ivory-300 uppercase tracking-wider font-medium">{t('auth.phoneNumber', 'Phone Number')}</label>
                     <input 
                       type="tel" 
                       required
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 focus:outline-none transition-all"
-                      placeholder="Enter your phone number"
+                      placeholder={t('auth.phonePlaceholder', 'Enter your phone number')}
                     />
                   </div>
 
                   <div className="space-y-1 relative">
-                    <label className="text-caption text-ivory-300 uppercase tracking-wider font-medium">Password</label>
+                    <label className="text-caption text-ivory-300 uppercase tracking-wider font-medium">{t('auth.password', 'Password')}</label>
                     <div className="relative">
                       <input 
                         type={showPassword ? "text" : "password"} 
@@ -269,7 +271,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 focus:outline-none transition-all"
-                        placeholder="Min 8 characters"
+                        placeholder={t('auth.min8Chars', 'Min 8 characters')}
                       />
                       <button 
                         type="button"
@@ -282,7 +284,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                   </div>
 
                   <div className="space-y-1 relative">
-                    <label className="text-caption text-ivory-300 uppercase tracking-wider font-medium">Confirm Password</label>
+                    <label className="text-caption text-ivory-300 uppercase tracking-wider font-medium">{t('auth.confirmPassword', 'Confirm Password')}</label>
                     <div className="relative">
                       <input 
                         type={showConfirmPassword ? "text" : "password"} 
@@ -290,7 +292,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         className="w-full bg-obsidian-900/50 border border-ivory-50/10 rounded-lg p-3 text-ivory-50 placeholder-ivory-300/50 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 focus:outline-none transition-all"
-                        placeholder="Confirm your password"
+                        placeholder={t('auth.confirmPasswordPlaceholder', 'Confirm your password')}
                       />
                       <button 
                         type="button"
@@ -312,7 +314,10 @@ const LoginModal = ({ isOpen, onClose }) => {
                       className="w-4 h-4 mt-1 rounded border-ivory-50/20 bg-transparent text-gold-500 focus:ring-gold-500 focus:ring-offset-obsidian-900 accent-gold-500" 
                     />
                     <label htmlFor="terms" className="text-caption text-ivory-300 leading-tight">
-                      I agree to the <button type="button" className="text-gold-500 hover:text-gold-300">Terms and Conditions</button> and <button type="button" className="text-gold-500 hover:text-gold-300">Privacy Policy</button>.
+                      {t('auth.agreeText', 'I agree to the ')}
+                      <button type="button" className="text-gold-500 hover:text-gold-300">{t('auth.termsAndConditions', 'Terms and Conditions')}</button>
+                      {t('auth.and', ' and ')}
+                      <button type="button" className="text-gold-500 hover:text-gold-300">{t('auth.privacyPolicy', 'Privacy Policy')}</button>.
                     </label>
                   </div>
 
@@ -326,7 +331,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                       {isLoading ? (
                         <div className="w-5 h-5 border-2 border-obsidian-900 border-t-transparent rounded-full animate-spin"></div>
                       ) : (
-                        'Create Account'
+                        t('auth.createAccountBtn', 'Create Account')
                       )}
                     </Button>
                   </div>
@@ -337,11 +342,17 @@ const LoginModal = ({ isOpen, onClose }) => {
               <div className="mt-8 text-center border-t border-ivory-50/10 pt-6">
                 {view === 'login' ? (
                   <p className="text-caption text-ivory-300">
-                    Don't have an account? <button onClick={() => switchView('register')} className="text-gold-500 hover:text-gold-300 font-medium transition-colors ml-1">Create Account</button>
+                    {t('auth.noAccount', "Don't have an account?")}
+                    <button onClick={() => switchView('register')} className="text-gold-500 hover:text-gold-300 font-medium transition-colors ml-1">
+                      {t('auth.createAccountBtn', 'Create Account')}
+                    </button>
                   </p>
                 ) : (
                   <p className="text-caption text-ivory-300">
-                    Already have an account? <button onClick={() => switchView('login')} className="text-gold-500 hover:text-gold-300 font-medium transition-colors ml-1">Sign In</button>
+                    {t('auth.haveAccount', 'Already have an account?')}
+                    <button onClick={() => switchView('login')} className="text-gold-500 hover:text-gold-300 font-medium transition-colors ml-1">
+                      {t('auth.signInBtn', 'Sign In')}
+                    </button>
                   </p>
                 )}
               </div>

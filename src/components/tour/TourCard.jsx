@@ -35,7 +35,8 @@ const marketFlag = (market) => {
 
 const TourCard = ({ tour }) => {
   const { t } = useTranslation();
-  const durationLabel = tour.duration.split('/')[0].trim();
+  const translatedDuration = t(`data.${tour.duration}`, tour.duration);
+  const durationLabel = translatedDuration.split('/')[0].trim();
 
   return (
     <motion.div
@@ -48,7 +49,7 @@ const TourCard = ({ tour }) => {
       {/* Image */}
       <div className="relative h-[280px] overflow-hidden">
         <div className="absolute top-4 left-4 z-10 bg-obsidian-900/80 backdrop-blur-md text-gold-500 text-caption px-4 py-1.5 rounded-full border border-gold-500/30 shadow-glass">
-          {tour.type} · {durationLabel}
+          {t(`data.${tour.type}`, tour.type)} · {durationLabel}
         </div>
 
         <div className="absolute top-4 right-4 z-10 bg-obsidian-900/60 backdrop-blur-md text-base px-2.5 py-1 rounded-full border border-white/10 shadow-glass select-none">
@@ -57,7 +58,7 @@ const TourCard = ({ tour }) => {
 
         <img
           src={tour.images[0]}
-          alt={`${tour.title} — ${tour.destination}`}
+          alt={`${t(`data.${tour.title}`, tour.title)} — ${t(`nav.${tour.destination}`, tour.destination)}`}
           className="w-full h-full object-cover transform scale-100 group-hover:scale-[1.06] cinematic-transition"
           loading="lazy"
         />
@@ -68,17 +69,17 @@ const TourCard = ({ tour }) => {
       {/* Content */}
       <div className="p-6 flex flex-col flex-grow">
         <span className="text-caption text-gold-600 uppercase tracking-widest mb-1 block">
-          {tour.destination}
+          {t(`nav.${tour.destination}`, tour.destination)}
         </span>
 
         <Link to={`/tours/${tour.slug}`}>
           <h3 className="text-display-md text-obsidian-900 mb-3 line-clamp-2 group-hover:text-gold-700 transition-colors">
-            {tour.title}
+            {t(`data.${tour.title}`, tour.title)}
           </h3>
         </Link>
 
         <p className="text-body-sm text-obsidian-500 line-clamp-3 mb-4 flex-grow">
-          {tour.description}
+          {t(`data.${tour.description}`, tour.description)}
         </p>
 
         <div className="flex items-center gap-2 mb-6">

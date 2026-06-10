@@ -37,7 +37,7 @@ const TourDetails = () => {
   return (
     <div className="w-full bg-obsidian-50 pb-24">
       <Helmet>
-        <title>{t(`data.${tour.title}`, tour.title)} | Luxury Travel</title>
+        <title>{t(`data.${tour.title}`, tour.title)} | {t('site.luxuryTravel', 'Luxury Travel')}</title>
         <meta name="description" content={t(`data.${tour.description}`, tour.description).substring(0, 150) + '...'} />
       </Helmet>
 
@@ -100,7 +100,7 @@ const TourDetails = () => {
             <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
               <FaGlobe className="text-gold-500 text-2xl mb-1" />
               <span className="text-caption text-obsidian-500 uppercase">{t('tour.languages', 'Languages')}</span>
-              <span className="text-body-md font-semibold text-obsidian-900">{tour.language === 'pt-BR' ? 'Português' : 'Italiano'}</span>
+              <span className="text-body-md font-semibold text-obsidian-900">{tour.language === 'pt-BR' ? t('languages.portuguese', 'Português') : t('languages.italian', 'Italiano')}</span>
             </div>
           </div>
 
@@ -140,8 +140,8 @@ const TourDetails = () => {
                 >
                   {activeTab === 'description' && (
                     <div className="text-body-lg text-obsidian-700 leading-relaxed">
-                      <p className="mb-6">{tour.description}</p>
-                      <p>{tour.language === 'pt-BR' ? 'Imersão premium sob medida com serviços de classe executiva.' : 'Un viaggio esclusivo curato nei minimi dettagli per il massimo comfort.'}</p>
+                      <p className="mb-6">{t(`data.${tour.description}`, tour.description)}</p>
+                      <p>{tour.language === 'pt-BR' ? t('tour.premiumImmersion', 'Imersão premium sob medida com serviços de classe executiva.') : t('tour.exclusiveJourney', 'Un viaggio esclusivo curato nei minimi dettagli per il massimo comfort.')}</p>
                     </div>
                   )}
 
@@ -152,7 +152,7 @@ const TourDetails = () => {
                           <div className="w-6 h-6 rounded-full bg-gold-50 flex items-center justify-center text-gold-500">
                             <FaCheck size={12} />
                           </div>
-                          {highlight}
+                          {t(`data.${highlight}`, highlight)}
                         </li>
                       ))}
                     </ul>
@@ -164,10 +164,10 @@ const TourDetails = () => {
               <div className="mt-16 pt-12 border-t border-gray-200">
                 <div className="mb-10">
                   <span className="text-caption text-gold-500 uppercase tracking-widest font-semibold block mb-2">
-                    {tour.language === 'pt-BR' ? 'SUA JORNADA PASSO A PASSO' : 'IL TUO VIAGGIO GIORNO PER GIORNO'}
+                    {t('tour.stepByStep', 'SUA JORNADA PASSO A PASSO')}
                   </span>
                   <h2 className="text-display-md text-3xl text-obsidian-900 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
-                    {tour.language === 'pt-BR' ? 'Roteiro Detalhado' : 'Itinerario Dettagliato'}
+                    {t('tour.detailedItinerary', 'Detailed Itinerary')}
                   </h2>
                 </div>
 
@@ -196,7 +196,7 @@ const TourDetails = () => {
                             className="w-full flex items-center justify-between p-6 text-left"
                           >
                             <h3 className="text-body-lg font-semibold text-obsidian-900">
-                              <span className="text-gold-600 mr-2 font-display">{tour.language === 'pt-BR' ? 'Dia' : 'Giorno'} {day.day} &mdash;</span> {day.title}
+                              <span className="text-gold-600 mr-2 font-display">{t('tour.day', 'Day')} {day.day} &mdash;</span> {t(`data.${day.title}`, day.title)}
                             </h3>
                             <motion.div animate={{ rotate: expandedDay === day.day ? 180 : 0 }}>
                               <FaChevronDown className="text-gold-500" />
@@ -215,22 +215,22 @@ const TourDetails = () => {
                                   <div className="flex items-start gap-4 pb-4 border-b border-[rgba(201,162,39,0.1)]">
                                     <span className="text-2xl mt-1">🌅</span>
                                     <div>
-                                      <span className="font-bold text-[#C9A227] block mb-1">{tour.language === 'pt-BR' ? 'Manhã' : 'Mattina'}</span>
-                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{day.morning}</p>
+                                      <span className="font-bold text-[#C9A227] block mb-1">{t('tour.morning', 'Morning')}</span>
+                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{t(`data.${day.morning}`, day.morning)}</p>
                                     </div>
                                   </div>
                                   <div className="flex items-start gap-4 pb-4 border-b border-[rgba(201,162,39,0.1)]">
                                     <span className="text-2xl mt-1">☀️</span>
                                     <div>
-                                      <span className="font-bold text-[#C9A227] block mb-1">{tour.language === 'pt-BR' ? 'Tarde' : 'Pomeriggio'}</span>
-                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{day.afternoon}</p>
+                                      <span className="font-bold text-[#C9A227] block mb-1">{t('tour.afternoon', 'Afternoon')}</span>
+                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{t(`data.${day.afternoon}`, day.afternoon)}</p>
                                     </div>
                                   </div>
                                   <div className="flex items-start gap-4">
                                     <span className="text-2xl mt-1">🌙</span>
                                     <div>
-                                      <span className="font-bold text-[#C9A227] block mb-1">{tour.language === 'pt-BR' ? 'Noite' : 'Sera'}</span>
-                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{day.evening}</p>
+                                      <span className="font-bold text-[#C9A227] block mb-1">{t('tour.evening', 'Evening')}</span>
+                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{t(`data.${day.evening}`, day.evening)}</p>
                                     </div>
                                   </div>
                                 </div>
@@ -247,23 +247,23 @@ const TourDetails = () => {
               {/* Included / Excluded */}
               <div className="mt-16 pt-12 border-t border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-display-md text-2xl mb-6">{tour.language === 'pt-BR' ? 'O Que Está Incluso' : 'Incluso nel Pacchetto'}</h3>
+                  <h3 className="text-display-md text-2xl mb-6">{t('tourDetail.included', 'What is Included')}</h3>
                   <ul className="flex flex-col gap-3">
                     {tour.included && tour.included.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700">
                         <FaCheck className="text-sage-500 mt-1 flex-shrink-0" />
-                        <span>{item}</span>
+                        <span>{t(`data.${item}`, item)}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-display-md text-2xl mb-6">{tour.language === 'pt-BR' ? 'O Que Não Está Incluso' : 'Escluso dal Pacchetto'}</h3>
+                  <h3 className="text-display-md text-2xl mb-6">{t('tourDetail.excluded', 'What is Excluded')}</h3>
                   <ul className="flex flex-col gap-3">
                     {tour.excluded && tour.excluded.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700">
                         <FaTimes className="text-red-400 mt-1 flex-shrink-0" />
-                        <span>{item}</span>
+                        <span>{t(`data.${item}`, item)}</span>
                       </li>
                     ))}
                   </ul>
@@ -275,7 +275,7 @@ const TourDetails = () => {
             <div className="lg:w-1/3">
               <div className="sticky top-32 bg-obsidian-900 text-ivory-50 p-8 rounded-2xl shadow-card">
                 <div className="text-center mb-8 border-b border-ivory-50/10 pb-8">
-                  <span className="block text-body-md text-ivory-300 mb-2">{t('tourCard.from', 'Starting from')}</span>
+                  <span className="block text-body-md text-ivory-300 mb-2">{t('tourCard.startingFrom', 'Starting from')}</span>
                   <div className="text-display-xl text-gold-500">${tour.price}</div>
                   <span className="block text-caption text-ivory-300 mt-2">{t('tour.perPerson', 'per person')}</span>
                 </div>
@@ -301,12 +301,12 @@ const TourDetails = () => {
             <div key={tData.id} className="min-w-[320px] md:min-w-[400px] snap-center">
               <Link to={`/tours/${tData.slug}`} className="block h-full group">
                 <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-card">
-                  <img src={tData.images[0]} alt={tData.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+                  <img src={tData.images[0]} alt={t(`data.${tData.title}`, tData.title)} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian-900/90 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 right-6">
-                    <h3 className="text-display-md text-ivory-50 mb-2 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{tData.title}</h3>
+                    <h3 className="text-display-md text-ivory-50 mb-2 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t(`data.${tData.title}`, tData.title)}</h3>
                     <div className="flex items-center justify-between text-caption text-ivory-300">
-                      <span>{tData.duration}</span>
+                      <span>{t(`data.${tData.duration}`, tData.duration)}</span>
                       <span className="text-gold-500">${tData.price}</span>
                     </div>
                   </div>
@@ -340,7 +340,7 @@ const TourDetails = () => {
             onClick={() => setIsLightboxOpen(false)}
           >
             <button className="absolute top-6 right-6 text-ivory-50 hover:text-gold-500 z-[101]"><FaTimes size={32} /></button>
-            <img src={tour.images[0]} alt={tour.title} className="max-w-[90vw] max-h-[90vh] object-contain" onClick={e => e.stopPropagation()} />
+            <img src={tour.images[0]} alt={t(`data.${tour.title}`, tour.title)} className="max-w-[90vw] max-h-[90vh] object-contain" onClick={e => e.stopPropagation()} />
           </motion.div>
         )}
       </AnimatePresence>

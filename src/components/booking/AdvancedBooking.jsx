@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCheckCircle } from 'react-icons/fa';
 import Button from '../ui/Button';
 import { fadeInUp } from '../../animations/variants';
 
 const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
+  const { t } = useTranslation();
   const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success'
 
   // Form State
@@ -46,10 +48,18 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
     }, 1500);
   };
 
-  // Generate Guest Fields Array
+  // Generate Guest Fields Array with localized labels
   const guestFields = [
-    ...Array.from({ length: Math.max(0, formData.adults) }, (_, i) => `Adult ${i + 1}`),
-    ...Array.from({ length: Math.max(0, formData.children) }, (_, i) => `Child ${i + 1}`),
+    ...Array.from({ length: Math.max(0, formData.adults) }, (_, i) => ({
+      key: `Adult ${i + 1}`,
+      label: t('booking.adultNumFullName', 'Adult {{num}} Full Name', { num: i + 1 }),
+      placeholder: t('booking.adultNumFullName', 'Adult {{num}} Full Name', { num: i + 1 })
+    })),
+    ...Array.from({ length: Math.max(0, formData.children) }, (_, i) => ({
+      key: `Child ${i + 1}`,
+      label: t('booking.childNumFullName', 'Child {{num}} Full Name', { num: i + 1 }),
+      placeholder: t('booking.childNumFullName', 'Child {{num}} Full Name', { num: i + 1 })
+    })),
   ];
 
   return (
@@ -69,9 +79,9 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
             >
               <FaCheckCircle className="text-gold-500 text-6xl mb-4" />
             </motion.div>
-            <h3 className="text-display-md text-ivory-50 mb-2 font-display">Booking Confirmed</h3>
+            <h3 className="text-display-md text-ivory-50 mb-2 font-display">{t('booking.reservationConfirmed', 'Booking Confirmed')}</h3>
             <p className="text-body-md text-ivory-300">
-              Your reservation request for {tourTitle} has been received. Our team will contact you to finalize the payment and details.
+              {t('booking.reservationSuccessDesc', 'Your reservation request for {{tourTitle}} has been received. Our team will contact you to finalize the payment and details.', { tourTitle: t(`data.${tourTitle}`, tourTitle) })}
             </p>
           </motion.div>
         ) : (
@@ -84,17 +94,17 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
             className="flex flex-col gap-6 w-full"
           >
             <div className="flex flex-col text-center border-b border-ivory-50/10 pb-6">
-              <h3 className="text-display-md text-ivory-50 mb-1 font-display">Advanced Booking</h3>
-              <p className="text-caption text-gold-500 mb-4">{tourTitle}</p>
+              <h3 className="text-display-md text-ivory-50 mb-1 font-display">{t('booking.advancedBookingTitle', 'Advanced Booking')}</h3>
+              <p className="text-caption text-gold-500 mb-4">{t(`data.${tourTitle}`, tourTitle)}</p>
               <div>
-                <span className="block text-caption text-ivory-300">Total Price</span>
+                <span className="block text-caption text-ivory-300">{t('booking.totalPrice', 'Total Price')}</span>
                 <span className="text-display-md text-gold-500 text-2xl">${totalPrice.toFixed(2)}</span>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex flex-col gap-1 text-left w-full">
-                <label className="text-caption text-gold-500 font-medium">Arrival Date</label>
+                <label className="text-caption text-gold-500 font-medium">{t('booking.arrivalDate', 'Arrival Date')}</label>
                 <input
                   type="date"
                   name="arrivalDate"
@@ -105,7 +115,7 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
                 />
               </div>
               <div className="flex flex-col gap-1 text-left w-full">
-                <label className="text-caption text-gold-500 font-medium">Departure Date</label>
+                <label className="text-caption text-gold-500 font-medium">{t('booking.departureDate', 'Departure Date')}</label>
                 <input
                   type="date"
                   name="departureDate"
@@ -119,7 +129,7 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="flex flex-col gap-1 text-left w-full">
-                <label className="text-caption text-gold-500 font-medium">Adults</label>
+                <label className="text-caption text-gold-500 font-medium">{t('booking.adults', 'Adults')}</label>
                 <input
                   type="number"
                   name="adults"
@@ -130,7 +140,7 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
                 />
               </div>
               <div className="flex flex-col gap-1 text-left w-full">
-                <label className="text-caption text-gold-500 font-medium">Children (2-12)</label>
+                <label className="text-caption text-gold-500 font-medium">{t('booking.childrenAge', 'Children (2-12)')}</label>
                 <input
                   type="number"
                   name="children"
@@ -141,7 +151,7 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
                 />
               </div>
               <div className="flex flex-col gap-1 text-left w-full">
-                <label className="text-caption text-gold-500 font-medium">Infants (&lt;2)</label>
+                <label className="text-caption text-gold-500 font-medium">{t('booking.infantsAge', 'Infants (<2)')}</label>
                 <input
                   type="number"
                   name="infants"
@@ -154,30 +164,30 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
             </div>
 
             <div className="flex flex-col gap-1 text-left w-full">
-              <label className="text-caption text-gold-500 font-medium">Email Address</label>
+              <label className="text-caption text-gold-500 font-medium">{t('booking.emailAddress', 'Email Address')}</label>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                placeholder="Where should we send the confirmation?"
+                placeholder={t('booking.emailPlaceholder', 'Where should we send the confirmation?')}
                 className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)]"
               />
             </div>
 
             {guestFields.length > 0 && (
               <div className="pt-6 border-t border-ivory-50/10 text-left w-full">
-                <h4 className="text-caption font-semibold text-gold-500 mb-4 uppercase tracking-wide">Guest Details</h4>
+                <h4 className="text-caption font-semibold text-gold-500 mb-4 uppercase tracking-wide">{t('booking.guestDetails', 'Guest Details')}</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {guestFields.map((field, idx) => (
                     <div key={idx} className="flex flex-col gap-1 w-full">
-                      <label className="text-caption text-ivory-300 font-medium">{field} Full Name</label>
+                      <label className="text-caption text-ivory-300 font-medium">{field.label}</label>
                       <input
                         type="text"
-                        placeholder={`${field} Full Name`}
+                        placeholder={field.placeholder}
                         required
-                        onChange={(e) => handleGuestNameChange(field, e.target.value)}
+                        onChange={(e) => handleGuestNameChange(field.key, e.target.value)}
                         className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)]"
                       />
                     </div>
@@ -192,14 +202,14 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
                 onClick={onClose}
                 className="w-full md:w-auto px-6 py-3 rounded-full border border-ivory-300/30 text-ivory-300 hover:text-ivory-50 transition-colors text-[16px]"
               >
-                Cancel
+                {t('common.cancel', 'Cancel')}
               </button>
               <button
                 type="submit"
                 disabled={status === 'submitting'}
                 className="w-full md:w-auto px-8 py-3 bg-gold-500 text-obsidian-900 font-semibold rounded-full shadow-[0_0_20px_rgba(201,162,39,0.4)] hover:scale-105 transition-transform text-[16px]"
               >
-                {status === 'submitting' ? 'Processing...' : 'Book Now'}
+                {status === 'submitting' ? t('common.processing', 'Processing...') : t('nav.bookNow', 'Book Now')}
               </button>
             </div>
           </motion.form>
