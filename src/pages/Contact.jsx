@@ -11,7 +11,7 @@ const Contact = () => {
     <div className="w-full bg-obsidian-50 pb-24">
       <Helmet>
         <title>{t('contact.title', 'Contact Us | Luxury Travel')}</title>
-        <meta name="description" content={t('contact.seoDesc', 'Get in touch with our luxury travel concierges to start crafting your bespoke journey to Egypt, Jordan, and Turkey.')} />
+        <meta name="description" content={t('contact.seoDesc', 'Get in touch with our luxury travel concierges to start crafting your bespoke journey to Italy, Spain, and Brazil.')} />
       </Helmet>
       <section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-obsidian-900"></div>

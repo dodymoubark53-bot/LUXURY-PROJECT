@@ -45,9 +45,9 @@ const Navbar = () => {
     {
       name: t('nav.destinations'),
       dropdown: [
-        { name: t('nav.egypt'), path: '/destinations/egypt' },
-        { name: t('nav.jordan'), path: '/destinations/jordan' },
-        { name: t('nav.turkey'), path: '/destinations/turkey' },
+        { name: t('nav.italy'), path: '/destinations/italy' },
+        { name: t('nav.spain'), path: '/destinations/spain' },
+        { name: t('nav.brazil'), path: '/destinations/brazil' },
       ]
     },
     { name: t('nav.about'), path: '/about' },
@@ -220,6 +220,50 @@ const Navbar = () => {
 
         {/* Mobile Hamburger & Login */}
         <div className="lg:hidden flex items-center gap-4 z-50">
+          <div className="relative">
+            <button
+              onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+              className="text-white hover:text-[#F5A623] transition-colors p-2 flex items-center gap-2"
+            >
+              <FaGlobe /> <span className="text-caption uppercase hidden sm:block font-medium">{
+                i18n.language === 'ar' ? 'العربية' :
+                  i18n.language === 'es' ? 'Español' :
+                    i18n.language === 'pt' ? 'Português' : 'English'
+              }</span>
+            </button>
+
+            <AnimatePresence>
+              {langDropdownOpen && (
+                <motion.div
+                  variants={dropdownVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="absolute top-full right-0 mt-4 w-40 bg-[#1A1A2E] border border-white/10 rounded-lg overflow-hidden shadow-xl"
+                >
+                  {[
+                    { code: 'en', label: 'English', flag: '🇬🇧' },
+                    { code: 'ar', label: 'العربية', flag: '🇸🇦' },
+                    { code: 'es', label: 'Español', flag: '🇪🇸' },
+                    { code: 'pt', label: 'Português', flag: '🇧🇷' },
+                  ].map(lang => (
+                    <button
+                      key={lang.code}
+                      onClick={() => changeLanguage(lang.code)}
+                      className={`w-full text-left px-4 py-3 flex items-center justify-between text-body-md border-b border-white/5 last:border-0 transition-colors ${i18n.language === lang.code ? 'text-[#F5A623] font-semibold bg-white/5' : 'text-white hover:text-[#1A1A2E] hover:bg-[#F5A623]'}`}
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="text-lg">{lang.flag}</span>
+                        <span>{lang.label}</span>
+                      </span>
+                      {i18n.language === lang.code && <span className="text-[#F5A623]">✓</span>}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
           {!user ? (
             <button onClick={() => setIsLoginModalOpen(true)} className="text-white hover:text-[#F5A623] transition-colors">
               <FaUserCircle size={22} />
@@ -234,6 +278,7 @@ const Navbar = () => {
             <FaBars size={24} />
           </button>
         </div>
+
 
         {/* Mobile Menu Overlay */}
         <AnimatePresence>

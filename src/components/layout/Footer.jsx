@@ -17,7 +17,7 @@ const Footer = () => {
               <Logo theme="dark" height={48} />
             </Link>
             <p className="text-body-md mb-6 opacity-80">
-              {t('footer.desc', 'Curating award-winning DUNAS TRAVEL experiences across Egypt, Jordan, and Turkey since 2010.')}
+              {t('footer.desc', 'Curating award-winning DUNAS TRAVEL experiences across Italy, Spain, and Brazil since 2010.')}
             </p>
             <div className="flex items-center gap-4">
               <a href="#" className="footer-social w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[#F5A623] hover:text-[#1A1A2E] transition-all duration-300 hover:scale-110">
@@ -48,9 +48,9 @@ const Footer = () => {
           <div>
             <h4 className="text-white mb-6 text-lg font-semibold">{t('nav.destinations')}</h4>
             <ul className="flex flex-col gap-3">
-              <li><Link to="/destinations/egypt" className="hover:text-[#F5A623] transition-colors">{t('nav.egypt')}</Link></li>
-              <li><Link to="/destinations/jordan" className="hover:text-[#F5A623] transition-colors">{t('nav.jordan')}</Link></li>
-              <li><Link to="/destinations/turkey" className="hover:text-[#F5A623] transition-colors">{t('nav.turkey')}</Link></li>
+              <li><Link to="/destinations/italy" className="hover:text-[#F5A623] transition-colors">{t('nav.italy')}</Link></li>
+              <li><Link to="/destinations/spain" className="hover:text-[#F5A623] transition-colors">{t('nav.spain')}</Link></li>
+              <li><Link to="/destinations/brazil" className="hover:text-[#F5A623] transition-colors">{t('nav.brazil')}</Link></li>
             </ul>
           </div>
 

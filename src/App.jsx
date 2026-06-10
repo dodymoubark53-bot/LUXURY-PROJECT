@@ -11,9 +11,9 @@ const About = lazy(() => import("./pages/About"));
 const Blogs = lazy(() => import("./pages/Blogs"));
 const Services = lazy(() => import("./pages/Services"));
 const Contact = lazy(() => import("./pages/Contact"));
-const Egypt = lazy(() => import("./pages/destinations/Egypt"));
-const Jordan = lazy(() => import("./pages/destinations/Jordan"));
-const Turkey = lazy(() => import("./pages/destinations/Turkey"));
+const Italy = lazy(() => import("./pages/destinations/Italy"));
+const Spain = lazy(() => import("./pages/destinations/Spain"));
+const Brazil = lazy(() => import("./pages/destinations/Brazil"));
 const Destinations = lazy(() => import("./pages/destinations/Destinations"));
 const TourDetails = lazy(() => import("./pages/tours/TourDetails"));
 const BlogDetails = lazy(() => import("./pages/blogs/BlogDetails"));
@@ -95,6 +95,11 @@ function App() {
     document.documentElement.dir = dir;
     document.documentElement.lang = i18n.language;
   }, [i18n.language]);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
 
   return (
     <>
@@ -184,26 +189,26 @@ function App() {
                     }
                   />
                   <Route
-                    path="egypt"
+                    path="italy"
                     element={
                       <PageTransition>
-                        <Egypt />
+                        <Italy />
                       </PageTransition>
                     }
                   />
                   <Route
-                    path="jordan"
+                    path="spain"
                     element={
                       <PageTransition>
-                        <Jordan />
+                        <Spain />
                       </PageTransition>
                     }
                   />
                   <Route
-                    path="turkey"
+                    path="brazil"
                     element={
                       <PageTransition>
-                        <Turkey />
+                        <Brazil />
                       </PageTransition>
                     }
                   />

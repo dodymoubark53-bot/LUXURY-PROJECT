@@ -13,24 +13,22 @@ import { transportation } from "../data/transportation";
 
 const destinationsData = [
   {
-    id: "egypt",
-    name: "Egypt",
-    desc: "The Land of Pharaohs",
-    image: "/imgs/egypt/pharaohs & pyramid.jpg",
+    id: "italy",
+    name: "Italy",
+    desc: "La Dolce Vita",
+    image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80",
   },
   {
-    id: "jordan",
-    name: "Jordan",
-    desc: "The Hashemite Kingdom",
-    image:
-      "https://images.unsplash.com/photo-1580834341580-8c17a3a630ca?auto=format&fit=crop&w=800&q=80",
+    id: "spain",
+    name: "Spain",
+    desc: "Passion & History",
+    image: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=800&q=80",
   },
   {
-    id: "turkey",
-    name: "Turkey",
-    desc: "Where Continents Meet",
-    image:
-      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=800&q=80",
+    id: "brazil",
+    name: "Brazil",
+    desc: "Land of Sun & Samba",
+    image: "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -82,12 +80,12 @@ const Home = () => {
   const galleryImages = [
     {
       src: "/imgs/gallery/ephesus & the aegean coast.jpg",
-      dest: "Turkey",
+      dest: "Brazil",
       tag: "Tour",
     },
     {
       src: "/imgs/gallery/grand tour of turkey.jpg",
-      dest: "Turkey",
+      dest: "Brazil",
       tag: "Tour",
     },
     { src: "/imgs/gallery/oip (1).webp", dest: "Gallery", tag: "Photo" },
@@ -96,20 +94,20 @@ const Home = () => {
     { src: "/imgs/gallery/oip (4).webp", dest: "Gallery", tag: "Photo" },
     { src: "/imgs/gallery/oip (5).webp", dest: "Gallery", tag: "Photo" },
     { src: "/imgs/gallery/oip.webp", dest: "Gallery", tag: "Photo" },
-    { src: "/imgs/gallery/pharaohs & pyramid.jpg", dest: "Egypt", tag: "Tour" },
+    { src: "/imgs/gallery/pharaohs & pyramid.jpg", dest: "Italy", tag: "Tour" },
     {
       src: "/imgs/gallery/ultimate jordan grand tour.webp",
-      dest: "Jordan",
+      dest: "Spain",
       tag: "Tour",
     },
     {
       src: "/imgs/gallery/ultimate royal egypt..jpg",
-      dest: "Egypt",
+      dest: "Italy",
       tag: "Tour",
     },
     {
       src: "/imgs/gallery/wadi rum desert safari.webp",
-      dest: "Jordan",
+      dest: "Spain",
       tag: "Safari",
     },
   ];
@@ -146,14 +144,18 @@ const Home = () => {
 
   // Pick 4 tours for the Featured section
   const featuredToursList = [
-    tours.find((t) => t.destination === "egypt"),
-    tours.find((t) => t.destination === "jordan"),
-    tours.find((t) => t.destination === "turkey"),
+    tours.find((t) => t.destination === "italy"),
+    tours.find((t) => t.destination === "brazil"),
     tours.find(
       (t) =>
-        t.destination === "egypt" &&
-        t.id !== tours.find((x) => x.destination === "egypt").id,
-    ) || tours[3],
+        t.destination === "italy" &&
+        t.id !== tours.find((x) => x.destination === "italy")?.id,
+    ),
+    tours.find(
+      (t) =>
+        t.destination === "brazil" &&
+        t.id !== tours.find((x) => x.destination === "brazil")?.id,
+    ),
   ].filter(Boolean);
 
   const handleDestinationClick = (id) => {
@@ -166,20 +168,20 @@ const Home = () => {
         <title>
           {t(
             "home.metaTitle",
-            "Dunas Travel | Award-Winning Experiences in Egypt, Jordan, Turkey",
+            "Dunas Travel | Award-Winning Experiences in Italy, Spain, Brazil",
           )}
         </title>
         <meta
           name="description"
           content={t(
             "home.metaDesc",
-            "Experience true luxury with Dunas Travel — curated journeys through the timeless wonders of Egypt, Jordan, and Turkey.",
+            "Experience true luxury with Dunas Travel — curated journeys through the timeless wonders of Italy, Spain, and Brazil.",
           )}
         />
         <meta property="og:title" content="Dunas Travel" />
         <meta
           property="og:description"
-          content="Premium luxury travel agency — Egypt, Jordan & Turkey"
+          content="Premium luxury travel agency — Italy, Spain & Brazil"
         />
         <meta property="og:image" content="/dunas-travel-logo.png" />
         <link rel="icon" type="image/png" href="/dunas-travel-logo.png" />
@@ -650,8 +652,8 @@ const Home = () => {
               transition={{ delay: 0.3 }}
               className="text-body-lg text-obsidian-700 max-w-2xl mx-auto"
             >
-              Luxury vehicles and professional drivers — available across Egypt,
-              Jordan & Turkey
+              Luxury vehicles and professional drivers — available across Italy,
+              Spain & Brazil
             </motion.p>
             <motion.div
               initial={{ width: 0 }}

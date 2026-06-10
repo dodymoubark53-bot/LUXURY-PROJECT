@@ -31,7 +31,7 @@ const Transportation = () => {
     <div className="w-full bg-obsidian-50 pb-24">
       <Helmet>
         <title>{t('nav.transportation', 'Transportation')} | {t('services.seoServices', 'Luxury Services')}</title>
-        <meta name="description" content={t('transportation.seoDesc', 'Premium vehicles with professional drivers across Egypt, Jordan & Turkey')} />
+        <meta name="description" content={t('transportation.seoDesc', 'Premium vehicles with professional drivers across Italy, Spain & Brazil')} />
       </Helmet>
 
       {/* Hero Section */}

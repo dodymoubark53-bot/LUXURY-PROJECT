@@ -9,22 +9,22 @@ import { tours } from '../../data/tours';
 
 const destinationsData = [
   {
-    id: 'egypt',
-    name: 'Egypt',
-    tag: 'Cradle of Civilization',
-    image: '/imgs/egypt/pharaohs & pyramid.jpg'
+    id: 'italy',
+    name: 'Italy',
+    tag: 'La Dolce Vita',
+    image: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80'
   },
   {
-    id: 'jordan',
-    name: 'Jordan',
-    tag: 'The Hashemite Kingdom',
-    image: 'https://images.unsplash.com/photo-1580834341580-8c17a3a630ca?auto=format&fit=crop&w=1600&q=80'
+    id: 'spain',
+    name: 'Spain',
+    tag: 'Passion & History',
+    image: 'https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=800&q=80'
   },
   {
-    id: 'turkey',
-    name: 'Turkey',
-    tag: 'Where Continents Meet',
-    image: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=1600&q=80'
+    id: 'brazil',
+    name: 'Brazil',
+    tag: 'Land of Sun & Samba',
+    image: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=800&q=80'
   }
 ];
 
@@ -35,14 +35,14 @@ const Destinations = () => {
     <div className="w-full bg-obsidian-50 pb-24">
       <Helmet>
         <title>{t('destinations.title', 'All Destinations | Luxury Travel')}</title>
-        <meta name="description" content={t('destinations.metaDesc', 'Explore our handpicked luxury tours across Egypt, Jordan, and Turkey.')} />
+        <meta name="description" content={t('destinations.metaDesc', 'Explore our handpicked luxury tours across Italy, Spain, and Brazil.')} />
       </Helmet>
 
       {/* Main Hero */}
       <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=compress&cs=tinysrgb&w=1600&fit=crop"
+            src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1600&q=80"
             alt="Destinations Hero"
             className="w-full h-full object-cover"
             loading="lazy"
@@ -62,15 +62,13 @@ const Destinations = () => {
           <motion.h1 variants={fadeInUp} className="text-display-xl text-ivory-50 mb-6">
             {t('destinations.heading', 'Our Destinations')}
           </motion.h1>
-          <motion.p variants={fadeInUp} className="text-body-lg text-ivory-300 max-w-2xl mx-auto">
-            {t('destinations.subHeading', 'Discover our exclusive portfolio of luxury journeys across the most mesmerizing landscapes of the Middle East and beyond.')}
-          </motion.p>
         </motion.div>
       </section>
 
       {/* Destinations Iteration */}
       <div className="container mx-auto px-6 -mt-16 relative z-20">
-        {destinationsData.map((dest, idx) => {
+        {destinationsData.map((dest) => {
+          // جلب كل الرحلات المحدثة التابعة لمصر
           const destTours = tours.filter(tour => tour.destination === dest.id);
           
           return (

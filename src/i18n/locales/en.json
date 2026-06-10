@@ -7,9 +7,6 @@
     "blogs": "Journal",
     "about": "About",
     "contact": "Contact",
-    "egypt": "Egypt",
-    "jordan": "Jordan",
-    "turkey": "Turkey",
     "hotels": "Luxury Hotels",
     "safari": "Desert Safari",
     "camping": "Glamping",
@@ -18,7 +15,10 @@
     "login": "Login",
     "profile": "My Profile",
     "bookings": "My Bookings",
-    "logout": "Logout"
+    "logout": "Logout",
+    "italy": "Italy",
+    "spain": "Spain",
+    "brazil": "Brazil"
   },
   "tour": {
     "duration": "Duration",
@@ -49,7 +49,7 @@
   "home": {
     "award": "Award-Winning Experiences",
     "heroTitle": "Journey Beyond \n the Ordinary",
-    "heroDesc": "Curating ultra-luxury, personalized itineraries through the timeless wonders of Egypt, Jordan, and Turkey. Experience the world's most captivating destinations in unparalleled style.",
+    "heroDesc": "Curating ultra-luxury, personalized itineraries through the timeless wonders of Italy, Spain, and Brazil. Experience the world's most captivating destinations in unparalleled style.",
     "exploreDest": "Explore Destinations",
     "bookJourney": "Book Your Journey",
     "scroll": "Scroll to discover",
@@ -90,9 +90,6 @@
     "review2": "The luxurious Dahabiya cruise was the highlight. Impeccable service.",
     "reviewDate1": "October 2025",
     "reviewDate2": "September 2025",
-    "Egypt": "Egypt",
-    "Jordan": "Jordan",
-    "Turkey": "Turkey",
     "Luxury Hotels": "Luxury Hotels",
     "Desert Safari": "Desert Safari",
     "Glamping": "Glamping",
@@ -101,9 +98,6 @@
     "Thrilling off-road adventures with premium SUVs and expert drivers.": "Thrilling off-road adventures with premium SUVs and expert drivers.",
     "Luxury tented camps under the stars with private chefs and amenities.": "Luxury tented camps under the stars with private chefs and amenities.",
     "Boutique Dahabiyas and luxury ships sailing the timeless river.": "Boutique Dahabiyas and luxury ships sailing the timeless river.",
-    "The Land of Pharaohs": "The Land of Pharaohs",
-    "The Hashemite Kingdom": "The Hashemite Kingdom",
-    "Where Continents Meet": "Where Continents Meet",
     "Nile Legacy Journey": "Nile Legacy Journey",
     "Experience the magic of Ancient Egypt on a luxurious 8-day journey from Cairo to Aswan, including a 4-night premium Nile cruise.": "Experience the magic of Ancient Egypt on a luxurious 8-day journey from Cairo to Aswan, including a 4-night premium Nile cruise.",
     "Pyramids of Giza": "Pyramids of Giza",
@@ -600,6 +594,12 @@
     "Toyota Coaster": "Toyota Coaster",
     "Tour Group": "Tour Group",
     "Mercedes Bus": "Mercedes Bus",
-    "Large Group": "Large Group"
+    "Large Group": "Large Group",
+    "Italy": "Italy",
+    "Spain": "Spain",
+    "Brazil": "Brazil",
+    "La Dolce Vita": "La Dolce Vita",
+    "Passion & History": "Passion & History",
+    "Land of Sun & Samba": "Land of Sun & Samba"
   }
 }

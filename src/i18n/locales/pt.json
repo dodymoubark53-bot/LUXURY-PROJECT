@@ -7,9 +7,6 @@
     "blogs": "Diário",
     "about": "Sobre",
     "contact": "Contato",
-    "egypt": "Egito",
-    "jordan": "Jordânia",
-    "turkey": "Turquia",
     "hotels": "Hotéis de Luxo",
     "safari": "Safári no Deserto",
     "camping": "Glamping",
@@ -18,7 +15,10 @@
     "login": "Entrar",
     "profile": "Meu Perfil",
     "bookings": "Minhas Reservas",
-    "logout": "Sair"
+    "logout": "Sair",
+    "italy": "Itália",
+    "spain": "Espanha",
+    "brazil": "Brasil"
   },
   "tour": {
     "duration": "Duração",
@@ -49,7 +49,7 @@
   "home": {
     "award": "Experiências Premiadas",
     "heroTitle": "Uma Jornada Além \n do Extraordinário",
-    "heroDesc": "Curadoria de roteiros ultraluxuosos e personalizados pelas maravilhas atemporais do Egito, Jordânia e Turquia. Experimente os destinos mais cativantes do mundo com um estilo inigualável.",
+    "heroDesc": "Curadoria de roteiros ultraluxuosos e personalizados pelas maravilhas atemporais do Itália, Espanha e Brasil. Experimente os destinos mais cativantes do mundo com um estilo inigualável.",
     "exploreDest": "Explorar Destinos",
     "bookJourney": "Reserve sua Jornada",
     "scroll": "Role para descobrir",
@@ -90,9 +90,6 @@
     "review2": "O luxuoso cruzeiro Dahabiya foi o ponto alto. Serviço impecável.",
     "reviewDate1": "Outubro de 2025",
     "reviewDate2": "Setembro de 2025",
-    "Egypt": "Egito",
-    "Jordan": "Jordânia",
-    "Turkey": "Turquia",
     "Luxury Hotels": "Hotéis de Luxo",
     "Desert Safari": "Safári no Deserto",
     "Glamping": "Glamping",
@@ -101,9 +98,6 @@
     "Thrilling off-road adventures with premium SUVs and expert drivers.": "Aventuras off-road emocionantes com SUVs premium e motoristas experientes.",
     "Luxury tented camps under the stars with private chefs and amenities.": "Acampamentos de luxo sob as estrelas com chefs particulares e comodidades.",
     "Boutique Dahabiyas and luxury ships sailing the timeless river.": "Dahabiyas boutique e navios de luxo navegando pelo rio atemporal.",
-    "The Land of Pharaohs": "A Terra dos Faraós",
-    "The Hashemite Kingdom": "O Reino Hachemita",
-    "Where Continents Meet": "Onde os Continentes se Encontram",
     "Nile Legacy Journey": "Jornada do Legado do Nilo",
     "Experience the magic of Ancient Egypt on a luxurious 8-day journey from Cairo to Aswan, including a 4-night premium Nile cruise.": "Experimente a magia do Antigo Egito em uma luxuosa viagem de 8 dias do Cairo a Aswan, incluindo um cruzeiro premium de 4 noites no Nilo.",
     "Pyramids of Giza": "Pirâmides de Gizé",
@@ -600,10 +594,16 @@
     "Toyota Coaster": "Montanha-russa Toyota",
     "Tour Group": "Grupo de turismo",
     "Mercedes Bus": "Ônibus Mercedes",
-    "Large Group": "Grupo Grande"
+    "Large Group": "Grupo Grande",
+    "Italy": "Itália",
+    "Spain": "Espanha",
+    "Brazil": "Brasil",
+    "La Dolce Vita": "La Dolce Vita",
+    "Passion & History": "Paixão e História",
+    "Land of Sun & Samba": "Terra do Sol e do Samba"
   },
   "footer": {
-    "desc": "Curadoria de experiências de viagens de luxo premiadas no Egito, Jordânia e Turquia desde 2010.",
+    "desc": "Curadoria de experiências de viagens de luxo premiadas no Itália, Espanha e Brasil desde 2010.",
     "quickLinks": "Links Rápidos",
     "address": "123 Avenida de Luxo, Cairo, Egito",
     "newsletter": "Assine nossa newsletter",
@@ -613,7 +613,7 @@
   },
   "contact": {
     "title": "Contate-nos | Viagens de Luxo",
-    "seoDesc": "Entre em contato com nossos concierges de viagens de luxo para começar a elaborar sua jornada sob medida para o Egito, Jordânia e Turquia.",
+    "seoDesc": "Entre em contato com nossos concierges de viagens de luxo para começar a elaborar sua jornada sob medida para o Itália, Espanha e Brasil.",
     "getInTouch": "Entrar em Contato",
     "office": "Escritório no Cairo",
     "address1": "123 Avenida de Luxo, Zamalek",

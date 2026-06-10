@@ -11,7 +11,7 @@ const About = () => {
     <div className="w-full bg-[#F8F9FF] pb-24">
       <Helmet>
         <title>{t('about.seoTitle', 'About Us | Dunas Travel')}</title>
-        <meta name="description" content={t('about.seoDesc', 'Discover our story. Redefining luxury travel since 2010 through bespoke journeys in Egypt, Jordan, and Turkey.')} />
+        <meta name="description" content={t('about.seoDesc', 'Discover our story. Redefining luxury travel since 2010 through bespoke journeys in Italy, Spain, and Brazil.')} />
       </Helmet>
       <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -28,7 +28,7 @@ const About = () => {
         <motion.div className="max-w-4xl mx-auto text-center" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
           <motion.h2 variants={fadeInUp} className="text-display-lg text-[#1A1A2E] mb-8">{t('about.subtitle', 'Redefining Dunas Travel Since 2010')}</motion.h2>
           <motion.p variants={fadeInUp} className="text-body-lg text-[#2A2A4E] leading-relaxed mb-12">
-            {t('about.desc', 'We believe that travel is an art form. For over a decade, we have dedicated ourselves to curating the most extraordinary, bespoke journeys through the ancient landscapes of Egypt, Jordan, and Turkey. Our mission is to seamlessly blend world-class luxury with authentic cultural immersion.')}
+            {t('about.desc', 'We believe that travel is an art form. For over a decade, we have dedicated ourselves to curating the most extraordinary, bespoke journeys through the ancient landscapes of Italy, Spain, and Brazil. Our mission is to seamlessly blend world-class luxury with authentic cultural immersion.')}
           </motion.p>
         </motion.div>
 

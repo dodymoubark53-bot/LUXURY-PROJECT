@@ -16,20 +16,22 @@ import AdvancedBooking from '../../components/booking/AdvancedBooking';
 const TourDetails = () => {
   const { t } = useTranslation();
   const { slug } = useParams();
-  const tour = tours.find(t => t.slug === slug) || tours[0]; // fallback to first for demo
+  
+  // البحث عن الجولة الفاخرة المطابقة للـ slug
+  const tour = tours.find(t => t.slug === slug) || tours[0]; 
+  
   const [activeTab, setActiveTab] = useState('description');
   const [expandedDay, setExpandedDay] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [activeForm, setActiveForm] = useState(null);
 
-  // Mock Suggested Tours
+  // جولات مقترحة من نفس السلسلة المحدثة
   const suggestedTours = tours.filter(t => t.slug !== tour.slug).slice(0, 3);
 
-  // Mock Reviews
   const reviews = [
     { id: 1, name: 'Eleanor R.', date: 'October 2025', rating: 5, comment: 'Absolutely breathtaking experience. The VIP access to the temples made it unforgettable.' },
-    { id: 2, name: 'James W.', date: 'September 2025', rating: 5, comment: 'The luxurious Dahabiya cruise was the highlight. Impeccable service.' }
+    { id: 2, name: 'James W.', date: 'September 2025', rating: 5, comment: 'The luxurious cruise was the highlight. Impeccable service.' }
   ];
 
   return (
@@ -93,19 +95,18 @@ const TourDetails = () => {
             <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
               <FaUserFriends className="text-gold-500 text-2xl mb-1" />
               <span className="text-caption text-obsidian-500 uppercase">{t('tour.groupSize', 'Group Size')}</span>
-              <span className="text-body-md font-semibold text-obsidian-900">{t(`data.${tour.groupSize}`, tour.groupSize)}</span>
+              <span className="text-body-md font-semibold text-obsidian-900">{tour.market === 'Brasil' ? '2-16' : '2-12'}</span>
             </div>
             <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
               <FaGlobe className="text-gold-500 text-2xl mb-1" />
               <span className="text-caption text-obsidian-500 uppercase">{t('tour.languages', 'Languages')}</span>
-              <span className="text-body-md font-semibold text-obsidian-900">{tour.languages.map(l => t(`data.${l}`, l)).join(', ')}</span>
+              <span className="text-body-md font-semibold text-obsidian-900">{tour.language === 'pt-BR' ? 'Português' : 'Italiano'}</span>
             </div>
           </div>
 
           <div className="p-8 lg:p-12 flex flex-col lg:flex-row gap-12">
-            
             <div className="lg:w-2/3">
-              {/* 4. Tabs: Description / Highlights / Itinerary */}
+              {/* 4. Tabs */}
               <div className="flex gap-8 border-b border-gray-200 mb-8 overflow-x-auto no-scrollbar">
                 {[
                   { id: 'description', label: t('tour.tabDescription', 'Description') },
@@ -137,54 +138,46 @@ const TourDetails = () => {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {/* Tab Content: Description */}
                   {activeTab === 'description' && (
                     <div className="text-body-lg text-obsidian-700 leading-relaxed">
-                      <p className="mb-6">{t(`data.${tour.description}`, tour.description)}</p>
-                      <p>{t('tour.descExtra', 'Immerse yourself in a carefully curated experience that blends rich history, cultural discovery, and uncompromising luxury. Every detail, from private transfers to exclusive access, has been arranged for your ultimate comfort.')}</p>
+                      <p className="mb-6">{tour.description}</p>
+                      <p>{tour.language === 'pt-BR' ? 'Imersão premium sob medida com serviços de classe executiva.' : 'Un viaggio esclusivo curato nei minimi dettagli per il massimo comfort.'}</p>
                     </div>
                   )}
 
-                  {/* Tab Content: Highlights */}
                   {activeTab === 'highlights' && (
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {tour.highlights.map((highlight, idx) => (
+                      {tour.highlights && tour.highlights.map((highlight, idx) => (
                         <li key={idx} className="flex items-center gap-3 text-body-lg text-obsidian-700">
                           <div className="w-6 h-6 rounded-full bg-gold-50 flex items-center justify-center text-gold-500">
                             <FaCheck size={12} />
                           </div>
-                          {t(`data.${highlight}`, highlight)}
+                          {highlight}
                         </li>
                       ))}
                     </ul>
                   )}
-
                 </motion.div>
               </AnimatePresence>
 
-              {/* Cinematic Itinerary Section */}
+              {/* Itinerary Section */}
               <div className="mt-16 pt-12 border-t border-gray-200">
                 <div className="mb-10">
-                  <span className="text-caption text-gold-500 uppercase tracking-widest font-semibold block mb-2">{t('tour.journeyDayByDay', 'YOUR JOURNEY DAY BY DAY')}</span>
-                  <h2 className="text-display-md text-3xl text-obsidian-900 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t('tour.detailedItinerary', 'Detailed Itinerary')}</h2>
+                  <span className="text-caption text-gold-500 uppercase tracking-widest font-semibold block mb-2">
+                    {tour.language === 'pt-BR' ? 'SUA JORNADA PASSO A PASSO' : 'IL TUO VIAGGIO GIORNO PER GIORNO'}
+                  </span>
+                  <h2 className="text-display-md text-3xl text-obsidian-900 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    {tour.language === 'pt-BR' ? 'Roteiro Detalhado' : 'Itinerario Dettagliato'}
+                  </h2>
                 </div>
 
                 <div className="relative pl-6 md:pl-10">
-                  {/* Golden Timeline Line */}
                   <div className="absolute left-[11px] md:left-[19px] top-8 bottom-8 w-[2px] bg-[rgba(201,162,39,0.2)]"></div>
-
                   <div className="flex flex-col gap-6">
                     {tour.itinerary && tour.itinerary.map((day) => (
                       <div key={day.day} className="relative">
-                        {/* Timeline Dot */}
                         <motion.div
-                          animate={{
-                            boxShadow: [
-                              '0 0 0 0 rgba(201,162,39,0.4)',
-                              '0 0 0 8px rgba(201,162,39,0)',
-                              '0 0 0 0 rgba(201,162,39,0.4)',
-                            ],
-                          }}
+                          animate={{ boxShadow: ['0 0 0 0 rgba(201,162,39,0.4)', '0 0 0 8px rgba(201,162,39,0)', '0 0 0 0 rgba(201,162,39,0.4)'] }}
                           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                           className="absolute -left-6 md:-left-10 top-[26px] w-3 h-3 bg-gold-500 rounded-full transform -translate-x-1/2 z-10"
                         />
@@ -203,7 +196,7 @@ const TourDetails = () => {
                             className="w-full flex items-center justify-between p-6 text-left"
                           >
                             <h3 className="text-body-lg font-semibold text-obsidian-900">
-                              <span className="text-gold-600 mr-2 font-display">{t('tour.day', 'Day')} {day.day} &mdash;</span> {t(`data.${day.title}`, day.title)}
+                              <span className="text-gold-600 mr-2 font-display">{tour.language === 'pt-BR' ? 'Dia' : 'Giorno'} {day.day} &mdash;</span> {day.title}
                             </h3>
                             <motion.div animate={{ rotate: expandedDay === day.day ? 180 : 0 }}>
                               <FaChevronDown className="text-gold-500" />
@@ -219,28 +212,25 @@ const TourDetails = () => {
                                 className="px-6 pb-6 overflow-hidden"
                               >
                                 <div className="bg-obsidian-900 p-6 rounded-xl flex flex-col gap-4 shadow-inner">
-                                  {/* Morning */}
                                   <div className="flex items-start gap-4 pb-4 border-b border-[rgba(201,162,39,0.1)]">
                                     <span className="text-2xl mt-1">🌅</span>
                                     <div>
-                                      <span className="font-bold text-[#C9A227] block mb-1">{t('tour.morning', 'Morning')}</span>
-                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{t(`data.${day.morning}`, day.morning)}</p>
+                                      <span className="font-bold text-[#C9A227] block mb-1">{tour.language === 'pt-BR' ? 'Manhã' : 'Mattina'}</span>
+                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{day.morning}</p>
                                     </div>
                                   </div>
-                                  {/* Afternoon */}
                                   <div className="flex items-start gap-4 pb-4 border-b border-[rgba(201,162,39,0.1)]">
                                     <span className="text-2xl mt-1">☀️</span>
                                     <div>
-                                      <span className="font-bold text-[#C9A227] block mb-1">{t('tour.afternoon', 'Afternoon')}</span>
-                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{t(`data.${day.afternoon}`, day.afternoon)}</p>
+                                      <span className="font-bold text-[#C9A227] block mb-1">{tour.language === 'pt-BR' ? 'Tarde' : 'Pomeriggio'}</span>
+                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{day.afternoon}</p>
                                     </div>
                                   </div>
-                                  {/* Evening */}
                                   <div className="flex items-start gap-4">
                                     <span className="text-2xl mt-1">🌙</span>
                                     <div>
-                                      <span className="font-bold text-[#C9A227] block mb-1">{t('tour.evening', 'Evening')}</span>
-                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{t(`data.${day.evening}`, day.evening)}</p>
+                                      <span className="font-bold text-[#C9A227] block mb-1">{tour.language === 'pt-BR' ? 'Noite' : 'Sera'}</span>
+                                      <p className="text-[#F5EDD6] text-body-md leading-relaxed">{day.evening}</p>
                                     </div>
                                   </div>
                                 </div>
@@ -254,78 +244,34 @@ const TourDetails = () => {
                 </div>
               </div>
 
-              {/* 6. Included / Excluded */}
+              {/* Included / Excluded */}
               <div className="mt-16 pt-12 border-t border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-display-md text-2xl mb-6">{t('tour.included', "What's Included")}</h3>
+                  <h3 className="text-display-md text-2xl mb-6">{tour.language === 'pt-BR' ? 'O Que Está Incluso' : 'Incluso nel Pacchetto'}</h3>
                   <ul className="flex flex-col gap-3">
-                    {tour.included.map((item, idx) => (
+                    {tour.included && tour.included.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700">
                         <FaCheck className="text-sage-500 mt-1 flex-shrink-0" />
-                        <span>{t(`data.${item}`, item)}</span>
+                        <span>{item}</span>
                       </li>
                     ))}
-                    {tour.included.length === 0 && <li className="text-obsidian-300 italic">{t('tour.noInclusions', 'No inclusions specified.')}</li>}
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-display-md text-2xl mb-6">{t('tour.excluded', "What's Excluded")}</h3>
+                  <h3 className="text-display-md text-2xl mb-6">{tour.language === 'pt-BR' ? 'O Que Não Está Incluso' : 'Escluso dal Pacchetto'}</h3>
                   <ul className="flex flex-col gap-3">
-                    {tour.excluded.map((item, idx) => (
+                    {tour.excluded && tour.excluded.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700">
                         <FaTimes className="text-red-400 mt-1 flex-shrink-0" />
-                        <span>{t(`data.${item}`, item)}</span>
+                        <span>{item}</span>
                       </li>
                     ))}
-                    {tour.excluded.length === 0 && <li className="text-obsidian-300 italic">{t('tour.noExclusions', 'No exclusions specified.')}</li>}
                   </ul>
                 </div>
               </div>
-
-              {/* 7. Reviews */}
-              <div className="mt-16 pt-12 border-t border-gray-200">
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-display-md text-2xl">{t('tour.guestReviews', 'Guest Reviews')}</h3>
-                  <div className="flex items-center gap-2">
-                    <FaStar className="text-gold-500 text-xl" />
-                    <span className="text-display-md text-2xl text-obsidian-900">{tour.rating}</span>
-                    <span className="text-body-md text-obsidian-500">({tour.reviewCount} {t('tourCard.reviews')})</span>
-                  </div>
-                </div>
-                
-                <div className="flex flex-col gap-6 mb-10">
-                  {reviews.map(review => (
-                    <div key={review.id} className="bg-obsidian-50 p-6 rounded-xl">
-                      <div className="flex items-center gap-1 text-gold-500 mb-3">
-                        {[...Array(review.rating)].map((_, i) => <FaStar key={i} size={14} />)}
-                      </div>
-                      <p className="text-body-md text-obsidian-700 mb-4 italic">"{t(`data.review${review.id}`, review.comment)}"</p>
-                      <div className="flex items-center gap-4 text-caption text-obsidian-500">
-                        <span className="font-semibold text-obsidian-900">{review.name}</span>
-                        <span>•</span>
-                        <span>{t(`data.reviewDate${review.id}`, review.date)}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Add Review Form */}
-                <div className="bg-ivory-50 border border-gray-200 p-8 rounded-xl">
-                  <h4 className="text-display-md text-xl mb-6">{t('tour.leaveReview', 'Leave a Review')}</h4>
-                  <form className="flex flex-col gap-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <input type="text" placeholder={t('contact.firstName', 'Your Name')} className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none" required />
-                      <input type="email" placeholder={t('contact.emailPlaceholder', 'Your Email')} className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none" required />
-                    </div>
-                    <textarea placeholder={t('tour.shareExperience', 'Share your experience...')} rows="4" className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none" required></textarea>
-                    <Button variant="outline-gold" className="self-start">{t('tour.submitReview', 'Submit Review')}</Button>
-                  </form>
-                </div>
-              </div>
-
             </div>
 
-            {/* Sidebar / Booking CTA */}
+            {/* Sidebar Booking */}
             <div className="lg:w-1/3">
               <div className="sticky top-32 bg-obsidian-900 text-ivory-50 p-8 rounded-2xl shadow-card">
                 <div className="text-center mb-8 border-b border-ivory-50/10 pb-8">
@@ -341,18 +287,13 @@ const TourDetails = () => {
                     {t('tour.inquire', 'Inquire Availability')}
                   </Button>
                 </div>
-                <div className="mt-6 flex items-center justify-center gap-2 text-caption text-ivory-300">
-                  <FaCheck className="text-gold-500" />
-                  <span>{t('tour.freeCancel', 'Free cancellation up to 30 days')}</span>
-                </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
 
-      {/* 8. Suggested Tours */}
+      {/* Suggested Tours */}
       <section className="container mx-auto px-6 py-24">
         <h2 className="text-display-lg text-obsidian-900 mb-12 text-center font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t('tour.youMayAlsoLike', 'You May Also Like')}</h2>
         <div className="flex gap-8 overflow-x-auto pb-8 snap-x no-scrollbar">
@@ -363,9 +304,9 @@ const TourDetails = () => {
                   <img src={tData.images[0]} alt={tData.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian-900/90 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 right-6">
-                    <h3 className="text-display-md text-ivory-50 mb-2 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t(`data.${tData.title}`, tData.title)}</h3>
+                    <h3 className="text-display-md text-ivory-50 mb-2 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{tData.title}</h3>
                     <div className="flex items-center justify-between text-caption text-ivory-300">
-                      <span>{t(`data.${tData.duration}`, tData.duration)}</span>
+                      <span>{tData.duration}</span>
                       <span className="text-gold-500">${tData.price}</span>
                     </div>
                   </div>
@@ -380,18 +321,12 @@ const TourDetails = () => {
       <AnimatePresence>
         {activeForm && (
           <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] bg-obsidian-900/80 flex items-center justify-center backdrop-blur-sm p-4"
             onClick={() => setActiveForm(null)}
           >
-            {activeForm === 'inquiry' && (
-              <InquiryForm onClose={() => setActiveForm(null)} tourTitle={tour.title} />
-            )}
-            {activeForm === 'booking' && (
-              <AdvancedBooking onClose={() => setActiveForm(null)} tourTitle={tour.title} basePricePerPerson={tour.price} />
-            )}
+            {activeForm === 'inquiry' && <InquiryForm onClose={() => setActiveForm(null)} tourTitle={tour.title} />}
+            {activeForm === 'booking' && <AdvancedBooking onClose={() => setActiveForm(null)} tourTitle={tour.title} basePricePerPerson={tour.price} />}
           </motion.div>
         )}
       </AnimatePresence>
@@ -400,21 +335,12 @@ const TourDetails = () => {
       <AnimatePresence>
         {isLightboxOpen && (
           <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] bg-obsidian-900/95 flex items-center justify-center backdrop-blur-sm"
             onClick={() => setIsLightboxOpen(false)}
           >
-            <button className="absolute top-6 right-6 text-ivory-50 hover:text-gold-500 z-[101]">
-              <FaTimes size={32} />
-            </button>
-            <img 
-              src={tour.images[activeImage] || '/images/tour-1.png'} 
-              alt={tour.title} 
-              className="max-w-[90vw] max-h-[90vh] object-contain"
-              onClick={e => e.stopPropagation()}
-            />
+            <button className="absolute top-6 right-6 text-ivory-50 hover:text-gold-500 z-[101]"><FaTimes size={32} /></button>
+            <img src={tour.images[0]} alt={tour.title} className="max-w-[90vw] max-h-[90vh] object-contain" onClick={e => e.stopPropagation()} />
           </motion.div>
         )}
       </AnimatePresence>
