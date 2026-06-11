@@ -12,7 +12,8 @@ const locales = {
   en: JSON.parse(fs.readFileSync(path.join(localesDir, 'en.json'), 'utf8')),
   ar: JSON.parse(fs.readFileSync(path.join(localesDir, 'ar.json'), 'utf8')),
   es: JSON.parse(fs.readFileSync(path.join(localesDir, 'es.json'), 'utf8')),
-  pt: JSON.parse(fs.readFileSync(path.join(localesDir, 'pt.json'), 'utf8'))
+  pt: JSON.parse(fs.readFileSync(path.join(localesDir, 'pt.json'), 'utf8')),
+  it: JSON.parse(fs.readFileSync(path.join(localesDir, 'it.json'), 'utf8'))
 };
 
 // Helper to check if a nested key path exists in an object

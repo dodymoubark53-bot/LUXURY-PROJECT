@@ -181,7 +181,8 @@ const Navbar = () => {
               <FaGlobe /> <span className="text-caption uppercase hidden sm:block font-medium">{
                 i18n.language === 'ar' ? 'العربية' :
                   i18n.language === 'es' ? 'Español' :
-                    i18n.language === 'pt' ? 'Português' : 'English'
+                    i18n.language === 'pt' ? 'Português' :
+                      i18n.language === 'it' ? 'Italiano' : 'English'
               }</span>
             </button>
 
@@ -199,6 +200,7 @@ const Navbar = () => {
                     { code: 'ar', label: 'العربية', flag: '🇸🇦' },
                     { code: 'es', label: 'Español', flag: '🇪🇸' },
                     { code: 'pt', label: 'Português', flag: '🇧🇷' },
+                    { code: 'it', label: 'Italiano', flag: '🇮🇹' },
                   ].map(lang => (
                     <button
                       key={lang.code}
@@ -228,7 +230,8 @@ const Navbar = () => {
               <FaGlobe /> <span className="text-caption uppercase hidden sm:block font-medium">{
                 i18n.language === 'ar' ? 'العربية' :
                   i18n.language === 'es' ? 'Español' :
-                    i18n.language === 'pt' ? 'Português' : 'English'
+                    i18n.language === 'pt' ? 'Português' :
+                      i18n.language === 'it' ? 'Italiano' : 'English'
               }</span>
             </button>
 
@@ -246,6 +249,7 @@ const Navbar = () => {
                     { code: 'ar', label: 'العربية', flag: '🇸🇦' },
                     { code: 'es', label: 'Español', flag: '🇪🇸' },
                     { code: 'pt', label: 'Português', flag: '🇧🇷' },
+                    { code: 'it', label: 'Italiano', flag: '🇮🇹' },
                   ].map(lang => (
                     <button
                       key={lang.code}
