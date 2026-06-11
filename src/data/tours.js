@@ -16,7 +16,7 @@ export const tours = [
     "price": 890,
     "rating": 4.7,
     "reviewCount": 312,
-    "images": ["/images/tours/cairo-express.jpg"],
+    "images": ["/imgs/Brazil/Cairo Express.jpg"],
     "highlights": [
       "Pirâmides de Giza e Esfinge",
       "Memphis e Sakkara",
@@ -56,7 +56,7 @@ export const tours = [
     "price": 1050,
     "rating": 4.8,
     "reviewCount": 198,
-    "images": ["/images/tours/cairo-alexandria.jpg"],
+    "images": ["/imgs/Brazil/Cairo Express with Alexandria.jpeg"],
     "highlights": [
       "Grandiosas Pirâmides de Giza",
       "Catacumbas de Kom El Shoqafa",
@@ -97,7 +97,7 @@ export const tours = [
     "price": 2190,
     "rating": 4.9,
     "reviewCount": 445,
-    "images": ["/images/tours/nile-cruise-classic.jpg"],
+    "images": ["/imgs/Brazil/Egito Clássico Cairo + Cruzeiro no Nilo.png"],
     "highlights": [
       "Cruzeiro de 5 estrelas pelo Rio Nilo",
       "Vale dos Reis e Templos de Luxor",
@@ -141,7 +141,7 @@ export const tours = [
     "price": 2490,
     "rating": 4.8,
     "reviewCount": 367,
-    "images": ["/images/tours/nile-cruise-ii.jpg"],
+    "images": ["/imgs/Brazil/Cairo with Cruise + Sharm El Sheikh.jpg"],
     "highlights": [
       "Roteiro invertido Luxor a Aswan",
       "Necrópole de Sakkara Completa",
@@ -186,7 +186,7 @@ export const tours = [
     "price": 2790,
     "rating": 4.7,
     "reviewCount": 289,
-    "images": ["/images/tours/cairo-hurghada.jpg"],
+    "images": ["/imgs/Brazil/Cairo + Cruzeiro + Mar Vermelho.jpg"],
     "highlights": [
       "Hospedagem All-Inclusive em Hurghada",
       "Cruzeiro no Nilo completo",
@@ -232,7 +232,7 @@ export const tours = [
     "price": 3090,
     "rating": 4.8,
     "reviewCount": 214,
-    "images": ["/images/tours/cairo-sharm.jpg"],
+    "images": ["/imgs/Brazil/Cairo with Cruise + Sharm El Sheikh.png"],
     "highlights": [
       "Paraíso subaquático de Sharm El Sheikh",
       "Roteiro estendido de 11 dias completos",
@@ -279,7 +279,7 @@ export const tours = [
     "price": 3390,
     "rating": 5.0,
     "reviewCount": 178,
-    "images": ["/images/tours/abu-simbel-ramses.jpg"],
+    "images": ["/imgs/Brazil/The Great Ramses.png"],
     "highlights": [
       "Noite exclusiva em Abu Simbel",
       "Show de Luzes e Som nos Templos de Ramsés II",
@@ -325,7 +325,7 @@ export const tours = [
     "price": 2890,
     "rating": 4.9,
     "reviewCount": 143,
-    "images": ["/images/tours/tesouros-egypt.jpg"],
+    "images": ["/imgs/Brazil/Treasures of Egypt with Alexandria.jpg"],
     "highlights": [
       "Estadia de 1 noite inteira em Alexandria",
       "Visita à lendária Biblioteca moderna de Alexandria",
