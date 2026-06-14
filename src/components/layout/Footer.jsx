@@ -88,19 +88,19 @@ const Footer = () => {
               </li>
             </ul>
 
-            <form className="relative">
+            <div className="relative">
               <input
                 type="email"
                 placeholder={t('footer.newsletter', 'Subscribe to newsletter')}
                 className="w-full bg-white/5 border border-white/10 rounded-full py-3 px-6 text-white outline-none focus:border-[#F5A623] transition-colors placeholder:text-white/40"
               />
-              <button
-                type="submit"
-                className="absolute right-1 top-1 bottom-1 bg-[#F5A623] hover:bg-[#F5A623]/80 text-[#1A1A2E] rounded-full px-6 font-medium transition-colors"
+              <Link
+                to="/contact"
+                className="absolute right-1 top-1 bottom-1 bg-[#F5A623] hover:bg-[#F5A623]/80 text-[#1A1A2E] rounded-full px-6 font-medium transition-colors flex items-center justify-center"
               >
                 {t('footer.join', 'Join')}
-              </button>
-            </form>
+              </Link>
+            </div>
           </div>
 
         </div>

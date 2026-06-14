@@ -44,10 +44,10 @@ const TailorTour = () => {
     }
   };
 
-  // Scroll to top on page mount
+  // Scroll to top on step change
   useEffect(() => {
-    scrollToTop();
-  }, []);
+    window.scrollTo(0, 0);
+  }, [step]);
 
   // Update dynamic passenger names array size
   useEffect(() => {

@@ -142,7 +142,6 @@ const Home = () => {
     { src: "/imgs/gallery/20.jpeg", dest: "Gallery", tag: "Photo" },
     { src: "/imgs/gallery/21.jpeg", dest: "Gallery", tag: "Photo" },
     { src: "/imgs/gallery/22.jpeg", dest: "Gallery", tag: "Photo" },
-
   ];
 
   const openLightbox = (index) => {
@@ -175,7 +174,6 @@ const Home = () => {
     ? tours.filter((t) => t.destination === activeDestination)
     : [];
 
-  // Pick 4 tours for the Featured section
   const featuredToursList = [
     tours.find((t) => t.destination === "egypt"),
     tours.find((t) => t.destination === "turkey"),
@@ -1113,6 +1111,46 @@ const Home = () => {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted Partners / Logos Section */}
+      <section className="py-10 bg-white">
+        <style>{`
+          @keyframes floatAndRotate {
+            0%   { transform: translateY(0px)   rotateY(0deg)   scale(0.95); }
+            50%  { transform: translateY(-30px) rotateY(180deg) scale(1.05); }
+            100% { transform: translateY(0px)   rotateY(360deg) scale(0.95); }
+          }
+        `}</style>
+        <div className="container mx-auto px-6">
+          <div
+            className="flex justify-center items-center gap-16"
+            style={{ perspective: "1200px" }}
+          >
+            {[
+              { src: "/imgs/logos/logo1.png", alt: "Logo 1", delay: "0s" },
+              { src: "/imgs/logos/logo2.png", alt: "Logo 2", delay: "1.75s" },
+              { src: "/imgs/logos/logo3.png", alt: "Logo 3", delay: "3.5s" },
+              { src: "/imgs/logos/logo4.png", alt: "Logo 4", delay: "5.25s" },
+            ].map((logo, idx) => (
+              <div
+                key={idx}
+                className="w-24 h-24 flex items-center justify-center cursor-pointer"
+                style={{
+                  transformStyle: "preserve-3d",
+                  animation: "floatAndRotate 7s ease-in-out infinite",
+                  animationDelay: logo.delay,
+                }}
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
