@@ -69,6 +69,7 @@ const Home = () => {
   const [activeDestination, setActiveDestination] = useState(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
+  const [isAllToursPopupOpen, setIsAllToursPopupOpen] = useState(false);
 
   // Transportation State
   const [vehicleFilter, setVehicleFilter] = useState("all");
@@ -492,11 +493,13 @@ const Home = () => {
           </div>
 
           <div className="flex justify-center mt-8">
-            <Link to="/destinations">
-              <Button variant="gold-glow" className="px-8 py-3">
-                {t("home.exploreAllTours", "Explore All Tours")}
-              </Button>
-            </Link>
+            <Button
+              variant="gold-glow"
+              className="px-8 py-3"
+              onClick={() => setIsAllToursPopupOpen(true)}
+            >
+              {t("home.exploreAllTours", "Explore All Tours")}
+            </Button>
           </div>
         </div>
       </section>
@@ -1116,38 +1119,25 @@ const Home = () => {
       </section>
 
       {/* Trusted Partners / Logos Section */}
-      <section className="py-10 bg-white">
-        <style>{`
-          @keyframes floatAndRotate {
-            0%   { transform: translateY(0px)   rotateY(0deg)   scale(0.95); }
-            50%  { transform: translateY(-30px) rotateY(180deg) scale(1.05); }
-            100% { transform: translateY(0px)   rotateY(360deg) scale(0.95); }
-          }
-        `}</style>
-        <div className="container mx-auto px-6">
-          <div
-            className="flex justify-center items-center gap-16"
-            style={{ perspective: "1200px" }}
-          >
+      <section className="py-[50px] px-[20px] bg-[#f8f8f8]">
+        <div className="max-w-[1100px] mx-auto">
+          <div className="grid grid-cols-2 gap-6 md:flex md:items-center md:justify-center bg-white rounded-[12px] shadow-[0_2px_16px_rgba(0,0,0,0.08)] p-6 md:p-[30px_40px]">
             {[
-              { src: "/imgs/logos/logo1.png", alt: "Logo 1", delay: "0s" },
-              { src: "/imgs/logos/logo2.png", alt: "Logo 2", delay: "1.75s" },
-              { src: "/imgs/logos/logo3.png", alt: "Logo 3", delay: "3.5s" },
-              { src: "/imgs/logos/logo4.png", alt: "Logo 4", delay: "5.25s" },
+              { src: "/imgs/logos/logo1.png", alt: "Logo 1" },
+              { src: "/imgs/logos/logo2.png", alt: "Logo 2" },
+              { src: "/imgs/logos/logo3.png", alt: "Logo 3" },
+              { src: "/imgs/logos/logo4.png", alt: "Logo 4" },
             ].map((logo, idx) => (
               <div
                 key={idx}
-                className="w-24 h-24 flex items-center justify-center cursor-pointer"
-                style={{
-                  transformStyle: "preserve-3d",
-                  animation: "floatAndRotate 7s ease-in-out infinite",
-                  animationDelay: logo.delay,
-                }}
+                className={`flex-1 flex justify-center items-center min-h-[110px] px-6 ${
+                  idx < 3 ? "border-r-0 md:border-r border-[#e0e0e0]" : "border-0"
+                }`}
               >
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="w-full h-full object-contain"
+                  className="h-[90px] w-auto max-w-full object-contain"
                 />
               </div>
             ))}
@@ -1189,14 +1179,13 @@ const Home = () => {
                   {t("home.ctaStart", "Start Planning")}
                 </Button>
               </Link>
-              <Link to="/destinations">
-                <Button
-                  variant="glass"
-                  className="px-8 py-4 text-lg w-full sm:w-auto"
-                >
-                  {t("home.ctaBrowse", "Browse Tours")}
-                </Button>
-              </Link>
+              <Button
+                variant="glass"
+                className="px-8 py-4 text-lg w-full sm:w-auto"
+                onClick={() => setIsAllToursPopupOpen(true)}
+              >
+                {t("home.ctaBrowse", "Browse Tours")}
+              </Button>
             </div>
           </motion.div>
         </div>
@@ -1263,6 +1252,86 @@ const Home = () => {
                 )}
               </p>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* All Tours Popup Modal */}
+      <AnimatePresence>
+        {isAllToursPopupOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[9999] bg-black/70 flex items-center justify-center p-4"
+            onClick={() => setIsAllToursPopupOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white rounded-[16px] max-w-[1000px] w-[95%] md:w-[90%] max-h-[85vh] overflow-y-auto p-5 md:p-10 relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                className="absolute top-4 right-4 text-2xl font-bold cursor-pointer text-gray-500 hover:text-black select-none z-[10000]"
+                onClick={() => setIsAllToursPopupOpen(false)}
+              >
+                &times;
+              </button>
+
+              {/* Popup Title */}
+              <h2 className="text-center font-display text-3xl font-semibold text-obsidian-900 mb-6">
+                {t("home.allToursTitle", "All Tours")}
+              </h2>
+
+              {/* Tours Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                {tours.map((tour) => (
+                  <div
+                    key={tour.id}
+                    className="bg-white rounded-[10px] overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col h-full text-left"
+                  >
+                    {/* Tour image on top */}
+                    <div className="h-[180px] w-full overflow-hidden">
+                      <img
+                        src={tour.images[0]}
+                        alt={t(`data.${tour.title}`, tour.title)}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    {/* Tour name below image */}
+                    <h3 className="font-semibold text-base text-obsidian-900 p-3 pb-1 line-clamp-2">
+                      {t(`data.${tour.title}`, tour.title)}
+                    </h3>
+
+                    {/* Short description if available */}
+                    {tour.description && (
+                      <p className="text-[13px] text-gray-600 px-3 pb-3 flex-grow line-clamp-3">
+                        {t(`data.${tour.description}`, tour.description)}
+                      </p>
+                    )}
+
+                    {/* View Details button at the bottom */}
+                    <div className="p-3 pt-0 mt-auto">
+                      <Link to={`/tours/${tour.slug}`}>
+                        <Button
+                          variant="outline-gold"
+                          className="w-full py-2 text-sm text-center"
+                        >
+                          {t("tourCard.viewDetails", "View Details")}
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

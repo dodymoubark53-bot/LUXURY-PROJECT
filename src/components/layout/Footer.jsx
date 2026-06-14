@@ -14,7 +14,7 @@ const Footer = () => {
           {/* Brand & Socials */}
           <div>
             <Link to="/" className="flex items-center mb-6">
-              <Logo theme="dark" height={48} />
+              <Logo theme="dark" height={70} />
             </Link>
             <p className="text-body-md mb-6 opacity-80">
               {t('footer.desc', 'Curating award-winning DUNAS TRAVEL experiences across Italy, Spain, and Brazil since 2010.')}
