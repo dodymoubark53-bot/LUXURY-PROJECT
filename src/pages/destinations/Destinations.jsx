@@ -9,22 +9,52 @@ import { tours } from '../../data/tours';
 
 const destinationsData = [
   {
-    id: 'italy',
-    name: 'Italy',
-    tag: 'La Dolce Vita',
-    image: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80'
+    id: 'egypt',
+    name: 'Egypt',
+    tag: 'Pharaohs & Wonders',
+    image: 'https://images.unsplash.com/photo-1568322445389-f64ac2515020?auto=format&fit=crop&w=800&q=80'
   },
   {
-    id: 'spain',
-    name: 'Spain',
-    tag: 'Passion & History',
-    image: 'https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=800&q=80'
+    id: 'turkey',
+    name: 'Turkey',
+    tag: 'East Meets West',
+    image: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=800&q=80'
   },
   {
-    id: 'brazil',
-    name: 'Brazil',
-    tag: 'Land of Sun & Samba',
-    image: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=800&q=80'
+    id: 'jordan',
+    name: 'Jordan',
+    tag: 'Desert & Ancient Ruins',
+    image: 'https://images.unsplash.com/photo-1579606032821-4e6161c81bd3?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'morocco',
+    name: 'Morocco',
+    tag: 'Colors & Culture',
+    image: 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'greece',
+    name: 'Greece',
+    tag: 'Myths & Blue Horizons',
+    image: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'dubai',
+    name: 'Dubai',
+    tag: 'Luxury & Skylines',
+    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'tunisia',
+    name: 'Tunisia',
+    tag: 'Sahara & Sea',
+    image: 'https://images.unsplash.com/photo-1580502304784-8985b7eb7260?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'holyland',
+    name: 'Holy Land',
+    tag: 'Faith & History',
+    image: 'https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=800&q=80'
   }
 ];
 
@@ -35,7 +65,7 @@ const Destinations = () => {
     <div className="w-full bg-obsidian-50 pb-24">
       <Helmet>
         <title>{t('destinations.title', 'All Destinations | Luxury Travel')}</title>
-        <meta name="description" content={t('destinations.metaDesc', 'Explore our handpicked luxury tours across Italy, Spain, and Brazil.')} />
+        <meta name="description" content={t('destinations.metaDesc', 'Explore our handpicked luxury tours across Egypt, Jordan, and Turkey.')} />
       </Helmet>
 
       {/* Main Hero */}
@@ -68,7 +98,7 @@ const Destinations = () => {
       {/* Destinations Iteration */}
       <div className="container mx-auto px-6 -mt-16 relative z-20">
         {destinationsData.map((dest) => {
-          // جلب كل الرحلات المحدثة التابعة لمصر
+          // جلب كل الرحلات المحدثة التابعة للوجهة
           const destTours = tours.filter(tour => tour.destination === dest.id);
           
           return (
@@ -104,11 +134,19 @@ const Destinations = () => {
               </div>
 
               {/* Tours Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {destTours.map((tour) => (
-                  <TourCard key={tour.id} tour={tour} />
-                ))}
-              </div>
+              {destTours.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {destTours.map((tour) => (
+                    <TourCard key={tour.id} tour={tour} />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12 bg-ivory-50 rounded-2xl border border-obsidian-900/5 shadow-sm">
+                  <p className="text-obsidian-500 text-body-md font-medium">
+                    {t('destinations.toursComingSoon', 'Bespoke itineraries for {{destination}} are currently being curated by our concierges. Contact us to design a custom journey.', { destination: t(`nav.${dest.id}`, dest.name) })}
+                  </p>
+                </div>
+              )}
             </motion.div>
           );
         })}

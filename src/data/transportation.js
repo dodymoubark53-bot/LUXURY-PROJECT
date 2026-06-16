@@ -93,7 +93,7 @@ export const transportation = [
     reviews: 112,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: '/imgs/transportation/oip (6).webp',
+    image: '/imgs/transportation/WhatsApp Image 2026-06-15 at 6.46.12 PM (2).jpeg',
     heroImage: 'https://images.unsplash.com/photo-1641431616381-3f0613d82ca7?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Off-road Capable']
   },
@@ -107,7 +107,7 @@ export const transportation = [
     reviews: 178,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: '/imgs/transportation/oip (7).webp',
+    image: '/imgs/transportation/WhatsApp Image 2026-06-15 at 6.46.13 PM (1).jpeg',
     heroImage: 'https://images.unsplash.com/photo-1618353482480-61ca5a9a7879?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Luxury SUV']
   },
@@ -121,7 +121,7 @@ export const transportation = [
     reviews: 245,
     transmission: 'Auto',
     pricePerDay: 100,
-    image: '/imgs/transportation/oip (8).webp',
+    image: '/imgs/transportation/WhatsApp Image 2026-06-15 at 6.46.13 PM (2).jpeg',
     heroImage: 'https://images.unsplash.com/photo-1554841649-de947c4b954a?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Desert Ready']
   },
@@ -135,7 +135,7 @@ export const transportation = [
     reviews: 88,
     transmission: 'Auto',
     pricePerDay: 50,
-    image: '/imgs/transportation/oip.jpg',
+    image: '/imgs/transportation/bus1.jpeg',
     heroImage: 'https://images.unsplash.com/photo-1650807486050-a142ea418b19?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Group Transfer']
   },
@@ -149,7 +149,7 @@ export const transportation = [
     reviews: 105,
     transmission: 'Auto',
     pricePerDay: 50,
-    image: '/imgs/transportation/oip (1).jpg',
+    image: '/imgs/transportation/bus2.jpeg',
     heroImage: 'https://images.unsplash.com/photo-1669887058626-77dea2765b79?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Tour Group']
   },
@@ -163,7 +163,7 @@ export const transportation = [
     reviews: 310,
     transmission: 'Auto',
     pricePerDay: 50,
-    image: '/imgs/transportation/oip (2).jpg',
+    image: '/imgs/transportation/bus3.jpeg',
     heroImage: 'https://images.unsplash.com/photo-1621651752332-a0c3954b8752?auto=format&fit=crop&w=1920&q=80',
     features: ['AC', 'GPS', 'Airbag', 'Power Windows', 'WiFi', 'Professional Driver', 'Large Group']
   }

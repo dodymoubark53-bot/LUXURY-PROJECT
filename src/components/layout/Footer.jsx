@@ -17,7 +17,7 @@ const Footer = () => {
               <Logo theme="dark" height={70} />
             </Link>
             <p className="text-body-md mb-6 opacity-80">
-              {t('footer.desc', 'Curating award-winning DUNAS TRAVEL experiences across Italy, Spain, and Brazil since 2010.')}
+              {t('footer.desc', 'Curating award-winning DUNAS TRAVEL experiences across Egypt, Jordan, and Turkey since 2010.')}
             </p>
             <div className="flex items-center gap-4">
               <a href="#" className="footer-social w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[#F5A623] hover:text-[#1A1A2E] transition-all duration-300 hover:scale-110">

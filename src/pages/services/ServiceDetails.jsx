@@ -8,6 +8,7 @@ import Button from '../../components/ui/Button';
 import { staggerContainer, fadeInUp } from '../../animations/variants';
 import { services } from '../../data/services'; // ملاحظة: يمكنك لاحقاً تغيير اسم الفولدر أو الفايل لـ programs لتنظيم داتا الـ ساس
 import InquiryForm from '../../components/booking/InquiryForm';
+import AdvancedBooking from '../../components/booking/AdvancedBooking';
 import { useCurrency } from '../../context/CurrencyContext';
 
 const ServiceDetails = () => {
@@ -17,7 +18,7 @@ const ServiceDetails = () => {
   const { category, slug } = useParams();
   const service = services.find((s) => s.category === category && s.slug === slug);
   const [activeImage, setActiveImage] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeForm, setActiveForm] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -163,17 +164,22 @@ const ServiceDetails = () => {
           {/* Sidebar Booking Form */}
           <div className="lg:col-span-1">
             <div className="sticky top-32">
-              <div className="bg-ivory-50 rounded-2xl shadow-card p-8 border border-gold-500/10">
-                {/* تعديل الترجمات هنا بردو من services لـ programs */}
-                <h3 className="text-display-sm text-obsidian-900 mb-2 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t('programs.bookExperience', 'Book Your Experience')}</h3>
-                <p className="text-body-sm text-obsidian-300 mb-6">{t('programs.conciergeAvailability', 'Our concierge team will confirm availability within 2 hours.')}</p>
-
-                <Button variant="gold-glow" className="w-full py-4 mb-4" onClick={() => setIsModalOpen(true)}>
-                  {t('programs.inquireNow', 'Inquire Now')}
-                </Button>
-
-                <div class="text-center">
-                  <span className="text-caption text-obsidian-300 flex items-center justify-center gap-2">
+              <div className="bg-obsidian-900 text-ivory-50 rounded-2xl shadow-card p-8 border border-gold-500/10">
+                <div className="text-center mb-8 border-b border-ivory-50/10 pb-8">
+                  <span className="block text-body-md text-ivory-300 mb-2">{t('tourCard.startingFrom', 'Starting from')}</span>
+                  <div className="text-display-xl text-gold-500">{formatPrice(service.price)}</div>
+                  <span className="block text-caption text-ivory-300 mt-2">{t('tour.perPerson', 'per person')}</span>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <Button variant="gold-glow" className="w-full py-4 text-lg font-medium" onClick={() => setActiveForm('booking')}>
+                    {t('nav.bookNow', 'Book Now')}
+                  </Button>
+                  <Button variant="glass" className="w-full py-4 text-lg font-medium" onClick={() => setActiveForm('inquiry')}>
+                    {t('tour.inquire', 'Inquire Availability')}
+                  </Button>
+                </div>
+                <div className="text-center mt-6">
+                  <span className="text-caption text-ivory-300 flex items-center justify-center gap-2">
                     <FaCheckCircle className="text-sage-500" /> {t('programs.bestPriceGuarantee', 'Best Price Guarantee')}
                   </span>
                 </div>
@@ -221,19 +227,20 @@ const ServiceDetails = () => {
         </section>
       )}
 
-      {/* Inquiry Modal */}
+      {/* Booking Modals */}
       <AnimatePresence>
-        {isModalOpen && (
+        {activeForm && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] bg-obsidian-900/80 flex items-center justify-center backdrop-blur-sm p-4"
-            onClick={() => setIsModalOpen(false)}
+            onClick={() => setActiveForm(null)}
           >
             {/* لمنع إغلاق المودال عند الضغط داخل الفورم نفسها */}
             <div onClick={(e) => e.stopPropagation()}>
-              <InquiryForm onClose={() => setIsModalOpen(false)} tourTitle={service.title} />
+              {activeForm === 'inquiry' && <InquiryForm onClose={() => setActiveForm(null)} tourTitle={service.title} />}
+              {activeForm === 'booking' && <AdvancedBooking onClose={() => setActiveForm(null)} tourTitle={service.title} basePricePerPerson={service.price} />}
             </div>
           </motion.div>
         )}

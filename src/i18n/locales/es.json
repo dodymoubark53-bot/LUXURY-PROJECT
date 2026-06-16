@@ -41,7 +41,8 @@
     "marruecos": "Marruecos",
     "grecia": "Grecia",
     "tuniz": "Tuniz",
-    "tierrasanta": "Tierra Santa"
+    "tierrasanta": "Tierra Santa",
+    "currency": "Moneda"
   },
   "hotel": {
     "seoTitle": "Sol Pyramid Hotel | Vista a las Pirámides de Giza | Dunas Travel",
@@ -61,7 +62,11 @@
       "pets": "Mascotas",
       "petsPolicyVal": "No permitidas",
       "locationDetails": "Ubicación Privilegiada cerca de las Pirámides",
-      "directContacts": "Contactos Directos"
+      "directContacts": "Contactos Directos",
+      "checkInLabel": "Registro",
+      "checkOutLabel": "Salida",
+      "gizaEgypt": "Guiza, Egipto",
+      "starsLabel": "Hotel de 3 estrellas"
     },
     "room": {
       "taxesInc": "Impuestos y tasas incluidos",
@@ -131,7 +136,8 @@
       "specialRequestsLabel": "Solicitudes especiales (Opcional)",
       "specialRequestsPlaceholder": "Cualquier solicitud o requerimiento específico...",
       "requestBookingBtn": "Solicitar reserva",
-      "cellLabel": "Móvil"
+      "cellLabel": "Móvil",
+      "emailPlaceholder": "tu.correo electrónico@ejemplo.com"
     },
     "fac": {
       "comfort": "SERVICIOS PREMIUM",
@@ -211,7 +217,6 @@
   "home": {
     "award": "Experiencias Galardonadas",
     "heroTitle": "Un Viaje Más Allá \n de lo Extraordinario",
-    "heroDesc": "Curando itinerarios ultra lujosos y personalizados a través de las maravillas eternas de Italia, España y Brasil. Experimente los destinos más cautivadores del mundo con un estilo incomparable.",
     "exploreDest": "Explorar Destinos",
     "bookJourney": "Reserve su Viaje",
     "scroll": "Desplácese para descubrir",
@@ -256,7 +261,9 @@
     "tripDate": "Fecha de viaje *",
     "viewTour": "Ver recorrido",
     "whoWeAre": "QUIENES SOMOS",
-    "tailorTour": "Diseñar un Viaje"
+    "tailorTour": "Diseñar un Viaje",
+    "allToursTitle": "Todos los tours",
+    "heroDesc": "Seleccionando itinerarios personalizados de ultra lujo a través de las maravillas eternas de Egipto, Jordania y Turquía. Experimente los destinos más cautivadores del mundo con un estilo incomparable."
   },
   "tourCard": {
     "reviews": "reseñas",
@@ -1405,18 +1412,17 @@
     "Arrivo in aeroporto del Cairo per il volo internazionale di rientro.": "Llegada al aeropuerto de El Cairo para tomar el vuelo internacional de regreso."
   },
   "footer": {
-    "desc": "Curando experiencias de viaje de lujo galardonadas en Italia, España y Brasil desde 2010.",
     "quickLinks": "Enlaces Rápidos",
     "address": "123 Avenida de Lujo, El Cairo, Egipto",
     "newsletter": "Suscríbete al boletín",
     "join": "Unirse",
     "rights": "Todos los derechos reservados.",
     "created": "Creado por Dina Hefny",
-    "faq": "Preguntas frecuentes"
+    "faq": "Preguntas frecuentes",
+    "desc": "Curando experiencias galardonadas de DUNAS TRAVEL en Egipto, Jordania y Turquía desde 2010."
   },
   "contact": {
     "title": "Contáctenos | Viajes de Lujo",
-    "seoDesc": "Póngase en contacto con nuestros conserjes de viajes de lujo para comenzar a diseñar su viaje a medida a Italia, España y Brasil.",
     "getInTouch": "Ponte en Contacto",
     "office": "Oficina del Cairo",
     "address1": "123 Avenida de Lujo, Zamalek",
@@ -1434,16 +1440,15 @@
     "sendBtn": "Enviar Mensaje",
     "address": "75 Hossary Square, Central Spine, 6 de octubre, Giza, Egipto",
     "emailLabel": "Correo electrónico",
-    "emailVal": "dinahefny2000@gmail.com",
+    "emailVal": "info@dunas-travel.com",
     "fullName": "Nombre completo *",
     "phoneLabel": "Teléfono",
     "phoneNumber": "Número de teléfono*",
-    "phoneVal": "+201004146843"
+    "phoneVal": "+201004146843",
+    "seoDesc": "Póngase en contacto con nuestros conserjes de viajes de lujo para comenzar a diseñar su viaje personalizado a Egipto, Jordania y Turquía."
   },
   "about": {
-    "desc": "Creemos que viajar es una forma de arte. Durante más de una década, nos hemos dedicado a seleccionar los viajes personalizados más extraordinarios a través de los paisajes antiguos de Italia, España y Brasil. Nuestra misión es combinar a la perfección el lujo de clase mundial con una auténtica inmersión cultural.",
     "legacy": "Nuestro legado",
-    "seoDesc": "Descubre nuestra historia. Redefiniendo los viajes de lujo desde 2010 a través de viajes personalizados en Italia, España y Brasil.",
     "seoTitle": "Acerca de nosotros | Viaje a Dunas",
     "storyDesc": "Nacido de la pasión por la historia antigua y la refinada hospitalidad.",
     "storyTitle": "Nuestra historia",
@@ -1452,7 +1457,9 @@
     "teamTitle": "Nuestro equipo",
     "title": "Sobre nosotros",
     "valuesDesc": "Excelencia, autenticidad y comodidad sin concesiones en cada detalle.",
-    "valuesTitle": "Nuestros Valores"
+    "valuesTitle": "Nuestros Valores",
+    "desc": "Creemos que viajar es una forma de arte. Durante más de una década, nos hemos dedicado a seleccionar los viajes personalizados más extraordinarios a través de los paisajes antiguos de Egipto, Jordania y Turquía. Nuestra misión es combinar a la perfección el lujo de clase mundial con una auténtica inmersión cultural.",
+    "seoDesc": "Descubre nuestra historia. Redefiniendo los viajes de lujo desde 2010 a través de viajes personalizados en Egipto, Jordania y Turquía."
   },
   "blogs": {
     "by": "Por",
@@ -1523,7 +1530,8 @@
   "common": {
     "cancel": "Cancelar",
     "processing": "Procesando...",
-    "sending": "Enviando..."
+    "sending": "Enviando...",
+    "back": "Volver al hotel"
   },
   "dest": {
     "brazil": {
@@ -1550,7 +1558,9 @@
       "title": "Egipto",
       "subtitle": "La tierra de los faraones",
       "seoTitle": "Tours de lujo por Egipto | Dunas Travel",
-      "seoDesc": "Explora viajes de lujo por Egipto. Itinerarios personalizados próximamente."
+      "seoDesc": "Explora viajes de lujo por Egipto. Itinerarios personalizados próximamente.",
+      "brief": "Una civilización que ha cautivado al mundo durante milenios. Egipto combina una historia monumental con una cálida hospitalidad y paisajes impresionantes, desde las icónicas pirámides y el crucero por el Nilo hasta los arrecifes de coral del Mar Rojo. Cada itinerario está diseñado para ofrecer el máximo confort, lujo y auténtica inmersión cultural.",
+      "desc": "Desde las eternas pirámides de Giza hasta los templos dorados de Luxor y las aguas cristalinas del Mar Rojo, Egipto ofrece un viaje a través de la historia como ningún otro."
     },
     "turkey": {
       "title": "Turquía",
@@ -1597,10 +1607,10 @@
   },
   "destinations": {
     "heading": "Nuestros Destinos",
-    "metaDesc": "Explore nuestros tours de lujo cuidadosamente seleccionados por Italia, España y Brasil.",
     "title": "Todos los destinos | Viajes de lujo",
     "viewGuide": "Ver guía de destino",
-    "worldCurated": "El mundo, curado"
+    "worldCurated": "El mundo, curado",
+    "metaDesc": "Explore nuestros tours de lujo cuidadosamente seleccionados por Egipto, Jordania y Turquía."
   },
   "services": {
     "allServices": "Todos los servicios",
@@ -1648,9 +1658,9 @@
     "reservationDesc": "Reserve su transporte de lujo con anticipación. Ofrecemos choferes profesionales y vehículos premium para garantizar un viaje cómodo y elegante.",
     "reserveNow": "Reserva ahora",
     "seatsCount": "Asientos",
-    "seoDesc": "Vehículos premium con conductores profesionales en Italia, España y Brasil",
     "seoTitle": "Transporte de lujo",
-    "transmission": "Transmisión"
+    "transmission": "Transmisión",
+    "seoDesc": "Vehículos premium con conductores profesionales en Egipto, Jordania y Turquía"
   },
   "auth": {
     "acceptTermsError": "Debes aceptar los Términos y Condiciones",
@@ -1737,5 +1747,34 @@
     "submit": "¡Enviar Consulta Ahora!",
     "successAlert": "¡Su solicitud ha sido enviada con éxito! Nos pondremos en contacto con usted pronto.",
     "socialFooterDesc": "¿Necesita ayuda inmediata? Contáctenos a través de uno de los siguientes canales:"
+  },
+  "faq": {
+    "aBookingTailor": "Puede comenzar visitando nuestra página \"Personalizar un recorrido\", donde puede elegir los destinos que desee y especificar los detalles de su viaje. Alternativamente, puede comunicarse con nuestros planificadores de viajes de lujo directamente a través de nuestra página Contáctenos o vía WhatsApp. Una vez que recibamos su solicitud, un conserje dedicado trabajará con usted para redactar un itinerario personalizado adaptado a sus preferencias.",
+    "aCancellationsInsurance": "El seguro de viaje no está incluido automáticamente en nuestros itinerarios personalizados. Recomendamos encarecidamente a todos los huéspedes que obtengan un seguro de viaje integral que cubra la cancelación del viaje, emergencias médicas, evacuación y pérdida de equipaje antes del viaje.",
+    "aCancellationsPolicy": "Entendemos que los planes pueden cambiar. Las cancelaciones realizadas más de 60 días antes de la fecha de salida recibirán un reembolso completo menos una tarifa de reserva no reembolsable. Las cancelaciones realizadas entre 30 y 60 días antes de la salida están sujetas a un cargo de cancelación del 50%, mientras que las cancelaciones dentro de los 30 días antes de la salida no son reembolsables. Recomendamos encarecidamente adquirir un seguro de viaje integral para proteger su inversión.",
+    "aPaymentsMethods": "Aceptamos pagos seguros en línea con tarjeta de crédito (Visa, MasterCard, American Express), transferencias bancarias y PayPal. Para la mayoría de las reservas personalizadas, se requiere un depósito del 30 % para garantizar la reserva y el saldo restante se debe pagar 30 días antes de la fecha de salida.",
+    "aTravelTransport": "Todos nuestros paquetes turísticos cuentan con traslados privados premium al aeropuerto. Operamos una flota de sedanes de lujo, SUV y autocares ejecutivos. Su conductor profesional lo recibirá en la puerta de llegadas del aeropuerto con un tablero con su nombre personalizado y lo ayudará con su equipaje, garantizando una transición cómoda y sin inconvenientes a su hotel.",
+    "catAll": "Todas las preguntas",
+    "catBooking": "Reserva",
+    "catCancellations": "Cancelaciones",
+    "catPayments": "Pagos y precios",
+    "catTravel": "Viajes y transporte",
+    "heading": "Preguntas frecuentes",
+    "helpCenter": "CENTRO DE AYUDA",
+    "noResults": "No se encontraron preguntas que coincidan con su búsqueda.",
+    "qBookingTailor": "¿Cómo reservo un tour de lujo a medida con Dunas Travel?",
+    "qBookingVisa": "¿Puede Dunas Travel ayudar con las solicitudes de visa?",
+    "qCancellationsInsurance": "¿Está incluido el seguro de viaje en mi paquete o debo comprarlo por separado?",
+    "qCancellationsPolicy": "¿Cuál es su política de cancelación y reembolso?",
+    "qPaymentsMethods": "¿Qué métodos de pago aceptan y cuáles son las condiciones de pago?",
+    "qTravelTransport": "¿Cómo funciona el traslado al aeropuerto y el transporte local?",
+    "searchPlaceholder": "Buscar preguntas...",
+    "seoDesc": "¿Tiene preguntas sobre reservas, pagos, cancelaciones o requisitos de viaje? Encuentre respuestas completas en nuestro centro de preguntas frecuentes.",
+    "seoTitle": "Preguntas frecuentes | Viaje a Dunas",
+    "aBookingVisa": "Si bien los huéspedes son en última instancia responsables de obtener sus propias visas, proporcionamos confirmaciones de reserva oficiales y documentos de respaldo necesarios para su solicitud de visa. Nuestro equipo de conserjería también puede ofrecer orientación experta sobre los requisitos de visa para Egipto, Jordania, Turquía y otros destinos."
+  },
+  "programs": {
+    "bestPriceGuarantee": "Mejor Precio Garantizado",
+    "notFound": "Programa no encontrado"
   }
 }

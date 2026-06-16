@@ -45,7 +45,8 @@ const locales = {
   en: JSON.parse(fs.readFileSync(path.join(localesDir, 'en.json'), 'utf8')),
   ar: JSON.parse(fs.readFileSync(path.join(localesDir, 'ar.json'), 'utf8')),
   es: JSON.parse(fs.readFileSync(path.join(localesDir, 'es.json'), 'utf8')),
-  pt: JSON.parse(fs.readFileSync(path.join(localesDir, 'pt.json'), 'utf8'))
+  pt: JSON.parse(fs.readFileSync(path.join(localesDir, 'pt.json'), 'utf8')),
+  it: JSON.parse(fs.readFileSync(path.join(localesDir, 'it.json'), 'utf8'))
 };
 
 // Helper to check if nested key exists
@@ -137,7 +138,7 @@ async function translateBatch(texts, targetLang, sourceLang = 'auto') {
 // Translate and merge missing static keys
 async function processStaticKeys() {
   console.log('--- Processing Static Keys ---');
-  const targetLanguages = ['en', 'ar', 'es', 'pt'];
+  const targetLanguages = ['en', 'ar', 'es', 'pt', 'it'];
   
   for (const lang of targetLanguages) {
     console.log(`Checking missing static keys for language: ${lang}`);
@@ -175,7 +176,7 @@ async function processStaticKeys() {
 // Translate and merge tour strings into data section
 async function processTourStrings() {
   console.log('\n--- Processing Tour Strings ---');
-  const targetLanguages = ['en', 'ar', 'es', 'pt'];
+  const targetLanguages = ['en', 'ar', 'es', 'pt', 'it'];
   
   // Group tour strings by source language (pt or it)
   const stringsBySrc = {
@@ -239,7 +240,7 @@ function processBlogRedirects() {
   console.log('\n--- Normalizing Blog Namespaces ---');
   // Copy blog translations from "data" to "blogs" namespace in locales so that
   // t('blogs.Title') or t('blogs.Paragraph') resolves correctly
-  const targetLanguages = ['en', 'ar', 'es', 'pt'];
+  const targetLanguages = ['en', 'ar', 'es', 'pt', 'it'];
   
   for (const lang of targetLanguages) {
     if (!locales[lang].blogs) {
@@ -317,7 +318,7 @@ function processBlogRedirects() {
 // Explicitly add missing date translations to blogs section
 async function addBlogDates() {
   console.log('\n--- Adding Blog Dates & Read Times to blogs section ---');
-  const targetLanguages = ['en', 'ar', 'es', 'pt'];
+  const targetLanguages = ['en', 'ar', 'es', 'pt', 'it'];
   
   const datesAndTimes = [
     { key: "Oct 12, 2023", defaultVal: "Oct 12, 2023" },

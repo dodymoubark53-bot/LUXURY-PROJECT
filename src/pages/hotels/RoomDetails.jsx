@@ -277,7 +277,7 @@ const RoomDetails = () => {
                 <span className="text-xs uppercase tracking-wider text-slate-400 block mb-1">{t('hotel.room.petsLabel', 'Pets')}</span>
                 <span className="text-lg font-bold text-slate-955 flex items-center gap-1.5"><FaBan className="text-red-500 text-sm" /> {t('hotel.room.notAllowed', 'Not allowed')}</span>
               </div>
-            </div>            </div>
+            </div>
 
             {/* Room Amenities Section */}
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200/60">
@@ -342,7 +342,9 @@ const RoomDetails = () => {
                     <p className="text-[14px] text-slate-700 leading-relaxed">{rev.text}</p>
                   </div>
                 ))}
-                  {/* Write a review form */}
+              </div>
+
+              {/* Write a review form */}
               <form onSubmit={handleReviewSubmit} className="bg-slate-50 p-6 rounded-xl border border-slate-200/60 text-left">
                 <h3 className="text-lg font-semibold text-slate-900 mb-4">{t('tour.leaveReview', 'Write a Review')}</h3>
                 {reviewSuccess && (

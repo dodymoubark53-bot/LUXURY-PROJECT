@@ -30,7 +30,7 @@ const FAQ = () => {
       id: 'booking-visa',
       category: 'booking',
       question: t('faq.qBookingVisa', 'Can Dunas Travel assist with visa applications?'),
-      answer: t('faq.aBookingVisa', 'While guests are ultimately responsible for securing their own visas, we provide official booking confirmations and supporting documents required for your visa application. Our concierge team can also offer expert guidance on the visa requirements for Italy, Spain, Brazil, and other destinations.')
+      answer: t('faq.aBookingVisa', 'While guests are ultimately responsible for securing their own visas, we provide official booking confirmations and supporting documents required for your visa application. Our concierge team can also offer expert guidance on the visa requirements for Egypt, Jordan, Turkey, and other destinations.')
     },
     {
       id: 'payments-methods',

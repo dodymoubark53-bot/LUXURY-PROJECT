@@ -50,7 +50,7 @@ const Services = () => {
           ) : service === 'cruises' ? (
             <>
               <img
-                src="/imgs/nile cruises/img-20171013-wa0000(1).jpg"
+                src="/imgs/italy/Nile and Red Sea with Hurghada - Classic Version.jpg"
                 alt="Nile River Cruise Luxury Egypt Sunset"
                 className="w-full h-full object-cover object-center"
                 loading="lazy"
@@ -76,7 +76,7 @@ const Services = () => {
           ) : service === 'hotels' ? (
             <>
               <img
-                src="/imgs/hotels/16015431-external-view-kempinski-ishtar-dead-sea.jpg"
+                src="/imgs/gallery/14.jpeg"
                 alt="Luxury Hotel Exterior"
                 className="w-full h-full object-cover object-center"
                 loading="lazy"
@@ -158,7 +158,7 @@ const Services = () => {
 
       <section className="container mx-auto px-6 py-12">
         {/* Category Selector */}
-        {service !== 'classic' && (
+        {!service && (
           <div className="flex overflow-x-auto hide-scrollbar md:flex-wrap md:justify-center gap-4 mb-16 pb-4">
             <Link to={prefix} className="shrink-0">
               <Button variant={!service ? 'gold-glow' : 'outline-gold'} className="px-6 py-2 text-sm">{t('services.allServices', 'All Services')}</Button>

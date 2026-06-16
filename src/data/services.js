@@ -9,7 +9,7 @@ export const services = [
     location: 'Cairo & Luxor, Egypt',
     price: 1500,
     rating: 5.0,
-    images: ['/imgs/programs/classic-1.webp', '/imgs/programs/classic-2.webp'],
+    images: ['/imgs/italy/Classic Program.jpg', '/imgs/gallery/pharaohs & pyramid.jpg'],
     shortDesc: 'Discover the timeless wonders of ancient Egypt with our signature classical luxury itinerary.',
     overview: [
       "Embark on a majestic journey through the cradle of civilization. Our Classic Program is meticulously tailored for travelers who wish to immerse themselves in the authentic history of Egypt, combining expert archeological guiding with elite 5-star accommodations.",
@@ -30,7 +30,7 @@ export const services = [
     location: 'All Destinations',
     price: 300,
     rating: 4.9,
-    images: ['/imgs/programs/trans-1.webp', '/imgs/programs/trans-2.webp'],
+    images: ['/imgs/transportation/bus1.jpeg', '/imgs/transportation/bus2.jpeg'],
     shortDesc: 'Travel in absolute comfort with our premium, air-conditioned private luxury vehicles and professional drivers.',
     overview: [
       "Whether you need seamless airport transfers, inter-city travel, or a dedicated private chauffeur for your entire vacation, our luxury transportation program guarantees safety, punctuality, and style.",
@@ -51,7 +51,7 @@ export const services = [
     location: 'Hurghada & Sharm El Sheikh',
     price: 600,
     rating: 4.8,
-    images: ['/imgs/programs/ext-1.webp', '/imgs/programs/ext-2.webp'],
+    images: ['/imgs/italy/Nile and Red Sea with Hurghada.jpg', '/imgs/italy/Nile and Red Sea with Sharm El Sheikh.jpg'],
     shortDesc: 'Extend your historical tour with a relaxing beach and coral reef getaway along the beautiful Red Sea coast.',
     overview: [
       "After exploring temples and tombs, our Extension Program offers the perfect transition to tropical relaxation. Add 3 to 4 nights of blissful coastal luxury to any core itinerary.",
@@ -72,7 +72,7 @@ export const services = [
     location: 'Egypt & Jordan',
     price: 3200,
     rating: 5.0,
-    images: ['/imgs/programs/multi-1.webp', '/imgs/programs/multi-2.webp'],
+    images: ['/imgs/gallery/ultimate jordan grand tour.webp', '/imgs/gallery/wadi rum desert safari.webp'],
     shortDesc: 'The ultimate regional journey combining the wonders of the Pharaohs with the rose-red city of Petra.',
     overview: [
       "Why settle for one country when you can witness two of the world's greatest historical gems? This Multi-Country Tour cross-references the highlights of Egypt and Jordan in one fluid luxury journey.",
@@ -93,7 +93,7 @@ export const services = [
     location: 'Cairo, Nile Cruise & Sea',
     price: 2400,
     rating: 5.0,
-    images: ['/imgs/programs/honey-1.webp', '/imgs/programs/honey-2.webp'],
+    images: ['/imgs/gallery/15.jpeg', '/imgs/gallery/16.jpeg'],
     shortDesc: 'Celebrate your love with intimate candlelit dinners, private yacht cruises, and unmatched romantic luxury.',
     overview: [
       "Designed exclusively for newlyweds, our Honeymooners Package curates unforgettable, romantic moments amidst the majestic landscapes of the Middle East.",
@@ -114,7 +114,7 @@ export const services = [
     location: 'Cairo, Sinai & Holy Land',
     price: 1800,
     rating: 4.9,
-    images: ['/imgs/programs/religious-1.webp', '/imgs/programs/religious-2.webp'],
+    images: ['/imgs/gallery/12.jpeg', '/imgs/gallery/13.jpeg'],
     shortDesc: 'A spiritual pilgrimage tracing the historical paths and ancient monasteries of the Holy Family.',
     overview: [
       "Our Programas Religiosos offer deeply meaningful spiritual pilgrimages designed for individuals and church groups seeking to walk the sacred paths of history.",

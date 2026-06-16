@@ -113,12 +113,12 @@ const Home = () => {
   const galleryImages = [
     {
       src: "/imgs/gallery/ephesus & the aegean coast.jpg",
-      dest: "Brazil",
+      dest: "Turkey",
       tag: "Tour",
     },
     {
       src: "/imgs/gallery/grand tour of turkey.jpg",
-      dest: "Brazil",
+      dest: "Turkey",
       tag: "Tour",
     },
     { src: "/imgs/gallery/1.jpeg", dest: "Gallery", tag: "Photo" },
@@ -256,7 +256,7 @@ const Home = () => {
             variants={fadeInUp}
             className="text-body-lg text-ivory-300 mb-8 max-w-2xl mx-auto"
           >
-            {t("home.heroDesc")}
+            {t("home.heroDesc", "Curating ultra-luxury, personalized itineraries through the timeless wonders of Egypt, Jordan, and Turkey. Experience the world's most captivating destinations in unparalleled style.")}
           </motion.p>
 
           <motion.div
@@ -685,8 +685,8 @@ const Home = () => {
               transition={{ delay: 0.3 }}
               className="text-body-lg text-obsidian-700 max-w-2xl mx-auto"
             >
-              Luxury vehicles and professional drivers — available across Italy,
-              Spain & Brazil
+              Luxury vehicles and professional drivers — available across Egypt,
+              Jordan & Turkey
             </motion.p>
             <motion.div
               initial={{ width: 0 }}

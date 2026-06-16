@@ -41,7 +41,8 @@
     "marruecos": "Morocco",
     "grecia": "Greece",
     "tuniz": "Tunisia",
-    "tierrasanta": "Holy Land"
+    "tierrasanta": "Holy Land",
+    "currency": "Currency"
   },
   "hotel": {
     "seoTitle": "Sol Pyramid Hotel | Giza Pyramids View | Dunas Travel",
@@ -61,7 +62,11 @@
       "pets": "Pets",
       "petsPolicyVal": "Not allowed",
       "locationDetails": "Prime Pyramids Location",
-      "directContacts": "Direct Contacts"
+      "directContacts": "Direct Contacts",
+      "checkInLabel": "Check-in",
+      "checkOutLabel": "Check-out",
+      "gizaEgypt": "Giza, Egypt",
+      "starsLabel": "3-Star Hotel"
     },
     "room": {
       "taxesInc": "Taxes & fees included",
@@ -131,7 +136,8 @@
       "specialRequestsLabel": "Special Requests (Optional)",
       "specialRequestsPlaceholder": "Any specific requests or requirements...",
       "requestBookingBtn": "Request Booking",
-      "cellLabel": "Cell"
+      "cellLabel": "Cell",
+      "emailPlaceholder": "your.email@example.com"
     },
     "fac": {
       "comfort": "PREMIUM SERVICES",
@@ -211,7 +217,6 @@
   "home": {
     "award": "Award-Winning Experiences",
     "heroTitle": "Journey Beyond \n the Ordinary",
-    "heroDesc": "Curating ultra-luxury, personalized itineraries through the timeless wonders of Italy, Spain, and Brazil. Experience the world's most captivating destinations in unparalleled style.",
     "exploreDest": "Explore Destinations",
     "bookJourney": "Book Your Journey",
     "scroll": "Scroll to discover",
@@ -256,7 +261,9 @@
     "tripDate": "Trip Date *",
     "viewTour": "View Tour",
     "whoWeAre": "WHO WE ARE",
-    "tailorTour": "Tailor a Tour"
+    "tailorTour": "Tailor a Tour",
+    "allToursTitle": "All Tours",
+    "heroDesc": "Curating ultra-luxury, personalized itineraries through the timeless wonders of Egypt, Jordan, and Turkey. Experience the world's most captivating destinations in unparalleled style."
   },
   "tourCard": {
     "reviews": "reviews",
@@ -1405,9 +1412,7 @@
     "Arrivo in aeroporto del Cairo per il volo internazionale di rientro.": "Arrival at Cairo airport for the return international flight."
   },
   "about": {
-    "desc": "We believe that travel is an art form. For over a decade, we have dedicated ourselves to curating the most extraordinary, bespoke journeys through the ancient landscapes of Italy, Spain, and Brazil. Our mission is to seamlessly blend world-class luxury with authentic cultural immersion.",
     "legacy": "Our Legacy",
-    "seoDesc": "Discover our story. Redefining luxury travel since 2010 through bespoke journeys in Italy, Spain, and Brazil.",
     "seoTitle": "About Us | Dunas Travel",
     "storyDesc": "Born from a passion for ancient history and refined hospitality.",
     "storyTitle": "Our Story",
@@ -1416,7 +1421,9 @@
     "teamTitle": "Our Team",
     "title": "About Us",
     "valuesDesc": "Excellence, authenticity, and uncompromising comfort in every detail.",
-    "valuesTitle": "Our Values"
+    "valuesTitle": "Our Values",
+    "desc": "We believe that travel is an art form. For over a decade, we have dedicated ourselves to curating the most extraordinary, bespoke journeys through the ancient landscapes of Egypt, Jordan, and Turkey. Our mission is to seamlessly blend world-class luxury with authentic cultural immersion.",
+    "seoDesc": "Discover our story. Redefining luxury travel since 2010 through bespoke journeys in Egypt, Jordan, and Turkey."
   },
   "blogs": {
     "by": "By",
@@ -1487,14 +1494,15 @@
   "common": {
     "cancel": "Cancel",
     "processing": "Processing...",
-    "sending": "Sending..."
+    "sending": "Sending...",
+    "back": "Back to Hotel"
   },
   "contact": {
     "address": "75 Hossary Square, Central Spine, 6 October, Giza, Egypt",
     "email": "Email *",
     "emailLabel": "Email",
     "emailPlaceholder": "Email Address",
-    "emailVal": "dinahefny2000@gmail.com",
+    "emailVal": "info@dunas-travel.com",
     "firstName": "First Name",
     "fullName": "Full Name *",
     "getInTouch": "Get in Touch",
@@ -1507,8 +1515,8 @@
     "phoneVal": "+201004146843",
     "sendBtn": "Send Message",
     "sendMessage": "Send us a message",
-    "seoDesc": "Get in touch with our luxury travel concierges to start crafting your bespoke journey to Italy, Spain, and Brazil.",
-    "title": "Contact Us | Luxury Travel"
+    "title": "Contact Us | Luxury Travel",
+    "seoDesc": "Get in touch with our luxury travel concierges to start crafting your bespoke journey to Egypt, Jordan, and Turkey."
   },
   "dest": {
     "brazil": {
@@ -1535,7 +1543,9 @@
       "title": "Egypt",
       "subtitle": "The land of the pharaohs",
       "seoTitle": "Luxury Egypt Tours & Vacations | Dunas Travel",
-      "seoDesc": "Explore luxury journeys in Egypt. Custom itineraries coming soon."
+      "seoDesc": "Explore luxury journeys in Egypt. Custom itineraries coming soon.",
+      "brief": "A civilisation that has captivated the world for millennia. Egypt blends monumental history with warm hospitality and breathtaking landscapes — from the iconic Pyramids and the Nile cruise to the coral reefs of the Red Sea. Every itinerary is crafted to deliver maximum comfort, luxury and authentic cultural immersion.",
+      "desc": "From the timeless Pyramids of Giza to the golden temples of Luxor and the crystal waters of the Red Sea, Egypt offers a journey through history like no other."
     },
     "turkey": {
       "title": "Turkey",
@@ -1582,20 +1592,20 @@
   },
   "destinations": {
     "heading": "Our Destinations",
-    "metaDesc": "Explore our handpicked luxury tours across Italy, Spain, and Brazil.",
     "title": "All Destinations | Luxury Travel",
     "viewGuide": "View Destination Guide",
-    "worldCurated": "The World, Curated"
+    "worldCurated": "The World, Curated",
+    "metaDesc": "Explore our handpicked luxury tours across Egypt, Jordan, and Turkey."
   },
   "footer": {
     "address": "5 Hussein Said St, Old Hadayk El Ahram, First floor, Flat 102 – 103, Haram - Giza – Egypt",
     "created": "Created by Dina Hefny",
-    "desc": "Curating award-winning DUNAS TRAVEL experiences across Italy, Spain, and Brazil since 2010.",
     "faq": "FAQs",
     "join": "Join",
     "newsletter": "Subscribe to newsletter",
     "quickLinks": "Quick Links",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "desc": "Curating award-winning DUNAS TRAVEL experiences across Egypt, Jordan, and Turkey since 2010."
   },
   "services": {
     "allServices": "All Services",
@@ -1643,9 +1653,9 @@
     "reservationDesc": "Book your luxury transportation in advance. We provide professional chauffeurs and premium vehicles to ensure a comfortable and stylish journey.",
     "reserveNow": "Reserve Now",
     "seatsCount": "Seats",
-    "seoDesc": "Premium vehicles with professional drivers across Italy, Spain & Brazil",
     "seoTitle": "Luxury Transportation",
-    "transmission": "Transmission"
+    "transmission": "Transmission",
+    "seoDesc": "Premium vehicles with professional drivers across Egypt, Jordan & Turkey"
   },
   "auth": {
     "acceptTermsError": "You must accept the Terms and Conditions",
@@ -1732,5 +1742,34 @@
     "submit": "Send Inquiry Now!",
     "successAlert": "Your request has been submitted successfully! We will contact you soon.",
     "socialFooterDesc": "Need immediate assistance? Contact us via one of the following channels:"
+  },
+  "faq": {
+    "aBookingTailor": "You can start by visiting our \"Tailor a Tour\" page where you can choose your desired destinations and specify your travel details. Alternatively, you can contact our luxury travel planners directly through our Contact Us page or via WhatsApp. Once we receive your request, a dedicated concierge will work with you to draft a bespoke itinerary tailored to your preferences.",
+    "aCancellationsInsurance": "Travel insurance is not automatically included in our custom itineraries. We strongly advise all guests to obtain comprehensive travel insurance covering trip cancellation, medical emergencies, evacuation, and baggage loss prior to travel.",
+    "aCancellationsPolicy": "We understand that plans can change. Cancellations made more than 60 days before the departure date will receive a full refund minus a non-refundable booking fee. Cancellations made between 30 and 60 days before departure are subject to a 50% cancellation fee, while cancellations within 30 days of departure are non-refundable. We highly recommend purchasing comprehensive travel insurance to protect your investment.",
+    "aPaymentsMethods": "We accept secure online credit card payments (Visa, MasterCard, American Express), bank transfers, and PayPal. For most bespoke bookings, a deposit of 30% is required to secure reservations, with the remaining balance due 30 days prior to your departure date.",
+    "aTravelTransport": "All our tour packages feature premium private airport transfers. We operate a fleet of luxury sedans, SUVs, and executive coaches. Your professional driver will meet you at the airport arrivals gate with a personalized name board and assist with your luggage, ensuring a seamless and comfortable transition to your hotel.",
+    "catAll": "All Questions",
+    "catBooking": "Booking",
+    "catCancellations": "Cancellations",
+    "catPayments": "Payments & Pricing",
+    "catTravel": "Travel & Transport",
+    "heading": "Frequently Asked Questions",
+    "helpCenter": "HELP CENTER",
+    "noResults": "No questions found matching your search.",
+    "qBookingTailor": "How do I book a tailor-made luxury tour with Dunas Travel?",
+    "qBookingVisa": "Can Dunas Travel assist with visa applications?",
+    "qCancellationsInsurance": "Is travel insurance included in my package, or do I need to purchase it separately?",
+    "qCancellationsPolicy": "What is your cancellation and refund policy?",
+    "qPaymentsMethods": "What payment methods do you accept, and what are the payment terms?",
+    "qTravelTransport": "How does the airport transfer and local transportation work?",
+    "searchPlaceholder": "Search for questions...",
+    "seoDesc": "Have questions about booking, payments, cancellations, or travel requirements? Find comprehensive answers in our FAQ center.",
+    "seoTitle": "Frequently Asked Questions | Dunas Travel",
+    "aBookingVisa": "While guests are ultimately responsible for securing their own visas, we provide official booking confirmations and supporting documents required for your visa application. Our concierge team can also offer expert guidance on the visa requirements for Egypt, Jordan, Turkey, and other destinations."
+  },
+  "programs": {
+    "bestPriceGuarantee": "Best Price Guarantee",
+    "notFound": "Program not found"
   }
 }
