@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaChevronRight, FaClock, FaUserFriends, FaGlobe, FaTag, 
-  FaCheck, FaTimes, FaStar, FaChevronDown, FaMapMarkerAlt 
+  FaCheck, FaTimes, FaStar, FaChevronDown, FaMapMarkerAlt, FaBed 
 } from 'react-icons/fa';
 import { tours } from '../../data/tours';
 import Button from '../../components/ui/Button';
@@ -58,10 +58,20 @@ const TourDetails = () => {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-display-xl text-ivory-50 mb-6"
+            className={`text-display-xl text-ivory-50 ${tour.subtitle ? 'mb-2' : 'mb-6'}`}
           >
             {t(`data.${tour.title}`, tour.title)}
           </motion.h1>
+          {tour.subtitle && (
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-body-lg text-gold-400 font-medium tracking-wide mb-6"
+            >
+              {t(`data.${tour.subtitle}`, tour.subtitle)}
+            </motion.p>
+          )}
         </div>
       </section>
 
@@ -102,7 +112,13 @@ const TourDetails = () => {
             <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
               <FaGlobe className="text-gold-500 text-2xl mb-1" />
               <span className="text-caption text-obsidian-500 uppercase">{t('tour.languages', 'Languages')}</span>
-              <span className="text-body-md font-semibold text-obsidian-900">{tour.language === 'pt-BR' ? t('languages.portuguese', 'Português') : t('languages.italian', 'Italiano')}</span>
+              <span className="text-body-md font-semibold text-obsidian-900">
+                {tour.language === 'pt-BR' 
+                  ? t('languages.portuguese', 'Português') 
+                  : tour.language === 'es'
+                    ? t('languages.spanish', 'Español')
+                    : t('languages.italian', 'Italiano')}
+              </span>
             </div>
           </div>
 
@@ -143,7 +159,13 @@ const TourDetails = () => {
                   {activeTab === 'description' && (
                     <div className="text-body-lg text-obsidian-700 leading-relaxed">
                       <p className="mb-6">{t(`data.${tour.description}`, tour.description)}</p>
-                      <p>{tour.language === 'pt-BR' ? t('tour.premiumImmersion', 'Imersão premium sob medida com serviços de classe executiva.') : t('tour.exclusiveJourney', 'Un viaggio esclusivo curato nei minimi dettagli per il massimo comfort.')}</p>
+                      <p>
+                        {tour.language === 'pt-BR' 
+                          ? t('tour.premiumImmersion', 'Imersão premium sob medida com serviços de classe executiva.') 
+                          : tour.language === 'es'
+                            ? t('tour.spanishImmersion', 'Una inmersión premium diseñada a la medida con servicios de primera clase.')
+                            : t('tour.exclusiveJourney', 'Un viaggio esclusivo curato nei minimi dettagli per il massimo comfort.')}
+                      </p>
                     </div>
                   )}
 
@@ -161,6 +183,45 @@ const TourDetails = () => {
                   )}
                 </motion.div>
               </AnimatePresence>
+
+              {/* Accommodation Table */}
+              {tour.accommodation && (
+                <div className="mt-16 pt-12 border-t border-gray-200">
+                  <div className="mb-8">
+                    <span className="text-caption text-gold-500 uppercase tracking-widest font-semibold block mb-2">
+                      {t('tour.accommodation', 'ALOJAMIENTO')}
+                    </span>
+                    <h2 className="text-display-md text-3xl text-obsidian-900 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      {t('dest.greece.accTitle', 'Resumen de Alojamientos')}
+                    </h2>
+                  </div>
+                  <div className="bg-white rounded-2xl shadow-card overflow-hidden border border-gold-500/10">
+                    <div className="grid grid-cols-3 bg-obsidian-900 text-ivory-50 text-xs md:text-sm font-semibold uppercase tracking-wider">
+                      <div className="p-4 border-r border-ivory-50/10">{t('tour.destination', 'Destino')}</div>
+                      <div className="p-4 border-r border-ivory-50/10 text-center">{t('tour.nights', 'Noches')}</div>
+                      <div className="p-4 text-center">{t('tour.regime', 'Régimen')}</div>
+                    </div>
+                    {tour.accommodation.map((row, idx) => (
+                      <div
+                        key={idx}
+                        className={`grid grid-cols-3 border-b border-gold-500/10 last:border-0 ${idx % 2 === 0 ? 'bg-white' : 'bg-obsidian-50/50'}`}
+                      >
+                        <div className="p-4 border-r border-gold-500/10 font-semibold text-obsidian-900 flex items-center gap-2 text-sm md:text-base">
+                          <FaMapMarkerAlt className="text-gold-500 flex-shrink-0" />
+                          {row.destination}
+                        </div>
+                        <div className="p-4 border-r border-gold-500/10 text-center font-bold text-gold-700 text-base md:text-lg">
+                          {row.nights}
+                        </div>
+                        <div className="p-4 text-center text-obsidian-700 flex items-center justify-center gap-2 text-sm md:text-base">
+                          <FaBed className="text-gold-500 flex-shrink-0" />
+                          {row.regime}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Itinerary Section */}
               <div className="mt-16 pt-12 border-t border-gray-200">
@@ -271,6 +332,49 @@ const TourDetails = () => {
                   </ul>
                 </div>
               </div>
+
+              {/* Accommodation list / Hotels section */}
+              {tour.hotels && (
+                <div className="mt-16 pt-12 border-t border-gray-200">
+                  <div className="mb-8">
+                    <span className="text-caption text-gold-500 uppercase tracking-widest font-semibold block mb-2">
+                      {t('tour.hotelCategory', 'CATEGORÍA')} — {tour.hotelCategory}
+                    </span>
+                    <h2 className="text-display-md text-3xl text-obsidian-900 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      {t('dest.greece.hotelsTitle', 'Hoteles de Primera Clase')}
+                    </h2>
+                    <p className="text-body-md text-obsidian-500 mt-2">
+                      {t('dest.greece.hotelsDesc', 'En función de la disponibilidad, alojamiento en uno de los siguientes hoteles de primera clase en cada destino.')}
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {Object.entries(tour.hotels).map(([city, hotelList]) => (
+                      <div
+                        key={city}
+                        className="bg-white rounded-2xl shadow-card border border-gold-500/10 overflow-hidden"
+                      >
+                        <div className="bg-obsidian-900 px-4 py-3">
+                          <h3 className="text-gold-500 font-semibold text-xs md:text-sm uppercase tracking-widest flex items-center gap-2">
+                            <FaMapMarkerAlt className="flex-shrink-0 text-xs" />
+                            {city}
+                          </h3>
+                        </div>
+                        <ul className="p-4 flex flex-col gap-1.5">
+                          {hotelList.map((hotel, idx) => (
+                            <li
+                              key={idx}
+                              className="flex items-center gap-2 text-body-sm text-obsidian-700 py-1 border-b border-gold-500/5 last:border-0"
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0" />
+                              {hotel}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Sidebar Booking */}

@@ -593,6 +593,142 @@ export const tours = [
       { "day": 10, "title": "Il Cairo — Museo Egizio (facoltativo)", "morning": "Visita alla Cittadella di Saladino e alla Moschea di Alabastro.", "afternoon": "Tempo libero nel bazar o visita facoltativa al Museo Egizio (sala mummie esclusa).", "evening": "Serata libera al Cairo." },
       { "day": 11, "title": "Partenza", "morning": "Prima colazione in hotel e trasferimento finale assistito.", "afternoon": "Arrivo in aeroporto del Cairo per il volo internazionale di rientro.", "evening": "Fine del viaggio." }
     ]
+  },
+  // ==========================================
+  // 🇬🇷 GRECIA (ES)
+  // ==========================================
+  {
+    "id": "gr-es-001",
+    "slug": "lo-mejor-de-grecia-9d",
+    "language": "es",
+    "market": "España",
+    "type": "City & Islands",
+    "duration": "9 Días / 8 Noches",
+    "destination": "greece",
+    "title": "Lo Mejor de Grecia – 09 Días",
+    "subtitle": "Athens · Mykonos · Santorini · Crete",
+    "description": "Descubre lo mejor de Grecia en un solo viaje: la grandiosidad histórica de Atenas, el glamour cosmopolita de Mykonos, el romántico atardecer sobre la caldera de Santorini y la esencia auténtica de Creta. Salidas diarias del 1 de abril al 9 de octubre.",
+    "departures": "Salidas diarias | 1 Abr – 9 Oct",
+    "price": 1490,
+    "rating": 4.9,
+    "reviewCount": 287,
+    "images": [
+      "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1920&q=80",
+      "https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=1920&q=80"
+    ],
+    "highlights": [
+      "Tour guiado de Atenas en español: Acrópolis, Partenón, Estadio Olímpico de 1896",
+      "Ferry regular con asientos numerados Pireo–Mykonos",
+      "Ferry rápido Mykonos–Santorini y Santorini–Heraklion (clase economy)",
+      "Día libre en Mykonos: playas, compras y vida nocturna",
+      "Atardecer sobre la caldera de Santorini desde Fira y Oia",
+      "Exploración de Creta: Knossos, playas de Elounda, cocina cretense",
+      "8 noches en régimen de Bed & Breakfast — 2 por destino",
+      "Asistente de habla hispana en la llegada a Atenas"
+    ],
+    "accommodation": [
+      { "destination": "Atenas", "nights": 2, "regime": "Bed & Breakfast" },
+      { "destination": "Mykonos", "nights": 2, "regime": "Bed & Breakfast" },
+      { "destination": "Santorini", "nights": 2, "regime": "Bed & Breakfast" },
+      { "destination": "Creta (Heraklion)", "nights": 2, "regime": "Bed & Breakfast" }
+    ],
+    "hotels": {
+      "Atenas": ["Polis Grand", "Golden Age", "Zafolia", "Titania", "Stanley", "Athenian Callirhoe", "Amalia"],
+      "Mykonos": ["Aelos Resort", "Yiannaki", "Pelican Bay", "Rhenia", "San Antonio Summerland", "Manoulas Beach"],
+      "Santorini": ["Rose Bay", "Aegean Plaza", "Santo Miramare", "El Greco", "Santorini Palace", "Strogili"],
+      "Creta (Heraklion)": ["Castello City", "Lato Boutique", "Ibis Styles", "Olive Green"]
+    },
+    "hotelCategory": "Primera Clase",
+    "included": [
+      "8 noches en régimen de Bed & Breakfast (2 por destino)",
+      "Tour guiado de medio día en Atenas en español: Parlamento, Plaza Síntagma, Trilogía Neoclásica, Plaza Omonia, Catedral Católica, Templo de Zeus, Arco de Adriano, Estadio Olímpico de 1896, Acrópolis (Propileos, Templo de Atenea Niké, Partenón, Erecteión) y tiempo libre en el Barrio de Plaka",
+      "Traslado aeropuerto–hotel a la llegada en Atenas",
+      "Traslado hotel–puerto del Pireo",
+      "Asistente de habla hispana en la llegada",
+      "Ferry Pireo–Mykonos (regular, asientos numerados)",
+      "Ferry rápido Mykonos–Santorini (clase economy)",
+      "Ferry rápido Santorini–Heraklion, Creta (clase economy)",
+      "Entradas a museos y yacimientos arqueológicos del tour de Atenas",
+      "Traslado hotel–aeropuerto en Heraklion al final del programa",
+      "Todos los impuestos y tasas (city tax no incluida)"
+    ],
+    "excluded": [
+      "Comidas no detalladas en el programa",
+      "Bebidas con las comidas incluidas",
+      "Gastos personales y compras",
+      "Propinas a guías y conductores",
+      "Maleteros de hotel",
+      "Seguro de viaje",
+      "Todo lo no especificado en el programa",
+      "Vuelo de conexión doméstico desde Heraklion hasta ciudad de origen"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Llegada a Atenas",
+        "morning": "Llegada al Aeropuerto Internacional de Atenas 'Eleftherios Venizelos'. Recepción por nuestro asistente de habla hispana.",
+        "afternoon": "Traslado privado al hotel en el centro de Atenas. Check-in y tiempo libre para explorar el barrio a tu ritmo.",
+        "evening": "Tarde y noche libres. Te recomendamos el Barrio de Monastiraki para cenar con vistas a la Acrópolis iluminada."
+      },
+      {
+        "day": 2,
+        "title": "Tour de Atenas (D)",
+        "morning": "Tour guiado de medio día en español. Recorrido en autobús por Parlamento, Plaza Síntagma, Trilogía Neoclásica (Academia, Biblioteca Nacional y Universidad), Plaza Omonia, Catedral Católica, Templo de Zeus y Arco de Adriano. Visita al histórico Estadio Olímpico de 1896.",
+        "afternoon": "Subida a la Acrópolis: Propileos, Templo de Atenea Niké, el imponente Partenón y el Erecteión. Descenso al pintoresco Barrio de Plaka para tiempo libre y almuerzo opcional.",
+        "evening": "Regreso al hotel por cuenta propia. Noche libre en Atenas."
+      },
+      {
+        "day": 3,
+        "title": "Pireo → Mykonos (D)",
+        "morning": "Desayuno en el hotel. Traslado al Puerto del Pireo incluido en el programa.",
+        "afternoon": "Embarque en el ferry regular con asientos numerados con destino a Mykonos. Llegada, traslado al hotel y check-in.",
+        "evening": "Tarde libre para descubrir los famosos molinos de viento y los callejones blancos del casco histórico de Mykonos."
+      },
+      {
+        "day": 4,
+        "title": "Día Libre en Mykonos (D)",
+        "morning": "Desayuno en el hotel. Día completamente libre para explorar la isla a tu gusto.",
+        "afternoon": "Opciones: visitar las playas de Paradise y Super Paradise, explorar las boutiques de diseño de Hora o disfrutar de la gastronomía local.",
+        "evening": "Mykonos es famosa por su vida nocturna. Disfruta del ambiente cosmopolita con total libertad."
+      },
+      {
+        "day": 5,
+        "title": "Mykonos → Santorini (D)",
+        "morning": "Desayuno en el hotel. Mañana libre en Mykonos para aprovechar las últimas horas.",
+        "afternoon": "Traslado al puerto. Ferry rápido de Mykonos a Santorini (clase economy). Llegada, traslado al hotel con vistas a la caldera y check-in.",
+        "evening": "Primer atardecer sobre la caldera de Santorini desde el hotel o desde el mirador de Oia. Un espectáculo incomparable."
+      },
+      {
+        "day": 6,
+        "title": "Día Libre en Santorini (D)",
+        "morning": "Desayuno en el hotel. Día libre para explorar Fira, la capital de Santorini, con sus boutiques, galerías de arte y vistas panorámicas al volcán.",
+        "afternoon": "Opciones: visitar el pueblo de Oia y sus icónicas cúpulas azules, recorrer las playas de arena volcánica negra de Perissa y Kamari, o apuntarse a una excursión opcional en barco a la caldera y el volcán activo.",
+        "evening": "Noche libre en Santorini. Te recomendamos cenar en un restaurante con vistas al caldera."
+      },
+      {
+        "day": 7,
+        "title": "Santorini → Heraklion / Creta (D)",
+        "morning": "Desayuno en el hotel. Mañana libre para disfrutar de las últimas horas en Santorini.",
+        "afternoon": "Traslado al puerto. Ferry rápido de Santorini a Heraklion, capital de Creta. Llegada, traslado al hotel y check-in.",
+        "evening": "Paseo por el Puerto Veneciano de Heraklion y cena en los restaurantes de la zona de las Armas Venecianas."
+      },
+      {
+        "day": 8,
+        "title": "Día Libre en Creta (D)",
+        "morning": "Desayuno en el hotel. Día libre para explorar Creta por cuenta propia.",
+        "afternoon": "Opciones: visitar el Palacio Minoico de Knossos (el más antiguo de Europa), relajarse en las aguas turquesas de las playas de Elounda, o apuntarse a la excursión opcional en barco a la isla de Spinalonga (antigua colonia de leprosos). Degustación de la auténtica cocina cretense: aceite de oliva, queso graviera y dakos.",
+        "evening": "Última noche en Grecia. Cena libre con productos locales en el mercado de Heraklion."
+      },
+      {
+        "day": 9,
+        "title": "Salida (D)",
+        "morning": "Desayuno en el hotel. Mañana libre.",
+        "afternoon": "Traslado al Aeropuerto Internacional de Heraklion 'Nikos Kazantzakis' incluido. Vuelo de conexión doméstico hacia la ciudad de origen (no incluido en el programa).",
+        "evening": "Fin del programa y regreso a casa con los mejores recuerdos de Grecia."
+      }
+    ]
   }
 ];
 
