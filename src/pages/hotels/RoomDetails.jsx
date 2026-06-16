@@ -211,8 +211,8 @@ const RoomDetails = () => {
           <div className="absolute inset-0 bg-slate-900/60 bg-gradient-to-t from-[#FAF9F5] via-slate-900/40 to-transparent"></div>
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 max-w-6xl flex flex-col md:flex-row justify-between items-end gap-6">
-          <div className="text-left">
+        <div className="relative z-10 container mx-auto px-6 max-w-6xl flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+          <div className="text-left w-full md:w-auto">
             <Link to={`${prefix}/hotels/sol-pyramid-hotel`} className="inline-flex items-center gap-2 text-gold-500 hover:text-gold-600 font-semibold mb-4 transition-colors">
               <FaArrowLeft /> {t('common.back', 'Back to Hotel')}
             </Link>
@@ -250,7 +250,7 @@ const RoomDetails = () => {
           {/* Left Column: Room Specs, Amenities, and Gallery */}
           <div className="lg:col-span-2 space-y-12">
             {/* Quick Specs Grid */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200/60 grid grid-cols-2 sm:grid-cols-3 gap-6">
+            <div className="bg-white p-5 md:p-8 rounded-2xl shadow-sm border border-slate-200/60 grid grid-cols-2 sm:grid-cols-3 gap-6">
               <div>
                 <span className="text-xs uppercase tracking-wider text-slate-400 block mb-1">{t('hotel.room.priceLabel', 'Price')}</span>
                 <span className="text-lg font-bold text-slate-900">{formatPrice(room.price)} / {t('hotel.night', 'night')}</span>
@@ -280,7 +280,7 @@ const RoomDetails = () => {
             </div>
 
             {/* Room Amenities Section */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200/60">
+            <div className="bg-white p-5 md:p-8 rounded-2xl shadow-sm border border-slate-200/60">
               <h2 className="text-2xl font-display font-semibold text-slate-900 mb-6 pb-3 border-b border-slate-100 flex items-center gap-3">
                 <span className="w-1.5 h-6 bg-gold-500 rounded-full"></span>
                 {t('hotel.room.amenities', 'Room Amenities')}
@@ -298,7 +298,7 @@ const RoomDetails = () => {
             </div>
 
             {/* Room Image Gallery */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200/60">
+            <div className="bg-white p-5 md:p-8 rounded-2xl shadow-sm border border-slate-200/60">
               <h2 className="text-2xl font-display font-semibold text-slate-900 mb-6 pb-3 border-b border-slate-100 flex items-center gap-3">
                 <span className="w-1.5 h-6 bg-gold-500 rounded-full"></span>
                 {t('hotel.room.galleryTitle', 'Room Gallery')}
@@ -320,7 +320,7 @@ const RoomDetails = () => {
             </div>
 
             {/* Room Reviews Block */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200/60">
+            <div className="bg-white p-5 md:p-8 rounded-2xl shadow-sm border border-slate-200/60">
               <h2 className="text-2xl font-display font-semibold text-slate-900 mb-6 pb-3 border-b border-slate-100 flex items-center gap-3">
                 <span className="w-1.5 h-6 bg-gold-500 rounded-full"></span>
                 {t('hotel.room.reviewsTitle', 'Room Reviews')}
@@ -399,7 +399,7 @@ const RoomDetails = () => {
 
           {/* Right Column: Booking Request Form */}
           <div className="lg:col-span-1">
-            <div className="bg-slate-900 text-white p-8 rounded-2xl border border-slate-800 shadow-xl sticky top-24 text-left">
+            <div className="bg-slate-900 text-white p-5 md:p-8 rounded-2xl border border-slate-800 shadow-xl sticky top-24 text-left">
               <h3 className="text-xl font-display font-semibold text-gold-400 mb-2">
                 {t('hotel.room.requestBooking', 'Request Booking')}
               </h3>
@@ -459,7 +459,7 @@ const RoomDetails = () => {
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-[11px] uppercase tracking-wider text-gold-500 font-bold mb-1">{t('hotel.room.checkInLabel', 'Check-in')}</label>
                       <input
@@ -523,7 +523,7 @@ const RoomDetails = () => {
 
       {/* Hotel Contacts Box & Footer Info */}
       <section className="container mx-auto px-6 py-6 max-w-6xl mt-12 border-t border-slate-200">
-        <div className="bg-slate-900 text-white p-8 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="bg-slate-900 text-white p-5 md:p-8 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-center md:text-left">
             <h3 className="text-xl font-display font-semibold text-gold-400 mb-2">Sol Pyramid Hotel</h3>
             <p className="text-xs text-slate-400 max-w-md">{hotelOverview.location}</p>

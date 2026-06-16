@@ -178,8 +178,8 @@ const HotelDetails = () => {
           <div className="absolute inset-0 bg-slate-900/60 bg-gradient-to-t from-[#FAF9F5] via-slate-900/40 to-transparent"></div>
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 max-w-6xl text-center md:text-left flex flex-col md:flex-row justify-between items-end gap-6">
-          <div className="text-left">
+        <div className="relative z-10 container mx-auto px-6 max-w-6xl flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+          <div className="text-left w-full md:w-auto">
             <div className="flex flex-wrap items-center justify-start gap-2.5 mb-3">
               <span className="flex items-center gap-0.5 text-gold-500 text-lg">
                 <FaStar /><FaStar /><FaStar />
@@ -230,7 +230,7 @@ const HotelDetails = () => {
 
       {/* SECTION 2: HOTEL OVERVIEW SECTION */}
       <section className="container mx-auto px-6 py-12 max-w-6xl -mt-10 relative z-20">
-        <div className="bg-white rounded-2xl shadow-card border border-slate-200/50 p-8 md:p-12 text-left">
+        <div className="bg-white rounded-2xl shadow-card border border-slate-200/50 p-5 md:p-12 text-left">
           <h2 className="text-3xl font-display font-semibold text-slate-900 mb-6 flex items-center gap-3">
             <span className="w-1.5 h-8 bg-gold-500 rounded-full"></span>
             {t('hotel.overview.title', 'Hotel Overview')}
@@ -362,7 +362,7 @@ const HotelDetails = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Column 1: In-Room Amenities */}
-            <div className="bg-slate-800/40 p-8 md:p-10 rounded-2xl border border-slate-800 shadow-inner">
+            <div className="bg-slate-800/40 p-5 md:p-10 rounded-2xl border border-slate-800 shadow-inner">
               <h3 className="text-xl font-display font-semibold text-gold-400 mb-6 border-b border-slate-700/50 pb-3 flex items-center gap-2">
                 📶 {t('hotel.fac.inRoomTitle', 'In-Room Amenities')}
               </h3>
@@ -379,7 +379,7 @@ const HotelDetails = () => {
             </div>
 
             {/* Column 2: Hotel-Wide Facilities */}
-            <div className="bg-slate-800/40 p-8 md:p-10 rounded-2xl border border-slate-800 shadow-inner flex flex-col justify-between">
+            <div className="bg-slate-800/40 p-5 md:p-10 rounded-2xl border border-slate-800 shadow-inner flex flex-col justify-between">
               <div>
                 <h3 className="text-xl font-display font-semibold text-gold-400 mb-6 border-b border-slate-700/50 pb-3 flex items-center gap-2">
                   🏢 {t('hotel.fac.hotelWideTitle', 'Hotel-Wide Facilities')}
@@ -415,7 +415,7 @@ const HotelDetails = () => {
           <div className="w-20 h-1 bg-gold-500 mx-auto mt-4"></div>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-sm border border-slate-200/60 p-6 md:p-8 flex flex-col lg:flex-row gap-8 items-stretch">
+        <div className="bg-white rounded-3xl shadow-sm border border-slate-200/60 p-4 md:p-8 flex flex-col lg:flex-row gap-8 items-stretch">
           <div className="lg:w-1/2 flex flex-col justify-between py-2">
             <div>
               <p className="text-slate-700 text-[15px] leading-relaxed mb-6">
@@ -497,11 +497,11 @@ const HotelDetails = () => {
           <div className="w-20 h-1 bg-gold-500 mx-auto mt-4"></div>
         </div>
 
-        <div className="columns-2 sm:columns-3 md:columns-4 gap-4 space-y-4">
+        <div className="columns-2 sm:columns-3 md:columns-4 gap-4">
           {galleryImages.map((img, idx) => (
             <div
               key={idx}
-              className="break-inside-avoid rounded-xl overflow-hidden cursor-pointer group relative shadow-sm border border-slate-200 bg-slate-100"
+              className="break-inside-avoid rounded-xl overflow-hidden cursor-pointer group relative shadow-sm border border-slate-200 bg-slate-100 mb-4"
               onClick={() => setActiveImage(img)}
             >
               <img src={img} alt={`Sol Pyramid Hotel Gallery ${idx + 1}`} className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
@@ -608,7 +608,7 @@ const HotelDetails = () => {
 
       {/* SECTION 9: CONTACT & FOOTER INFO SECTION */}
       <section className="container mx-auto px-6 py-6 max-w-6xl mt-8">
-        <div className="bg-slate-900 text-white p-8 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-6 text-left">
+        <div className="bg-slate-900 text-white p-5 md:p-8 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-6 text-left">
           <div>
             <h3 className="text-xl font-display font-semibold text-gold-400 mb-2">Sol Pyramid Hotel</h3>
             <p className="text-xs text-slate-400 max-w-md">{hotelOverview.location}</p>
@@ -648,7 +648,7 @@ const HotelDetails = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[99999] bg-slate-900/80 flex items-center justify-center backdrop-blur-sm p-4"
+            className="fixed inset-0 z-[99999] bg-slate-900/80 flex items-start sm:items-center justify-center backdrop-blur-sm p-4 overflow-y-auto"
             onClick={() => setIsModalOpen(false)}
           >
             <div onClick={(e) => e.stopPropagation()}>
