@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { tours } from './src/data/tours.js';
+import { services } from './src/data/services.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,7 +14,7 @@ const missingKeys = JSON.parse(fs.readFileSync(path.join(__dirname, 'missing_key
 // Load extracted tour strings
 const tourStrings = JSON.parse(fs.readFileSync(path.join(__dirname, 'extracted_strings.json'), 'utf8'));
 
-// Build mapping of tour string -> source language ('pt' or 'it')
+// Build mapping of tour string -> source language ('pt' or 'it' or 'en')
 const tourStringLangs = {};
 tours.forEach(tour => {
   const lang = tour.language === 'pt-BR' ? 'pt' : 'it';
@@ -32,6 +33,36 @@ tours.forEach(tour => {
   if (tour.excluded) tour.excluded.forEach(addString);
   if (tour.itinerary) {
     tour.itinerary.forEach(day => {
+      addString(day.title);
+      addString(day.morning);
+      addString(day.afternoon);
+      addString(day.evening);
+    });
+  }
+});
+
+services.forEach(service => {
+  const lang = 'en';
+  const addString = (str) => {
+    if (str && typeof str === 'string') {
+      tourStringLangs[str] = lang;
+    }
+  };
+  addString(service.title);
+  addString(service.shortDesc);
+  addString(service.location);
+  if (service.overview) service.overview.forEach(addString);
+  if (service.highlights) service.highlights.forEach(addString);
+  if (service.included) service.included.forEach(addString);
+  if (service.excluded) service.excluded.forEach(addString);
+  if (service.accommodations) {
+    service.accommodations.forEach(acc => {
+      addString(acc.destination);
+      addString(acc.regime);
+    });
+  }
+  if (service.itinerary) {
+    service.itinerary.forEach(day => {
       addString(day.title);
       addString(day.morning);
       addString(day.afternoon);
@@ -178,10 +209,11 @@ async function processTourStrings() {
   console.log('\n--- Processing Tour Strings ---');
   const targetLanguages = ['en', 'ar', 'es', 'pt', 'it'];
   
-  // Group tour strings by source language (pt or it)
+  // Group tour strings by source language (pt or it or en)
   const stringsBySrc = {
     pt: [],
-    it: []
+    it: [],
+    en: []
   };
   
   tourStrings.forEach(str => {
@@ -189,7 +221,7 @@ async function processTourStrings() {
     stringsBySrc[srcLang].push(str);
   });
   
-  console.log(`Tour strings group size: PT: ${stringsBySrc.pt.length}, IT: ${stringsBySrc.it.length}`);
+  console.log(`Tour strings group size: PT: ${stringsBySrc.pt.length}, IT: ${stringsBySrc.it.length}, EN: ${stringsBySrc.en.length}`);
   
   for (const lang of targetLanguages) {
     console.log(`Processing tour strings for language: ${lang}`);
@@ -198,7 +230,7 @@ async function processTourStrings() {
       locales[lang].data = {};
     }
     
-    for (const srcLang of ['pt', 'it']) {
+    for (const srcLang of ['pt', 'it', 'en']) {
       const strings = stringsBySrc[srcLang];
       const stringsToTranslate = [];
       

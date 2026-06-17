@@ -10,6 +10,7 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
   const { t } = useTranslation();
   const { formatPrice } = useCurrency();
   const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success'
+  const isEgyptJordanTour = tourTitle === "Combined EGYPT with Jordan - 14 DAYS / 13 Nights" || tourTitle?.includes("Combined EGYPT with Jordan");
 
   // Form State
   const [formData, setFormData] = useState({
@@ -46,7 +47,7 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
       setStatus('success');
       setTimeout(() => {
         onClose && onClose();
-      }, 3000);
+      }, isEgyptJordanTour ? 20000 : 3000);
     }, 1500);
   };
 
@@ -82,9 +83,28 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
               <FaCheckCircle className="text-gold-500 text-6xl mb-4" />
             </motion.div>
             <h3 className="text-display-md text-ivory-50 mb-2 font-display">{t('booking.reservationConfirmed', 'Booking Confirmed')}</h3>
-            <p className="text-body-md text-ivory-300">
-              {t('booking.reservationSuccessDesc', 'Your reservation request for {{tourTitle}} has been received. Our team will contact you to finalize the payment and details.', { tourTitle: t(`data.${tourTitle}`, tourTitle) })}
-            </p>
+            {isEgyptJordanTour ? (
+              <div className="flex flex-col gap-6 w-full items-center">
+                <div className="text-body-md text-ivory-300 text-left whitespace-pre-line bg-gold-500/10 p-5 rounded-xl border border-gold-500/20 shadow-md w-full">
+                  Good morning,{"\n"}
+                  Thank you very much for your interest in the trip to Egypt. In order to send you detailed information we need:{"\n"}
+                  - Name to address you{"\n"}
+                  - Trip departure date and how many people want to travel{"\n"}
+                  - Contact email to send the quote.{"\n"}
+                  We are waiting for the requested information. All the best. Dunas Travel
+                </div>
+                <button 
+                  onClick={onClose} 
+                  className="px-6 py-2 bg-gold-500 text-obsidian-900 font-semibold rounded-full hover:scale-105 transition-transform text-sm"
+                >
+                  {t('common.close', 'Close')}
+                </button>
+              </div>
+            ) : (
+              <p className="text-body-md text-ivory-300">
+                {t('booking.reservationSuccessDesc', 'Your reservation request for {{tourTitle}} has been received. Our team will contact you to finalize the payment and details.', { tourTitle: t(`data.${tourTitle}`, tourTitle) })}
+              </p>
+            )}
           </motion.div>
         ) : (
           <motion.form
