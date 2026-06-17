@@ -332,7 +332,7 @@ const Home = () => {
       </section>
 
       {/* Destinations & Their Tours */}
-      <section className="py-10 bg-obsidian-900">
+      <section className="py-10 bg-[#1d1da3]">
         <div className="container mx-auto px-6">
           <div className="text-center mb-8">
             <span className="text-gold-500 uppercase tracking-widest text-caption block mb-4">
