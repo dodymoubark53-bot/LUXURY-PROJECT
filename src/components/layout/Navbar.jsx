@@ -117,14 +117,10 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 h-16 lg:h-20 flex items-center ${scrolled ? 'shadow-lg border-b border-white/5 bg-[#1A1A2E]/95' : 'bg-[#1A1A2E]/90'
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 h-16 lg:h-20 flex items-center bg-transparent ${scrolled ? 'drop-shadow-[0_4px_16px_rgba(0,0,0,0.35)]' : ''
         }`}
-      style={{
-        backdropFilter: 'blur(18px)',
-        WebkitBackdropFilter: 'blur(18px)'
-      }}
     >
-      <div className="container mx-auto px-6 h-full flex justify-between items-center">
+      <div className="container mx-auto px-6 h-full flex justify-between items-center [filter:drop-shadow(0_1px_4px_rgba(0,0,0,0.55))]">
         {/* Logo */}
         <Link to="/" className="flex items-center z-50" onClick={() => setMobileMenuOpen(false)}>
           <Logo theme="dark" height={60} />

@@ -228,7 +228,7 @@ const Home = () => {
             className="w-full h-full object-cover"
             fetchpriority="high"
           />
-          <div className="absolute inset-0 bg-[#1A1A2E]/60 bg-gradient-to-t from-[#1A1A2E] via-transparent to-[#1A1A2E]/40"></div>
+          <div className="absolute inset-0"></div>
         </div>
 
         <motion.div
