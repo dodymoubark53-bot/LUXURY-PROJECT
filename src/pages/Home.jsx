@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaStar, FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaStar, FaTimes, FaChevronLeft, FaChevronRight, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 import { fadeInUp, staggerContainer } from "../animations/variants";
 import Button from "../components/ui/Button";
 import TourCard from "../components/tour/TourCard";
@@ -13,6 +13,8 @@ import { useJordanPrograms } from "../hooks/useJordanPrograms";
 import { services } from "../data/services";
 import { transportation } from "../data/transportation";
 import { useCurrency } from "../context/CurrencyContext";
+import rawProgramData from "../data/programs.json";
+const rawPrograms = rawProgramData.programs;
 
 const destinationsData = [
   {
@@ -109,37 +111,71 @@ const Home = () => {
     code: jp.code
   }));
 
-  // Hero Slider State
-  const [currentSlide, setCurrentSlide] = useState(0);
+  // Hero Video State
+  const videoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
 
-  const heroSlides = [
-    {
-      id: "main",
-      image: "/images/hero.jpg",
-      title: t("home.heroTitle"),
-      desc: t("home.heroDesc", "Curating ultra-luxury, personalized itineraries through the timeless wonders of Egypt, Jordan, Turkey, and Tunisia. Experience the world's most captivating destinations in unparalleled style."),
-      button1: { text: t("home.exploreDest"), link: "/destinations", variant: "gold-glow" },
-      button2: { text: t("home.tailorTour"), link: "/tailor-a-tour", variant: "glass" },
-      award: t("home.award")
-    },
-    {
-      id: "turkey",
-      image: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1920&q=80",
-      title: t("home.turkeyHeroTitle", "Discover Turkey"),
-      desc: t("home.turkeyHeroDesc", "Explore the magic of Istanbul, the fairy chimneys of Cappadocia, the stunning coast of Antalya, and the thermal pools of Pamukkale. Unforgettable journeys await."),
-      price: t("home.turkeyHeroPrice", "Starting from $899"),
-      button1: { text: t("home.turkeyHeroView", "View Packages"), link: "/destinations", variant: "gold-glow" },
-      button2: { text: t("home.turkeyHeroBook", "Book Now"), link: "/contact", variant: "glass" },
-      award: t("home.turkeyHeroAward", "FEATURED DESTINATION")
-    }
+  // Search Form State
+  const [searchDest, setSearchDest] = useState("");
+  const [searchTour, setSearchTour] = useState("");
+  const [searchArrival, setSearchArrival] = useState("");
+  const [searchDeparture, setSearchDeparture] = useState("");
+  const [searchPeople, setSearchPeople] = useState(1);
+
+  const destinations = [
+    { id: "egypt", label: t("dest.egypt.title", "Egypt"), img: "/imgs/gallery/pharaohs & pyramid.jpg" },
+    { id: "turkey", label: t("dest.turkey.title", "Turkey"), img: "/imgs/gallery/grand tour of turkey.jpg" },
+    { id: "jordan", label: t("dest.jordan.title", "Jordan"), img: "/imgs/gallery/ultimate jordan grand tour.webp" },
+    { id: "greece", label: t("dest.greece.title", "Greece"), img: "/imgs/gallery/1.jpeg" },
+    { id: "tunisia", label: t("dest.tunisia.title", "Tunisia"), img: "/imgs/gallery/3.jpeg" },
+    { id: "morocco", label: t("dest.morocco.title", "Morocco"), img: "/imgs/gallery/14.jpeg" },
+    { id: "dubai", label: t("dest.dubai.title", "Dubai"), img: "/imgs/gallery/16.jpeg" },
+    { id: "holyland", label: t("dest.holyland.title", "Holy Land"), img: "/imgs/gallery/20.jpeg" },
   ];
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [heroSlides.length]);
+  const slugify = (str) => str.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+  const TURKEY_IDS = ["REG-01","REG-02","REG-03","REG-04","REG-05","REG-05-B","REG-06","REG-07","REG-08","REG-09","REG-10","REG-11","REG-13","REG-14"];
+  const JORDAN_IDS = ["REG-15","REG-16","REG-17","REG-18","REG-19","REG-20","REG-21"];
+
+  const getToursForDest = (destId) => {
+    const result = [];
+    tours.filter((t) => t.destination === destId).forEach((t) => {
+      result.push({ label: t.title, url: `/tours/${t.slug}`, id: `tour-${t.slug}` });
+    });
+    if (destId === "turkey") {
+      rawPrograms.filter((p) => TURKEY_IDS.includes(p.id)).forEach((p) => {
+        const slug = slugify(p.id + "-" + p.name.en);
+        result.push({ label: p.name.en, url: `/programs/turkey/${slug}`, id: `prog-${p.id}` });
+      });
+    }
+    if (destId === "jordan") {
+      rawPrograms.filter((p) => JORDAN_IDS.includes(p.id)).forEach((p) => {
+        const slug = slugify(p.id + "-" + p.name.en);
+        result.push({ label: p.name.en, url: `/programs/jordan/${slug}`, id: `prog-${p.id}` });
+      });
+    }
+    return result;
+  };
+
+  const destTours = searchDest ? getToursForDest(searchDest) : [];
+
+  const handleSearch = () => {
+    if (searchTour) {
+      const found = destTours.find((t) => t.id === searchTour);
+      if (found) { window.location.href = found.url; return; }
+    }
+    if (searchDest) {
+      window.location.href = `/destinations/${searchDest}`;
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
 
   // Transportation State
   const [vehicleFilter, setVehicleFilter] = useState("all");
@@ -312,101 +348,152 @@ const Home = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            className="absolute inset-0 z-0"
+      <section className="relative h-screen min-h-[600px] md:min-h-[700px] flex items-center justify-center overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover md:object-[center_30%]"
           >
-            <img
-              src={heroSlides[currentSlide].image}
-              alt="Luxury Travel Hero"
-              className="w-full h-full object-cover"
-              fetchpriority={currentSlide === 0 ? "high" : "auto"}
-            />
-            <div className="absolute inset-0"></div>
-          </motion.div>
-        </AnimatePresence>
-
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentSlide}
-            className="relative z-10 container mx-auto px-6 text-center mt-12"
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-          >
-            <motion.span
-              variants={fadeInUp}
-              className="inline-block font-body text-gold-500 tracking-[0.2em] uppercase text-sm mb-4"
-            >
-              {heroSlides[currentSlide].award}
-            </motion.span>
-
-            <motion.h1
-              variants={fadeInUp}
-              className="text-display-xl text-ivory-50 mb-6 max-w-4xl mx-auto drop-shadow-lg whitespace-pre-line"
-            >
-              {heroSlides[currentSlide].title}
-            </motion.h1>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-body-lg text-ivory-300 mb-6 max-w-2xl mx-auto"
-            >
-              {heroSlides[currentSlide].desc}
-            </motion.p>
-
-            {heroSlides[currentSlide].price && (
-              <motion.div variants={fadeInUp} className="mb-8">
-                <span className="text-xl text-gold-500 font-semibold bg-obsidian-900/50 px-6 py-2 rounded-full border border-gold-500/30 backdrop-blur-sm shadow-[0_0_15px_rgba(245,166,35,0.2)]">
-                  {heroSlides[currentSlide].price}
-                </span>
-              </motion.div>
-            )}
-
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row items-center justify-center gap-6"
-            >
-              <Link to={heroSlides[currentSlide].button1.link}>
-                <Button
-                  variant={heroSlides[currentSlide].button1.variant}
-                  className="w-full sm:w-auto px-8 py-4 text-lg"
-                >
-                  {heroSlides[currentSlide].button1.text}
-                </Button>
-              </Link>
-              <Link to={heroSlides[currentSlide].button2.link}>
-                <Button
-                  variant={heroSlides[currentSlide].button2.variant}
-                  className="w-full sm:w-auto px-8 py-4 text-lg"
-                >
-                  {heroSlides[currentSlide].button2.text}
-                </Button>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Slide Indicators */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex gap-3">
-          {heroSlides.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setCurrentSlide(idx)}
-              className={`h-2 rounded-full transition-all duration-500 ${
-                currentSlide === idx ? "bg-gold-500 w-8" : "bg-ivory-50/50 hover:bg-ivory-50 w-2"
-              }`}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
+            <source src="/imgs/hero.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-obsidian-900/50"></div>
         </div>
+
+        {/* Search Form */}
+        <div className="relative z-10 container mx-auto px-3 sm:px-4 w-full max-w-5xl -mt-8 md:-mt-4">
+          <div className="bg-white/15 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] p-4 sm:p-5 md:p-6 lg:p-8 border border-white/20">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-2 sm:gap-3">
+              {/* Destination */}
+              <div className="col-span-2 md:col-span-1">
+                <label className="block text-[10px] sm:text-caption text-gold-400 uppercase tracking-wider mb-1 font-semibold">
+                  {t('home.searchDest', 'Destination')}
+                </label>
+                <select
+                  value={searchDest}
+                  onChange={(e) => { setSearchDest(e.target.value); setSearchTour(""); }}
+                  className="w-full px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white text-[13px] sm:text-body-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B35] appearance-none cursor-pointer [&>option]:text-obsidian-900"
+                >
+                  <option value="" className="text-obsidian-900">{t('home.searchAllDest', 'All Destinations')}</option>
+                  {destinations.map((d) => (
+                    <option key={d.id} value={d.id} className="text-obsidian-900">{d.label}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Tour */}
+              <div className="col-span-2 md:col-span-1">
+                <label className="block text-[10px] sm:text-caption text-gold-400 uppercase tracking-wider mb-1 font-semibold">
+                  {t('home.searchTour', 'Tour / Program')}
+                </label>
+                <select
+                  value={searchTour}
+                  onChange={(e) => setSearchTour(e.target.value)}
+                  disabled={!searchDest}
+                  className="w-full px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white text-[13px] sm:text-body-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B35] appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed [&>option]:text-obsidian-900"
+                >
+                  <option value="" className="text-obsidian-900">{t('home.searchAllTours', 'All Tours')}</option>
+                  {destTours.map((t) => (
+                    <option key={t.id} value={t.id} className="text-obsidian-900">{t.label}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Arrival */}
+              <div>
+                <label className="block text-[10px] sm:text-caption text-gold-400 uppercase tracking-wider mb-1 font-semibold">
+                  {t('home.searchArrival', 'Arrival')}
+                </label>
+                <input
+                  type="date"
+                  value={searchArrival}
+                  min={todayStr}
+                  onChange={(e) => setSearchArrival(e.target.value)}
+                  className="w-full px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white text-[13px] sm:text-body-sm [color-scheme:dark] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]"
+                />
+              </div>
+
+              {/* Departure */}
+              <div>
+                <label className="block text-[10px] sm:text-caption text-gold-400 uppercase tracking-wider mb-1 font-semibold">
+                  {t('home.searchDeparture', 'Departure')}
+                </label>
+                <input
+                  type="date"
+                  value={searchDeparture}
+                  min={todayStr}
+                  onChange={(e) => setSearchDeparture(e.target.value)}
+                  className="w-full px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white text-[13px] sm:text-body-sm [color-scheme:dark] focus:outline-none focus:ring-2 focus:ring-[#FF6B35]"
+                />
+              </div>
+
+              {/* People + Search */}
+              <div className="col-span-2 md:col-span-1">
+                <label className="block text-[10px] sm:text-caption text-gold-400 uppercase tracking-wider mb-1 font-semibold">
+                  {t('home.searchPeople', 'People')}
+                </label>
+                <div className="flex gap-1.5 sm:gap-2">
+                  <input
+                    type="number"
+                    min="1"
+                    max="50"
+                    value={searchPeople}
+                    onChange={(e) => setSearchPeople(Math.max(1, parseInt(e.target.value) || 1))}
+                    className="w-16 sm:w-20 px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white text-[13px] sm:text-body-sm text-center focus:outline-none focus:ring-2 focus:ring-[#FF6B35] [color-scheme:dark]"
+                  />
+                  <button
+                    onClick={handleSearch}
+                    className="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 font-semibold rounded-lg transition-all text-[13px] sm:text-body-sm whitespace-nowrap text-white"
+                    style={{ background: 'linear-gradient(135deg, #FF6B35, #1E3A8A)' }}
+                  >
+                    {t('home.searchBtn', 'Search')}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Popular Destinations */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mt-4 sm:mt-5 md:mt-6 text-center"
+          >
+            <p className="text-gold-400/90 text-[10px] sm:text-caption uppercase tracking-widest mb-2 sm:mb-3 font-semibold drop-shadow-lg">
+              {t('home.popularDests', 'Popular Destinations')}
+            </p>
+            <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 md:gap-3">
+              {destinations.slice(0, 6).map((d) => (
+                <Link
+                  key={d.id}
+                  to={`/destinations/${d.id}`}
+                  className="group flex items-center gap-1.5 sm:gap-2 bg-white/10 hover:bg-white/25 backdrop-blur-md border border-white/20 hover:border-[#FF6B35]/60 rounded-full px-2.5 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 transition-all"
+                >
+                  <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden shrink-0 ring-1 ring-white/30">
+                    <img src={d.img} alt="" className="w-full h-full object-cover" />
+                  </span>
+                  <span className="text-white/90 text-[11px] sm:text-body-sm font-medium group-hover:text-[#FF6B35] transition-colors">
+                    {d.label}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Sound Toggle */}
+        <button
+          onClick={toggleMute}
+          className="absolute bottom-4 sm:bottom-6 md:bottom-8 right-4 sm:right-6 md:right-8 z-20 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-obsidian-900/70 backdrop-blur-md border border-gold-500/30 flex items-center justify-center text-ivory-50 hover:text-gold-500 hover:bg-obsidian-900 transition-all shadow-lg"
+          aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+        >
+          {isMuted ? <FaVolumeMute size={14} /> : <FaVolumeUp size={14} />}
+        </button>
       </section>
 
       {/* About the Company */}
