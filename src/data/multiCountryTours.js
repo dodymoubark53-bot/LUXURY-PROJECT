@@ -32,7 +32,7 @@ const getLocalizedTours = (t) => [
       'https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=80',
       'https://images.unsplash.com/photo-1601579112934-17ac2aa86292?w=1200&q=80',
     ],
-    description: t('multiCountry.description'),
+    overview: "Una odisea espectacular de 19 días que entrelaza la magia de Turquía, el misterio de Jordania, la majestuosidad de Egipto y el deslumbrante futurismo de Dubái. Explora las formaciones milenarias de Petra y navega cuatro noches por el Nilo antes de experimentar safaris beduinos en los desiertos del emirato, acompañado siempre por guías en español para una vivencia excepcional.",
     highlights: [
       'Crucero en barco por el Bósforo en Estambul',
       'Safari 4×4 en el desierto de Wadi Rum',
@@ -234,7 +234,7 @@ const getLocalizedTours = (t) => [
       'https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=80',
       'https://images.unsplash.com/photo-1565019001609-2dcd4975f670?w=1200&q=80',
     ],
-    description: t('multiCountry.description'),
+    overview: "Recorre en 11 días la grandiosa herencia de Faraones y Filósofos conectando El Cairo y Atenas. Disfruta de un crucero sosegado por el Nilo admirando el Templo de Philae y los monumentos de Luxor, para luego sumergirte en la rica mitología griega recorriendo la Acrópolis y navegando el Golfo Sarónico, todo en un periplo clásico inigualable.",
     highlights: [
       'Pirámides de Giza y Gran Esfinge',
       'Crucero de 3 noches por el Nilo (Aswan → Luxor)',
@@ -368,7 +368,7 @@ const getLocalizedTours = (t) => [
       'https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=80',
       'https://images.unsplash.com/photo-1601579112934-17ac2aa86292?w=1200&q=80',
     ],
-    description: t('multiCountry.description'),
+    overview: "Desde las pirámides milenarias hasta los rascacielos vanguardistas, este itinerario de 13 días conecta el antiguo Egipto con la audaz metrópolis de Dubái. Sorpréndete con un crucero completo por el Nilo en pensión completa y aventúrate en inolvidables safaris 4x4, desvelando tesoros históricos y maravillas arquitectónicas del golfo Pérsico.",
     highlights: [
       'Dubái City Tour: barrio histórico Al Bastakiya, mercado de oro',
       'Safari 4×4 en el desierto de Dubái con cena beduina',
@@ -522,7 +522,7 @@ const getLocalizedTours = (t) => [
       'https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=80',
       'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80',
     ],
-    description: t('multiCountry.description'),
+    overview: "Una travesía grandiosa de 16 días descubriendo las maravillas inmortales de Jordania, Egipto y Dubái. Adéntrate por el Siq de Petra, surca el mítico río Nilo durante cuatro días e impresiónate ante la deslumbrante Mezquita Sheikh Zayed en Abu Dhabi. Un recorrido monumental diseñado para brindar el máximo confort y una auténtica inmersión cultural.",
     highlights: [
       'Petra: El Siq, El Tesoro y El Monasterio (850 escalones)',
       'Safari 4×4 en Wadi Rum, el Valle de la Luna',
@@ -701,7 +701,7 @@ const getLocalizedTours = (t) => [
       'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1200&q=80',
       'https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=80',
     ],
-    description: t('multiCountry.description'),
+    overview: "Sumérgete durante 16 días en la fascinante herencia de Túnez y Egipto. Atraviesa las dunas del Sahara en Douz y deslúmbrate con el imponente Anfiteatro de El Jem antes de volar al país de los faraones. Relájate en resorts todo incluido en Hammamet y embárcate en un poético crucero por el Nilo descubriendo un mosaico único de culturas norteafricanas.",
     highlights: [
       'Anfiteatro romano de El Jem, el más grande de África',
       'Dunas del Sahara en Douz: dromedarios y quads',
@@ -878,7 +878,7 @@ const getLocalizedTours = (t) => [
       'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1200&q=80',
       'https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=80',
     ],
-    description: t('multiCountry.description'),
+    overview: "Descubre los secretos mejor guardados de África en 12 días llenos de magia. Atraviesa el Estrecho de Gibraltar hacia Marruecos para explorar las míticas medinas de Fez y Marrakech antes de adentrarte en las antigüedades egipcias. Desde las Grandes Pirámides hasta un suntuoso crucero de cuatro noches por el Nilo, cada etapa revela aromas y misterios que te transportarán a otra época.",
     highlights: [
       'Cruce en ferry Tarifa–Tánger por el Estrecho de Gibraltar',
       'Medina de Fez (Bab Bou Jeloud), Patrimonio UNESCO',
@@ -1024,7 +1024,7 @@ const getLocalizedTours = (t) => [
       'https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=80',
       'https://images.unsplash.com/photo-1569144157591-c60f3f82f137?w=1200&q=80',
     ],
-    description: t('multiCountry.description'),
+    overview: "Experimenta 11 días de inmersión total en los tesoros más grandes del Medio Oriente, uniendo Jordania y Egipto. Descubre la legendaria Ciudad Rosa de Petra, lánzate a una travesía en 4x4 por el desierto de Wadi Rum y maravíllate ante las imponentes Pirámides de Giza. Coronado por un crucero de tres noches a lo largo del Nilo, este recorrido brinda historia y aventura en su máxima expresión.",
     highlights: [
       'Vuelos con Egyptair incluidos (Madrid/Barcelona)',
       'Petra: El Siq, El Tesoro, Tumbas Reales y El Monasterio',
@@ -1169,7 +1169,7 @@ const getLocalizedTours = (t) => [
       'https://images.unsplash.com/photo-1598965402089-897ce52e8355?w=1200&q=80',
       'https://images.unsplash.com/photo-1547553676-f3c6bad53b2b?w=1200&q=80',
     ],
-    description: t('multiCountry.description'),
+    overview: "Un viaje espiritual e histórico incomparable de 10 días, ideal para recorrer las huellas de civilizaciones eternas. Contempla la enigmática Esfinge de Giza y navega por el río Nilo admirando Luxor y Karnak. La travesía culmina en Jerusalén y Belén, explorando lugares santos como la Vía Dolorosa y el Santo Sepulcro, y flotando en las singulares aguas del Mar Muerto.",
     highlights: [
       'Pirámides de Giza y Gran Esfinge',
       'Crucero de 3 noches por el Nilo (pensión completa)',
@@ -1301,7 +1301,7 @@ const getLocalizedTours = (t) => [
       'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80',
       'https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=80',
     ],
-    description: t('multiCountry.description'),
+    overview: "Abarca la grandeza de tres civilizaciones majestuosas en un épico periplo de 14 días a través de Egipto, Grecia y Turquía. Inicia con los legados faraónicos en El Cairo y el Nilo, para luego elevarte a la Acrópolis de Atenas y surcar las islas griegas. Finaliza esta excepcional odisea en la enigmática Estambul, perdiéndote entre palacios otomanos, bazares legendarios y el icónico Bósforo.",
     highlights: [
       'Crucero de 3 noches por el Nilo (Aswan → Luxor)',
       'Pirámides de Giza y Gran Esfinge',
