@@ -84,7 +84,7 @@ const getLocalizedTours = (t) => [
         day: 2,
         title: 'Estambul — Corazón Otomano',
         morning: 'Desayuno. Visita incluida a la Mezquita del Príncipe (Şehzade Camii) o la Nueva Mezquita (Yeni Cami), dos joyas de la arquitectura otomana.',
-        afternoon: 'Emocionante paseo en barco por el estrecho del Bósforo, navegando entre Europa y Asia. Visita al famoso Bazar de las Especias (spice_bazaar_misir_carsisi).',
+        afternoon: 'bosphorus_cruise_spice_bazaar',
         evening: 'Tiempo libre en Estambul para cenas opcionales en restaurantes con vistas al Cuerno de Oro.',
       },
       {
@@ -161,7 +161,7 @@ const getLocalizedTours = (t) => [
         day: 13,
         title: 'Desembarque → El Cairo',
         morning: 'aswan_nubian_market_flight_cairo',
-        afternoon: 'opt_cairo_tour opt_cairo_tour',
+        afternoon: 'Traslado al hotel en El Cairo. Tarde libre.',
         evening: 'Cena libre en El Cairo. Última noche en la capital egipcia antes de volar a Dubái.',
       },
       {
@@ -302,7 +302,7 @@ const getLocalizedTours = (t) => [
         day: 6,
         title: 'El Cairo — Día Libre',
         morning: 'Desayuno. Día completamente libre para explorar la ciudad a su propio ritmo.',
-        afternoon: 'opt_cairo_tour',
+        afternoon: 'Traslado al hotel en El Cairo. Tarde libre.',
         evening: 'Última noche en Egipto. Cena libre en el animado barrio de Zamalek o en el centro histórico.',
       },
       {
@@ -477,7 +477,7 @@ const getLocalizedTours = (t) => [
         day: 11,
         title: 'Desembarque → El Cairo',
         morning: 'aswan_cairo_flight_checkout',
-        afternoon: 'opt_cairo_tour',
+        afternoon: 'Traslado al hotel en El Cairo. Tarde libre.',
         evening: 'cairo_free_dinner_opt_coptic',
       },
       {
@@ -629,7 +629,7 @@ const getLocalizedTours = (t) => [
         day: 10,
         title: 'Desembarque → El Cairo',
         morning: 'breakfast_checkout_aswan_flight_cairo',
-        afternoon: 'opt_cairo_tour',
+        afternoon: 'Traslado al hotel en El Cairo. Tarde libre.',
         evening: 'opt_citadel_khan_museum',
       },
       {

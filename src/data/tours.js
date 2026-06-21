@@ -619,12 +619,12 @@ export const tours = [
       "https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=1920&q=80"
     ],
     "highlights": [
-      "Tour guiado de Atenas en español: Acrópolis, Partenón, Estadio Olímpico de 1896",
+      "athens_guided_tour_header",
       "Ferry regular con asientos numerados Pireo–Mykonos",
       "Ferry rápido Mykonos–Santorini y Santorini–Heraklion (clase economy)",
-      "Día libre en Mykonos: playas, compras y vida nocturna",
+      "mykonos_free_day_header",
       "Atardecer sobre la caldera de Santorini desde Fira y Oia",
-      "Exploración de Creta: Knossos, playas de Elounda, cocina cretense",
+      "crete_exploration_header",
       "8 noches en régimen de Bed & Breakfast — 2 por destino",
       "Asistente de habla hispana en la llegada a Atenas"
     ],
@@ -676,7 +676,7 @@ export const tours = [
         "day": 2,
         "title": "Tour de Atenas (D)",
         "morning": "Tour guiado de medio día en español. Recorrido en autobús por Parlamento, Plaza Síntagma, Trilogía Neoclásica (Academia, Biblioteca Nacional y Universidad), Plaza Omonia, Catedral Católica, Templo de Zeus y Arco de Adriano. Visita al histórico Estadio Olímpico de 1896.",
-        "afternoon": "Subida a la Acrópolis: Propileos, Templo de Atenea Niké, el imponente Partenón y el Erecteión. Descenso al pintoresco Barrio de Plaka para tiempo libre y almuerzo opcional.",
+        "afternoon": "acropolis_climb_details",
         "evening": "Regreso al hotel por cuenta propia. Noche libre en Atenas."
       },
       {
@@ -690,7 +690,7 @@ export const tours = [
         "day": 4,
         "title": "Día Libre en Mykonos (D)",
         "morning": "Desayuno en el hotel. Día completamente libre para explorar la isla a tu gusto.",
-        "afternoon": "Opciones: visitar las playas de Paradise y Super Paradise, explorar las boutiques de diseño de Hora o disfrutar de la gastronomía local.",
+        "afternoon": "mykonos_options",
         "evening": "Mykonos es famosa por su vida nocturna. Disfruta del ambiente cosmopolita con total libertad."
       },
       {
@@ -704,7 +704,7 @@ export const tours = [
         "day": 6,
         "title": "Día Libre en Santorini (D)",
         "morning": "Desayuno en el hotel. Día libre para explorar Fira, la capital de Santorini, con sus boutiques, galerías de arte y vistas panorámicas al volcán.",
-        "afternoon": "Opciones: visitar el pueblo de Oia y sus icónicas cúpulas azules, recorrer las playas de arena volcánica negra de Perissa y Kamari, o apuntarse a una excursión opcional en barco a la caldera y el volcán activo.",
+        "afternoon": "santorini_options",
         "evening": "Noche libre en Santorini. Te recomendamos cenar en un restaurante con vistas al caldera."
       },
       {
@@ -718,7 +718,7 @@ export const tours = [
         "day": 8,
         "title": "Día Libre en Creta (D)",
         "morning": "Desayuno en el hotel. Día libre para explorar Creta por cuenta propia.",
-        "afternoon": "Opciones: visitar el Palacio Minoico de Knossos (el más antiguo de Europa), relajarse en las aguas turquesas de las playas de Elounda, o apuntarse a la excursión opcional en barco a la isla de Spinalonga (antigua colonia de leprosos). Degustación de la auténtica cocina cretense: aceite de oliva, queso graviera y dakos.",
+        "afternoon": "crete_full_details",
         "evening": "Última noche en Grecia. Cena libre con productos locales en el mercado de Heraklion."
       },
       {
