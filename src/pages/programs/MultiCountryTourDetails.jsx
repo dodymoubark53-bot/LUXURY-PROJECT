@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
@@ -6,8 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaChevronRight, FaClock, FaUserFriends, FaGlobe, FaTag,
   FaCheck, FaTimes, FaMapMarkerAlt,
-  FaBed, FaInfoCircle
+  FaBed, FaCheckCircle
 } from 'react-icons/fa';
+import { fadeInUp } from '../../animations/variants';
 import { multiCountryTours } from '../../data/multiCountryTours';
 import Button from '../../components/ui/Button';
 import InquiryForm from '../../components/booking/InquiryForm';
@@ -19,32 +20,33 @@ const MultiCountryTourDetails = () => {
   const { formatPrice } = useCurrency();
   const { slug } = useParams();
 
-  // Find the selected multi-country tour or default to the first one
   const toursData = multiCountryTours(t);
   const tour = toursData.find(tItem => tItem.slug === slug) || toursData[0];
-  const [activeTab, setActiveTab] = useState('overview');
   const [activeImage, setActiveImage] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [activeForm, setActiveForm] = useState(null);
 
-  // Suggest other multi-country tours (excluding current)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
   const suggestedTours = toursData.filter(tItem => tItem.slug !== tour.slug).slice(0, 3);
 
   return (
-    <div className="w-full bg-obsidian-50 pb-24">
+    <div className="w-full bg-obsidian-50 min-h-screen">
       <Helmet>
         <title>{t(`data.${tour.title}`, tour.title)} | {t('site.luxuryTravel', 'Dunas Travel')}</title>
         <meta name="description" content={t(`data.${tour.overview}`, tour.overview).substring(0, 150) + '...'} />
       </Helmet>
 
-      {/* 1. Header & Breadcrumb */}
+      {/* 1. Breadcrumb & Title */}
       <section className="pt-32 pb-10 bg-obsidian-900 text-center px-6">
         <div className="container mx-auto">
           <div className="flex flex-wrap items-center justify-center gap-2 text-caption text-gold-500 mb-4 uppercase tracking-wider">
             <Link to="/" className="hover:text-ivory-50 transition-colors">{t('nav.home', 'Home')}</Link>
-            <span className="rtl-flip text-[10px]"><FaChevronRight /></span>
+            <span className="rtl-flip"><FaChevronRight className="text-[10px]" /></span>
             <Link to="/programs/multi-country" className="hover:text-ivory-50 transition-colors">{t('nav.multiCountry', 'Multi-Country Tours')}</Link>
-            <span className="rtl-flip text-[10px]"><FaChevronRight /></span>
+            <span className="rtl-flip"><FaChevronRight className="text-[10px]" /></span>
             <span className="text-ivory-300">{t(`data.${tour.title}`, tour.title)}</span>
           </div>
 
@@ -54,7 +56,7 @@ const MultiCountryTourDetails = () => {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-display-xl md:text-display-2xl text-ivory-50 mb-4 font-display"
+            className="text-display-xl text-ivory-50 mb-4"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             {t(`data.${tour.title}`, tour.title)}
@@ -64,7 +66,7 @@ const MultiCountryTourDetails = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-body-lg text-gold-400 font-medium tracking-wide mb-6"
+              className="text-body-lg text-gold-400 font-medium tracking-wide"
             >
               {t(`data.${tour.subtitle}`, tour.subtitle)}
             </motion.p>
@@ -86,12 +88,12 @@ const MultiCountryTourDetails = () => {
         />
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
 
-        {/* Floating click to gallery indicator */}
+        {/* Click to open gallery */}
         <div className="absolute bottom-6 right-6 bg-obsidian-900/80 backdrop-blur-md px-4 py-2 rounded-full text-ivory-50 text-caption border border-gold-500/20">
           {t('tour.clickGallery', 'Click to open gallery')}
         </div>
 
-        {/* Overlay Flags indicator */}
+        {/* Country Flags overlay */}
         <div className="absolute top-6 left-6 flex gap-2">
           {tour.countries.map((country, idx) => (
             <span
@@ -104,7 +106,7 @@ const MultiCountryTourDetails = () => {
           ))}
         </div>
 
-        {/* Floating Thumbnails Overlay */}
+        {/* Floating Thumbnails */}
         <div
           className="absolute bottom-6 left-6 z-30 flex gap-2"
           onClick={e => e.stopPropagation()}
@@ -122,11 +124,9 @@ const MultiCountryTourDetails = () => {
         </div>
       </section>
 
-      {/* Main Details Section */}
+      {/* 3. Quick Info Bar */}
       <div className="container mx-auto px-6 -mt-12 relative z-20">
         <div className="bg-ivory-50 rounded-2xl shadow-card overflow-hidden">
-
-          {/* 3. Quick Info Bar */}
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-gray-100 border-b border-gray-100 bg-obsidian-50">
             <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
               <FaClock className="text-gold-500 text-2xl mb-1" />
@@ -141,209 +141,194 @@ const MultiCountryTourDetails = () => {
             <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
               <FaUserFriends className="text-gold-500 text-2xl mb-1" />
               <span className="text-caption text-obsidian-500 uppercase">{t('tour.groupSize', 'Group Size')}</span>
-              <span className="text-body-md font-semibold text-obsidian-900">{tour.groupSize || '2–16'}</span>
+              <span className="text-body-md font-semibold text-obsidian-900">{tour.groupSize || '2\u201316'}</span>
             </div>
             <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
               <FaGlobe className="text-gold-500 text-2xl mb-1" />
               <span className="text-caption text-obsidian-500 uppercase">{t('tour.languages', 'Languages')}</span>
-              <span className="text-body-md font-semibold text-obsidian-900">{t('languages.spanish', 'Español')}</span>
+              <span className="text-body-md font-semibold text-obsidian-900">{t('languages.spanish', 'Espa\u00f1ol')}</span>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div className="p-8 lg:p-12 flex flex-col lg:flex-row gap-12">
+      {/* 4. Content Section */}
+      <section className="container mx-auto px-6 pt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
-            {/* Left Column (Content) */}
-            <div className="lg:w-2/3">
+          {/* Left Column */}
+          <div className="lg:col-span-2">
 
-              {/* 4. Tabs navigation */}
-              <div className="flex gap-8 border-b border-gray-200 mb-8 overflow-x-auto no-scrollbar">
-                {[
-                  { id: 'overview', label: t('tour.tabOverview', 'Overview') },
-                  { id: 'highlights', label: t('tour.tabHighlights', 'Highlights') }
-                ].map(tab => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`pb-4 text-body-md font-semibold uppercase tracking-wider relative transition-colors ${activeTab === tab.id ? 'text-gold-700' : 'text-obsidian-300 hover:text-obsidian-700'
-                      }`}
-                  >
-                    {tab.label}
-                    {activeTab === tab.id && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gold-500"
-                      />
-                    )}
-                  </button>
-                ))}
-              </div>
+            {/* Overview */}
+            <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <h2 className="text-display-lg text-obsidian-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                {t('tourDetail.overview', 'Overview')}
+              </h2>
+              <p className="text-body-lg text-obsidian-500 leading-relaxed">{t(`data.${tour.overview}`, tour.overview)}</p>
+            </motion.div>
 
-              {/* Tabs Content */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  {activeTab === 'overview' && (
-                    <div className="text-body-lg text-obsidian-750 leading-relaxed">
-                      <p className="mb-6">{t(`data.${tour.overview}`, tour.overview)}</p>
+            {/* Highlights */}
+            {tour.highlights && tour.highlights.length > 0 && (
+              <motion.div
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="mt-16"
+              >
+                <h2 className="text-display-lg text-obsidian-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  {t('tourDetail.highlights', 'Key Highlights')}
+                </h2>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {tour.highlights.map((highlight, idx) => (
+                    <li key={idx} className="flex items-start gap-3 bg-ivory-50 p-4 rounded-xl shadow-sm border border-gold-500/10">
+                      <FaCheckCircle className="text-gold-500 mt-1 shrink-0" />
+                      <span className="text-body-sm text-obsidian-700">{t(`data.${highlight}`, highlight)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
 
-                      <div className="bg-gold-500/5 border border-gold-500/20 p-5 rounded-xl flex items-start gap-4">
-                        <FaInfoCircle className="text-gold-600 text-xl shrink-0 mt-1" />
-                        <div>
-                          <span className="font-semibold text-obsidian-900 block mb-1">
-                            {t('programs.luxGuarantee', 'Executive Service Included')}
-                          </span>
-                          <span className="text-body-md text-obsidian-700">
-                            {t('programs.luxGuaranteeDesc', 'This multi-country catalog features premium flights, custom-vetted 4-star and 5-star hotels, luxury Nile cruisers, private 4x4 desert safaris, and certified Spanish-speaking local guides in every country.')}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {activeTab === 'highlights' && (
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {tour.highlights && tour.highlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-start gap-3.5 text-body-lg text-obsidian-750 leading-snug">
-                          <div className="w-5 h-5 rounded-full bg-gold-50 border border-gold-500/20 flex items-center justify-center text-gold-500 shrink-0 mt-0.5">
-                            <FaCheck size={9} />
-                          </div>
-                          <span>{t(`data.${highlight}`, highlight)}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Accommodation Table */}
-              {tour.accommodations && (
-                <div className="mt-16 pt-12 border-t border-gray-200">
-                  <div className="mb-8">
-                    <span className="text-caption text-gold-500 uppercase tracking-widest font-semibold block mb-2">
-                      {t('tour.accommodation', 'ALOJAMIENTO')}
-                    </span>
-                    <h2 className="text-display-md text-3xl text-obsidian-900 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
-                      {t('dest.greece.accTitle', 'Resumen de Alojamientos')}
-                    </h2>
-                  </div>
-                  <div className="bg-white rounded-2xl shadow-card overflow-hidden border border-gold-500/10">
-                    <div className="grid grid-cols-3 bg-obsidian-900 text-ivory-50 text-xs md:text-sm font-semibold uppercase tracking-wider">
-                      <div className="p-4 border-r border-ivory-50/10">{t('accommodations.destination', 'Destination')}</div>
-                      <div className="p-4 border-r border-ivory-50/10 text-center">{t('accommodations.nights', 'Nights')}</div>
-                      <div className="p-4 text-center">{t('accommodations.regime', 'Board Basis')}</div>
-                    </div>
-                    {tour.accommodations.map((acc, idx) => (
-                      <div
-                        key={idx}
-                        className={`grid grid-cols-3 border-b border-gold-500/10 last:border-0 ${idx % 2 === 0 ? 'bg-white' : 'bg-obsidian-50/50'}`}
-                      >
-                        <div className="p-4 border-r border-gold-500/10 font-semibold text-obsidian-900 flex items-center gap-2 text-sm md:text-base">
-                          <FaMapMarkerAlt className="text-gold-500 flex-shrink-0" />
-                          {t(`data.${acc.destination}`, acc.destination)}
-                        </div>
-                        <div className="p-4 border-r border-gold-500/10 text-center font-bold text-gold-700 text-base md:text-lg">
-                          {acc.nights} {acc.nights === 1 ? t('tour.night', 'Night') : t('tour.nights', 'Nights')}
-                        </div>
-                        <div className="p-4 text-center text-obsidian-700 flex items-center justify-center gap-2 text-sm md:text-base">
-                          <FaBed className="text-gold-500 flex-shrink-0" />
-                          {t(`data.${acc.regime}`, acc.regime)}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* 5. Detailed Itinerary Section */}
-              <div className="mt-16 pt-12 border-t border-gray-200">
-                <div className="mb-10">
-                  <span className="text-caption text-gold-600 uppercase tracking-widest font-bold block mb-2">
-                    {t('tour.stepByStep', 'YOUR DETAILED ODYSSEY')}
+            {/* Accommodation Table */}
+            {tour.accommodations && (
+              <motion.div
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="mt-16 pt-12 border-t border-gray-200"
+              >
+                <div className="mb-8">
+                  <span className="text-caption text-gold-500 uppercase tracking-widest font-semibold block mb-2">
+                    {t('tour.accommodation', 'ALOJAMIENTO')}
                   </span>
-                  <h2 className="text-display-md text-3xl text-obsidian-900 font-display font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>
-                    {t('tour.detailedItinerary', 'Itinerary Schedule')}
+                  <h2 className="text-display-md text-3xl text-obsidian-900 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    {t('dest.greece.accTitle', 'Resumen de Alojamientos')}
                   </h2>
                 </div>
+                <div className="bg-white rounded-2xl shadow-card overflow-hidden border border-gold-500/10">
+                  <div className="grid grid-cols-3 bg-obsidian-900 text-ivory-50 text-xs md:text-sm font-semibold uppercase tracking-wider">
+                    <div className="p-4 border-r border-ivory-50/10">{t('accommodations.destination', 'Destination')}</div>
+                    <div className="p-4 border-r border-ivory-50/10 text-center">{t('accommodations.nights', 'Nights')}</div>
+                    <div className="p-4 text-center">{t('accommodations.regime', 'Board Basis')}</div>
+                  </div>
+                  {tour.accommodations.map((acc, idx) => (
+                    <div
+                      key={idx}
+                      className={`grid grid-cols-3 border-b border-gold-500/10 last:border-0 ${idx % 2 === 0 ? 'bg-white' : 'bg-obsidian-50/50'}`}
+                    >
+                      <div className="p-4 border-r border-gold-500/10 font-semibold text-obsidian-900 flex items-center gap-2 text-sm md:text-base">
+                        <FaMapMarkerAlt className="text-gold-500 flex-shrink-0" />
+                        {t(`data.${acc.destination}`, acc.destination)}
+                      </div>
+                      <div className="p-4 border-r border-gold-500/10 text-center font-bold text-gold-700 text-base md:text-lg">
+                        {acc.nights} {acc.nights === 1 ? t('tour.night', 'Night') : t('tour.nights', 'Nights')}
+                      </div>
+                      <div className="p-4 text-center text-obsidian-700 flex items-center justify-center gap-2 text-sm md:text-base">
+                        <FaBed className="text-gold-500 flex-shrink-0" />
+                        {t(`data.${acc.regime}`, acc.regime)}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
 
-                <div className="relative pl-10">
-                  <div className="absolute left-[15px] top-8 bottom-8 w-[2px] bg-[rgba(201,162,39,0.2)]"></div>
+            {/* Itinerary Timeline */}
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="mt-16 pt-12 border-t border-gray-200"
+            >
+              <div className="mb-10">
+                <span className="text-caption text-gold-600 uppercase tracking-widest font-bold block mb-2">
+                  {t('tour.stepByStep', 'YOUR DETAILED ODYSSEY')}
+                </span>
+                <h2 className="text-display-md text-3xl text-obsidian-900 font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  {t('tour.detailedItinerary', 'Itinerary Schedule')}
+                </h2>
+              </div>
 
-                  <div className="space-y-6">
-                    {tour.itinerary && tour.itinerary.map((day) => (
-                      <div key={day.day} className="relative">
-                        <div className="absolute -left-10 top-[18px] w-3 h-3 bg-gold-500 rounded-full transform -translate-x-1/2 z-10 shadow-[0_0_0_4px_rgba(201,162,39,0.2)]" />
-
-                        <div className="bg-ivory-50 rounded-xl border-l-2 border-[rgba(201,162,39,0.3)] overflow-hidden shadow-sm p-5">
-                          <div className="flex items-center gap-4 mb-3">
-                            <span className="font-semibold text-obsidian-900">{t('tour.day', 'Day')} {day.day}</span>
-                            {day.title && (
-                              <span className="text-body-sm text-obsidian-500">{t(`data.${day.title}`, day.title)}</span>
-                            )}
-                          </div>
-
-                          <div className="space-y-2">
-                            {day.morning && (
-                              <div className="flex items-start gap-3">
-                                <span className="text-caption text-gold-600 uppercase tracking-wider font-semibold shrink-0 w-20">🌅 {t('tour.morning', 'Morning')}</span>
-                                <p className="text-body-sm text-obsidian-500 leading-relaxed">{t(`data.${day.morning}`, day.morning)}</p>
-                              </div>
-                            )}
-                            {day.afternoon && (
-                              <div className="flex items-start gap-3">
-                                <span className="text-caption text-gold-600 uppercase tracking-wider font-semibold shrink-0 w-20">☀️ {t('tour.afternoon', 'Afternoon')}</span>
-                                <p className="text-body-sm text-obsidian-500 leading-relaxed">{t(`data.${day.afternoon}`, day.afternoon)}</p>
-                              </div>
-                            )}
-                            {day.evening && (
-                              <div className="flex items-start gap-3">
-                                <span className="text-caption text-gold-600 uppercase tracking-wider font-semibold shrink-0 w-20">🌙 {t('tour.evening', 'Evening')}</span>
-                                <p className="text-body-sm text-obsidian-500 leading-relaxed">{t(`data.${day.evening}`, day.evening)}</p>
-                              </div>
-                            )}
-                          </div>
+              <div className="relative pl-10">
+                <div className="absolute left-[15px] top-8 bottom-8 w-[2px] bg-[rgba(201,162,39,0.2)]"></div>
+                <div className="space-y-6">
+                  {tour.itinerary && tour.itinerary.map((day) => (
+                    <div key={day.day} className="relative">
+                      <div className="absolute -left-10 top-[18px] w-3 h-3 bg-gold-500 rounded-full transform -translate-x-1/2 z-10 shadow-[0_0_0_4px_rgba(201,162,39,0.2)]" />
+                      <div className="bg-ivory-50 rounded-xl border-l-2 border-[rgba(201,162,39,0.3)] overflow-hidden shadow-sm p-5">
+                        <div className="flex items-center gap-4 mb-3">
+                          <span className="font-semibold text-obsidian-900">{t('tour.day', 'Day')} {day.day}</span>
+                          {day.title && (
+                            <span className="text-body-sm text-obsidian-500">{t(`data.${day.title}`, day.title)}</span>
+                          )}
+                        </div>
+                        <div className="space-y-2">
+                          {day.morning && (
+                            <div className="flex items-start gap-3">
+                              <span className="text-caption text-gold-600 uppercase tracking-wider font-semibold shrink-0 w-20">{'\uD83C\uDF05'} {t('tour.morning', 'Morning')}</span>
+                              <p className="text-body-sm text-obsidian-500 leading-relaxed">{t(`data.${day.morning}`, day.morning)}</p>
+                            </div>
+                          )}
+                          {day.afternoon && (
+                            <div className="flex items-start gap-3">
+                              <span className="text-caption text-gold-600 uppercase tracking-wider font-semibold shrink-0 w-20">{'\u2600\uFE0F'} {t('tour.afternoon', 'Afternoon')}</span>
+                              <p className="text-body-sm text-obsidian-500 leading-relaxed">{t(`data.${day.afternoon}`, day.afternoon)}</p>
+                            </div>
+                          )}
+                          {day.evening && (
+                            <div className="flex items-start gap-3">
+                              <span className="text-caption text-gold-600 uppercase tracking-wider font-semibold shrink-0 w-20">{'\uD83C\uDF19'} {t('tour.evening', 'Evening')}</span>
+                              <p className="text-body-sm text-obsidian-500 leading-relaxed">{t(`data.${day.evening}`, day.evening)}</p>
+                            </div>
+                          )}
                         </div>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
               </div>
+            </motion.div>
 
-              {/* 6. Included / Excluded sections */}
-              <div className="mt-16 pt-12 border-t border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                  <h3 className="text-display-md text-2xl mb-6">{t('tourDetail.included', 'What is Included')}</h3>
-                  <ul className="flex flex-col gap-3">
-                    {tour.included && tour.included.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700">
-                        <FaCheck className="text-sage-500 mt-1 flex-shrink-0" />
-                        <span>{t(`data.${item}`, item)}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="text-display-md text-2xl mb-6">{t('tourDetail.excluded', 'What is Excluded')}</h3>
-                  <ul className="flex flex-col gap-3">
-                    {tour.excluded && tour.excluded.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700">
-                        <FaTimes className="text-red-400 mt-1 flex-shrink-0" />
-                        <span>{t(`data.${item}`, item)}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            {/* Included / Excluded */}
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="mt-16 pt-12 border-t border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-8"
+            >
+              <div>
+                <h3 className="text-display-md text-2xl mb-6">{t('tourDetail.included', 'What is Included')}</h3>
+                <ul className="flex flex-col gap-3">
+                  {tour.included && tour.included.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700">
+                      <FaCheck className="text-sage-500 mt-1 flex-shrink-0" />
+                      <span>{t(`data.${item}`, item)}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
+              <div>
+                <h3 className="text-display-md text-2xl mb-6">{t('tourDetail.excluded', 'What is Excluded')}</h3>
+                <ul className="flex flex-col gap-3">
+                  {tour.excluded && tour.excluded.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700">
+                      <FaTimes className="text-red-400 mt-1 flex-shrink-0" />
+                      <span>{t(`data.${item}`, item)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          </div>
 
-            {/* Right Column (Sidebar Booking panel) */}
-            <div className="lg:w-1/3">
-              <div className="sticky top-32 bg-obsidian-900 text-ivory-50 p-8 rounded-2xl shadow-card border border-gold-500/20">
+          {/* Right Column - Sidebar */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-32">
+              <div className="bg-obsidian-900 text-ivory-50 rounded-2xl shadow-card p-8 border border-gold-500/10">
                 <div className="text-center mb-6 border-b border-ivory-50/10 pb-6">
                   <span className="block text-body-md text-ivory-300 mb-1">
                     {t('tourCard.startingFrom', 'Starting from')}
@@ -356,7 +341,6 @@ const MultiCountryTourDetails = () => {
                   </span>
                 </div>
 
-                {/* 7. Supplements section (Renders dynamic supplement tables for packages that have multiple rates, like Tour 7) */}
                 {tour.pricing && (
                   <div className="mb-6 bg-black/30 border border-gold-500/15 rounded-xl p-4 flex flex-col gap-3.5">
                     <span className="text-[10px] uppercase tracking-wider text-gold-500 font-bold">
@@ -393,7 +377,6 @@ const MultiCountryTourDetails = () => {
                   </Button>
                 </div>
 
-                {/* Additional custom traveler helper badges */}
                 <div className="mt-8 pt-6 border-t border-ivory-50/10 flex flex-col gap-3.5 text-caption text-ivory-300">
                   <div className="flex items-center gap-2.5">
                     <FaCheck className="text-gold-500 shrink-0" />
@@ -410,15 +393,44 @@ const MultiCountryTourDetails = () => {
                 </div>
               </div>
             </div>
+          </div>
 
+        </div>
+      </section>
+
+      {/* 5. CTA Section */}
+      <section className="relative py-24 mt-8 overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${tour.images[0]})` }} />
+        <div className="absolute inset-0 bg-obsidian-900/75" />
+        <div className="relative z-10 container mx-auto px-6 text-center max-w-3xl">
+          <span className="text-gold-500 uppercase tracking-widest text-sm font-semibold block mb-4">
+            {t('programs.customizeLabel', "DIDN'T FIND WHAT YOU'RE LOOKING FOR?")}
+          </span>
+          <h2 className="text-display-xl text-ivory-50 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+            {t('programs.customizeTitle', 'Let us design your perfect multi-country journey')}
+          </h2>
+          <p className="text-body-lg text-ivory-300 mb-10">
+            {t('programs.customizeDesc', 'Tell us your preferences, and our expert travel designers will craft a bespoke itinerary tailored just for you.')}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/tailor-a-tour">
+              <Button variant="gold-glow" className="w-full sm:w-auto px-10 py-4">
+                {t('programs.customizeBtn', 'Customize Your Trip')}
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button variant="glass" className="w-full sm:w-auto px-10 py-4">
+                {t('nav.contact', 'Contact Us')}
+              </Button>
+            </Link>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Suggested Tours Carousel */}
+      {/* 6. Suggested Tours */}
       <section className="container mx-auto px-6 py-24">
         <h2
-          className="text-display-lg text-obsidian-900 mb-12 text-center font-display font-bold"
+          className="text-display-lg text-obsidian-900 mb-12 text-center"
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
           {t('tour.youMayAlsoLike', 'You May Also Like')}
@@ -435,8 +447,6 @@ const MultiCountryTourDetails = () => {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/20 to-transparent"></div>
-
-                  {/* Badges on Suggested Cards */}
                   <div className="absolute top-4 left-4 flex gap-1">
                     {tData.countries.slice(0, 2).map((c, i) => (
                       <span key={i} className="bg-obsidian-950/90 text-ivory-50 text-[10px] px-2 py-0.5 rounded-full border border-gold-500/10">
@@ -444,7 +454,6 @@ const MultiCountryTourDetails = () => {
                       </span>
                     ))}
                   </div>
-
                   <div className="absolute bottom-6 left-6 right-6">
                     <span className="text-[10px] text-gold-500 uppercase tracking-widest block mb-1">
                       {t(`data.${tData.type}`, tData.type)}

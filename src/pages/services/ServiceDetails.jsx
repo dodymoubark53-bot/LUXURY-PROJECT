@@ -89,85 +89,43 @@ const ServiceDetails = () => {
               loading="lazy"
             />
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-            <div className="absolute bottom-6 right-6 bg-obsidian-900/80 backdrop-blur-md px-4 py-2 rounded-full text-ivory-50 text-caption">
+            <div className="absolute bottom-6 right-6 bg-obsidian-900/80 backdrop-blur-md px-4 py-2 rounded-full text-ivory-50 text-caption border border-gold-500/20">
               {t('tour.clickGallery', 'Click to open gallery')}
             </div>
           </section>
-        </>
-      ) : (
-        /* Original Non-Itinerary Hero Section */
-        <section className="relative h-[65vh] flex items-end justify-center overflow-hidden pb-16">
-          <div className="absolute inset-0 z-0">
-            <img
-              src={service.images[0]}
-              alt={translateData(service.title, service.title)}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-obsidian-900/60 bg-gradient-to-t from-obsidian-900 via-obsidian-900/30 to-transparent"></div>
+
+          {/* Quick Info Bar - standalone overlapping */}
+          <div className="container mx-auto px-6 -mt-12 relative z-20">
+            <div className="bg-ivory-50 rounded-2xl shadow-card overflow-hidden">
+              <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-gray-100 border-b border-gray-100 bg-obsidian-50">
+                <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
+                  <FaClock className="text-gold-500 text-2xl mb-1" />
+                  <span className="text-caption text-obsidian-500 uppercase">{t('tour.duration', 'Duration')}</span>
+                  <span className="text-body-md font-semibold text-obsidian-900">{service.itinerary ? `${service.itinerary.length} ${t('tour.days', 'Days')}` : ''}</span>
+                </div>
+                <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
+                  <FaTag className="text-gold-500 text-2xl mb-1" />
+                  <span className="text-caption text-obsidian-500 uppercase">{t('tour.tourType', 'Tour Type')}</span>
+                  <span className="text-body-md font-semibold text-obsidian-900">{t(`nav.${category}`, category)}</span>
+                </div>
+                <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
+                  <FaUserFriends className="text-gold-500 text-2xl mb-1" />
+                  <span className="text-caption text-obsidian-500 uppercase">{t('tour.groupSize', 'Group Size')}</span>
+                  <span className="text-body-md font-semibold text-obsidian-900">2-16</span>
+                </div>
+                <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
+                  <FaGlobe className="text-gold-500 text-2xl mb-1" />
+                  <span className="text-caption text-obsidian-500 uppercase">{t('tour.languages', 'Languages')}</span>
+                  <span className="text-body-md font-semibold text-obsidian-900">{t('languages.spanish', 'Español')}</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <motion.div
-            className="relative z-10 container mx-auto px-6 max-w-5xl flex flex-col md:flex-row justify-between items-end"
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-          >
-            <div className="mb-6 md:mb-0">
-              <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-4 text-caption text-gold-500 uppercase tracking-widest font-medium">
-                <span>{t(`nav.${category}`, category)}</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
-                <span className="flex items-center gap-1"><FaMapMarkerAlt /> {translateData(service.location, service.location)}</span>
-              </motion.div>
-              <motion.h1 variants={fadeInUp} className="text-display-lg md:text-display-xl text-ivory-50 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
-                {translateData(service.title, service.title)}
-              </motion.h1>
-            </div>
-
-            <motion.div variants={fadeInUp} className="flex flex-col items-start md:items-end bg-obsidian-900/80 backdrop-blur-md p-6 rounded-2xl border border-ivory-50/10">
-              <div className="flex text-gold-500 mb-2">
-                {[...Array(5)].map((_, i) => (
-                  <FaStar key={i} className={i < Math.floor(service.rating) ? "text-gold-500" : "text-obsidian-300"} />
-                ))}
-                <span className="text-ivory-50 ml-2 text-body-sm font-medium">{service.rating}</span>
-              </div>
-              <div className="text-[#F5EDD6] text-caption uppercase tracking-wider mb-1">{t('tourCard.startingFrom', 'Starting From')}</div>
-              <div className="text-display-md text-ivory-50">{formatPrice(service.price)}</div>
-            </motion.div>
-          </motion.div>
-        </section>
-      )}
-
-      {/* Main Content */}
-      <section className={`container mx-auto px-6 max-w-5xl ${hasItinerary ? '-mt-12 relative z-20' : 'mt-16'}`}>
-        {hasItinerary ? (
-          <div className="bg-ivory-50 rounded-2xl shadow-card overflow-hidden">
-            {/* Quick Info Bar */}
-            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-gray-100 border-b border-gray-100 bg-obsidian-50">
-              <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
-                <FaClock className="text-gold-500 text-2xl mb-1" />
-                <span className="text-caption text-obsidian-500 uppercase">{t('tour.duration', 'Duration')}</span>
-                <span className="text-body-md font-semibold text-obsidian-900">{service.itinerary ? `${service.itinerary.length} ${t('tour.days', 'Days')}` : ''}</span>
-              </div>
-              <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
-                <FaTag className="text-gold-500 text-2xl mb-1" />
-                <span className="text-caption text-obsidian-500 uppercase">{t('tour.tourType', 'Tour Type')}</span>
-                <span className="text-body-md font-semibold text-obsidian-900">{t(`nav.${category}`, category)}</span>
-              </div>
-              <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
-                <FaUserFriends className="text-gold-500 text-2xl mb-1" />
-                <span className="text-caption text-obsidian-500 uppercase">{t('tour.groupSize', 'Group Size')}</span>
-                <span className="text-body-md font-semibold text-obsidian-900">2-16</span>
-              </div>
-              <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
-                <FaGlobe className="text-gold-500 text-2xl mb-1" />
-                <span className="text-caption text-obsidian-500 uppercase">{t('tour.languages', 'Languages')}</span>
-                <span className="text-body-md font-semibold text-obsidian-900">{t('languages.spanish', 'Español')}</span>
-              </div>
-            </div>
-
-            <div className="p-8 lg:p-12 flex flex-col lg:flex-row gap-12">
-              <div className="lg:w-2/3">
+          {/* Main content - grid layout */}
+          <section className="container mx-auto px-6 pt-16">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+              <div className="lg:col-span-2">
                 {/* Overview */}
                 <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                   <h2 className="text-display-md text-obsidian-900 mb-6 font-display animate-none" style={{ fontFamily: "'Playfair Display', serif" }}>{t('tourDetail.overview', 'Overview')}</h2>
@@ -332,8 +290,8 @@ const ServiceDetails = () => {
                 </motion.div>
               </div>
 
-              {/* Sidebar Booking Form */}
-              <div className="lg:w-1/3">
+              {/* Sidebar Booking Card - Jordan style */}
+              <div className="lg:col-span-1">
                 <div className="sticky top-32">
                   <div className="bg-obsidian-900 text-ivory-50 rounded-2xl shadow-card p-8 border border-gold-500/10">
                     <div className="text-center mb-8 border-b border-ivory-50/10 pb-8">
@@ -342,12 +300,14 @@ const ServiceDetails = () => {
                       <span className="block text-caption text-ivory-300 mt-2">{t('tour.perPerson', 'per person')}</span>
                     </div>
                     <div className="flex flex-col gap-4">
-                      <Button variant="gold-glow" className="w-full py-4 text-lg font-medium" onClick={() => setActiveForm('booking')}>
-                        {t('nav.bookNow', 'Book Now')}
+                      <Button variant="gold-glow" className="w-full py-4 text-lg font-medium" onClick={() => setActiveForm('inquiry')}>
+                        {t('tour.inquire', 'Inquire Now')}
                       </Button>
-                      <Button variant="glass" className="w-full py-4 text-lg font-medium" onClick={() => setActiveForm('inquiry')}>
-                        {t('tour.inquire', 'Inquire Availability')}
-                      </Button>
+                      <Link to="/tailor-a-tour">
+                        <Button variant="glass" className="w-full py-4 text-lg font-medium">
+                          {t('home.tailorTour', 'Customize This Tour')}
+                        </Button>
+                      </Link>
                     </div>
                     <div className="text-center mt-6">
                       <span className="text-caption text-ivory-300 flex items-center justify-center gap-2">
@@ -358,9 +318,76 @@ const ServiceDetails = () => {
                 </div>
               </div>
             </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="relative py-24 mt-8 overflow-hidden">
+            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${service.images[0]})` }} />
+            <div className="absolute inset-0 bg-obsidian-900/75" />
+            <div className="relative z-10 container mx-auto px-6 text-center max-w-3xl">
+              <span className="text-gold-500 uppercase tracking-widest text-sm font-semibold block mb-4">
+                {t('programs.customizeLabel', "DIDN'T FIND WHAT YOU'RE LOOKING FOR?")}
+              </span>
+              <h2 className="text-display-xl text-ivory-50 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                {t('programs.customizeTitle', 'Let us design your perfect journey')}
+              </h2>
+              <p className="text-body-lg text-ivory-300 mb-10">
+                {t('programs.customizeDesc', 'Tell us your preferences, and our expert travel designers will craft a bespoke itinerary tailored just for you.')}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/tailor-a-tour"><Button variant="gold-glow" className="w-full sm:w-auto px-10 py-4">{t('programs.customizeBtn', 'Customize Your Trip')}</Button></Link>
+                <Link to="/contact"><Button variant="glass" className="w-full sm:w-auto px-10 py-4">{t('nav.contact', 'Contact Us')}</Button></Link>
+              </div>
+            </div>
+          </section>
+        </>
+      ) : (
+        /* Original Non-Itinerary Hero Section */
+        <section className="relative h-[65vh] flex items-end justify-center overflow-hidden pb-16">
+          <div className="absolute inset-0 z-0">
+            <img
+              src={service.images[0]}
+              alt={translateData(service.title, service.title)}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-obsidian-900/60 bg-gradient-to-t from-obsidian-900 via-obsidian-900/30 to-transparent"></div>
           </div>
-        ) : (
-          /* Original Non-Itinerary layout */
+
+          <motion.div
+            className="relative z-10 container mx-auto px-6 max-w-5xl flex flex-col md:flex-row justify-between items-end"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            <div className="mb-6 md:mb-0">
+              <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-4 text-caption text-gold-500 uppercase tracking-widest font-medium">
+                <span>{t(`nav.${category}`, category)}</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+                <span className="flex items-center gap-1"><FaMapMarkerAlt /> {translateData(service.location, service.location)}</span>
+              </motion.div>
+              <motion.h1 variants={fadeInUp} className="text-display-lg md:text-display-xl text-ivory-50 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
+                {translateData(service.title, service.title)}
+              </motion.h1>
+            </div>
+
+            <motion.div variants={fadeInUp} className="flex flex-col items-start md:items-end bg-obsidian-900/80 backdrop-blur-md p-6 rounded-2xl border border-ivory-50/10">
+              <div className="flex text-gold-500 mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <FaStar key={i} className={i < Math.floor(service.rating) ? "text-gold-500" : "text-obsidian-300"} />
+                ))}
+                <span className="text-ivory-50 ml-2 text-body-sm font-medium">{service.rating}</span>
+              </div>
+              <div className="text-[#F5EDD6] text-caption uppercase tracking-wider mb-1">{t('tourCard.startingFrom', 'Starting From')}</div>
+              <div className="text-display-md text-ivory-50">{formatPrice(service.price)}</div>
+            </motion.div>
+          </motion.div>
+        </section>
+      )}
+
+      {/* Main Content - only rendered for non-itinerary */}
+      {!hasItinerary && (
+        <section className="container mx-auto px-6 max-w-5xl mt-16">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
               {/* Overview */}
@@ -459,8 +486,8 @@ const ServiceDetails = () => {
               </div>
             </div>
           </div>
-        )}
-      </section>
+        </section>
+      )}
 
       {/* Related Services */}
       {relatedServices.length > 0 && (

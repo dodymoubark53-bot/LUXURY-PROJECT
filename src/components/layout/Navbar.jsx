@@ -439,7 +439,7 @@ const Navbar = () => {
             >
               {[
                 { code: 'en', label: 'English', flag: '🇬🇧' },
-                { code: 'ar', label: 'العربية', flag: '🇸🇦' },
+                { code: 'ar', label: 'العربية', flag: '🇪🇬' },
                 { code: 'es', label: 'Español', flag: '🇪🇸' },
                 { code: 'pt', label: 'Português', flag: '🇧🇷' },
                 { code: 'it', label: 'Italiano', flag: '🇮🇹' },
