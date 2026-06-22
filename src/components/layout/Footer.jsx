@@ -37,19 +37,19 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="flex items-center gap-2 shrink-0">
-          <div className="relative">
+        <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 mt-12 sm:mt-0 shrink-0">
+          <div className="relative flex flex-col items-center">
             <img
               src="/imgs/tito-mascot.png"
               alt="TiT0"
               className="w-[120px] sm:w-[150px] animate-[float_3s_ease-in-out_infinite] drop-shadow-[0_10px_25px_rgba(0,0,0,0.45)]"
             />
-            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-10">
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3.5 z-10">
               <TiT0Chat />
             </div>
           </div>
-          <div className="flex flex-col gap-1 pt-8">
-            <p className="text-white text-lg font-bold max-w-[280px] leading-tight">
+          <div className="flex flex-col items-center sm:items-start text-center sm:text-left gap-1 pt-2 sm:pt-8">
+            <p className="text-white text-base sm:text-lg font-bold max-w-[280px] leading-tight">
               {t('footer.titoTagline', 'Descubre la magia de Egipto y sus monumentos históricos de la mano de los Expertos')}
             </p>
           </div>

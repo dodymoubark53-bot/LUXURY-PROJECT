@@ -90,7 +90,7 @@ const TiT0Chat = () => {
   const isTyping = phase === 'typing';
 
   return (
-    <div className="relative flex flex-col items-center justify-end w-max max-w-[200px] sm:max-w-[260px] select-none pointer-events-none">
+    <div className="relative flex flex-col items-center justify-end w-max max-w-[calc(100vw-48px)] xs:max-w-[220px] sm:max-w-[260px] select-none pointer-events-none">
       {/* Bouncing dots container */}
       <div
         className={`absolute bottom-2 transition-all duration-300 ${
