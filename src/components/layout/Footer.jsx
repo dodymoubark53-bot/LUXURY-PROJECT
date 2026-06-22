@@ -1,63 +1,61 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FaFacebook, FaInstagram, FaTwitter, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import Logo from '../ui/Logo';
 
 const Footer = () => {
   const { t } = useTranslation();
 
-  // مسار الصورة (تم ضبطه ليعمل بشكل صحيح مع بيئة التشغيل)
-  const backgroundImageUrl = "/imgs/pyramid-bg.webp";
-
   return (
     <footer
-      className="relative bg-cover bg-center bg-no-repeat text-white pt-20 pb-8 border-t border-white/10"
-      style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+      className="relative w-full text-white flex flex-col"
+      style={{ background: 'linear-gradient(180deg, rgb(10,25,105) 0%, rgb(6,29,93) 50%, rgb(10,21,53) 100%)' }}
     >
-      {/* تم إزالة طبقة التعتيم (Overlay) تماماً من هنا بناءً على طلبك */}
 
-      {/* المحتوى الأصلي */}
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-
-          {/* Brand & Socials */}
-          <div>
-            <Link to="/" className="flex items-center mb-6">
-              <Logo theme="dark" height={70} />
-            </Link>
-            <p className="text-body-md mb-6 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              {t('footer.desc', 'Curating award-winning DUNAS TRAVEL experiences across Egypt, Jordan, and Turkey since 2010.')}
-            </p>
-            <div className="flex items-center gap-4">
-              <a href="https://www.facebook.com/share/1EsALYq8cg/" className="footer-social w-10 h-10 rounded-full bg-[#1A1A2E]/80 border border-white/20 flex items-center justify-center text-white hover:bg-[#F5A623] hover:text-[#1A1A2E] transition-all duration-300 hover:scale-110 shadow-lg">
-                <FaFacebook />
-              </a>
-              <a href="https://www.instagram.com/dunas_travel?igsh=bWkyb2FhY2hoNnN" className="footer-social w-10 h-10 rounded-full bg-[#1A1A2E]/80 border border-white/20 flex items-center justify-center text-white hover:bg-[#F5A623] hover:text-[#1A1A2E] transition-all duration-300 hover:scale-110 shadow-lg">
-                <FaInstagram />
-              </a>
-              <a href="tel:+3374664302" className="footer-social w-10 h-10 rounded-full bg-[#1A1A2E]/80 border border-white/20 flex items-center justify-center text-white hover:bg-[#F5A623] hover:text-[#1A1A2E] transition-all duration-300 hover:scale-110 shadow-lg" title="اتصل بنا على الرقم الأول">
-                <FaPhone />
-              </a>
-            </div>
+      {/* Brand & Socials */}
+      <div className="relative z-10 w-full px-6 sm:px-12 lg:px-20 pt-8 sm:pt-10 lg:pt-12">
+        <div className="max-w-lg">
+          <Link to="/" className="flex items-center mb-3">
+            <Logo theme="dark" height={85} />
+          </Link>
+          <p className="text-white text-base sm:text-lg font-bold leading-snug">
+            {t('footer.desc', 'Curating award-winning DUNAS TRAVEL experiences across Egypt, Jordan, and Turkey since 2010.')}
+          </p>
+          <div className="flex items-center gap-3 mt-4">
+            <a href="https://www.facebook.com/share/1EsALYq8cg/" className="footer-social w-10 h-10 rounded-full bg-white/15 border border-white/25 flex items-center justify-center text-white hover:bg-[#F5A623] hover:text-[#1A1A2E] transition-all duration-300 hover:scale-110">
+              <FaFacebook size={16} />
+            </a>
+            <a href="https://www.instagram.com/dunas_travel?igsh=bWkyb2FhY2hoNnN" className="footer-social w-10 h-10 rounded-full bg-white/15 border border-white/25 flex items-center justify-center text-white hover:bg-[#F5A623] hover:text-[#1A1A2E] transition-all duration-300 hover:scale-110">
+              <FaInstagram size={16} />
+            </a>
+            <a href="tel:+3374664302" className="footer-social w-10 h-10 rounded-full bg-white/15 border border-white/25 flex items-center justify-center text-white hover:bg-[#F5A623] hover:text-[#1A1A2E] transition-all duration-300 hover:scale-110">
+              <FaPhone size={16} />
+            </a>
           </div>
 
-          {/* Quick Links */}
+        </div>
+      </div>
+
+      {/* Columns: Quick Links | Destinations | Contact */}
+      <div className="relative z-10 w-full px-6 sm:px-12 lg:px-20 pt-8 pb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+
+          {/* Quick Links (left) */}
           <div>
-            <h4 className="text-white mb-6 text-lg font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">{t('footer.quickLinks', 'Quick Links')}</h4>
-            <ul className="flex flex-col gap-3 font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              <li><Link to="/about" className="hover:text-[#F5A623] transition-colors">{t('nav.about')}</Link></li>
-              <li><Link to="/programs" className="hover:text-[#F5A623] transition-colors">{t('nav.programs', 'Programs')}</Link></li>
-              <li><Link to="/blogs" className="hover:text-[#F5A623] transition-colors">{t('nav.blogs')}</Link></li>
-              <li><Link to="/contact" className="hover:text-[#F5A623] transition-colors">{t('nav.contact')}</Link></li>
-              <li><Link to="/faq" className="hover:text-[#F5A623] transition-colors">{t('footer.faq', 'FAQs')}</Link></li>
+            <h4 className="text-white mb-4 text-lg font-bold">{t('footer.quickLinks', 'Quick Links')}</h4>
+            <ul className="flex flex-col gap-2 text-base font-bold">
+              <li><Link to="/about" className="text-white hover:text-[#F5A623] transition-colors">{t('nav.about')}</Link></li>
+              <li><Link to="/programs" className="text-white hover:text-[#F5A623] transition-colors">{t('nav.programs', 'Programs')}</Link></li>
+              <li><Link to="/blogs" className="text-white hover:text-[#F5A623] transition-colors">{t('nav.blogs')}</Link></li>
+              <li><Link to="/contact" className="text-white hover:text-[#F5A623] transition-colors">{t('nav.contact')}</Link></li>
+              <li><Link to="/faq" className="text-white hover:text-[#F5A623] transition-colors">{t('footer.faq', 'FAQs')}</Link></li>
             </ul>
           </div>
 
-          {/* Destinations */}
+          {/* Destinations (center) */}
           <div>
-            <h4 className="text-white mb-6 text-lg font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">{t('nav.destinations')}</h4>
-            <ul className="flex flex-col gap-3 font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+            <h4 className="text-white mb-4 text-lg font-bold">{t('nav.destinations')}</h4>
+            <ul className="flex flex-col gap-2 text-base font-bold">
               {[
                 { key: 'egipto', path: '/destinations/egypt' },
                 { key: 'turquia', path: '/destinations/turkey' },
@@ -69,55 +67,50 @@ const Footer = () => {
                 { key: 'tierrasanta', path: '/destinations/holyland' },
               ].map(({ key, path }) => (
                 <li key={key}>
-                  <Link to={path} className="hover:text-[#F5A623] transition-colors">{t(`nav.${key}`)}</Link>
+                  <Link to={path} className="text-white hover:text-[#F5A623] transition-colors">{t(`nav.${key}`)}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact & Newsletter */}
+          {/* Contact (right) */}
           <div>
-            <h4 className="text-white mb-6 text-lg font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">{t('nav.contact')}</h4>
-            <ul className="flex flex-col gap-4 mb-8 font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              <li className="flex items-start gap-3">
-                <FaMapMarkerAlt className="text-[#F5A623] mt-1 flex-shrink-0 drop-shadow-md" />
-                <span className="text-sm">
+            <h4 className="text-white mb-4 text-lg font-bold">{t('nav.contact')}</h4>
+            <ul className="flex flex-col gap-2 text-base font-bold">
+              <li className="flex items-start gap-2">
+                <FaMapMarkerAlt className="text-[#F5A623] mt-1 flex-shrink-0" size={14} />
+                <span className="text-white leading-snug">
                   {t('footer.address', '5 Hussein Said St, Old Hadayk El Ahram, First floor, Flat 102 – 103, Haram - Giza – Egypt')}
                 </span>
               </li>
-              <li className="flex items-start gap-3">
-                <FaPhone className="text-[#F5A623] mt-1 flex-shrink-0 drop-shadow-md" />
-                <div className="flex flex-col gap-1 text-sm">
-                  <a href="tel:+20233746643" className="hover:text-[#F5A623] transition-colors">02 33746643</a>
-                  <a href="tel:+20233746654" className="hover:text-[#F5A623] transition-colors">02 33746654</a>
+              <li className="flex items-center gap-2">
+                <FaPhone className="text-[#F5A623] flex-shrink-0" size={14} />
+                <div className="flex gap-3">
+                  <a href="tel:+20233746643" className="text-white hover:text-[#F5A623] transition-colors">02 33746643</a>
+                  <a href="tel:+20233746654" className="text-white hover:text-[#F5A623] transition-colors">02 33746654</a>
                 </div>
               </li>
-              <li className="flex items-center gap-3">
-                <FaEnvelope className="text-[#F5A623] flex-shrink-0 drop-shadow-md" />
-                <a href="mailto:info@dunas-travel.com" className="hover:text-[#F5A623] transition-colors text-sm">info@dunas-travel.com</a>
+              <li className="flex items-center gap-2">
+                <FaEnvelope className="text-[#F5A623] flex-shrink-0" size={14} />
+                <a href="mailto:info@dunas-travel.com" className="text-white hover:text-[#F5A623] transition-colors">info@dunas-travel.com</a>
               </li>
             </ul>
-
-            <div className="relative shadow-lg">
-              <input
-                type="email"
-                placeholder={t('footer.newsletter', 'Subscribe to newsletter')}
-                className="w-full bg-[#1A1A2E]/90 border border-white/30 rounded-full py-3 px-6 text-white outline-none focus:border-[#F5A623] transition-colors placeholder:text-white/60"
-              />
-              <Link
-                to="/contact"
-                className="absolute right-1 top-1 bottom-1 bg-[#F5A623] hover:bg-[#F5A623]/80 text-[#1A1A2E] rounded-full px-6 font-semibold transition-colors flex items-center justify-center"
-              >
-                {t('footer.join', 'Join')}
-              </Link>
-            </div>
+            <Link
+              to="/tailor-a-tour"
+              className="mt-5 inline-flex items-center gap-2 bg-gradient-to-r from-[#F5A623] to-[#C07D0A] text-[#1A1A2E] font-bold text-sm px-6 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+              {t('footer.customize', 'Customize Your Trip')}
+            </Link>
           </div>
 
         </div>
 
         {/* Credits */}
-        <div className="pt-8 border-t border-white/20 text-center flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-caption font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+        <div className="mt-6 pt-4 border-t border-white/10 text-center">
+          <p className="text-xs text-white/60">
             &copy; {new Date().getFullYear()} Dunas Travel. {t('footer.rights', 'All rights reserved.')}
           </p>
         </div>
