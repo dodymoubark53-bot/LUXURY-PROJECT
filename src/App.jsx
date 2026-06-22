@@ -35,6 +35,8 @@ const MultiCountryTourDetails = lazy(() => import("./pages/programs/MultiCountry
 const ReligiousTours = lazy(() => import("./pages/programs/ReligiousTours"));
 const TurkeyProgramDetails = lazy(() => import("./pages/programs/TurkeyProgramDetails"));
 const JordanProgramDetails = lazy(() => import("./pages/programs/JordanProgramDetails"));
+const Honeymooners = lazy(() => import("./pages/Honeymooners"));
+const HoneymoonersDetails = lazy(() => import("./pages/HoneymoonersDetails"));
 
 const PageTransition = ({ children }) => (
   <motion.div
@@ -252,6 +254,22 @@ function App() {
                     element={
                       <PageTransition>
                         <MultiCountryTourDetails />
+                      </PageTransition>
+                    }
+                  />
+                  <Route
+                    path="honeymooners"
+                    element={
+                      <PageTransition>
+                        <Honeymooners />
+                      </PageTransition>
+                    }
+                  />
+                  <Route
+                    path="honeymooners/:slug"
+                    element={
+                      <PageTransition>
+                        <HoneymoonersDetails />
                       </PageTransition>
                     }
                   />

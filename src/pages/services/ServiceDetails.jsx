@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaCheckCircle, FaTimes, FaStar, FaMapMarkerAlt, FaTimesCircle, 
-  FaChevronDown, FaBed, FaClock, FaTag, FaUserFriends, FaGlobe, FaChevronRight,
+  FaBed, FaClock, FaTag, FaUserFriends, FaGlobe, FaChevronRight,
   FaCloudSun, FaSun, FaMoon
 } from 'react-icons/fa';
 import Button from '../../components/ui/Button';
 import { staggerContainer, fadeInUp } from '../../animations/variants';
 import { services } from '../../data/services';
-import InquiryForm from '../../components/booking/InquiryForm';
+import BookingForm from '../../components/booking/BookingForm';
 import AdvancedBooking from '../../components/booking/AdvancedBooking';
 import { useCurrency } from '../../context/CurrencyContext';
 
@@ -201,15 +201,17 @@ const ServiceDetails = () => {
                       </h2>
                     </div>
 
-                    <div className="relative pl-10">
-                      <div className="absolute left-[15px] top-8 bottom-8 w-[2px] bg-[rgba(201,162,39,0.2)]"></div>
+                    <div className="relative max-w-4xl mx-auto">
+                      <div className="absolute left-[1.1rem] top-0 bottom-0 w-1 bg-gold-400"></div>
                       <div className="space-y-6">
                         {service.itinerary.map((day) => (
-                          <div key={day.day} className="relative">
-                            <div className="absolute -left-10 top-[18px] w-3 h-3 bg-gold-500 rounded-full transform -translate-x-1/2 z-10 shadow-[0_0_0_4px_rgba(201,162,39,0.2)]" />
+                          <div key={day.day} className="relative pl-10 md:pl-12">
+                            <div className="absolute left-[0.1rem] top-1 w-8 h-8 rounded-full bg-gold-500 text-white flex items-center justify-center text-sm font-bold shadow-md z-10">
+                              {day.day}
+                            </div>
 
-                            <div className="bg-ivory-50 rounded-xl border-l-2 border-[rgba(201,162,39,0.3)] overflow-hidden shadow-sm p-5">
-                              <div className="flex items-center gap-4 mb-3">
+                            <div className="bg-ivory-50 rounded-2xl p-6 shadow-sm border border-gold-100 hover:shadow-md transition-shadow">
+                              <div className="flex items-center gap-3 mb-3">
                                 <span className="font-semibold text-obsidian-900">{t('tour.day', 'Day')} {day.day}</span>
                                 {day.title && (
                                   <span className="text-body-sm text-obsidian-500">{translateData(day.title, day.title)}</span>
@@ -297,31 +299,10 @@ const ServiceDetails = () => {
                 </motion.div>
               </div>
 
-              {/* Sidebar Booking Card - Jordan style */}
+              {/* Sidebar - Booking Form */}
               <div className="lg:col-span-1">
-                <div className="sticky top-32">
-                  <div className="bg-obsidian-900 text-ivory-50 rounded-2xl shadow-card p-8 border border-gold-500/10">
-                    <div className="text-center mb-8 border-b border-ivory-50/10 pb-8">
-                      <span className="block text-body-md text-ivory-300 mb-2">{t('tourCard.startingFrom', 'Starting from')}</span>
-                      <div className="text-display-xl text-gold-500">{formatPrice(service.price)}</div>
-                      <span className="block text-caption text-ivory-300 mt-2">{t('tour.perPerson', 'per person')}</span>
-                    </div>
-                    <div className="flex flex-col gap-4">
-                      <Button variant="gold-glow" className="w-full py-4 text-lg font-medium" onClick={() => setActiveForm('inquiry')}>
-                        {t('tour.inquire', 'Inquire Now')}
-                      </Button>
-                      <Link to="/tailor-a-tour">
-                        <Button variant="glass" className="w-full py-4 text-lg font-medium">
-                          {t('home.tailorTour', 'Customize This Tour')}
-                        </Button>
-                      </Link>
-                    </div>
-                    <div className="text-center mt-6">
-                      <span className="text-caption text-ivory-300 flex items-center justify-center gap-2">
-                        <FaCheckCircle className="text-sage-500" /> {t('programs.bestPriceGuarantee', 'Best Price Guarantee')}
-                      </span>
-                    </div>
-                  </div>
+<div>
+                  <BookingForm tourTitle={service.title} />
                 </div>
               </div>
             </div>
@@ -467,29 +448,10 @@ const ServiceDetails = () => {
               </motion.div>
             </div>
 
-            {/* Sidebar Booking Form */}
+            {/* Sidebar - Booking Form */}
             <div className="lg:col-span-1">
               <div className="sticky top-32">
-                <div className="bg-obsidian-900 text-ivory-50 rounded-2xl shadow-card p-8 border border-gold-500/10">
-                  <div className="text-center mb-8 border-b border-ivory-50/10 pb-8">
-                    <span className="block text-body-md text-ivory-300 mb-2">{t('tourCard.startingFrom', 'Starting from')}</span>
-                    <div className="text-display-xl text-gold-500">{formatPrice(service.price)}</div>
-                    <span className="block text-caption text-ivory-300 mt-2">{t('tour.perPerson', 'per person')}</span>
-                  </div>
-                  <div className="flex flex-col gap-4">
-                    <Button variant="gold-glow" className="w-full py-4 text-lg font-medium" onClick={() => setActiveForm('booking')}>
-                      {t('nav.bookNow', 'Book Now')}
-                    </Button>
-                    <Button variant="glass" className="w-full py-4 text-lg font-medium" onClick={() => setActiveForm('inquiry')}>
-                      {t('tour.inquire', 'Inquire Availability')}
-                    </Button>
-                  </div>
-                  <div className="text-center mt-6">
-                    <span className="text-caption text-ivory-300 flex items-center justify-center gap-2">
-                      <FaCheckCircle className="text-sage-500" /> {t('programs.bestPriceGuarantee', 'Best Price Guarantee')}
-                    </span>
-                  </div>
-                </div>
+                <BookingForm tourTitle={service.title} />
               </div>
             </div>
           </div>
@@ -531,8 +493,7 @@ const ServiceDetails = () => {
           </div>
         </section>
       )}
-
-      {/* Booking Modals */}
+      {/* Booking Modal */}
       <AnimatePresence>
         {activeForm && (
           <motion.div
@@ -543,7 +504,6 @@ const ServiceDetails = () => {
             onClick={() => setActiveForm(null)}
           >
             <div onClick={(e) => e.stopPropagation()}>
-              {activeForm === 'inquiry' && <InquiryForm onClose={() => setActiveForm(null)} tourTitle={service.title} />}
               {activeForm === 'booking' && <AdvancedBooking onClose={() => setActiveForm(null)} tourTitle={service.title} basePricePerPerson={service.price} />}
             </div>
           </motion.div>

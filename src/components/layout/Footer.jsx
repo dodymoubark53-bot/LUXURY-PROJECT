@@ -38,7 +38,7 @@ const Footer = () => {
           <img
             src="/imgs/tito-mascot.png"
             alt="TiT0"
-            className="w-[130px] sm:w-[150px] animate-[float_3s_ease-in-out_infinite] drop-shadow-[0_10px_25px_rgba(0,0,0,0.45)]"
+            className="w-[170px] sm:w-[200px] animate-[float_3s_ease-in-out_infinite] drop-shadow-[0_10px_25px_rgba(0,0,0,0.45)]"
           />
           <p className="text-white text-base sm:text-lg font-bold max-w-[350px] leading-tight">
             {t('footer.titoTagline', 'Descubre la magia de Egipto y sus monumentos históricos de la mano de los Expertos')}

@@ -11,7 +11,7 @@ import {
 import { fadeInUp } from '../../animations/variants';
 import { multiCountryTours } from '../../data/multiCountryTours';
 import Button from '../../components/ui/Button';
-import InquiryForm from '../../components/booking/InquiryForm';
+import BookingForm from '../../components/booking/BookingForm';
 import AdvancedBooking from '../../components/booking/AdvancedBooking';
 import { useCurrency } from '../../context/CurrencyContext';
 
@@ -252,14 +252,16 @@ const MultiCountryTourDetails = () => {
                 </h2>
               </div>
 
-              <div className="relative pl-10">
-                <div className="absolute left-[15px] top-8 bottom-8 w-[2px] bg-[rgba(201,162,39,0.2)]"></div>
+              <div className="relative max-w-4xl mx-auto">
+                <div className="absolute left-[1.1rem] top-0 bottom-0 w-1 bg-gold-400"></div>
                 <div className="space-y-6">
                   {tour.itinerary && tour.itinerary.map((day) => (
-                    <div key={day.day} className="relative">
-                      <div className="absolute -left-10 top-[18px] w-3 h-3 bg-gold-500 rounded-full transform -translate-x-1/2 z-10 shadow-[0_0_0_4px_rgba(201,162,39,0.2)]" />
-                      <div className="bg-ivory-50 rounded-xl border-l-2 border-[rgba(201,162,39,0.3)] overflow-hidden shadow-sm p-5">
-                        <div className="flex items-center gap-4 mb-3">
+                    <div key={day.day} className="relative pl-10 md:pl-12">
+                      <div className="absolute left-[0.1rem] top-1 w-8 h-8 rounded-full bg-gold-500 text-white flex items-center justify-center text-sm font-bold shadow-md z-10">
+                        {day.day}
+                      </div>
+                      <div className="bg-ivory-50 rounded-2xl p-6 shadow-sm border border-gold-100 hover:shadow-md transition-shadow">
+                        <div className="flex items-center gap-3 mb-3">
                           <span className="font-semibold text-obsidian-900">{t('tour.day', 'Day')} {day.day}</span>
                           {day.title && (
                             <span className="text-body-sm text-obsidian-500">{t(`data.${day.title}`, day.title)}</span>
@@ -331,73 +333,10 @@ const MultiCountryTourDetails = () => {
             </motion.div>
           </div>
 
-          {/* Right Column - Sidebar */}
+          {/* Sidebar - Booking Form */}
           <div className="lg:col-span-1">
-            <div className="sticky top-32">
-              <div className="bg-obsidian-900 text-ivory-50 rounded-2xl shadow-card p-8 border border-gold-500/10">
-                <div className="text-center mb-6 border-b border-ivory-50/10 pb-6">
-                  <span className="block text-body-md text-ivory-300 mb-1">
-                    {t('tourCard.startingFrom', 'Starting from')}
-                  </span>
-                  <div className="text-display-xl text-gold-500 font-bold text-4xl tracking-tight">
-                    {formatPrice(tour.price)}
-                  </div>
-                  <span className="block text-[11px] text-ivory-300 mt-1.5 uppercase tracking-wider">
-                    {t('tour.perPerson', 'per person')}
-                  </span>
-                </div>
-
-                {tour.pricing && (
-                  <div className="mb-6 bg-black/30 border border-gold-500/15 rounded-xl p-4 flex flex-col gap-3.5">
-                    <span className="text-[10px] uppercase tracking-wider text-gold-500 font-bold">
-                      {t('programs.pricingDetails', 'Rate Breakdown & Supplements')}
-                    </span>
-                    <div className="flex flex-col gap-3 text-caption">
-                      {tour.pricing.map((pr, idx) => (
-                        <div key={idx} className="flex flex-col gap-1 pb-2 border-b border-gold-500/5 last:border-b-0 last:pb-0">
-                          <span className="text-ivory-100 font-semibold leading-tight">{t(`data.${pr.label}`, pr.label)}</span>
-                          <div className="flex justify-between text-[11px] text-ivory-300 mt-0.5">
-                            <span>{t('tour.double', 'Double')}: <b className="text-gold-500">{formatPrice(pr.priceDouble)}</b></span>
-                            <span>{t('tour.single', 'Single')}: <b className="text-gold-500">{formatPrice(pr.priceSingle)}</b></span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <div className="flex flex-col gap-4">
-                  <Button
-                    variant="gold-glow"
-                    className="w-full py-4 text-sm font-bold uppercase tracking-wider"
-                    onClick={() => setActiveForm('booking')}
-                  >
-                    {t('nav.bookNow', 'Book This Tour')}
-                  </Button>
-                  <Button
-                    variant="glass"
-                    className="w-full py-4 text-sm font-bold uppercase tracking-wider"
-                    onClick={() => setActiveForm('inquiry')}
-                  >
-                    {t('tour.inquire', 'Inquire Availability')}
-                  </Button>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-ivory-50/10 flex flex-col gap-3.5 text-caption text-ivory-300">
-                  <div className="flex items-center gap-2.5">
-                    <FaCheck className="text-gold-500 shrink-0" />
-                    <span>{t('programs.helperVisa', 'Guaranteed local visa assistance')}</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <FaCheck className="text-gold-500 shrink-0" />
-                    <span>{t('programs.helperGuide', 'Certified Spanish guide in all locations')}</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <FaCheck className="text-gold-500 shrink-0" />
-                    <span>{t('programs.helperFlights', 'Domestics flights fully included')}</span>
-                  </div>
-                </div>
-              </div>
+            <div>
+              <BookingForm tourTitle={tour.title} />
             </div>
           </div>
 
@@ -481,8 +420,7 @@ const MultiCountryTourDetails = () => {
           ))}
         </div>
       </section>
-
-      {/* Booking Modals */}
+      {/* Booking Modal */}
       <AnimatePresence>
         {activeForm && (
           <motion.div
@@ -490,7 +428,6 @@ const MultiCountryTourDetails = () => {
             className="fixed inset-0 z-[100] bg-obsidian-950/80 flex items-start sm:items-center justify-center backdrop-blur-sm p-4 overflow-y-auto"
             onClick={() => setActiveForm(null)}
           >
-            {activeForm === 'inquiry' && <InquiryForm onClose={() => setActiveForm(null)} tourTitle={tour.title} />}
             {activeForm === 'booking' && <AdvancedBooking onClose={() => setActiveForm(null)} tourTitle={tour.title} basePricePerPerson={tour.price} />}
           </motion.div>
         )}

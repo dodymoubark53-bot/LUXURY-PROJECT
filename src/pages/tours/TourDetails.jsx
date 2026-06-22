@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaChevronRight, FaClock, FaUserFriends, FaGlobe, FaTag,
-  FaCheck, FaTimes, FaStar, FaMapMarkerAlt, FaBed, FaCheckCircle,
+  FaCheck, FaTimes, FaMapMarkerAlt, FaBed, FaCheckCircle,
   FaCloudSun, FaSun, FaMoon
 } from 'react-icons/fa';
 import { tours } from '../../data/tours';
 import Button from '../../components/ui/Button';
 import { fadeInUp } from '../../animations/variants';
-import InquiryForm from '../../components/booking/InquiryForm';
-import AdvancedBooking from '../../components/booking/AdvancedBooking';
+import BookingForm from '../../components/booking/BookingForm';
 import { useCurrency } from '../../context/CurrencyContext';
 
 const TourDetails = () => {
@@ -22,14 +21,7 @@ const TourDetails = () => {
 
   const tour = tours.find(t => t.slug === slug) || tours[0];
 
-  const [activeImage, setActiveImage] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [activeForm, setActiveForm] = useState(null);
-
-  const reviews = [
-    { id: 1, name: 'Eleanor R.', date: 'October 2025', rating: 5, comment: 'Absolutely breathtaking experience. The VIP access to the temples made it unforgettable.' },
-    { id: 2, name: 'James W.', date: 'September 2025', rating: 5, comment: 'The luxurious cruise was the highlight. Impeccable service.' }
-  ];
 
   return (
     <div className="w-full bg-obsidian-50 min-h-screen">
@@ -74,7 +66,7 @@ const TourDetails = () => {
       {/* 2. Photo Gallery */}
       <section className="relative w-full h-[50vh] lg:h-[70vh] overflow-hidden group cursor-pointer" onClick={() => setIsLightboxOpen(true)}>
         <motion.img
-          src={tour.images[activeImage] || '/images/tour-1.png'}
+          src={(tour.images && tour.images[0]) || '/images/tour-1.png'}
           alt={t(`data.${tour.title}`, tour.title)}
           className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
           loading="lazy"
@@ -247,30 +239,48 @@ const TourDetails = () => {
               </motion.div>
             )}
 
-            {/* Itinerary */}
+          </div>
+
+          {/* Sidebar - Booking Form */}
+          <div className="lg:col-span-1">
+            <div>
+              <BookingForm tourTitle={tour.title} />
+            </div>
+          </div>
+
+        </div>
+
+        {/* Itinerary – Full Width */}
+        <div className="relative mt-24 mb-8">
+          <div className="absolute inset-0 bg-gradient-to-r from-obsidian-50 via-gold-50/30 to-obsidian-50 rounded-3xl"></div>
+          <div className="relative z-10 px-4 md:px-12 py-16">
             <motion.div
               variants={fadeInUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="mt-16"
             >
-              <div className="mb-10">
+              <div className="mb-10 text-center">
+                <span className="text-caption text-gold-500 uppercase tracking-[4px] font-semibold block mb-3">
+                  {t('tour.journeyDayByDay', 'YOUR JOURNEY DAY BY DAY')}
+                </span>
                 <h2 className="text-display-lg text-obsidian-900" style={{ fontFamily: "'Playfair Display', serif" }}>
                   {t('tourDetail.itinerary', 'Itinerary')}
                 </h2>
-                <div className="w-24 h-1 bg-gold-500 mt-2"></div>
+                <div className="w-24 h-1 bg-gold-500 mx-auto mt-3"></div>
               </div>
 
-              <div className="relative pl-10">
-                <div className="absolute left-[15px] top-8 bottom-8 w-[2px] bg-[rgba(201,162,39,0.2)]"></div>
+              <div className="relative max-w-4xl mx-auto">
+                <div className="absolute left-[1.1rem] top-0 bottom-0 w-1 bg-gold-400"></div>
                 <div className="space-y-6">
                   {tour.itinerary && tour.itinerary.map((day) => (
-                    <div key={day.day} className="relative">
-                      <div className="absolute -left-10 top-[18px] w-3 h-3 bg-gold-500 rounded-full transform -translate-x-1/2 z-10 shadow-[0_0_0_4px_rgba(201,162,39,0.2)]" />
+                    <div key={day.day} className="relative pl-10 md:pl-12">
+                      <div className="absolute left-[0.1rem] top-1 w-8 h-8 rounded-full bg-gold-500 text-white flex items-center justify-center text-sm font-bold shadow-md z-10">
+                        {day.day}
+                      </div>
 
-                      <div className="bg-ivory-50 rounded-xl border-l-2 border-[rgba(201,162,39,0.3)] overflow-hidden shadow-sm p-5">
-                        <div className="flex items-center gap-4 mb-3">
+                      <div className="bg-ivory-50 rounded-2xl p-6 shadow-sm border border-gold-100 hover:shadow-md transition-shadow">
+                        <div className="flex items-center gap-3 mb-3">
                           <span className="font-semibold text-obsidian-900">{t('tour.day', 'Day')} {day.day}</span>
                           {day.title && (
                             <span className="text-body-sm text-obsidian-500">{t(`data.${day.title}`, day.title)}</span>
@@ -327,7 +337,7 @@ const TourDetails = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="mt-16"
+              className="mt-16 max-w-4xl mx-auto"
             >
               <div className={`grid grid-cols-1 md:grid-cols-${tour.excursions && tour.excursions.length > 0 ? '3' : '2'} gap-8`}>
                 <div>
@@ -424,34 +434,6 @@ const TourDetails = () => {
             )}
 
           </div>
-
-          {/* Sidebar Booking */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-32">
-              <div className="bg-obsidian-900 text-ivory-50 rounded-2xl shadow-card p-8 border border-gold-500/10">
-                <div className="text-center mb-8 border-b border-ivory-50/10 pb-8">
-                  <span className="block text-body-md text-ivory-300 mb-2">{t('tourCard.duration', 'Duration')}</span>
-                  <div className="text-display-md text-gold-500">{t(`data.${tour.duration}`, tour.duration)}</div>
-                </div>
-                <div className="flex flex-col gap-4">
-                  <Button variant="gold-glow" className="w-full py-4 text-lg font-medium" onClick={() => setActiveForm('inquiry')}>
-                    {t('tour.inquire', 'Inquire Now')}
-                  </Button>
-                  <Link to="/tailor-a-tour">
-                    <Button variant="glass" className="w-full py-4 text-lg font-medium">
-                      {t('home.tailorTour', 'Customize This Tour')}
-                    </Button>
-                  </Link>
-                </div>
-                <div className="text-center mt-6">
-                  <span className="text-caption text-ivory-300 flex items-center justify-center gap-2">
-                    <FaCheckCircle className="text-sage-500" /> {t('programs.bestPriceGuarantee', 'Best Price Guarantee')}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
 
@@ -483,25 +465,6 @@ const TourDetails = () => {
           </div>
         </div>
       </section>
-
-      {/* Booking Modals */}
-      <AnimatePresence>
-        {activeForm && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-obsidian-900/80 flex items-start sm:items-center justify-center backdrop-blur-sm p-4 overflow-y-auto"
-            onClick={() => setActiveForm(null)}
-          >
-            <div onClick={(e) => e.stopPropagation()}>
-              {activeForm === 'inquiry' && <InquiryForm onClose={() => setActiveForm(null)} tourTitle={tour.title} />}
-              {activeForm === 'booking' && <AdvancedBooking onClose={() => setActiveForm(null)} tourTitle={tour.title} basePricePerPerson={tour.price} />}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Lightbox Modal */}
       <AnimatePresence>
         {isLightboxOpen && (

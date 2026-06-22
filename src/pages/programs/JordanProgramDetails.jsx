@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaCheckCircle, FaStar, FaMapMarkerAlt, FaBed, FaClock, FaTag, FaChevronRight } from 'react-icons/fa';
-import { staggerContainer, fadeInUp } from '../../animations/variants';
+import { motion } from 'framer-motion';
+import { FaCheckCircle, FaMapMarkerAlt, FaBed, FaClock, FaTag, FaChevronRight } from 'react-icons/fa';
+import { fadeInUp } from '../../animations/variants';
 import Button from '../../components/ui/Button';
-import InquiryForm from '../../components/booking/InquiryForm';
+import BookingForm from '../../components/booking/BookingForm';
 import { useJordanProgram } from '../../hooks/useJordanPrograms';
 
 const JordanProgramDetails = () => {
@@ -14,7 +14,6 @@ const JordanProgramDetails = () => {
   const { programId } = useParams();
   const program = useJordanProgram(programId);
   const [activeImage, setActiveImage] = useState(null);
-  const [activeForm, setActiveForm] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -146,32 +145,44 @@ const JordanProgramDetails = () => {
               </motion.div>
             )}
 
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="mt-16"
-            >
-              <div className="mb-10">
+          </div>
+
+          {/* Sidebar - Booking Form */}
+          <div className="lg:col-span-1">
+            <div>
+              <BookingForm tourTitle={title} />
+            </div>
+          </div>
+        </div>
+
+        {/* Itinerary – Full Width */}
+        <div className="relative mt-24 mb-8">
+          <div className="absolute inset-0 bg-gradient-to-r from-obsidian-50 via-gold-50/30 to-obsidian-50 rounded-3xl"></div>
+          <div className="relative z-10 px-4 md:px-12 py-16">
+            <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <div className="mb-10 text-center">
+                <span className="text-caption text-gold-500 uppercase tracking-[4px] font-semibold block mb-3">
+                  {t('tour.journeyDayByDay', 'YOUR JOURNEY DAY BY DAY')}
+                </span>
                 <h2 className="text-display-lg text-obsidian-900" style={{ fontFamily: "'Playfair Display', serif" }}>
                   {t('tourDetail.itinerary', 'Itinerary')}
                 </h2>
-                <div className="w-24 h-1 bg-gold-500 mt-2"></div>
+                <div className="w-24 h-1 bg-gold-500 mx-auto mt-3"></div>
               </div>
 
-              <div className="relative pl-10">
-                <div className="absolute left-[15px] top-8 bottom-8 w-[2px] bg-[rgba(201,162,39,0.2)]"></div>
+              <div className="relative max-w-4xl mx-auto">
+                <div className="absolute left-[1.1rem] top-0 bottom-0 w-1 bg-gold-400"></div>
                 <div className="space-y-6">
                   {days.map((day) => (
-                    <div key={day.day} className="relative">
-                      <div className="absolute -left-10 top-[18px] w-3 h-3 bg-gold-500 rounded-full transform -translate-x-1/2 z-10 shadow-[0_0_0_4px_rgba(201,162,39,0.2)]" />
-
-                      <div className="bg-ivory-50 rounded-xl border-l-2 border-[rgba(201,162,39,0.3)] overflow-hidden shadow-sm p-5">
-                        <div className="flex items-center gap-4 mb-3">
+                    <div key={day.day} className="relative pl-10 md:pl-12">
+                      <div className="absolute left-[0.1rem] top-1 w-8 h-8 rounded-full bg-gold-500 text-white flex items-center justify-center text-sm font-bold shadow-md z-10">
+                        {day.day}
+                      </div>
+                      <div className="bg-ivory-50 rounded-2xl p-6 shadow-sm border border-gold-100 hover:shadow-md transition-shadow">
+                        <div className="flex items-center gap-3 mb-3">
                           <span className="font-semibold text-obsidian-900">{t('tour.day', 'Day')} {day.day}</span>
                           {day.meals && (
-                            <span className="text-caption text-obsidian-400 flex items-center gap-1">
+                            <span className="text-caption text-obsidian-400 flex items-center gap-1 ml-auto">
                               <FaBed className="text-gold-500" /> {day.meals}
                             </span>
                           )}
@@ -184,35 +195,8 @@ const JordanProgramDetails = () => {
               </div>
             </motion.div>
           </div>
-
-          <div className="lg:col-span-1">
-            <div className="sticky top-32">
-              <div className="bg-obsidian-900 text-ivory-50 rounded-2xl shadow-card p-8 border border-gold-500/10">
-                <div className="text-center mb-8 border-b border-ivory-50/10 pb-8">
-                  <span className="block text-body-md text-ivory-300 mb-2">{t('tourCard.duration', 'Duration')}</span>
-                  <div className="text-display-md text-gold-500">{duration}</div>
-                </div>
-                <div className="flex flex-col gap-4">
-                  <Button variant="gold-glow" className="w-full py-4 text-lg font-medium" onClick={() => setActiveForm('inquiry')}>
-                    {t('tour.inquire', 'Inquire Now')}
-                  </Button>
-                  <Link to="/tailor-a-tour">
-                    <Button variant="glass" className="w-full py-4 text-lg font-medium">
-                      {t('home.tailorTour', 'Customize This Tour')}
-                    </Button>
-                  </Link>
-                </div>
-                <div className="text-center mt-6">
-                  <span className="text-caption text-ivory-300 flex items-center justify-center gap-2">
-                    <FaCheckCircle className="text-sage-500" /> {t('programs.bestPriceGuarantee', 'Best Price Guarantee')}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
-
       <section className="relative py-24 mt-8 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${images[0]})` }} />
         <div className="absolute inset-0 bg-obsidian-900/75" />
@@ -240,22 +224,6 @@ const JordanProgramDetails = () => {
           </div>
         </div>
       </section>
-
-      <AnimatePresence>
-        {activeForm && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-obsidian-900/80 flex items-start sm:items-center justify-center backdrop-blur-sm p-4 overflow-y-auto"
-            onClick={() => setActiveForm(null)}
-          >
-            <div onClick={(e) => e.stopPropagation()}>
-              <InquiryForm onClose={() => setActiveForm(null)} tourTitle={title} />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };

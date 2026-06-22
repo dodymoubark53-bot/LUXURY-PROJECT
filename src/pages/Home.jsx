@@ -1057,7 +1057,8 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-5xl mx-auto rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden bg-[rgb(35,35,191)] border border-[rgba(245,166,35,0.2)]"
+            className="max-w-5xl mx-auto rounded-3xl p-8 md:p-12 relative overflow-hidden border border-[rgba(245,166,35,0.2)]"
+            style={{ background: 'linear-gradient(180deg, rgb(10,25,105) 0%, rgb(6,29,93) 50%, rgb(10,21,53) 100%)', boxShadow: '0 0 40px rgba(10,25,105, 0.8)' }}
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/10 rounded-full blur-[80px] -mr-32 -mt-32"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold-500/10 rounded-full blur-[80px] -ml-32 -mb-32"></div>
@@ -1289,9 +1290,9 @@ const Home = () => {
 
                   <div className="md:col-span-2 flex justify-center mt-6 pt-6 border-t border-ivory-50/10">
                     <Button
-                      variant="gold-glow"
                       type="submit"
-                      className="w-full md:w-auto px-12 py-4 text-lg rounded-full"
+                      className="w-full md:w-auto px-12 py-4 text-lg rounded-full text-white hover:scale-105 transition-transform"
+                      style={{ background: 'linear-gradient(180deg, rgb(10,25,105) 0%, rgb(6,29,93) 50%, rgb(10,21,53) 100%)', boxShadow: '0 0 20px rgba(10,25,105, 0.6)', border: '1px solid rgba(255,255,255,0.1)' }}
                     >
                       {t("home.reserveNow", "Reserve Now")}
                     </Button>

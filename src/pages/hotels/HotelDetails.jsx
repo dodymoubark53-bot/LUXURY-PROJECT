@@ -1,26 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  FaStar, FaCalendarAlt, FaBed, FaSmokingBan, FaPaw, FaRegClock, FaDoorOpen,
-  FaMapMarkerAlt, FaPhone, FaEnvelope, FaFacebook, FaInstagram, FaGlobe,
+  FaStar, FaBed, FaSmokingBan, FaDoorOpen,
+  FaMapMarkerAlt, FaPhone, FaFacebook, FaInstagram, FaGlobe,
   FaWifi, FaTv, FaShower, FaSnowflake, FaLock, FaBriefcase, FaUtensils,
   FaBeer, FaCreditCard, FaTimes, FaTshirt, FaCheckCircle, FaUserFriends,
-  FaEye, FaTimesCircle, FaBan
+  FaEye, FaBan
 } from 'react-icons/fa';
-import { staggerContainer, fadeInUp } from '../../animations/variants';
 import { useCurrency } from '../../context/CurrencyContext';
 import Button from '../../components/ui/Button';
-import InquiryForm from '../../components/booking/InquiryForm';
 
 const HotelDetails = () => {
   const { t } = useTranslation();
   const { formatPrice } = useCurrency();
   const location = useLocation();
   const [activeImage, setActiveImage] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   // Dynamic link prefix based on path (programs vs services)
   const prefix = location.pathname.startsWith('/programs') ? '/programs' : '/services';
@@ -221,9 +219,11 @@ const HotelDetails = () => {
           <div className="bg-slate-900/90 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-white w-full md:w-auto shadow-xl shrink-0 text-center md:text-right">
             <div className="text-gold-500 text-xs uppercase tracking-widest mb-1">{t('tourCard.startingFrom', 'Rooms From')}</div>
             <div className="text-3xl font-semibold text-gold-400 mb-3">{formatPrice(85)}<span className="text-sm font-normal text-slate-300"> / {t('hotel.night', 'night')}</span></div>
-            <Button variant="gold-glow" className="w-full px-6 py-2.5 text-xs uppercase font-bold" onClick={() => setIsModalOpen(true)}>
-              {t('services.inquireNow', 'Inquire Now')}
-            </Button>
+            <Link to="/tailor-a-tour">
+              <Button variant="glass" className="w-full px-6 py-2.5 text-xs uppercase font-bold">
+                {t('home.tailorTour', 'Customize Your Stay')}
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -640,23 +640,6 @@ const HotelDetails = () => {
           </div>
         </div>
       </section>
-
-      {/* Inquiry Form Modal */}
-      <AnimatePresence>
-        {isModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[99999] bg-slate-900/80 flex items-start sm:items-center justify-center backdrop-blur-sm p-4 overflow-y-auto"
-            onClick={() => setIsModalOpen(false)}
-          >
-            <div onClick={(e) => e.stopPropagation()}>
-              <InquiryForm onClose={() => setIsModalOpen(false)} tourTitle={hotelOverview.name} />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Lightbox Gallery Modal */}
       <AnimatePresence>

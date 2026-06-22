@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaCheckCircle } from 'react-icons/fa';
+import { 
+  FaCheckCircle, FaCalendarAlt, FaUser, FaPlus, FaMinus, 
+  FaPaperPlane, FaLanguage, FaEnvelope, FaPhone, FaTimes, 
+  FaChevronDown, FaEdit
+} from 'react-icons/fa';
 import Button from '../ui/Button';
 import { fadeInUp } from '../../animations/variants';
-import { useCurrency } from '../../context/CurrencyContext';
 
-const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
+const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson, initialTab = 'booking' }) => {
   const { t } = useTranslation();
-  const { formatPrice } = useCurrency();
+  const [activeTab, setActiveTab] = useState(initialTab); // 'booking' | 'inquiry'
   const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success'
   const isEgyptJordanTour = tourTitle === "Combined EGYPT with Jordan - 14 DAYS / 13 Nights" || tourTitle?.includes("Combined EGYPT with Jordan");
 
@@ -18,42 +21,73 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
   };
   const todayStr = getTodayString();
 
-  // Form State
-  const [formData, setFormData] = useState({
-    arrivalDate: '',
-    departureDate: '',
-    adults: 2,
-    children: 0,
-    infants: 0,
-    email: ''
-  });
+  // State Fields
+  const [departureDate, setDepartureDate] = useState('');
+  const [language, setLanguage] = useState('es');
+  
+  // Passenger Counts
+  const [adults, setAdults] = useState(2);
+  const [children, setChildren] = useState(0);
+  const [infants, setInfants] = useState(0);
 
-  // Dynamic guest names
-  const [guestNames, setGuestNames] = useState({});
+  // Dynamic Passenger Names
+  const [adultNames, setAdultNames] = useState(['', '']);
+  const [childrenNames, setChildrenNames] = useState([]);
+  const [infantNames, setInfantNames] = useState([]);
 
-  // Calculate live price
-  const totalPrice = basePricePerPerson * (formData.adults + formData.children * 0.75);
+  // Contact Info
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleGuestNameChange = (key, value) => {
-    setGuestNames(prev => ({ ...prev, [key]: value }));
+  // Handle passenger count changes and dynamic name fields
+  const handleAdultsChange = (val) => {
+    const newVal = Math.max(1, adults + val); // min 1 adult
+    setAdults(newVal);
+    setAdultNames(prev => {
+      if (val > 0) {
+        return [...prev, ...Array(val).fill('')];
+      } else {
+        return prev.slice(0, newVal);
+      }
+    });
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: ['adults', 'children', 'infants'].includes(name) ? parseInt(value) || 0 : value
-    }));
+  const handleChildrenChange = (val) => {
+    const newVal = Math.max(0, children + val);
+    setChildren(newVal);
+    setChildrenNames(prev => {
+      if (val > 0) {
+        return [...prev, ...Array(val).fill('')];
+      } else {
+        return prev.slice(0, newVal);
+      }
+    });
   };
+
+  const handleInfantsChange = (val) => {
+    const newVal = Math.max(0, infants + val);
+    setInfants(newVal);
+    setInfantNames(prev => {
+      if (val > 0) {
+        return [...prev, ...Array(val).fill('')];
+      } else {
+        return prev.slice(0, newVal);
+      }
+    });
+  };
+
+  // Pricing calculation in USD
+  const basePrice = basePricePerPerson || 150;
+  const calculatedTotal = basePrice * (adults + children * 0.75 + infants * 0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.arrivalDate && formData.arrivalDate < todayStr) {
+    if (departureDate && departureDate < todayStr) {
       return;
     }
-    if (formData.departureDate && formData.departureDate < (formData.arrivalDate || todayStr)) {
-      return;
-    }
+    
     setStatus('submitting');
     setTimeout(() => {
       setStatus('success');
@@ -63,22 +97,22 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
     }, 1500);
   };
 
-  // Generate Guest Fields Array with localized labels
-  const guestFields = [
-    ...Array.from({ length: Math.max(0, formData.adults) }, (_, i) => ({
-      key: `Adult ${i + 1}`,
-      label: t('booking.adultNumFullName', 'Adult {{num}} Full Name', { num: i + 1 }),
-      placeholder: t('booking.adultNumFullName', 'Adult {{num}} Full Name', { num: i + 1 })
-    })),
-    ...Array.from({ length: Math.max(0, formData.children) }, (_, i) => ({
-      key: `Child ${i + 1}`,
-      label: t('booking.childNumFullName', 'Child {{num}} Full Name', { num: i + 1 }),
-      placeholder: t('booking.childNumFullName', 'Child {{num}} Full Name', { num: i + 1 })
-    })),
-  ];
-
   return (
-    <div className="relative mx-auto w-full box-border rounded-[20px] bg-[rgba(15,13,11,0.85)] backdrop-blur-[24px] border border-[rgba(201,162,39,0.2)] shadow-[0_0_40px_rgba(201,162,39,0.1)] px-4 py-8 md:p-8 lg:p-10 max-w-full md:max-w-[480px] lg:max-w-[560px] max-h-[90vh] overflow-y-auto no-scrollbar text-left" onClick={(e) => e.stopPropagation()}>
+    <div 
+      className="relative mx-auto w-full box-border rounded-[24px] bg-[#061D5D] border border-[#C9A227]/30 shadow-[0_0_35px_rgba(201,162,39,0.35)] px-5 py-8 md:p-8 max-w-full md:max-w-[520px] lg:max-w-[580px] max-h-[90vh] overflow-y-auto no-scrollbar text-right text-white font-sans" 
+      dir="rtl" 
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Close button */}
+      <button 
+        onClick={onClose}
+        className="absolute top-4 left-4 text-gray-400 hover:text-white transition-colors cursor-pointer"
+        type="button"
+        aria-label="Close"
+      >
+        <FaTimes size={20} />
+      </button>
+
       <AnimatePresence mode="wait">
         {status === 'success' ? (
           <motion.div
@@ -94,9 +128,12 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
             >
               <FaCheckCircle className="text-gold-500 text-6xl mb-4" />
             </motion.div>
-            <h3 className="text-display-md text-ivory-50 mb-2 font-display">{t('booking.reservationConfirmed', 'Booking Confirmed')}</h3>
+            <h3 className="text-2xl font-bold text-[#E8C97A] mb-3">
+              {activeTab === 'booking' ? t('booking.reservationConfirmed', 'Booking Confirmed') : t('booking.inquirySent', 'Inquiry Sent')}
+            </h3>
+            
             {isEgyptJordanTour ? (
-              <div className="flex flex-col gap-6 w-full items-center">
+              <div className="flex flex-col gap-6 w-full items-center text-left">
                 <div className="text-body-md text-ivory-300 text-left whitespace-pre-line bg-gold-500/10 p-5 rounded-xl border border-gold-500/20 shadow-md w-full">
                   Good morning,{"\n"}
                   Thank you very much for your interest in the trip to Egypt. In order to send you detailed information we need:{"\n"}
@@ -107,14 +144,17 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
                 </div>
                 <button 
                   onClick={onClose} 
-                  className="px-6 py-2 bg-gold-500 text-obsidian-900 font-semibold rounded-full hover:scale-105 transition-transform text-sm"
+                  className="px-6 py-2 bg-gold-500 text-obsidian-900 font-semibold rounded-full hover:scale-105 transition-transform text-sm cursor-pointer"
                 >
                   {t('common.close', 'Close')}
                 </button>
               </div>
             ) : (
-              <p className="text-body-md text-ivory-300">
-                {t('booking.reservationSuccessDesc', 'Your reservation request for {{tourTitle}} has been received. Our team will contact you to finalize the payment and details.', { tourTitle: t(`data.${tourTitle}`, tourTitle) })}
+              <p className="text-gray-300 max-w-sm">
+                {activeTab === 'booking'
+                  ? t('booking.reservationSuccessDesc', 'Your reservation request for {{tourTitle}} has been received. Our team will contact you to finalize the payment and details.', { tourTitle: t(`data.${tourTitle}`, tourTitle) })
+                  : t('booking.inquirySuccessDesc', 'Thank you for your interest in the {{tourTitle}}. Our DUNAS TRAVEL concierges will contact you shortly.', { tourTitle: t(`data.${tourTitle}`, tourTitle) })
+                }
               </p>
             )}
           </motion.div>
@@ -127,126 +167,306 @@ const AdvancedBooking = ({ onClose, tourTitle, basePricePerPerson }) => {
             onSubmit={handleSubmit}
             className="flex flex-col gap-6 w-full"
           >
-            <div className="flex flex-col text-center border-b border-ivory-50/10 pb-6">
-              <h3 className="text-display-md text-ivory-50 mb-1 font-display">{t('booking.advancedBookingTitle', 'Advanced Booking')}</h3>
-              <p className="text-caption text-gold-500 mb-4">{t(`data.${tourTitle}`, tourTitle)}</p>
-              <div>
-                <span className="block text-caption text-ivory-300">{t('booking.totalPrice', 'Total Price')}</span>
-                <span className="text-display-md text-gold-500 text-2xl">{formatPrice(totalPrice)}</span>
-              </div>
+            {/* Header info */}
+            <div className="text-center pb-4 border-b border-[#C9A227]/10">
+              <h3 className="text-xl font-bold text-white mb-1">{t(`data.${tourTitle}`, tourTitle)}</h3>
+              <p className="text-xs text-[#C9A227] tracking-wider uppercase">حجز وتأكيد الرحلة / Book Tour</p>
             </div>
 
+            {/* Tabs */}
+            <div className="flex border-b border-[#C9A227]/20 pb-1 justify-center gap-6">
+              <button
+                type="button"
+                onClick={() => setActiveTab('booking')}
+                className={`text-base font-bold pb-2 px-4 transition-all duration-300 relative cursor-pointer outline-none ${activeTab === 'booking' ? 'text-[#C9A227]' : 'text-gray-400 hover:text-white'}`}
+              >
+                حجز مباشر
+                {activeTab === 'booking' && (
+                  <motion.div 
+                    layoutId="activeTabUnderline"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C9A227]"
+                  />
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('inquiry')}
+                className={`text-base font-bold pb-2 px-4 transition-all duration-300 relative cursor-pointer outline-none ${activeTab === 'inquiry' ? 'text-[#C9A227]' : 'text-gray-400 hover:text-white'}`}
+              >
+                طلب استفسار
+                {activeTab === 'inquiry' && (
+                  <motion.div 
+                    layoutId="activeTabUnderline"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C9A227]"
+                  />
+                )}
+              </button>
+            </div>
+
+            {/* Inputs Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="flex flex-col gap-1 text-left w-full">
-                <label className="text-caption text-gold-500 font-medium">{t('booking.arrivalDate', 'Arrival Date')}</label>
-                <input
-                  type="date"
-                  name="arrivalDate"
-                  value={formData.arrivalDate}
-                  min={todayStr}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)] [color-scheme:dark]"
-                />
-              </div>
-              <div className="flex flex-col gap-1 text-left w-full">
-                <label className="text-caption text-gold-500 font-medium">{t('booking.departureDate', 'Departure Date')}</label>
-                <input
-                  type="date"
-                  name="departureDate"
-                  value={formData.departureDate}
-                  min={formData.arrivalDate || todayStr}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)] [color-scheme:dark]"
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="flex flex-col gap-1 text-left w-full">
-                <label className="text-caption text-gold-500 font-medium">{t('booking.adults', 'Adults')}</label>
-                <input
-                  type="number"
-                  name="adults"
-                  min="1"
-                  value={formData.adults}
-                  onChange={handleInputChange}
-                  className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)]"
-                />
-              </div>
-              <div className="flex flex-col gap-1 text-left w-full">
-                <label className="text-caption text-gold-500 font-medium">{t('booking.childrenAge', 'Children (2-12)')}</label>
-                <input
-                  type="number"
-                  name="children"
-                  min="0"
-                  value={formData.children}
-                  onChange={handleInputChange}
-                  className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)]"
-                />
-              </div>
-              <div className="flex flex-col gap-1 text-left w-full">
-                <label className="text-caption text-gold-500 font-medium">{t('booking.infantsAge', 'Infants (<2)')}</label>
-                <input
-                  type="number"
-                  name="infants"
-                  min="0"
-                  value={formData.infants}
-                  onChange={handleInputChange}
-                  className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)]"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-1 text-left w-full">
-              <label className="text-caption text-gold-500 font-medium">{t('booking.emailAddress', 'Email Address')}</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-                placeholder={t('booking.emailPlaceholder', 'Where should we send the confirmation?')}
-                className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)]"
-              />
-            </div>
-
-            {guestFields.length > 0 && (
-              <div className="pt-6 border-t border-ivory-50/10 text-left w-full">
-                <h4 className="text-caption font-semibold text-gold-500 mb-4 uppercase tracking-wide">{t('booking.guestDetails', 'Guest Details')}</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {guestFields.map((field, idx) => (
-                    <div key={idx} className="flex flex-col gap-1 w-full">
-                      <label className="text-caption text-ivory-300 font-medium">{field.label}</label>
-                      <input
-                        type="text"
-                        placeholder={field.placeholder}
-                        required
-                        onChange={(e) => handleGuestNameChange(field.key, e.target.value)}
-                        className="w-full p-4 rounded-lg outline-none transition-all text-[16px] bg-[rgba(255,252,247,0.05)] text-[#F5EDD6] placeholder:text-[rgba(245,237,214,0.4)] border border-[rgba(255,252,247,0.1)] focus:border-[rgba(201,162,39,0.4)] focus:shadow-[0_0_12px_rgba(201,162,39,0.15)]"
-                      />
-                    </div>
-                  ))}
+              
+              {/* Departure Date */}
+              <div className="flex flex-col gap-1.5 w-full">
+                <label className="text-sm font-semibold text-[#C9A227]">موعد الرحيل / Departure Date</label>
+                <div className="relative">
+                  <input
+                    type="date"
+                    min={todayStr}
+                    value={departureDate}
+                    onChange={(e) => setDepartureDate(e.target.value)}
+                    className="w-full p-3.5 pr-10 rounded-lg bg-[#0d226b] text-white border border-[#c9a227]/25 focus:border-[#C9A227] focus:ring-1 focus:ring-[#C9A227] outline-none transition-all [color-scheme:dark] text-right text-[15px]"
+                    required
+                  />
+                  <div className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#C9A227]/70 pointer-events-none">
+                    <FaCalendarAlt size={15} />
+                  </div>
                 </div>
+              </div>
+
+              {/* Tour Language dropdown */}
+              <div className="flex flex-col gap-1.5 w-full">
+                <label className="text-sm font-semibold text-[#C9A227]">لغة الرحلة / Tour Language</label>
+                <div className="relative">
+                  <select
+                    value={language}
+                    onChange={(e) => setLanguage(e.target.value)}
+                    className="w-full p-3.5 pr-10 rounded-lg bg-[#0d226b] text-white border border-[#c9a227]/25 focus:border-[#C9A227] focus:ring-1 focus:ring-[#C9A227] outline-none transition-all appearance-none text-right cursor-pointer text-[15px] [&>option]:text-[#061D5D] [&>option]:bg-white"
+                    required
+                  >
+                    <option value="es">🇪🇸 Español (Spanish)</option>
+                    <option value="pt">🇵🇹 Português (Portuguese)</option>
+                    <option value="it">🇮🇹 Italiano (Italian)</option>
+                  </select>
+                  <div className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#C9A227]/70 pointer-events-none">
+                    <FaLanguage size={18} />
+                  </div>
+                  <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#C9A227]/70 pointer-events-none">
+                    <FaChevronDown size={11} />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Passenger counters section */}
+            <div className="border border-[#c9a227]/25 rounded-xl p-4 bg-[#0a1969]/40">
+              <h4 className="text-sm font-semibold text-[#C9A227] border-b border-[#c9a227]/10 pb-2 mb-4">عدد المسافرين والنزلاء</h4>
+              
+              <div className="flex flex-col gap-4">
+                
+                {/* Adults */}
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col text-right">
+                    <span className="font-semibold text-white text-sm">البالغين</span>
+                    <span className="text-xs text-gray-400">سن 18+</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => handleAdultsChange(-1)}
+                      className="w-8 h-8 rounded-full border border-[#C9A227]/40 flex items-center justify-center text-[#C9A227] hover:bg-[#C9A227] hover:text-white transition-colors cursor-pointer"
+                    >
+                      <FaMinus size={10} />
+                    </button>
+                    <span className="font-bold text-base w-6 text-center">{adults}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleAdultsChange(1)}
+                      className="w-8 h-8 rounded-full border border-[#C9A227]/40 flex items-center justify-center text-[#C9A227] hover:bg-[#C9A227] hover:text-white transition-colors cursor-pointer"
+                    >
+                      <FaPlus size={10} />
+                    </button>
+                  </div>
+                </div>
+                
+                {/* Dynamic adult fields */}
+                {adultNames.map((name, idx) => (
+                  <div key={`adult-field-${idx}`} className="mr-4 transition-all">
+                    <input
+                      type="text"
+                      placeholder={`الاسم الكامل (بالغ ${idx + 1}) *`}
+                      value={name}
+                      onChange={(e) => {
+                        const updated = [...adultNames];
+                        updated[idx] = e.target.value;
+                        setAdultNames(updated);
+                      }}
+                      className="w-full p-2.5 rounded-lg bg-[#0d226b] text-white border border-[#c9a227]/15 focus:border-[#C9A227] outline-none text-xs text-right"
+                      required
+                    />
+                  </div>
+                ))}
+
+                {/* Children */}
+                <div className="flex items-center justify-between border-t border-[#c9a227]/10 pt-4">
+                  <div className="flex flex-col text-right">
+                    <span className="font-semibold text-white text-sm">الأطفال</span>
+                    <span className="text-xs text-gray-400">سن 6–17</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => handleChildrenChange(-1)}
+                      className="w-8 h-8 rounded-full border border-[#C9A227]/40 flex items-center justify-center text-[#C9A227] hover:bg-[#C9A227] hover:text-white transition-colors cursor-pointer"
+                    >
+                      <FaMinus size={10} />
+                    </button>
+                    <span className="font-bold text-base w-6 text-center">{children}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleChildrenChange(1)}
+                      className="w-8 h-8 rounded-full border border-[#C9A227]/40 flex items-center justify-center text-[#C9A227] hover:bg-[#C9A227] hover:text-white transition-colors cursor-pointer"
+                    >
+                      <FaPlus size={10} />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Dynamic children fields */}
+                {childrenNames.map((name, idx) => (
+                  <div key={`child-field-${idx}`} className="mr-4 transition-all">
+                    <input
+                      type="text"
+                      placeholder={`الاسم الكامل (طفل ${idx + 1}) *`}
+                      value={name}
+                      onChange={(e) => {
+                        const updated = [...childrenNames];
+                        updated[idx] = e.target.value;
+                        setChildrenNames(updated);
+                      }}
+                      className="w-full p-2.5 rounded-lg bg-[#0d226b] text-white border border-[#c9a227]/15 focus:border-[#C9A227] outline-none text-xs text-right"
+                      required
+                    />
+                  </div>
+                ))}
+
+                {/* Infants */}
+                <div className="flex items-center justify-between border-t border-[#c9a227]/10 pt-4">
+                  <div className="flex flex-col text-right">
+                    <span className="font-semibold text-white text-sm">الرضع</span>
+                    <span className="text-xs text-gray-400">سن 0–5</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => handleInfantsChange(-1)}
+                      className="w-8 h-8 rounded-full border border-[#C9A227]/40 flex items-center justify-center text-[#C9A227] hover:bg-[#C9A227] hover:text-white transition-colors cursor-pointer"
+                    >
+                      <FaMinus size={10} />
+                    </button>
+                    <span className="font-bold text-base w-6 text-center">{infants}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleInfantsChange(1)}
+                      className="w-8 h-8 rounded-full border border-[#C9A227]/40 flex items-center justify-center text-[#C9A227] hover:bg-[#C9A227] hover:text-white transition-colors cursor-pointer"
+                    >
+                      <FaPlus size={10} />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Dynamic infants fields */}
+                {infantNames.map((name, idx) => (
+                  <div key={`infant-field-${idx}`} className="mr-4 transition-all">
+                    <input
+                      type="text"
+                      placeholder={`الاسم الكامل (رضيع ${idx + 1}) *`}
+                      value={name}
+                      onChange={(e) => {
+                        const updated = [...infantNames];
+                        updated[idx] = e.target.value;
+                        setInfantNames(updated);
+                      }}
+                      className="w-full p-2.5 rounded-lg bg-[#0d226b] text-white border border-[#c9a227]/15 focus:border-[#C9A227] outline-none text-xs text-right"
+                      required
+                    />
+                  </div>
+                ))}
+
+              </div>
+            </div>
+
+            {/* Contact details */}
+            <div className="flex flex-col gap-4">
+              <h4 className="text-sm font-semibold text-[#C9A227] border-b border-[#c9a227]/10 pb-2">معلومات الاتصال</h4>
+
+              {/* Full Name */}
+              <div className="flex flex-col gap-1 w-full">
+                <input
+                  type="text"
+                  placeholder="الاسم الكامل للمستلم الرئيسي *"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="w-full p-3 rounded-lg bg-[#0d226b] text-white border border-[#c9a227]/25 focus:border-[#C9A227] outline-none text-sm text-right"
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Email */}
+                <div className="flex flex-col gap-1 w-full">
+                  <input
+                    type="email"
+                    placeholder="البريد الإلكتروني *"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full p-3 rounded-lg bg-[#0d226b] text-white border border-[#c9a227]/25 focus:border-[#C9A227] outline-none text-sm text-right"
+                    required
+                  />
+                </div>
+
+                {/* Phone */}
+                <div className="flex flex-col gap-1 w-full">
+                  <input
+                    type="tel"
+                    placeholder="رقم الهاتف مع رمز الدولة *"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="w-full p-3 rounded-lg bg-[#0d226b] text-white border border-[#c9a227]/25 focus:border-[#C9A227] outline-none text-sm text-right"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Special message if inquiry */}
+              {activeTab === 'inquiry' && (
+                <div className="flex flex-col gap-1 w-full mt-1">
+                  <textarea
+                    placeholder="متطلبات خاصة أو استفسارات..."
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    rows={3}
+                    className="w-full p-3 rounded-lg bg-[#0d226b] text-white border border-[#c9a227]/25 focus:border-[#C9A227] outline-none text-sm text-right resize-none"
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Estimated Total / Billing system */}
+            {activeTab === 'booking' && (
+              <div className="mt-2 p-4 rounded-xl bg-[#0a1969] border border-[#c9a227]/25 flex items-center justify-between text-right shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]">
+                <span className="text-xl md:text-2xl font-bold text-[#E8C97A]">
+                  ${calculatedTotal.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+                </span>
+                <span className="text-sm font-semibold text-white/80">المجموع الكلي المقدر</span>
               </div>
             )}
 
-            <div className="flex flex-col md:flex-row justify-center items-center gap-4 mt-6 pt-6 border-t border-ivory-50/10 w-full">
-              <button
-                type="button"
-                onClick={onClose}
-                className="w-full md:w-auto px-6 py-3 rounded-full border border-ivory-300/30 text-ivory-300 hover:text-ivory-50 transition-colors text-[16px]"
-              >
-                {t('common.cancel', 'Cancel')}
-              </button>
-              <button
+            {/* Submit Button */}
+            <div className="flex justify-center mt-2 w-full">
+              <Button
                 type="submit"
                 disabled={status === 'submitting'}
-                className="w-full md:w-auto px-8 py-3 bg-gold-500 text-obsidian-900 font-semibold rounded-full shadow-[0_0_20px_rgba(201,162,39,0.4)] hover:scale-105 transition-transform text-[16px]"
+                className="w-full py-4 text-base font-bold rounded-full text-[#061D5D] hover:scale-[1.02] active:scale-[0.98] transition-all bg-gradient-to-r from-[#C9A227] to-[#E8C97A] flex items-center justify-center gap-2.5 cursor-pointer shadow-[0_0_20px_rgba(201,162,39,0.4)]"
               >
-                {status === 'submitting' ? t('common.processing', 'Processing...') : t('nav.bookNow', 'Book Now')}
-              </button>
+                <span>
+                  {status === 'submitting' 
+                    ? t('common.processing', 'Processing...') 
+                    : (activeTab === 'booking' ? 'احجز الآن بالضمان' : 'إرسال الطلب')}
+                </span>
+                <FaPaperPlane size={14} className="transform -rotate-45" />
+              </Button>
             </div>
           </motion.form>
         )}
