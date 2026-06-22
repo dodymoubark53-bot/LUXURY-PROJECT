@@ -12,8 +12,9 @@ const Footer = () => {
       style={{ background: 'linear-gradient(180deg, rgb(10,25,105) 0%, rgb(6,29,93) 50%, rgb(10,21,53) 100%)' }}
     >
 
-      {/* Brand & Socials */}
-      <div className="relative z-10 w-full px-6 sm:px-12 lg:px-20 pt-8 sm:pt-10 lg:pt-12">
+      {/* Brand & Socials + TiT0 */}
+      <style>{`@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}`}</style>
+      <div className="relative z-10 w-full px-6 sm:px-12 lg:px-20 pt-8 sm:pt-10 lg:pt-12 flex flex-col sm:flex-row justify-between items-start gap-6">
         <div className="max-w-lg">
           <Link to="/" className="flex items-center mb-3">
             <Logo theme="dark" height={85} />
@@ -32,7 +33,16 @@ const Footer = () => {
               <FaPhone size={16} />
             </a>
           </div>
-
+        </div>
+        <div className="flex items-center gap-4 shrink-0">
+          <img
+            src="/imgs/tito-mascot.png"
+            alt="TiT0"
+            className="w-[130px] sm:w-[150px] animate-[float_3s_ease-in-out_infinite] drop-shadow-[0_10px_25px_rgba(0,0,0,0.45)]"
+          />
+          <p className="text-white text-base sm:text-lg font-bold max-w-[350px] leading-tight">
+            {t('footer.titoTagline', 'Descubre la magia de Egipto y sus monumentos históricos de la mano de los Expertos')}
+          </p>
         </div>
       </div>
 
