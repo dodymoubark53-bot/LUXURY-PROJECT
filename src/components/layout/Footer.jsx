@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { FaFacebook, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import Logo from '../ui/Logo';
+import TiT0Chat from '../ui/TiT0Chat';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -13,7 +14,9 @@ const Footer = () => {
     >
 
       {/* Brand & Socials + TiT0 */}
-      <style>{`@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}`}</style>
+      <style>{`@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes dotSlideIn{from{opacity:0;transform:translateX(30px) scale(0.15)}to{opacity:1;transform:translateX(0) scale(1)}}`}</style>
       <div className="relative z-10 w-full px-6 sm:px-12 lg:px-20 pt-8 sm:pt-10 lg:pt-12 flex flex-col sm:flex-row justify-between items-start gap-6">
         <div className="max-w-lg">
           <Link to="/" className="flex items-center mb-3">
@@ -34,15 +37,22 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="flex items-center gap-4 shrink-0">
-          <img
-            src="/imgs/tito-mascot.png"
-            alt="TiT0"
-            className="w-[170px] sm:w-[200px] animate-[float_3s_ease-in-out_infinite] drop-shadow-[0_10px_25px_rgba(0,0,0,0.45)]"
-          />
-          <p className="text-white text-base sm:text-lg font-bold max-w-[350px] leading-tight">
-            {t('footer.titoTagline', 'Descubre la magia de Egipto y sus monumentos históricos de la mano de los Expertos')}
-          </p>
+        <div className="flex items-center gap-2 shrink-0">
+          <div className="relative">
+            <img
+              src="/imgs/tito-mascot.png"
+              alt="TiT0"
+              className="w-[120px] sm:w-[150px] animate-[float_3s_ease-in-out_infinite] drop-shadow-[0_10px_25px_rgba(0,0,0,0.45)]"
+            />
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-10">
+              <TiT0Chat />
+            </div>
+          </div>
+          <div className="flex flex-col gap-1 pt-8">
+            <p className="text-white text-lg font-bold max-w-[280px] leading-tight">
+              {t('footer.titoTagline', 'Descubre la magia de Egipto y sus monumentos históricos de la mano de los Expertos')}
+            </p>
+          </div>
         </div>
       </div>
 
