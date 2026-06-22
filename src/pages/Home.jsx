@@ -1349,24 +1349,24 @@ const Home = () => {
 
       {/* Trusted Partners / Logos Section */}
       <section className="py-[50px] px-[20px] bg-[#f8f8f8]">
-        <div className="max-w-[1100px] mx-auto">
-          <div className="grid grid-cols-2 gap-6 md:flex md:items-center md:justify-center bg-white rounded-[12px] shadow-[0_2px_16px_rgba(0,0,0,0.08)] p-6 md:p-[30px_40px]">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="flex flex-wrap items-center justify-center gap-6">
             {[
               { src: "/imgs/logos/logo1.jpeg", alt: "Logo 1" },
               { src: "/imgs/logos/logo2.png", alt: "Logo 2" },
               { src: "/imgs/logos/logo3.png", alt: "Logo 3" },
               { src: "/imgs/logos/logo4.png", alt: "Logo 4" },
               { src: "/imgs/logos/logo5.png", alt: "Logo 5" },
+              { src: "/imgs/logos/logo6.jpeg", alt: "Logo 6" },
             ].map((logo, idx) => (
               <div
                 key={idx}
-                className={`flex-1 flex justify-center items-center min-h-[110px] px-6 ${idx < 4 ? "border-r-0 md:border-r border-[#e0e0e0]" : "border-0"
-                  }`}
+                className="bg-white rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all flex justify-center items-center h-[110px] w-[180px] p-5 hover:-translate-y-1"
               >
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-[90px] w-auto max-w-full object-contain"
+                  className="max-h-full max-w-full object-contain mix-blend-multiply"
                 />
               </div>
             ))}
