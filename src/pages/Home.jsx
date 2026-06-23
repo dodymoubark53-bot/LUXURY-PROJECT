@@ -301,9 +301,17 @@ const Home = () => {
   ];
 
   const videos = [
-    { type: 'youtube', id: '97qd-0Cpags', title: 'Video 1' },
-    { type: 'facebook', url: 'https://www.facebook.com/DunasTravelOficial/videos/907034632430477/', thumbnail: '/imgs/gallery/1.jpeg', title: 'Video 2' },
+    { publicId: 'Despu%C3%A9s_de_una_intensa_jornada_en_Bogot%C3%A1__en_Dunas_Travel_compartimos_una_cena_exclusiva_con_nuestros_partners_estrat%C3%A9gicos._480P_SD_sv2pei' },
+    { publicId: 'Somos_Dunas_Travel_Group__480P_SD_gxfsxm' },
+    { publicId: 'VID-20260611-WA0001_az82kl' },
+    { publicId: 'VID-20260623-WA0112_xmyc5z' },
+    { publicId: 'VID-20260611-WA0000_mwgayg' },
+    { publicId: '%EF%B8%8F_Viagem_inteligente_come%C3%A7a_no_planejamento_certo_480P_SD_s3dyjb' },
+    { publicId: 'VID-20260623-WA0109_lxcv2r' },
+    { publicId: 'Temos_grande_honra_em_receber_este_reconhecimento_da_Lusanova_como__Melhores_Parceiros_2025_._480P_SD_rgbhr5' },
   ];
+
+  const cloudName = 'degbrq3ck';
 
   const openLightbox = (index) => {
     setActiveGalleryIndex(index);
@@ -1307,31 +1315,33 @@ const Home = () => {
             <div className="w-24 h-1 bg-gold-500 mx-auto mt-6"></div>
           </motion.div>
 
-          <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar">
-            {videos.map((video, idx) => (
-              <motion.div
-                key={video.type === 'youtube' ? video.id : video.url}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                onClick={() => setActiveVideo(video)}
-                className="min-w-[300px] md:min-w-[360px] snap-center shrink-0 relative rounded-2xl overflow-hidden cursor-pointer group h-[200px] md:h-[240px]"
-              >
-                <img
-                  src={video.type === 'youtube' ? `https://img.youtube.com/vi/${video.id}/hqdefault.jpg` : video.thumbnail}
-                  alt=""
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-obsidian-900/40 group-hover:bg-obsidian-900/20 transition-colors flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-gold-500/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <svg className="w-6 h-6 text-obsidian-900 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
+          <div className="overflow-hidden">
+            <div className="flex gap-6 marquee-track pb-4">
+              {[...videos, ...videos, ...videos].map((video, idx) => (
+                <motion.div
+                  key={`${video.publicId}-${idx}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (idx % videos.length) * 0.1 }}
+                  onClick={() => setActiveVideo(video.publicId)}
+                  className="min-w-[300px] md:min-w-[360px] shrink-0 relative rounded-2xl overflow-hidden cursor-pointer group h-[200px] md:h-[240px]"
+                >
+                  <img
+                    src={`https://res.cloudinary.com/${cloudName}/video/upload/w_400,h_240,c_fill/${video.publicId}.jpg`}
+                    alt=""
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-obsidian-900/40 group-hover:bg-obsidian-900/20 transition-colors flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-gold-500/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <svg className="w-6 h-6 text-obsidian-900 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1406,7 +1416,7 @@ const Home = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <iframe
-                src={activeVideo.type === 'youtube' ? `https://www.youtube.com/embed/${activeVideo.id}?autoplay=1` : `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(activeVideo.url)}&show_text=false&autoplay=true`}
+                src={`https://player.cloudinary.com/embed/?cloud_name=${cloudName}&public_id=${activeVideo}`}
                 className="w-full h-full"
                 allow="autoplay; encrypted-media; fullscreen"
                 allowFullScreen

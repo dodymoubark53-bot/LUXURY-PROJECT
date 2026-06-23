@@ -220,6 +220,21 @@
     scrollbar-width: none;
   }
 
+  /* ── Auto-scroll marquee ────────────────────────────────── */
+  .marquee-track {
+    animation: marquee 40s linear infinite;
+    width: max-content;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.333%); }
+  }
+
   /* ── Glassmorphism ──────────────────────────────────────────── */
   .glass-light {
     background: rgba(248, 249, 255, 0.12);
