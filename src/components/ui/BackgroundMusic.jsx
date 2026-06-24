@@ -1,6 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const BackgroundMusic = () => {
+  const location = useLocation();
+  const isHomepage = location.pathname === '/' || location.pathname === '/home';
+  const prevPathnameRef = useRef(location.pathname);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(() => sessionStorage.getItem('musicPlaying') === 'true');
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -64,15 +69,34 @@ const BackgroundMusic = () => {
     }, 800);
   };
 
-  // Restore session playing state on load
+  // Track page navigation to adjust autoplay behavior
   useEffect(() => {
-    if (hasInteracted) {
-      const timer = setTimeout(() => {
+    const prevPathname = prevPathnameRef.current;
+    prevPathnameRef.current = location.pathname;
+
+    const wasHomepage = prevPathname === '/' || prevPathname === '/home';
+
+    if (isHomepage) {
+      // Landed on the homepage - reset/enable autoplay
+      // Since it's the homepage, we play the music automatically.
+      const isInitialLoad = prevPathname === location.pathname;
+      if (isInitialLoad) {
+        const timer = setTimeout(() => {
+          playMusic();
+        }, 1000);
+        return () => clearTimeout(timer);
+      } else {
         playMusic();
-      }, 1000);
-      return () => clearTimeout(timer);
+      }
+    } else {
+      // Landed on a non-home page
+      // If we transitioned from Homepage to Non-Home page, we pause the music.
+      if (wasHomepage) {
+        pauseMusic();
+      }
+      // If we transitioned from Non-Home to Non-Home, the state persists.
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [location.pathname, isHomepage]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Monitor document clicks for page interaction and ripple animation
   useEffect(() => {
@@ -82,7 +106,7 @@ const BackgroundMusic = () => {
         return;
       }
 
-      if (!hasInteractedRef.current) {
+      if (isHomepage && !hasInteractedRef.current) {
         setHasInteracted(true);
         playMusic();
       }
@@ -94,7 +118,7 @@ const BackgroundMusic = () => {
     return () => {
       document.removeEventListener('click', handleDocClick);
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isHomepage]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Monitor the WhatsApp / Social contact widget open state
   useEffect(() => {
@@ -173,7 +197,7 @@ const BackgroundMusic = () => {
         id="webflow-bg-music-iframe"
         width="1"
         height="1"
-        src="https://www.youtube.com/embed/QqjdVDbxz6s?enablejsapi=1&version=3&loop=1&playlist=QqjdVDbxz6s&controls=0&showinfo=0&rel=0&autoplay=0"
+        src={`https://www.youtube.com/embed/QqjdVDbxz6s?enablejsapi=1&version=3&loop=1&playlist=QqjdVDbxz6s&controls=0&showinfo=0&rel=0&autoplay=${isHomepage ? '1' : '0'}`}
         frameBorder="0"
         allow="autoplay"
         style={{

@@ -10,7 +10,7 @@ import BookingForm from '../../components/booking/BookingForm';
 import { useTurkeyProgram } from '../../hooks/useTurkeyPrograms';
 
 const TurkeyProgramDetails = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { programId } = useParams();
   const program = useTurkeyProgram(programId);
   const [activeImage, setActiveImage] = useState(null);

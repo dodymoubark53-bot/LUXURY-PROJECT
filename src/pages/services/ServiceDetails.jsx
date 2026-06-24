@@ -15,8 +15,7 @@ import AdvancedBooking from '../../components/booking/AdvancedBooking';
 import { useCurrency } from '../../context/CurrencyContext';
 
 const ServiceDetails = () => {
-  const { t, i18n } = useTranslation();
-  const isRtl = i18n.dir() === 'rtl';
+  const { t } = useTranslation();
   const { formatPrice } = useCurrency();
   const { category, slug } = useParams();
   const service = services.find((s) => s.category === category && s.slug === slug);
