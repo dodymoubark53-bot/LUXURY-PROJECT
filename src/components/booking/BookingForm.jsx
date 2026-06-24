@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaPlus, FaMinus, FaCheckCircle, FaPaperPlane, FaGlobeAmericas, FaUser, FaFileInvoiceDollar, FaCalendarAlt, FaClock } from 'react-icons/fa';
 
@@ -7,10 +7,26 @@ const labelClass = "block text-caption text-gold-500 font-medium mb-1 text-[12px
 const counterBtnClass = "w-8 h-8 rounded-full bg-[rgba(255,252,247,0.06)] text-gold-500 flex items-center justify-center hover:bg-gold-500 hover:text-obsidian-900 transition-all duration-200 border border-[rgba(201,162,39,0.15)] hover:border-gold-500";
 const tabClass = (active) => `flex-1 py-3 text-[13px] font-semibold uppercase tracking-[2px] transition-all duration-200 ${active ? 'text-gold-500 border-b-2 border-gold-500 bg-[rgba(201,162,39,0.06)]' : 'text-ivory-400 hover:text-ivory-300 border-b-2 border-transparent'}`;
 
+const languages = [
+  { value: 'es', flag: '🇪🇸', labelKey: 'languages.spanish', fallback: 'Spanish' },
+  { value: 'pt', flag: '🇧🇷', labelKey: 'languages.portuguese', fallback: 'Portuguese' },
+  { value: 'it', flag: '🇮🇹', labelKey: 'languages.italian', fallback: 'Italian' },
+  { value: 'en', flag: '🇬🇧', labelKey: 'languages.english', fallback: 'English' },
+  { value: 'ar', flag: '🇪🇬', labelKey: 'languages.arabic', fallback: 'Arabic' },
+];
+
 const BookingForm = ({ tourTitle }) => {
   const { t } = useTranslation();
   const [tab, setTab] = useState('booking');
   const [status, setStatus] = useState('idle');
+  const [langOpen, setLangOpen] = useState(null);
+  const langRef = useRef(null);
+
+  useEffect(() => {
+    const onClick = (e) => { if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(null); };
+    document.addEventListener('mousedown', onClick);
+    return () => document.removeEventListener('mousedown', onClick);
+  }, []);
 
   const today = new Date();
   const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
@@ -52,7 +68,7 @@ const BookingForm = ({ tourTitle }) => {
   };
 
   return (
-    <div className="bg-obsidian-900 text-ivory-50 rounded-2xl shadow-card border border-[rgba(201,162,39,0.15)] hover:shadow-[0_0_40px_rgba(201,162,39,0.15)] hover:border-[rgba(201,162,39,0.35)] hover:scale-[1.01] transition-all duration-300 overflow-hidden">
+    <div ref={langRef} className="bg-obsidian-900 text-ivory-50 rounded-2xl shadow-card border border-[rgba(201,162,39,0.15)] hover:shadow-[0_0_40px_rgba(201,162,39,0.15)] hover:border-[rgba(201,162,39,0.35)] hover:scale-[1.01] transition-all duration-300">
       {status === 'success' ? (
           <div className="flex flex-col items-center text-center py-12 px-6">
             <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gold-500 to-gold-700 flex items-center justify-center mb-4 shadow-[0_0_25px_rgba(201,162,39,0.3)]">
@@ -107,18 +123,28 @@ const BookingForm = ({ tourTitle }) => {
                 </div>
 
                 {/* Language */}
-                <div>
+                <div className="relative">
                   <label className={labelClass}><FaGlobeAmericas className="inline mr-1.5 text-gold-400" size={11} />{t('booking.preferredLanguage', 'Language')}</label>
-                  <div className="relative">
-                    <select value={b.language} onChange={e => updateB('language', e.target.value)} required className={`${inputClass} appearance-none`}>
-                      <option value="" style={{ color: '#1a1a2e', background: '#f5edd6' }}>{t('booking.selectLanguage', 'Select...')}</option>
-                      <option value="es" style={{ color: '#1a1a2e', background: '#f5edd6' }}>{t('languages.spanish', 'Spanish')}</option>
-                      <option value="pt" style={{ color: '#1a1a2e', background: '#f5edd6' }}>{t('languages.portuguese', 'Portuguese')}</option>
-                      <option value="it" style={{ color: '#1a1a2e', background: '#f5edd6' }}>{t('languages.italian', 'Italian')}</option>
-                      <option value="en" style={{ color: '#1a1a2e', background: '#f5edd6' }}>{t('languages.english', 'English')}</option>
-                      <option value="ar" style={{ color: '#1a1a2e', background: '#f5edd6' }}>{t('languages.arabic', 'Arabic')}</option>
-                    </select>
-                  </div>
+                  <button type="button" onClick={() => setLangOpen(langOpen === 'booking' ? null : 'booking')} className={`${inputClass} text-left flex items-center gap-2`}>
+                    {b.language ? (
+                      <>
+                        <span className="text-lg">{languages.find(l => l.value === b.language)?.flag}</span>
+                        <span>{t(languages.find(l => l.value === b.language)?.labelKey, languages.find(l => l.value === b.language)?.fallback)}</span>
+                      </>
+                    ) : (
+                      <span className="text-ivory-400">{t('booking.selectLanguage', 'Select...')}</span>
+                    )}
+                  </button>
+                  {langOpen === 'booking' && (
+                    <div className="absolute z-50 top-full left-0 right-0 mt-1 bg-[#1a1a2e] border border-[rgba(201,162,39,0.15)] rounded-xl overflow-hidden shadow-xl">
+                      {languages.map(lang => (
+                        <button key={lang.value} type="button" onClick={() => { updateB('language', lang.value); setLangOpen(null); }} className={`w-full text-left px-4 py-3 flex items-center gap-2 text-body-md transition-colors hover:bg-[rgba(255,252,247,0.06)] ${b.language === lang.value ? 'text-gold-500 bg-[rgba(201,162,39,0.06)]' : 'text-ivory-50'}`}>
+                          <span className="text-lg">{lang.flag}</span>
+                          <span>{t(lang.labelKey, lang.fallback)}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 {/* Passengers */}
@@ -217,18 +243,28 @@ const BookingForm = ({ tourTitle }) => {
                   <label className={labelClass}>{t('booking.phone', 'Phone')}</label>
                   <input type="tel" value={inq.phone} onChange={e => setInq(p => ({ ...p, phone: e.target.value }))} required className={inputClass} />
                 </div>
-                <div>
+                <div className="relative">
                   <label className={labelClass}><FaGlobeAmericas className="inline mr-1.5 text-gold-400" size={11} />{t('booking.preferredLanguage', 'Language')}</label>
-                  <div className="relative">
-                    <select value={inq.language} onChange={e => setInq(p => ({ ...p, language: e.target.value }))} className={`${inputClass} appearance-none`}>
-                      <option value="" style={{ color: '#1a1a2e', background: '#f5edd6' }}>{t('booking.selectLanguage', 'Select...')}</option>
-                      <option value="es" style={{ color: '#1a1a2e', background: '#f5edd6' }}>{t('languages.spanish', 'Spanish')}</option>
-                      <option value="pt" style={{ color: '#1a1a2e', background: '#f5edd6' }}>{t('languages.portuguese', 'Portuguese')}</option>
-                      <option value="it" style={{ color: '#1a1a2e', background: '#f5edd6' }}>{t('languages.italian', 'Italian')}</option>
-                      <option value="en" style={{ color: '#1a1a2e', background: '#f5edd6' }}>{t('languages.english', 'English')}</option>
-                      <option value="ar" style={{ color: '#1a1a2e', background: '#f5edd6' }}>{t('languages.arabic', 'Arabic')}</option>
-                    </select>
-                  </div>
+                  <button type="button" onClick={() => setLangOpen(langOpen === 'inquiry' ? null : 'inquiry')} className={`${inputClass} text-left flex items-center gap-2`}>
+                    {inq.language ? (
+                      <>
+                        <span className="text-lg">{languages.find(l => l.value === inq.language)?.flag}</span>
+                        <span>{t(languages.find(l => l.value === inq.language)?.labelKey, languages.find(l => l.value === inq.language)?.fallback)}</span>
+                      </>
+                    ) : (
+                      <span className="text-ivory-400">{t('booking.selectLanguage', 'Select...')}</span>
+                    )}
+                  </button>
+                  {langOpen === 'inquiry' && (
+                    <div className="absolute z-50 top-full left-0 right-0 mt-1 bg-[#1a1a2e] border border-[rgba(201,162,39,0.15)] rounded-xl overflow-hidden shadow-xl">
+                      {languages.map(lang => (
+                        <button key={lang.value} type="button" onClick={() => { setInq(p => ({ ...p, language: lang.value })); setLangOpen(null); }} className={`w-full text-left px-4 py-3 flex items-center gap-2 text-body-md transition-colors hover:bg-[rgba(255,252,247,0.06)] ${inq.language === lang.value ? 'text-gold-500 bg-[rgba(201,162,39,0.06)]' : 'text-ivory-50'}`}>
+                          <span className="text-lg">{lang.flag}</span>
+                          <span>{t(lang.labelKey, lang.fallback)}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
                 <div>
                   <label className={labelClass}>{t('booking.specialRequests', 'Message')}</label>

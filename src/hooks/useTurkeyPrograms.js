@@ -42,7 +42,7 @@ export const useTurkeyPrograms = () => {
       return {
         id: prog.id,
         title: name,
-        slug: slugify(`${prog.id}-${getLangValue(prog.name, 'en')}`),
+        slug: prog.slug || slugify(`${prog.id}-${getLangValue(prog.name, 'en')}`),
         images: [PROGRAM_IMAGES[prog.id] || PROGRAM_IMAGES['REG-01']],
         duration: getLangValue(prog.duration, activeLang),
         highlights: getLangValue(prog.highlights, activeLang),
