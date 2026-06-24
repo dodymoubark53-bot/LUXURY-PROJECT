@@ -277,6 +277,147 @@
         {
           "day": "1",
           "meals": {
+            "en": "Meals at hotel",
+            "ar": "وجبات بالفندق",
+            "es": "Comidas en el hotel",
+            "pt": "Refeições no hotel",
+            "it": "Pasti in hotel"
+          },
+          "description": {
+            "es": "Llegada a Estambul y traslado al hotel. Alojamiento.",
+            "en": "Arrival in Istanbul and transfer to hotel. Accommodation.",
+            "pt": "Chegada a Istambul e traslado ao hotel. Acomodação.",
+            "it": "Arrivo a Istanbul e trasferimento in hotel. Sistemazione.",
+            "ar": "الوصول إلى إسطنبول والانتقال إلى الفندق. الإقامة."
+          }
+        },
+        {
+          "day": "2",
+          "meals": {
+            "en": "Breakfast + Lunch",
+            "ar": "إفطار + غداء",
+            "es": "Desayuno + Almuerzo",
+            "pt": "Café da manhã + Almoço",
+            "it": "Colazione + Pranzo"
+          },
+          "description": {
+            "es": "Excursión de día completo por la ciudad antigua. En la mañana visita panorámica a La Santa Sofía (visita externa) uno de los recintos más identificativos de Estambul, hermosa maravilla arquitectónica; además contemplada como una de las iglesias más grandes e imponentes del mundo y hoy en día es una Mezquita. A continuación, visitaremos El Palacio Topkapi (con entrada al Harén), lugar donde vivieron los sultanes entre 1478 y 1856. Topkapi no es una estructura única, sino un complejo monumental orgánico formado por diversos quioscos, jardines y zonas repartidas que se ubican en la barriada o casco histórico a la entrada del Cuerno de Oro. Seguimos hacia La Mezquita Azul, admirada por sus seis altos minaretes, terrazas y cúpulas que se alzan en el centro del edificio. Almuerzo. Por la tarde, Hipódromo Romano (época de Séptimo Severo), espacio donde tuvieron lugar las carreras de cuadrigas y circos, que sirvieron de diversión a los habitantes de Constantinopla durante más de mil años. Finalizaremos el día en el mercado cubierto: El Gran Bazar, donde podrán disfrutar de tiempo libre. Traslado al hotel y alojamiento.\n** El Gran Bazar es cerrado domingos y fiestas religiosas\nComidas: Desayuno y almuerzo",
+            "en": "Full-day excursion through the old city. In the morning, panoramic visit to Hagia Sophia (external visit), one of Istanbul's most iconic sites, a beautiful architectural wonder; also considered one of the largest and most impressive churches in the world, now functioning as a Mosque. Next, we will visit Topkapi Palace (with Harem entrance), where the sultans lived between 1478 and 1856. Topkapi is not a single structure but an organic monumental complex formed by various kiosks, gardens and scattered areas located in the historic quarter at the entrance of the Golden Horn. We continue to the Blue Mosque, admired for its six high minarets, terraces and domes rising at the center of the building. Lunch. In the afternoon, Roman Hippodrome (from the time of Septimius Severus), where chariot races and circuses entertained the inhabitants of Constantinople for over a thousand years. We end the day at the covered market: the Grand Bazaar, where you can enjoy free time. Transfer to hotel and accommodation.\n** The Grand Bazaar is closed on Sundays and religious holidays\nMeals: Breakfast and lunch",
+            "pt": "Excursão de dia completo pela cidade antiga. Pela manhã, visita panorâmica a Santa Sofia (visita externa), um dos locais mais emblemáticos de Istambul, uma bela maravilha arquitetônica; também considerada uma das maiores e mais imponentes igrejas do mundo, hoje funcionando como Mesquita. Em seguida, visitaremos o Palácio Topkapi (com entrada no Harém), onde os sultões viveram entre 1478 e 1856. Topkapi não é uma estrutura única, mas um complexo monumental orgânico formado por vários quiosques, jardins e áreas distribuídas localizadas no bairro histórico na entrada do Corno de Ouro. Seguimos para a Mesquita Azul, admirada por seus seis altos minaretes, terraços e cúpulas que se elevam no centro do edifício. Almoço. À tarde, Hipódromo Romano (época de Sétimo Severo), onde corridas de bigas e circos divertiram os habitantes de Constantinopla por mais de mil anos. Finalizamos o dia no mercado coberto: o Grande Bazar, onde poderão desfrutar de tempo livre. Traslado ao hotel e acomodação.\n** O Grande Bazar é fechado aos domingos e feriados religiosos\nRefeições: Café da manhã e almoço",
+            "it": "Escursione di un giorno intero nella città vecchia. Al mattino, visita panoramica a Santa Sofia (visita esterna), uno dei luoghi più iconici di Istanbul, una meraviglia architettonica; considerata anche una delle chiese più grandi e imponenti del mondo, oggi funzionante come Moschea. Successivamente, visiteremo il Palazzo Topkapi (con ingresso all'Harem), dove vissero i sultani tra il 1478 e il 1856. Topkapi non è una struttura unica ma un complesso monumentale organico formato da vari chioschi, giardini e aree distribuite situate nel quartiere storico all'ingresso del Corno d'Oro. Proseguiamo verso la Moschea Blu, ammirata per i suoi sei alti minareti, terrazze e cupole che si innalzano al centro dell'edificio. Pranzo. Nel pomeriggio, Ippodromo Romano (epoca di Settimio Severo), dove corse di bighe e circhi intrattennero gli abitanti di Costantinopoli per oltre mille anni. Concludiamo la giornata al mercato coperto: il Gran Bazar, dove potrete godere di tempo libero. Trasferimento in hotel e sistemazione.\n** Il Gran Bazar è chiuso la domenica e nei giorni festivi religiosi\nPasti: Colazione e pranzo",
+            "ar": "جولة يوم كامل في المدينة القديمة. صباحاً، زيارة بانورامية لآيا صوفيا (زيارة خارجية)، واحدة من أبرز معالم إسطنبول، تحفة معمارية جميلة؛ كما تُعتبر واحدة من أكبر وأروع الكنائس في العالم، وهي اليوم تعمل كمسجد. بعد ذلك، سنزور قصر توبكابي (مع دخول الحرملك)، حيث عاش السلاطين بين 1478 و1856. توبكابي ليس مبنى واحداً بل مجمع أثري عضوي مكون من عدة أكشاك وحدائق ومناطق موزعة في الحي التاريخي عند مدخل القرن الذهبي. ثم نتوجه إلى الجامع الأزرق، المُعجب بمآذنه الستة العالية ومدرجاته وقبابه التي تعلو في وسط المبنى. الغداء. بعد الظهر، ميدان سباق الخيل الروماني (من عهد سيبتيموس سيفيروس)، حيث أُقيمت سباقات العربات والسيرك لتسلية سكان القسطنطينية لأكثر من ألف عام. ننهي اليوم في السوق المسقوف: البازار الكبير، حيث يمكنكم الاستمتاع بوقت حر. الانتقال إلى الفندق والإقامة.\n** البازار الكبير مغلق أيام الأحد والأعياد الدينية\nالوجبات: إفطار وغداء"
+          }
+        },
+        {
+          "day": "3",
+          "meals": {
+            "en": "Breakfast",
+            "ar": "إفطار",
+            "es": "Desayuno",
+            "pt": "Café da manhã",
+            "it": "Colazione"
+          },
+          "description": {
+            "es": "Día libre o posibilidad de hacer un tour opcional.\nComidas: Desayuno",
+            "en": "Free day or possibility of taking an optional tour.\nMeals: Breakfast",
+            "pt": "Dia livre ou possibilidade de fazer um tour opcional.\nRefeições: Café da manhã",
+            "it": "Giorno libero o possibilità di fare un tour opzionale.\nPasti: Colazione",
+            "ar": "يوم حر أو إمكانية القيام بجولة اختيارية.\nالوجبات: إفطار"
+          }
+        },
+        {
+          "day": "4",
+          "meals": {
+            "en": "Breakfast",
+            "ar": "إفطار",
+            "es": "Desayuno",
+            "pt": "Café da manhã",
+            "it": "Colazione"
+          },
+          "description": {
+            "es": "Desayuno en el hotel. Traslado al aeropuerto.\nComidas: Desayuno (siempre y cuando el horario de traslado lo permita)\n\nFIN DE NUESTROS SERVICIOS",
+            "en": "Breakfast at the hotel. Transfer to the airport.\nMeals: Breakfast (provided the transfer schedule allows it)\n\nEND OF OUR SERVICES",
+            "pt": "Café da manhã no hotel. Traslado ao aeroporto.\nRefeições: Café da manhã (desde que o horário do traslado permita)\n\nFIM DOS NOSSOS SERVIÇOS",
+            "it": "Colazione in hotel. Trasferimento in aeroporto.\nPasti: Colazione (purché l'orario del trasferimento lo permetta)\n\nFINE DEI NOSTRI SERVIZI",
+            "ar": "إفطار في الفندق. الانتقال إلى المطار.\nالوجبات: إفطار (طالما أن موعد الانتقال يسمح بذلك)\n\nنهاية خدماتنا"
+          }
+        }
+      ],
+      "id": "IST-01",
+      "slug": "ist-01-best-of-istanbul",
+      "duration": {
+        "es": "4 días / 3 noches",
+        "en": "4 days / 3 nights",
+        "pt": "4 dias / 3 noites",
+        "it": "4 giorni / 3 notti",
+        "ar": "4 أيام / 3 ليالٍ"
+      },
+      "minPax": {
+        "es": "2 Pax",
+        "en": "2 Pax",
+        "pt": "2 Pax",
+        "it": "2 Pax",
+        "ar": "فردان"
+      },
+      "highlights": {
+        "es": [
+          "Estambul: Santa Sofía, Mezquita Azul y Palacio Topkapi",
+          "El Gran Bazar: más de 4000 tiendas",
+          "Hipódromo Romano y historia bizantina",
+          "Salidas diarias garantizadas"
+        ],
+        "en": [
+          "Istanbul: Hagia Sophia, Blue Mosque & Topkapi Palace",
+          "The Grand Bazaar: over 4000 shops",
+          "Roman Hippodrome and Byzantine history",
+          "Daily guaranteed departures"
+        ],
+        "pt": [
+          "Istambul: Santa Sofia, Mesquita Azul e Palácio Topkapi",
+          "O Grande Bazar: mais de 4000 lojas",
+          "Hipódromo Romano e história bizantina",
+          "Saídas diárias garantidas"
+        ],
+        "it": [
+          "Istanbul: Santa Sofia, Moschea Blu e Palazzo Topkapi",
+          "Il Gran Bazar: oltre 4000 negozi",
+          "Ippodromo Romano e storia bizantina",
+          "Partenze giornaliere garantite"
+        ],
+        "ar": [
+          "إسطنبول: آيا صوفيا، الجامع الأزرق وقصر توبكابي",
+          "البازار الكبير: أكثر من 4000 متجر",
+          "ميدان سباق الخيل الروماني والتاريخ البيزنطي",
+          "انطلاق يومي مضمون"
+        ]
+      },
+      "code": {
+        "es": "IST-01",
+        "en": "IST-01",
+        "pt": "IST-01",
+        "it": "IST-01",
+        "ar": "IST-01"
+      },
+      "overview": {
+        "es": "Descubra lo mejor de Estambul en un paquete de 4 días. Disfrute de los principales monumentos históricos como Santa Sofía, el Palacio Topkapi, la Mezquita Azul y el Gran Bazar. Un viaje perfecto para conocer la ciudad que une dos continentes.",
+        "en": "Discover the best of Istanbul in a 4-day package. Enjoy the main historical monuments including Hagia Sophia, Topkapi Palace, the Blue Mosque and the Grand Bazaar. A perfect trip to explore the city that bridges two continents.",
+        "pt": "Descubra o melhor de Istambul em um pacote de 4 dias. Desfrute dos principais monumentos históricos como Santa Sofia, o Palácio Topkapi, a Mesquita Azul e o Grande Bazar. Uma viagem perfeita para conhecer a cidade que une dois continentes.",
+        "it": "Scopri il meglio di Istanbul in un pacchetto di 4 giorni. Goditi i principali monumenti storici tra cui Santa Sofia, il Palazzo Topkapi, la Moschea Blu e il Gran Bazar. Un viaggio perfetto per esplorare la città che unisce due continenti.",
+        "ar": "اكتشف أفضل ما في إسطنبول في باقة 4 أيام. استمتع بأهم المعالم التاريخية بما في ذلك آيا صوفيا وقصر توبكابي والجامع الأزرق والبازار الكبير. رحلة مثالية لاستكشاف المدينة التي تربط بين قارتين."
+      },
+      "name": {
+        "es": "Lo Mejor de Estambul",
+        "en": "Best of Istanbul",
+        "pt": "O Melhor de Istambul",
+        "it": "Il Meglio di Istanbul",
+        "ar": "أفضل ما في إسطنبول"
+      }
+    },
+    {
+      "days": [
+        {
+          "day": "1",
+          "meals": {
             "ar": "عشاء",
             "en": "Dinner",
             "es": "Cena",

@@ -5,6 +5,7 @@ const rawPrograms = rawData.programs;
 
 const PROGRAM_IMAGES = {
   'REG-01': 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=800&q=80',
+  'IST-01': 'https://images.unsplash.com/photo-1541432901042-2f8a9e3c2f6f?auto=format&fit=crop&w=800&q=80',
 };
 
 const getLangValue = (obj, lang) => {
@@ -15,7 +16,7 @@ const getLangValue = (obj, lang) => {
 
 const slugify = (str) => str.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 
-const TURKEY_IDS = ['REG-01'];
+const TURKEY_IDS = ['REG-01', 'IST-01'];
 
 export const useTurkeyPrograms = () => {
   const { i18n } = useTranslation();
