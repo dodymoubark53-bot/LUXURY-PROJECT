@@ -5469,6 +5469,760 @@
           }
         }
       ]
+    },
+    {
+      "id": "REG-06",
+      "slug": "reg-06-heart-of-turkey",
+      "code": {
+        "ar": "REG-06",
+        "en": "REG-06",
+        "es": "REG-06",
+        "it": "REG-06",
+        "pt": "REG-06"
+      },
+      "name": {
+        "ar": "قلب تركيا - إسطنبول مع كابادوكيا",
+        "en": "Heart of Turkey - Istanbul with Cappadocia",
+        "es": "Corazón de Turquía - Estambul con Capadocia",
+        "it": "Cuore della Turchia - Istanbul con Cappadocia",
+        "pt": "Coração da Turquia - Istambul com Capadócia"
+      },
+      "duration": {
+        "ar": "7 أيام / 6 ليالٍ",
+        "en": "7 days / 6 nights",
+        "es": "7 días / 6 noches",
+        "it": "7 giorni / 6 notti",
+        "pt": "7 dias / 6 noites"
+      },
+      "minPax": {
+        "ar": "فردان",
+        "en": "2 Pax",
+        "es": "2 Pax",
+        "it": "2 Pax",
+        "pt": "2 Pax"
+      },
+      "overview": {
+        "ar": "البرنامج: REG-06 | قلب تركيا - إسطنبول مع كابادوكيا | باقة 7 أيام / 6 ليالٍ\nالمغادرة: كل يوم (حد أدنى 2 شخص)\n\nبرنامج مميز لاستكشاف روائع تركيا الكلاسيكية. يجمع بين سحر إسطنبول التاريخي وعجائب كابادوكيا الطبيعية. يشمل جولة في المدينة القديمة بآيا صوفيا وقصر توبكابي والجامع الأزرق والبازار الكبير، ورحلة بحرية في البوسفور، واكتشاف كابادوكيا بمتاحفها المفتوحة ومداخن الجن والمدن تحت الأرض.",
+        "en": "ITINERARY: REG-06 | HEART OF TURKEY - ISTANBUL WITH CAPPADOCIA | PACKAGE 7 DAYS / 6 NIGHTS\nDepartures: Every day (Minimum 2 Pax)\n\nA special program to explore the classic wonders of Turkey. Combining the historic charm of Istanbul with the natural wonders of Cappadocia. Includes a tour of the Old City with Hagia Sophia, Topkapi Palace, Blue Mosque and Grand Bazaar, a Bosphorus cruise, and discovering Cappadocia with its open-air museums, fairy chimneys and underground cities.",
+        "es": "ITINERARIO: REG-06 | CORAZÓN DE TURQUÍA - ESTAMBUL CON CAPADOCIA | PAQUETE 7 DÍAS / 6 NOCHES\nSalidas: Todos los días (Mínimo 2 Pax)\n\nUn programa especial para explorar las maravillas clásicas de Turquía. Combina el encanto histórico de Estambul con las maravillas naturales de Capadocia. Incluye un tour por la Ciudad Antigua con Santa Sofía, Palacio Topkapi, Mezquita Azul y Gran Bazar, un crucero por el Bósforo, y el descubrimiento de Capadocia con sus museos al aire libre, chimeneas de hadas y ciudades subterráneas.",
+        "it": "ITINERARIO: REG-06 | CUORE DELLA TURCHIA - ISTANBUL CON CAPPADOCIA | PACCHETTO 7 GIORNI / 6 NOTTI\nPartenze: Tutti i giorni (Minimo 2 Pax)\n\nUn programma speciale per esplorare le meraviglie classiche della Turchia. Unisce il fascino storico di Istanbul con le meraviglie naturali della Cappadocia. Include un tour della Città Vecchia con Santa Sofia, Palazzo Topkapi, Moschea Blu e Gran Bazar, una crociera sul Bosforo, e la scoperta della Cappadocia con i suoi musei all'aperto, camini delle fate e città sotterranee.",
+        "pt": "ITINERÁRIO: REG-06 | CORAÇÃO DA TURQUIA - ISTAMBUL COM CAPADÓCIA | PACOTE 7 DIAS / 6 NOITES\nSaídas: Todos os dias (Mínimo 2 Pax)\n\nUm programa especial para explorar as maravilhas clássicas da Turquia. Combina o encanto histórico de Istambul com as maravilhas naturais da Capadócia. Inclui um tour pela Cidade Antiga com Santa Sofia, Palácio Topkapi, Mesquita Azul e Grande Bazar, um cruzeiro pelo Bósforo, e a descoberta da Capadócia com seus museus ao ar livre, chaminés de fadas e cidades subterrâneas."
+      },
+      "highlights": {
+        "ar": [
+          "جولة يوم كامل في المدينة القديمة: آيا صوفيا، قصر توبكابي، الجامع الأزرق، البازار الكبير",
+          "رحلة بحرية في البوسفور وزيارة منطقة تقسيم وبرج غلاطة",
+          "متحف غوريم المفتوح ومداخن الجن في كابادوكيا",
+          "وادي الرهبان (باصاباغي) ووادي ديفرنت بتكويناته الغريبة",
+          "بانوراما أورتاهيسار وادي الجميلات الثلاث في أورغوب",
+          "جولة اختيارية في جنوب كابادوكيا"
+        ],
+        "en": [
+          "Full day Old City tour: Hagia Sophia, Topkapi Palace, Blue Mosque, Grand Bazaar",
+          "Bosphorus cruise and visit to Taksim area and Galata Tower",
+          "Göreme Open Air Museum and fairy chimneys in Cappadocia",
+          "Monks Valley (Pasabagi) and Devrent Valley with strange formations",
+          "Ortahisar panorama and Three Beauties Valley in Urgup",
+          "Optional South Cappadocia tour"
+        ],
+        "es": [
+          "Tour de día completo por la Ciudad Antigua: Santa Sofía, Palacio Topkapi, Mezquita Azul, Gran Bazar",
+          "Crucero por el Bósforo y visita a la zona de Taksim y Torre de Gálata",
+          "Museo al Aire Libre de Göreme y chimeneas de hadas en Capadocia",
+          "Valle de los Monjes (Pasabagi) y Valle de Devrent con formaciones extrañas",
+          "Panorama de Ortahisar y Valle de las Tres Bellas en Ürgüp",
+          "Tour opcional por Capadocia del Sur"
+        ],
+        "it": [
+          "Giro di un giorno intero della Città Vecchia: Santa Sofia, Palazzo Topkapi, Moschea Blu, Gran Bazar",
+          "Crociera sul Bosforo e visita alla zona di Taksim e Torre di Galata",
+          "Museo all'Aperto di Göreme e camini delle fate in Cappadocia",
+          "Valle dei Monaci (Pasabagi) e Valle di Devrent con formazioni strane",
+          "Panorama di Ortahisar e Valle delle Tre Belle a Ürgüp",
+          "Tour opzionale della Cappadocia del Sud"
+        ],
+        "pt": [
+          "Tour de dia inteiro pela Cidade Antiga: Santa Sofia, Palácio Topkapi, Mesquita Azul, Grande Bazar",
+          "Cruzeiro pelo Bósforo e visita à zona de Taksim e Torre de Gálata",
+          "Museu ao Ar Livre de Göreme e chaminés de fadas na Capadócia",
+          "Vale dos Monges (Pasabagi) e Vale de Devrent com formações estranhas",
+          "Panorama de Ortahisar e Vale das Três Belas em Ürgüp",
+          "Tour opcional pela Capadócia do Sul"
+        ]
+      },
+      "days": [
+        {
+          "day": "1",
+          "meals": {
+            "ar": "غير مشمول",
+            "en": "Not included",
+            "es": "No incluye",
+            "it": "Non inclusa",
+            "pt": "Não incluída"
+          },
+          "description": {
+            "ar": "الوصول إلى إسطنبول.\nالنقل إلى الفندق حسب الفئة المختارة.",
+            "en": "Arrival in Istanbul.\nTransfer to the hotel of chosen category.",
+            "es": "Llegada a Estambul.\nTraslado al hotel de categoría elegida.",
+            "it": "Arrivo a Istanbul.\nTrasferimento all'hotel della categoria scelta.",
+            "pt": "Chegada a Istambul.\nTransfer para o hotel de categoria escolhida."
+          }
+        },
+        {
+          "day": "2",
+          "meals": {
+            "ar": "إفطار + غداء",
+            "en": "Breakfast + Lunch",
+            "es": "Desayuno + Almuerzo",
+            "it": "Colazione + Pranzo",
+            "pt": "Café da manhã + Almoço"
+          },
+          "description": {
+            "ar": "2 يوم إسطنبول.\nرحلة يوم كامل في المدينة القديمة. صباحاً، سنقوم بزيارة بانورامية لآيا صوفيا (زيارة خارجية)، واحدة من أكثر معالم إسطنبول شهرة، أعجوبة معمارية جميلة نقدمها للزائر؛ كما تُعتبر واحدة من أكبر وأروع الكنائس في العالم. بعد ذلك، سنزور قصر توبكابي (مع دخول الحرملك)، المكان الذي عاش فيه السلاطين بين 1478 و1856. توبكابي ليس مبنى واحداً، بل مجمع أثري عضوي يتكون من عدة أكشاك وحدائق ومناطق موزعة في الحي التاريخي عند مدخل القرن الذهبي. نتابع إلى الجامع الأزرق، المعجب بمآذنه الستة العالية ومدرجات وقبابه التي تعلو وسط المبنى؛ ستتأكد أن المهندس المعماري حقق هدفه دون شك؛ الكمال مع هذا العمل المذهل. الغداء. بعد الظهر، ميدان سباق الخيل الروماني (عصر سيبتيموس سيفيروس) ... المكان الذي جرت فيه سباقات العربات والسيرك التي سَلّت سكان القسطنطينية لأكثر من ألف عام. ننهي اليوم في السوق المغطى: البازار الكبير، حيث يمكنكم الاستمتاع بوقت حر. النقل إلى الفندق والإقامة.\n** البازار الكبير مغلق أيام الأحد والأعياد الدينية.\nالوجبات: إفطار وغداء",
+            "en": "Day 2 Istanbul.\nFull-day excursion of the old city. In the morning, we will have a panoramic visit to Hagia Sophia (external visit), one of Istanbul's most iconic landmarks, a beautiful architectural wonder we offer to the visitor; also considered one of the largest and most impressive churches in the world. Next, we will visit Topkapi Palace (with Harem entrance), where the sultans lived between 1478 and 1856. Topkapi is not a single structure, but an organic monumental complex formed by various kiosks, gardens and scattered areas located in the historic neighborhood at the entrance of the Golden Horn. We continue to the Blue Mosque, admired for its six high minarets, terraces and domes rising in the center of the building; you will see that the architect undoubtedly achieved his goal; perfection with this impressive work. Lunch. In the afternoon, the Roman Hippodrome (from the time of Septimius Severus) ... space where chariot races and circuses took place, which entertained the inhabitants of Constantinople for over a thousand years. We will end the day at the covered market: the Grand Bazaar, where you can enjoy free time. Transfer to the hotel and accommodation.\n** The Grand Bazaar is closed on Sundays and religious holidays.\nMeals: Breakfast and lunch",
+            "es": "2 Día Estambul.\nExcursión de día completo por la ciudad antigua. En la mañana haremos una visita panorámica a Santa Sofía (visita externa), uno de los recintos más identificativos de Estambul, hermosa maravilla arquitectónica que ofrecemos al visitante; además contemplada como una de las iglesias más grandes e imponentes del mundo. A continuación, visitaremos El Palacio Topkapi (con entrada al Harén), lugar donde vivieron los sultanes entre 1478 y 1856. Topkapi no es una estructura única, sino un complejo monumental orgánico formado por diversos quioscos, jardines y zonas repartidas que se ubican en la barriada o casco histórico a la entrada del Cuerno de Oro. Seguimos hacia La Mezquita Azul, admirada por sus seis altos minaretes, terrazas y cúpulas que se alzan en el centro del edificio; comprobarás que el arquitecto consiguió su objetivo sin dudas; la perfección con esta impresionante obra. Almuerzo. Por la tarde, Hipódromo Romano (época de Séptimo Severo) ... espacio donde tuvieron lugar las carreras de cuadrigas y circos, que sirvieron de diversión a los habitantes de Constantinopla durante más de mil años. Finalizaremos el día en el mercado cubierto: El Gran Bazar, donde podrán disfrutar de tiempo libre. Traslado al hotel y alojamiento.\n** El Gran Bazar es cerrado domingos y fiestas religiosas.\nComidas: Desayuno y almuerzo",
+            "it": "2° Giorno Istanbul.\nGita di un giorno intero nella città vecchia. Al mattino faremo una visita panoramica a Santa Sofia (visita esterna), uno dei monumenti più iconici di Istanbul, una meraviglia architettonica che offriamo al visitatore; considerata anche come una delle chiese più grandi e imponenti del mondo. Successivamente, visiteremo il Palazzo Topkapi (con ingresso all'Harem), dove vissero i sultani tra il 1478 e il 1856. Topkapi non è una struttura unica, ma un complesso monumentale organico formato da vari chioschi, giardini e aree sparse situate nel quartiere storico all'ingresso del Corno d'Oro. Proseguiamo verso la Moschea Blu, ammirata per i suoi sei alti minareti, terrazze e cupole che si innalzano al centro dell'edificio; constaterete che l'architetto raggiunse il suo obiettivo senza dubbio; la perfezione con quest'opera impressionante. Pranzo. Nel pomeriggio, Ippodromo Romano (epoca di Settimio Severo) ... spazio dove si svolgevano le corse delle quadrighe e i circhi, che intrattennero gli abitanti di Costantinopoli per oltre mille anni. Concluderemo la giornata al mercato coperto: il Gran Bazar, dove potrete godere di tempo libero. Trasferimento in hotel e sistemazione.\n** Il Gran Bazar è chiuso la domenica e nei giorni festivi religiosi.\nPasti: Colazione e pranzo",
+            "pt": "2º Dia Istambul.\nExcursão de dia inteiro pela cidade antiga. Pela manhã, faremos uma visita panorâmica a Santa Sofia (visita externa), um dos recintos mais emblemáticos de Istambul, uma bela maravilha arquitetônica que oferecemos ao visitante; além disso, contemplada como uma das maiores e mais imponentes igrejas do mundo. Em seguida, visitaremos o Palácio Topkapi (com entrada no Harém), onde viveram os sultões entre 1478 e 1856. Topkapi não é uma estrutura única, mas um complexo monumental orgânico formado por diversos quiosques, jardins e áreas espalhadas localizadas no bairro histórico na entrada do Corno de Ouro. Seguimos para a Mesquita Azul, admirada por seus seis altos minaretes, terraços e cúpulas que se elevam no centro do edifício; você constatará que o arquiteto alcançou seu objetivo sem dúvidas; a perfeição com esta impressionante obra. Almoço. À tarde, Hipódromo Romano (época de Sétimo Severo) ... espaço onde ocorreram as corridas de bigas e circos, que serviram de diversão aos habitantes de Constantinopla por mais de mil anos. Finalizaremos o dia no mercado coberto: o Grande Bazar, onde poderão desfrutar de tempo livre. Transfer para o hotel e hospedagem.\n** O Grande Bazar é fechado aos domingos e feriados religiosos.\nRefeições: Café da manhã e almoço"
+          }
+        },
+        {
+          "day": "3",
+          "meals": {
+            "ar": "إفطار + عشاء",
+            "en": "Breakfast + Dinner",
+            "es": "Desayuno + Cena",
+            "it": "Colazione + Cena",
+            "pt": "Café da manhã + Jantar"
+          },
+          "description": {
+            "ar": "3 يوم إسطنبول ← كابادوكيا.\nإفطار. نستمر في ركوب القارب لجولة البوسفور (قارب عادي) تجري على طول بحر مرمرة على جانبي المدينة: الآسيوي والأوروبي. خلال هذه الجولة يمكنكم مشاهدة معالم مثل: قصر دولمة بهجة، قصر جراغان، قلعة روملي حصار، وغيرها. النزول ثم بعد الغداء، نتابع بزيارة منطقة تقسيم، القلب الحديث النابض بالحياة في إسطنبول. سنبدأ في ميدان تقسيم، بجانب نصب الجمهورية، ونسير في شارع الاستقلال الحيوي. خلال الجولة، سنكتشف نقاطاً تاريخية وثقافية مهمة: صهريج مكسم، الكنيسة الكاثوليكية الأرمنية، الكنيسة الأرثوذكسية اليونانية وممر الزهور الأنيق. سنمر بسوق السمك ومدرسة الدراويش، ممثلي إحدى الطرق الصوفية المهمة في الإسلام. سننهي رحلتنا في الحي الساحر حيث يقع برج غلاطة (الدخول غير مشمول)، أيقونة إسطنبول التي بناها الجنويون في القرن الرابع عشر ورمز المدينة. العودة إلى الفندق. بعد الظهر، ثم النقل إلى المطار لاستقلال رحلتكم الجوية إلى كابادوكيا. الوصول والنقل إلى الفندق المقرر. الإقامة والعشاء (** العشاء حتى الساعة 21:00).\nالوجبات: إفطار وعشاء",
+            "en": "Day 3 Istanbul → Cappadocia.\nBreakfast. We continue to board the boat for the Bosphorus tour (regular boat) taking place along the Sea of Marmara on both sides of the city: Asian and European. During this tour you can see monuments such as: Dolmabahçe Palace, Çırağan Palace, Rumeli Hisarı Fortress, among others. Disembarkation and then after lunch, we continue with a visit to the Taksim area, the vibrant modern heart of Istanbul. We will start at Taksim Square, next to the Republic Monument, and walk along the lively Istiklal Street. During the tour, we will discover important historical and cultural points: the Maksem Cistern, the Armenian Catholic Church, the Greek Orthodox Church and the elegant Flower Passage. We will pass by the Fish Market and the Dervish school, representatives of an important mystical order of Islam. We will end our excursion in the charming neighborhood where the Galata Tower is located (entrance not included), an icon of Istanbul built by the Genoese in the 14th century and symbol of the city. Return to the hotel. In the afternoon, then transfer to the airport to take your flight to Cappadocia. Arrival and transfer to the designated hotel. Accommodation and dinner (** Dinner until 9:00 PM).\nMeals: Breakfast and dinner",
+            "es": "3 Día Estambul → Capadocia.\nDesayuno. Seguimos a tomar el barco para el recorrido por El Bósforo (barco regular) realizándose a lo largo del Mar de Mármara por ambos lados de la ciudad: Asiática y Europea. Durante este recorrido podrán contemplar monumentos como: Palacios de Dolmabahçe, Çırağan, La fortaleza de Rumeli Hisarı, entre otros. Desembarque y luego después del almuerzo, continuamos con una visita a la zona de Taksim, el vibrante corazón moderno de Estambul. Iniciaremos en la Plaza Taksim, junto al Monumento de la República, y caminaremos por la animada calle Istiklal. Durante el recorrido, descubriremos importantes puntos históricos y culturales: la Cisterna de Maksem, la Iglesia Católica Armenia, la Iglesia Ortodoxa Griega y el elegante Pasaje de las Flores. Pasaremos por el Mercado del Pescado y la escuela de los Derviches, representantes de una importante orden mística del islam. Finalizaremos nuestra excursión en el encantador barrio donde se encuentra la Torre de Gálata (entrada no incluída), un ícono de Estambul construido por los genoveses en el siglo XIV y símbolo de la ciudad. Regreso al hotel. Por la tarde, luego traslado al aeropuerto para tomar su vuelo con destino a Capadocia. Llegada y traslado al hotel previsto. Alojamiento y Cena (** Cena hasta las 21 horas).\nComidas: Desayuno y cena",
+            "it": "3° Giorno Istanbul → Cappadocia.\nColazione. Proseguiamo per imbarcarci per il giro del Bosforo (traghetto regolare) che si svolge lungo il Mar di Marmara su entrambi i lati della città: Asiatico ed Europeo. Durante questo giro potrete ammirare monumenti come: Palazzo Dolmabahçe, Çırağan, Fortezza di Rumeli Hisarı, tra gli altri. Sbarco e poi dopo il pranzo, proseguiamo con una visita alla zona di Taksim, il vibrante cuore moderno di Istanbul. Inizieremo in Piazza Taksim, accanto al Monumento della Repubblica, e cammineremo per la vivace via Istiklal. Durante il percorso, scopriremo importanti punti storici e culturali: la Cisterna di Maksem, la Chiesa Cattolica Armena, la Chiesa Ortodossa Greca e l'elegante Passaggio dei Fiori. Passeremo dal Mercato del Pesce e dalla scuola dei Dervisci, rappresentanti di un importante ordine mistico dell'Islam. Concluderemo la nostra escursione nell'affascinante quartiere dove si trova la Torre di Galata (ingresso non incluso), un'icona di Istanbul costruita dai Genovesi nel XIV secolo e simbolo della città. Rientro in hotel. Nel pomeriggio, poi trasferimento in aeroporto per prendere il vostro volo per la Cappadocia. Arrivo e trasferimento all'hotel previsto. Sistemazione e cena (** Cena entro le 21:00).\nPasti: Colazione e cena",
+            "pt": "3º Dia Istambul → Capadócia.\nCafé da manhã. Seguimos para embarcar no barco para o passeio pelo Bósforo (barco regular) ao longo do Mar de Mármara por ambos os lados da cidade: Asiático e Europeu. Durante este passeio poderão contemplar monumentos como: Palácios de Dolmabahçe, Çırağan, Fortaleza de Rumeli Hisarı, entre outros. Desembarque e depois do almoço, continuamos com uma visita à zona de Taksim, o vibrante coração moderno de Istambul. Começaremos na Praça Taksim, junto ao Monumento da República, e caminharemos pela animada Rua Istiklal. Durante o percurso, descobriremos importantes pontos históricos e culturais: a Cisterna de Maksem, a Igreja Católica Armênia, a Igreja Ortodoxa Grega e a elegante Passagem das Flores. Passaremos pelo Mercado de Peixe e pela escola dos Dervixes, representantes de uma importante ordem mística do Islã. Finalizaremos nossa excursão no encantador bairro onde se encontra a Torre de Gálata (entrada não incluída), um ícone de Istambul construído pelos genoveses no século XIV e símbolo da cidade. Retorno ao hotel. À tarde, em seguida transfer para o aeroporto para pegar seu voo com destino à Capadócia. Chegada e transfer para o hotel previsto. Hospedagem e jantar (** Jantar até as 21 horas).\nRefeições: Café da manhã e jantar"
+          }
+        },
+        {
+          "day": "4",
+          "meals": {
+            "ar": "إفطار + غداء + عشاء",
+            "en": "Breakfast + Lunch + Dinner",
+            "es": "Desayuno + Almuerzo + Cena",
+            "it": "Colazione + Pranzo + Cena",
+            "pt": "Café da manhã + Almoço + Jantar"
+          },
+          "description": {
+            "ar": "4 يوم كابادوكيا.\n**رحلة اختيارية بالمنطاد** عند الفجر، إمكانية المشاركة في رحلة اختيارية بالمنطاد، تجربة فريدة فوق التكوينات الصخرية ومداخن الجن والتكوينات الطبيعية والمناظر القمرية.\nاكتشف كابادوكيا، منطقة فريدة في العالم بتكوينها الجيولوجي حيث يمكنك اكتشاف تضاريس وتكوينات مذهلة ستدهشك بلا شك. استمتع برحلة يوم كامل في الجزء الشمالي من كابادوكيا، الجزء الأكثر إثارة للدهشة في المنطقة البركانية. أولاً، سنزور متحف غوريم المفتوح، المعترف به من قبل اليونسكو كمجمع رهباني من القرون الوسطى لكنائس منحوتة في الصخر ومساكن محفورة في صخر الطوفا من قبل الرهبان الأرثوذكس في القرن الرابع. الآن نتابع إلى بانوراما أورتاهisar التي توفر إطلالة رائعة بقلعتها الطبيعية في المركز، والمنازل الحجرية والمساجد الجميلة. من هنا، رحلة قصيرة تقودنا إلى باصاباغي (وادي الرهبان)، حيث سنرى الأعمدة المخروطية مثل مداخن الجن التي كانت تُستخدم أيضاً للمساكن والكنائس الأرثوذكسية للنُسّاك. بعد الغداء في مطعم محلي في مدينة آفانوس على ضفاف نهر قيزيل إيرماك (النهر الأحمر)، سنرى بعضاً من أشهر الحرف اليدوية التركية. قبل العودة إلى الفندق، سنتوقف في وادي ديفرنت، المشهور بتكويناته الغريبة. وادي الجميلات الثلاث، له إطلالة جميلة على مدينة أورغوب، المشهورة بالنبيذ وكروم العنب وبساتين المشمش حيث يمكنكم التقاط صور لا تُنسى. عند انتهاء الزيارات، سيتم نقلهم إلى فندقهم بعد زيارة بانوراما غوريم، نقطة إطلالة جنوب غوريم. النقل إلى الفندق.\nالوجبات: إفطار وغداء وعشاء",
+            "en": "Day 4 Cappadocia.\n**OPTIONAL BALLOON EXCURSION** At dawn, possibility to participate in an optional hot air balloon excursion, a unique experience over the rock formations, fairy chimneys, natural formations and lunar landscapes.\nDiscover Cappadocia, a unique region in the world for its geological formation where you can discover impressive reliefs and formations that will surely surprise you. Enjoy a full-day excursion in the northern part of Cappadocia, the most surprising part of the volcanic territory. First, we will visit the Goreme Open Air Museum, recognized by UNESCO as a medieval monastic complex of rock-hewn churches and dwellings carved into the tufa rock by Orthodox monks in the 4th century. Now we continue to the Ortahisar Panorama which offers a wonderful view with its natural castle in the center, stone houses and beautiful mosques. From here, a short journey will take us to Pasabagi (Monks Valley), where we will see the conical columns like fairy chimneys that were also used for dwellings and Orthodox churches of the hermits. After lunch at a local restaurant in the town of Avanos, on the banks of the Kizilirmak (Red River), we will see some of the most famous Turkish handicrafts. Before returning to the hotel, we will have a stop at Devrent Valley, famous for its strange formations. Three Beauties Valley, has a beautiful view over the town of Urgup, famous for wine, and vineyards with apricot gardens where you can take memorable photos. At the end of the visits, they will be transferred to their hotel after visiting Goreme Panorama, a panoramic stop south of Goreme. Transfer to the hotel.\nMeals: Breakfast, lunch and dinner",
+            "es": "4 Día Capadocia.\n**EXCURSIÓN OPCIONAL EN GLOBO** Al amanecer, posibilidad de participar en una excursión opcional en globo aerostático, una experiencia única sobre las formaciones rocosas, chimeneas de hadas, formaciones naturales y paisajes lunares.\nDescubre Capadocia, una región única en el mundo por su formación geológica en la que puedes descubrir relieves y formaciones impresionantes que, sin duda, te sorprenderán. Disfruta de una excursión de día completo en la parte norte de Capadocia, la parte más sorprendente del territorio volcánico. En primer lugar, visitaremos el Museo al Aire Libre de Göreme, reconocido por la UNESCO como complejo monástico medieval de iglesias rupestres y viviendas excavadas en la roca de toba por los monjes ortodoxos en el siglo cuarto. Ahora seguimos al Panorama Ortahisar que ofrece una maravillosa vista con su castillo natural en el centro, casas de piedra y mezquitas hermosas. A partir de aquí, un corto trayecto nos llevará a Pasabagi (valle de los monjes), donde veremos las columnas cónicas como chimeneas de las hadas que también se utilizaban para las viviendas y las iglesias ortodoxas de los eremitas. Después de almuerzo en un restaurante local en la ciudad de Avanos, a las orillas del Kizilirmak (río rojo), veremos algunas de las más famosas artesanías turcas. Antes de volver al hotel, tendremos una parada en el valle de Devrent, famosa con sus extrañas formaciones. Valle de Tres Bellas, tiene una vista hermosa sobre la ciudad de Ürgüp, famosa con el vino y viñedos con jardines de albaricoque donde pueden sacar fotos memorables siempre. Al acabar las visitas, serán trasladados a su hotel después de visitar Göreme Panaroma, una parada panorámica sur Göreme. Traslado al hotel.\nComidas: Desayuno, almuerzo y cena",
+            "it": "4° Giorno Cappadocia.\n**GIRO IN MONGOLFIERA OPZIONALE** All'alba, possibilità di partecipare a un'escursione opzionale in mongolfiera, un'esperienza unica sulle formazioni rocciose, camini delle fate, formazioni naturali e paesaggi lunari.\nScopri la Cappadocia, una regione unica al mondo per la sua formazione geologica in cui puoi scoprire rilievi e formazioni impressionanti che, senza dubbio, ti sorprenderanno. Goditi un'escursione di un giorno intero nella parte settentrionale della Cappadocia, la parte più sorprendente del territorio vulcanico. In primo luogo, visiteremo il Museo all'Aperto di Göreme, riconosciuto dall'UNESCO come complesso monastico medievale di chiese rupestri e abitazioni scavate nella roccia di tufo dai monaci ortodossi nel IV secolo. Ora proseguiamo al Panorama di Ortahisar che offre una vista meravigliosa con il suo castello naturale al centro, case di pietra e bellissime moschee. Da qui, un breve tragitto ci porterà a Pasabagi (valle dei monaci), dove vedremo le colonne coniche come camini delle fate che venivano utilizzate anche per le abitazioni e le chiese ortodosse degli eremiti. Dopo pranzo in un ristorante locale nella città di Avanos, sulle rive del Kizilirmak (fiume rosso), vedremo alcune delle più famose artigianato turco. Prima di tornare in hotel, faremo una sosta nella valle di Devrent, famosa per le sue strane formazioni. Valle delle Tre Belle, ha una vista meravigliosa sulla città di Ürgüp, famosa per il vino, e vigneti con giardini di albicocche dove potrete scattare foto memorabili. Al termine delle visite, verranno trasferiti al loro hotel dopo aver visitato il Panorama di Göreme, una sosta panoramica a sud di Göreme. Trasferimento in hotel.\nPasti: Colazione, pranzo e cena",
+            "pt": "4º Dia Capadócia.\n**EXCURSÃO OPCIONAL DE BALÃO** Ao amanhecer, possibilidade de participar de uma excursão opcional de balão de ar quente, uma experiência única sobre as formações rochosas, chaminés de fadas, formações naturais e paisagens lunares.\nDescubra a Capadócia, uma região única no mundo por sua formação geológica na qual você pode descobrir relevos e formações impressionantes que, sem dúvida, te surpreenderão. Desfrute de uma excursão de dia inteiro na parte norte da Capadócia, a parte mais surpreendente do território vulcânico. Em primeiro lugar, visitaremos o Museu ao Ar Livre de Göreme, reconhecido pela UNESCO como complexo monástico medieval de igrejas rupestres e habitações escavadas na rocha de tufa pelos monges ortodoxos no século IV. Agora seguimos para o Panorama de Ortahisar que oferece uma vista maravilhosa com seu castelo natural no centro, casas de pedra e mesquitas bonitas. A partir daqui, um curto trajeto nos levará a Pasabagi (vale dos monges), onde veremos as colunas cônicas como chaminés de fadas que também eram utilizadas para as habitações e as igrejas ortodoxas dos eremitas. Após o almoço em um restaurante local na cidade de Avanos, às margens do Kizilirmak (rio vermelho), veremos algumas das mais famosas artesãs turcas. Antes de voltar ao hotel, teremos uma parada no vale de Devrent, famosa por suas estranhas formações. Vale das Três Belas, tem uma vista bonita sobre a cidade de Ürgüp, famosa pelo vinho, e vinhedos com jardins de damasco onde podem tirar fotos memoráveis sempre. Ao final das visitas, serão transferidos ao seu hotel depois de visitar o Panorama de Göreme, uma parada panorâmica ao sul de Göreme. Transfer para o hotel.\nRefeições: Café da manhã, almoço e jantar"
+          }
+        },
+        {
+          "day": "5",
+          "meals": {
+            "ar": "إفطار + عشاء",
+            "en": "Breakfast + Dinner",
+            "es": "Desayuno + Cena",
+            "it": "Colazione + Cena",
+            "pt": "Café da manhã + Jantar"
+          },
+          "description": {
+            "ar": "5 يوم كابادوكيا.\nإفطار. يوم حر. أو إمكانية القيام بجولة اختيارية في جنوب كابادوكيا.\nالوجبات: إفطار وعشاء",
+            "en": "Day 5 Cappadocia.\nBreakfast. Free day. Or possibility to take an optional tour of South Cappadocia.\nMeals: Breakfast and dinner",
+            "es": "5 Día Capadocia.\nDesayuno. Día libre. O posibilidad de hacer un tour opcional por Capadocia del Sur.\nComidas: Desayuno y cena",
+            "it": "5° Giorno Cappadocia.\nColazione. Giorno libero. O possibilità di fare un tour opzionale della Cappadocia del Sud.\nPasti: Colazione e cena",
+            "pt": "5º Dia Capadócia.\nCafé da manhã. Dia livre. Ou possibilidade de fazer um tour opcional pela Capadócia do Sul.\nRefeições: Café da manhã e jantar"
+          }
+        },
+        {
+          "day": "6",
+          "meals": {
+            "ar": "إفطار",
+            "en": "Breakfast",
+            "es": "Desayuno",
+            "it": "Colazione",
+            "pt": "Café da manhã"
+          },
+          "description": {
+            "ar": "6 يوم كابادوكيا ← إسطنبول.\nإفطار في الفندق. النقل إلى المطار لاستقلال رحلتكم الجوية إلى إسطنبول. الوصول والنقل إلى فندقكم. وقت حر بعد الظهر. الإقامة.\nالوجبات: إفطار",
+            "en": "Day 6 Cappadocia → Istanbul.\nBreakfast at the hotel. Transfer to the airport to take your flight to Istanbul. Arrival and transfer to your hotel. Free afternoon. Accommodation.\nMeals: Breakfast",
+            "es": "6 Día Capadocia → Estambul.\nDesayuno en el hotel. Traslado al aeropuerto para tomar su vuelo hacia Estambul. Llegada y traslado a su hotel. Tarde libre. Alojamiento.\nComidas: Desayuno",
+            "it": "6° Giorno Cappadocia → Istanbul.\nColazione in hotel. Trasferimento in aeroporto per prendere il vostro volo per Istanbul. Arrivo e trasferimento al vostro hotel. Pomeriggio libero. Sistemazione.\nPasti: Colazione",
+            "pt": "6º Dia Capadócia → Istambul.\nCafé da manhã no hotel. Transfer para o aeroporto para pegar seu voo para Istambul. Chegada e transfer para seu hotel. Tarde livre. Hospedagem.\nRefeições: Café da manhã"
+          }
+        },
+        {
+          "day": "7",
+          "meals": {
+            "ar": "إفطار",
+            "en": "Breakfast",
+            "es": "Desayuno",
+            "it": "Colazione",
+            "pt": "Café da manhã"
+          },
+          "description": {
+            "ar": "7 يوم إسطنبول ← المغادرة.\nإفطار في الفندق. النقل إلى المطار لاستقلال رحلتكم الجوية للعودة.\nالوجبات: إفطار (طالما أن موعد النقل يسمح بذلك)\n\nملاحظة: يمكن تغيير ترتيب البرنامج.\n\nنهاية خدماتنا.",
+            "en": "Day 7 Istanbul → Departure.\nBreakfast at the hotel. Transfer to the airport to take your return flight.\nMeals: Breakfast (provided the transfer schedule allows it)\n\nNOTE: THE ORDER OF THE ITINERARY CAN BE CHANGED.\n\nEND OF OUR SERVICES.",
+            "es": "7 Día Estambul → Salida.\nDesayuno en el hotel. Traslado al aeropuerto para tomar su vuelo de regreso.\nComidas: Desayuno (siempre y cuando el horario de traslado lo permita)\n\nANOTACIÓN: EL ORDEN DEL ITINERARIO SE PUEDE CAMBIAR.\n\nFIN DE NUESTROS SERVICIOS.",
+            "it": "7° Giorno Istanbul → Partenza.\nColazione in hotel. Trasferimento in aeroporto per prendere il vostro volo di ritorno.\nPasti: Colazione (sempre che l'orario del trasferimento lo permetta)\n\nNOTA: L'ORDINE DELL'ITINERARIO PUÒ ESSERE MODIFICATO.\n\nFINE DEI NOSTRI SERVIZI.",
+            "pt": "7º Dia Istambul → Partida.\nCafé da manhã no hotel. Transfer para o aeroporto para pegar seu voo de regresso.\nRefeições: Café da manhã (desde que o horário do transfer permita)\n\nANOTAÇÃO: A ORDEM DO ITINERÁRIO PODE SER ALTERADA.\n\nFIM DOS NOSSOS SERVIÇOS."
+          }
+        }
+      ]
+    },
+    {
+      "id": "REG-07",
+      "name": {
+        "ar": "الريفيرا التركية",
+        "en": "Turkish Riviera",
+        "es": "Riviera Turca",
+        "it": "Riviera Turca",
+        "pt": "Riviera Turca"
+      },
+      "duration": {
+        "ar": "12 أيام / 11 ليالي",
+        "en": "12 Days / 11 Nights",
+        "es": "12 Días / 11 Noches",
+        "it": "12 Giorni / 11 Notti",
+        "pt": "12 Dias / 11 Noites"
+      },
+      "highlights": {
+        "ar": "إسطنبول | أنقرة | كابادوكيا | باموكالي | أفسس | بودروم",
+        "en": "Istanbul | Ankara | Cappadocia | Pamukkale | Ephesus | Bodrum",
+        "es": "Estambul | Ankara | Capadocia | Pamukkale | Éfeso | Bodrum",
+        "it": "Istanbul | Ankara | Cappadocia | Pamukkale | Efeso | Bodrum",
+        "pt": "Istambul | Ankara | Capadócia | Pamukkale | Éfeso | Bodrum"
+      },
+      "overview": {
+        "ar": "رحلة شاملة تجمع بين تاريخ إسطنبول العريق، أنقرة الحديثة، سحر كابادوكيا، جمال باموكالي الأبيض، عظمة أفسس الأثرية، واسترخاء بودروم على ساحل البحر الأبيض المتوسط.",
+        "en": "A comprehensive journey combining Istanbul's ancient history, modern Ankara, the magic of Cappadocia, the white beauty of Pamukkale, the grandeur of ancient Ephesus, and relaxation in Bodrum on the Mediterranean coast.",
+        "es": "Un viaje completo que combina la historia antigua de Estambul, la Ankara moderna, la magia de Capadocia, la belleza blanca de Pamukkale, la grandeza de la antigua Éfeso y la relajación en Bodrum en la costa mediterránea.",
+        "it": "Un viaggio completo che combina l'antica storia di Istanbul, la moderna Ankara, la magia della Cappadocia, la bellezza bianca di Pamukkale, la grandiosità dell'antica Efeso e il relax a Bodrum sulla costa mediterranea.",
+        "pt": "Uma viagem abrangente que combina a história antiga de Istambul, a moderna Ancara, a magia da Capadócia, a beleza branca de Pamukkale, a grandeza da antiga Éfeso e relaxamento em Bodrum na costa do Mediterrâneo."
+      },
+      "code": {
+        "ar": "REG-07",
+        "en": "REG-07",
+        "es": "REG-07",
+        "it": "REG-07",
+        "pt": "REG-07"
+      },
+      "minPax": {
+        "ar": "2 شخص",
+        "en": "2 pax",
+        "es": "2 pax",
+        "it": "2 pax",
+        "pt": "2 pax"
+      },
+      "slug": "reg-07-turkish-riviera",
+      "days": [
+        {
+          "day": "1",
+          "meals": {
+            "pt": "Refeições no hotel",
+            "it": "Pasti in hotel",
+            "en": "Meals at hotel",
+            "ar": "وجبات بالفندق",
+            "es": "Comidas en el hotel"
+          },
+          "description": {
+            "ar": "اليوم الأول — الوصول إلى إسطنبول\nالوصول والمساعدة. النقل إلى الفندق. الإقامة في الفندق.",
+            "en": "Day 1 — Arrival in Istanbul\nArrival and assistance. Transfer to the hotel. Accommodation at the hotel.",
+            "es": "1 Día — Llegada a Estambul\nLlegada y asistencia. Traslado al hotel. Alojamiento en el hotel.",
+            "it": "1° Giorno — Arrivo a Istanbul\nArrivo e assistenza. Trasferimento in hotel. Sistemazione in hotel.",
+            "pt": "1º Dia — Chegada a Istambul\nChegada e assistência. Transfer para o hotel. Hospedagem no hotel."
+          }
+        },
+        {
+          "day": "2",
+          "meals": {
+            "pt": "Café da manhã",
+            "it": "Colazione",
+            "en": "Breakfast",
+            "ar": "إفطار",
+            "es": "Desayuno"
+          },
+          "description": {
+            "ar": "اليوم الثاني — إسطنبول\nإفطار في الفندق. صباحاً، الانطلاق لمشاهدة أسوار القسطنطينية القديمة، زيارة جامع رستم باشا. صمم الجامع المهندس المعماري الإمبراطوري معمار سنان للصدر الأعظم دماد رستم باشا (زوج إحدى بنات سليمان القانوني، السلطانة مهرماه). زيارة البازار المصري أو بازار التوابل الذي بني في القرن السابع عشر ويقع في حي أمينونو التاريخي القديم في إسطنبول. ثم إمكانية القيام برحلة اختيارية \"لآلئ إسطنبول\". العودة إلى الفندق على نفقة العميل. الوجبات: إفطار",
+            "en": "Day 2 — Istanbul\nBreakfast at the hotel. Morning departure to contemplate the ancient Walls of Constantinople, visit to Rüstem Pasha Mosque. The mosque was designed by the imperial architect Mimar Sinan for the Grand Vizier Damat Rüstem Pasha (husband of one of Suleiman the Magnificent’s daughters, Sultan Mihrimah). Visit to the Egyptian Bazaar or Spice Bazaar built in the 17th century and located in the old historic neighborhood of Eminönü in Istanbul. Then possibility of an optional excursion “Pearls of Istanbul”. Return to the hotel at the client’s expense. Meals: Breakfast",
+            "es": "2 Día — Estambul\nDesayuno en el hotel. Por la mañana salida para contemplar las antiguas Murallas de Constantinopla, visita a Mezquita de Rüstem Pasha. La mezquita fue diseñada por el arquitecto imperial Mimar Sinan para el Gran Visir Damat Rüstem Pasha (marido de una de las hijas de Suleiman el Magnífico, la Sultana Mihrimah). Visita al Bazar Egipcio o Bazar de las Especias construido en el siglo XVII y situado en el antiguo barrio histórico de Eminönü en Estambul. Luego posibilidad de tener una excursión opcional “Perlas de Estambul”. Regreso al hotel por cuenta del Cliente. Comidas: Desayuno",
+            "it": "2° Giorno — Istanbul\nColazione in hotel. Partenza mattutina per ammirare le antiche Mura di Costantinopoli, visita alla Moschea di Rüstem Pasha. La moschea fu progettata dall’architetto imperiale Mimar Sinan per il Gran Visir Damat Rüstem Pasha (marito di una delle figlie di Solimano il Magnifico, la Sultana Mihrimah). Visita al Bazar Egiziano o Bazar delle Spezie costruito nel XVII secolo e situato nel vecchio quartiere storico di Eminönü a Istanbul. Poi possibilità di un’escursione opzionale “Perle di Istanbul”. Rientro in hotel a proprie spese. Pasti: Colazione",
+            "pt": "2º Dia — Istambul\nCafé da manhã no hotel. Saída matinal para contemplar as antigas Muralhas de Constantinopla, visita à Mesquita de Rüstem Pasha. A mesquita foi projetada pelo arquiteto imperial Mimar Sinan para o Grão-Vizir Damat Rüstem Pasha (marido de uma das filhas de Suleiman, o Magnífico, a Sultana Mihrimah). Visita ao Bazar Egípcio ou Bazar das Especiarias construído no século XVII e situado no antigo bairro histórico de Eminönü em Istambul. Depois possibilidade de uma excursão opcional “Pérolas de Istambul”. Retorno ao hotel por conta do cliente. Refeições: Café da manhã"
+          }
+        },
+        {
+          "day": "3",
+          "meals": {
+            "pt": "Café da manhã + Jantar",
+            "it": "Colazione + Cena",
+            "en": "Breakfast + Dinner",
+            "ar": "إفطار + عشاء",
+            "es": "Desayuno + Cena"
+          },
+          "description": {
+            "ar": "اليوم الثالث (الإثنين) — إسطنبول → أنقرة (حوالي 6 ساعات)\nإفطار في الفندق. الانطلاق إلى البازار الكبير (مغلق أيام الأحد والأعياد الدينية)، وهو مبنى يضم أكثر من 4000 متجر في داخله. وقت حر ثم الانطلاق بالحافلة إلى أنقرة، مروراً بالجسر العابر للقارات في إسطنبول. الوصول إلى عاصمة البلاد. زيارة عاصمة تركيا مع ضريح أتاتورك، المخصص لمؤسس الجمهورية التركية. العشاء والإقامة في الفندق. الوجبات: إفطار وعشاء",
+            "en": "Day 3 (Monday) — Istanbul → Ankara (approx. 6 hours)\nBreakfast at the hotel. Departure to the Grand Bazaar (closed on Sundays and religious holidays), a building housing more than 4000 shops inside. Free time and departure by coach to Ankara, passing through the intercontinental bridge of Istanbul. Arrival at the capital of the country. Visit to the capital of Turkey with the Mausoleum of Ataturk, dedicated to the founder of the Turkish Republic. Dinner and accommodation at the hotel. Meals: Breakfast and dinner",
+            "es": "3 Día (Lunes) — Estambul → Ankara (Aprox 6 horas)\nDesayuno en el hotel. Salida al Gran Bazar (cerrado los domingos y fiestas religiosas), edificio que alberga más de 4000 tiendas en su interior. Tiempo libre y salida en autocar para Ankara, pasando por el puente intercontinental de Estambul. Llegada a la capital del país. Visita a la capital de Turquía con el Mausoleo de Ataturk, dedicado al fundador de la República Turca. Cena y alojamiento en el hotel. Comidas: Desayuno y cena",
+            "it": "3° Giorno (Lunedì) — Istanbul → Ankara (circa 6 ore)\nColazione in hotel. Partenza per il Gran Bazar (chiuso la domenica e nei giorni festivi religiosi), un edificio che ospita oltre 4000 negozi al suo interno. Tempo libero e partenza in autobus per Ankara, passando per il ponte intercontinentale di Istanbul. Arrivo nella capitale del paese. Visita alla capitale della Turchia con il Mausoleo di Ataturk, dedicato al fondatore della Repubblica Turca. Cena e sistemazione in hotel. Pasti: Colazione e cena",
+            "pt": "3º Dia (Segunda-feira) — Istambul → Ancara (Aprox 6 horas)\nCafé da manhã no hotel. Saída para o Grande Bazar (fechado aos domingos e feriados religiosos), um edifício que abriga mais de 4000 lojas em seu interior. Tempo livre e partida de ônibus para Ancara, passando pela ponte intercontinental de Istambul. Chegada à capital do país. Visita à capital da Turquia com o Mausoléu de Atatürk, dedicado ao fundador da República Turca. Jantar e hospedagem no hotel. Refeições: Café da manhã e jantar"
+          }
+        },
+        {
+          "day": "4",
+          "meals": {
+            "pt": "Café da manhã + Jantar",
+            "it": "Colazione + Cena",
+            "en": "Breakfast + Dinner",
+            "ar": "إفطار + عشاء",
+            "es": "Desayuno + Cena"
+          },
+          "description": {
+            "ar": "اليوم الرابع — أنقرة → كابادوكيا (حوالي 3 ساعات)\nإمكانية أخذ رحلة جوية إسطنبول/كابادوكيا * استشارة الأسعار إفطار في الفندق. الانطلاق إلى كابادوكيا مروراً ببحيرة الملح. في الطريق، زيارة المدن تحت الأرض العديدة في كابادوكيا التي بنتها المجتمعات المسيحية للحماية من الهجومات العربية. تحتفظ المدينة تحت الأرض بالإسطبلات والقاعات المشتركة وقاعة الاجتماعات والغرف الصغيرة للعائلات. الوصول إلى فندق كابادوكيا. زيارة ورشة فخار وسجاد. وقت حر بعد الظهر (إمكانية القيام برحلة سفاري جميلة في كابادوكيا بسيارات 4x4). العشاء والإقامة في الفندق. الوجبات: إفطار وعشاء",
+            "en": "Day 4 — Ankara → Cappadocia (approx. 3 hours)\nPossibility of taking a flight Istanbul/Cappadocia * check prices Breakfast at the hotel. Departure to Cappadocia passing by the salt lake. On the way, visit to the numerous underground cities of Cappadocia built by Christian communities to protect themselves from Arab attacks. The underground city preserves stables, common rooms, meeting room and small rooms for families. Arrival at the Cappadocia hotel. Visit to a pottery and carpet workshop. Free afternoon (possibility of a beautiful 4x4 safari in Cappadocia). Dinner and accommodation at the hotel. Meals: Breakfast and dinner",
+            "es": "4 Día — Ankara → Capadocia (Aprox 3 horas)\nPosibilidad de tomar vuelo de Estambul/Capadocia * consultar precios Desayuno en el hotel. Salida para Capadocia pasando por el lago salado. En el camino, visita a las numerosas ciudades subterráneas de Capadocia construidas por las comunidades cristianas para protegerse de los ataques árabes. La ciudad subterránea conserva los establos, salas comunes, sala de reuniones y pequeñas habitaciones para las familias. Llegada al hotel de Capadocia. Visita a un taller de cerámica y alfombras. Tarde libre (posibilidad de hacer un bello safari en Capadocia en 4x4). Cena y alojamiento en el hotel. Comidas: Desayuno y cena",
+            "it": "4° Giorno — Ankara → Cappadocia (circa 3 ore)\nPossibilità di prendere un volo Istanbul/Cappadocia * consultare i prezzi Colazione in hotel. Partenza per la Cappadocia passando per il lago salato. Durante il percorso, visita alle numerose città sotterranee della Cappadocia costruite dalle comunità cristiane per proteggersi dagli attacchi arabi. La città sotterranea conserva stalle, sale comuni, sala riunioni e piccole stanze per le famiglie. Arrivo all’hotel in Cappadocia. Visita a un laboratorio di ceramica e tappeti. Pomeriggio libero (possibilità di fare un bellissimo safari in 4x4 in Cappadocia). Cena e sistemazione in hotel. Pasti: Colazione e cena",
+            "pt": "4º Dia — Ancara → Capadócia (Aprox 3 horas)\nPossibilidade de pegar voo Istambul/Capadócia * consultar preços Café da manhã no hotel. Partida para a Capadócia passando pelo lago salgado. No caminho, visita às numerosas cidades subterrâneas da Capadócia construídas pelas comunidades cristãs para se protegerem dos ataques árabes. A cidade subterrânea preserva estábulos, salas comuns, sala de reuniões e pequenos cômodos para as famílias. Chegada ao hotel da Capadócia. Visita a uma oficina de cerâmica e tapetes. Tarde livre (possibilidade de fazer um belo safari 4x4 na Capadócia). Jantar e hospedagem no hotel. Refeições: Café da manhã e jantar"
+          }
+        },
+        {
+          "day": "5",
+          "meals": {
+            "pt": "Café da manhã + Jantar",
+            "it": "Colazione + Cena",
+            "en": "Breakfast + Dinner",
+            "ar": "إفطار + عشاء",
+            "es": "Desayuno + Cena"
+          },
+          "description": {
+            "ar": "اليوم الخامس — كابادوكيا\nرحلة اختيارية بالمنطاد عند الفجر، إمكانية المشاركة في رحلة اختيارية بالمنطاد، تجربة فريدة فوق التكوينات الصخرية ومداخن الجن والتكوينات الطبيعية والمناظر القمرية. إفطار في الفندق. يوم مخصص لزيارة هذه المنطقة الرائعة الفريدة في العالم: وادي غوريم مع كنائسه المنحوتة في الصخر برسومات تعود للقرنين العاشر والحادي عشر، زيارة قرية أوتشيسار الكهفية، وادي الحب، وادي ديفرنت بتكويناته الطبيعية الغريبة، وادي أفسيلار أو وادي الصيادين، وادي الحمام ووقت لورش الحرف اليدوية مثل العقيق والأحجار شبه الكريمة. في المساء، رحلة اختيارية لحضور عرض رقصات تقليدية من المنطقة. العودة والإقامة في الفندق. الوجبات: إفطار وعشاء",
+            "en": "Day 5 — Cappadocia\nOPTIONAL BALLOON EXCURSION At dawn, possibility to participate in an optional hot air balloon excursion, a unique experience over the rock formations, fairy chimneys, natural formations and lunar landscapes. Breakfast at the hotel. Day dedicated to visiting this fantastic region, unique in the world: Göreme Valley with its rock-hewn churches with paintings from the 10th and 11th centuries, visit to the troglodyte village of Uçhisar, Love Valley, Devrent Valley with its curious natural formations, Avcılar Valley or Valley of the Hunters, Pigeon Valley and time for artisan workshops such as onyx and semi-precious stones. In the evening, optional excursion to attend a show of typical dances of the region. Return and accommodation at the hotel. Meals: Breakfast and dinner",
+            "es": "5 Día — Capadocia\nEXCURSIÓN OPCIONAL EN GLOBO Al amanecer, posibilidad de participar en una excursión opcional en globo aerostático, una experiencia única sobre las formaciones rocosas, chimeneas de hadas, formaciones naturales y paisajes lunares. Desayuno en el hotel. Día dedicado a la visita de esta fantástica región, única en el mundo: Valle de Göreme con sus iglesias rupestres con pinturas de los siglos X y XI, visita al pueblo troglodita de Uçhisar, Valle del Amor, Valle de Devrent con sus curiosas formaciones naturales, Valle de Avcılar o Valle de los Cazadores, Valle de las Palomas y tiempo para talleres artesanales como ónix y piedras semipreciosas. Por la noche se ofrece una excursión opcional para asistir a ver un Show de danzas típicas de la región. Regreso y alojamiento en el hotel. Comidas: Desayuno y cena",
+            "it": "5° Giorno — Cappadocia\nGIRO IN MONGOLFIERA OPZIONALE All’alba, possibilità di partecipare a un’escursione opzionale in mongolfiera, un’esperienza unica sulle formazioni rocciose, camini delle fate, formazioni naturali e paesaggi lunari. Colazione in hotel. Giornata dedicata alla visita di questa fantastica regione, unica al mondo: Valle di Göreme con le sue chiese rupestri con affreschi dei secoli X e XI, visita al villaggio troglodita di Uçhisar, Valle dell’Amore, Valle di Devrent con le sue curiose formazioni naturali, Valle di Avcılar o Valle dei Cacciatori, Valle dei Piccioni e tempo per laboratori artigianali come onice e pietre semipreziose. Alla sera, escursione opzionale per assistere a uno spettacolo di danze tipiche della regione. Rientro e sistemazione in hotel. Pasti: Colazione e cena",
+            "pt": "5º Dia — Capadócia\nEXCURSÃO OPCIONAL DE BALÃO Ao amanhecer, possibilidade de participar de uma excursão opcional de balão de ar quente, uma experiência única sobre as formações rochosas, chaminés de fadas, formações naturais e paisagens lunares. Café da manhã no hotel. Dia dedicado a visitar esta fantástica região, única no mundo: Vale de Göreme com suas igrejas rupestres com pinturas dos séculos X e XI, visita à vila troglodita de Uçhisar, Vale do Amor, Vale de Devrent com suas curiosas formações naturais, Vale de Avcılar ou Vale dos Caçadores, Vale dos Pombos e tempo para oficinas artesanais como ônix e pedras semipreciosas. À noite, excursão opcional para assistir a um espetáculo de danças típicas da região. Retorno e hospedagem no hotel. Refeições: Café da manhã e jantar"
+          }
+        },
+        {
+          "day": "6",
+          "meals": {
+            "pt": "Café da manhã + Jantar",
+            "it": "Colazione + Cena",
+            "en": "Breakfast + Dinner",
+            "ar": "إفطار + عشاء",
+            "es": "Desayuno + Cena"
+          },
+          "description": {
+            "ar": "اليوم السادس — كابادوكيا → باموكالي (حوالي 8 ساعات)\nإفطار وانطلاق نحو باموكالي. نقوم بزيارة خان القوافل ثم الانطلاق إلى باموكالي ووقت حر في \"قلعة القطن\"، الفريدة في العالم مع المسابح الحرارية من أصل كلسي والشلالات المتحجرة. هيرابوليس هي إحدى المواقع الأثرية الكبرى في الأناضول، والتي تجعل المكان، إلى جانب جاذبية مسابح القطن، نقطة اهتمام كبير. حالياً تقع باموكالي بجانب مدينة هيرابوليس القديمة. تم إعلان الموقع كموقع تراث عالمي من قبل اليونسكو واعترف به كأحد أهم وأجذب المراكز السياحية في العالم. باموكالي تعني \"قلعة القطن\" من تكوينات طبقات الحجر الجيري البيضاء. هيرابوليس تسمى أيضاً \"المدينة المقدسة\" بسبب معابدها ومبانيها الدينية العديدة. ما سيجذبنا بلا شك هو جمال الحجارة البيضاء (الترافيرتين) التي تغطي جميع المسابح الطبيعية التي تشكلت بالمياه الحرارية أيضاً. زيارة قصيرة لمتجر منافذ. عند الانتهاء، النقل إلى الفندق. العشاء والإقامة. الوجبات: إفطار وعشاء",
+            "en": "Day 6 — Cappadocia → Pamukkale (approx. 8 hours)\nBreakfast and departure to Pamukkale. We visit a Kervansaray and departure to Pamukkale and free time at the “Cotton Castle”, unique in the world with its thermal pools of calcareous origin and petrified waterfalls. Hierapolis is one of the great archaeological sites of Anatolia, which, together with the attraction of the cotton pools, makes the place a point of great interest. Today Pamukkale is located right next to the Ancient City of Hierapolis. It was declared a UNESCO World Heritage Site and recognized as one of the most relevant and attractive tourist centers in the world. Pamukkale means “Cotton Castle” from the formations of white limestone layers. Hierapolis is also called “the Holy City” due to its numerous temples and religious buildings. The beauty of the white stones (travertines) that cover all the natural pools formed by the thermal water will undoubtedly attract us. Brief visit to an outlet. Afterwards, transfer to the hotel. Dinner and accommodation. Meals: Breakfast and dinner",
+            "es": "6 Día — Capadocia → Pamukkale (Aprox 8 horas)\nDesayuno y salida hacia Pamukkale. Hacemos una visita a Kervansaray y salida a Pamukkale y tiempo libre en el “Castillo de Algodón”, único en el mundo con las piscinas termales de origen calcárea y las cascadas petrificadas. Hierápolis es uno de los grandes yacimientos de Anatolia, que, junto a la atracción de las piscinas de algodón, hacen del lugar un punto de gran interés. En la actualidad Pamukkale se encuentra ubicada justo al lado de la Antigua Ciudad de Hierápolis. La localidad fue declarada Patrimonio de la Humanidad por la UNESCO y reconocida como uno de los más relevantes y atractivos centros turísticos del mundo. Pamukkale significa “Castillo de Algodón” de las formaciones de capas blancas de piedra caliza. Hierápolis se llama también “la Ciudad Sagrada” debido a numerosos templos y edificios religiosos. Lo que nos atraerá sin duda la belleza de las piedras blancas (travertinos) que cubren todas las piscinas naturales que se formaron por el agua termal también. Breve visita a un outlet. Al término traslado al hotel. Cena y alojamiento. Comidas: Desayuno y cena",
+            "it": "6° Giorno — Cappadocia → Pamukkale (circa 8 ore)\nColazione e partenza per Pamukkale. Visitiamo un Kervansaray e partenza per Pamukkale e tempo libero al “Castello di Cotone”, unico al mondo con le sue piscine termali di origine calcarea e le cascate pietrificate. Hierapolis è uno dei grandi siti archeologici dell’Anatolia che, insieme all’attrazione delle piscine di cotone, rendono il luogo di grande interesse. Oggi Pamukkale si trova proprio accanto all’Antica Città di Hierapolis. È stata dichiarata Patrimonio dell’Umanità dall’UNESCO e riconosciuta come uno dei centri turistici più rilevanti e attraenti del mondo. Pamukkale significa “Castello di Cotone” per le formazioni di strati bianchi di calcare. Hierapolis è anche chiamata “la Città Santa” per i suoi numerosi templi ed edifici religiosi. La bellezza delle pietre bianche (travertini) che ricoprono tutte le piscine naturali formate dall’acqua termale ci attrarrà senza dubbio. Breve visita a un outlet. Al termine, trasferimento in hotel. Cena e sistemazione. Pasti: Colazione e cena",
+            "pt": "6º Dia — Capadócia → Pamukkale (Aprox 8 horas)\nCafé da manhã e partida para Pamukkale. Fazemos uma visita a um Kervansaray e partida para Pamukkale e tempo livre no “Castelo de Algodão”, único no mundo com suas piscinas termais de origem calcária e cachoeiras petrificadas. Hierápolis é um dos grandes sítios arqueológicos da Anatólia que, junto com a atração das piscinas de algodão, tornam o local de grande interesse. Atualmente, Pamukkale está localizada ao lado da Antiga Cidade de Hierápolis. Foi declarada Patrimônio Mundial pela UNESCO e reconhecida como um dos centros turísticos mais relevantes e atraentes do mundo. Pamukkale significa “Castelo de Algodão” devido às formações de camadas brancas de calcário. Hierápolis também é chamada de “Cidade Sagrada” devido aos seus numerosos templos e edifícios religiosos. A beleza das pedras brancas (travertinos) que cobrem todas as piscinas naturais formadas pela água termal nos atrairá sem dúvida. Breve visita a um outlet. Ao final, transfer para o hotel. Jantar e hospedagem. Refeições: Café da manhã e jantar"
+          }
+        },
+        {
+          "day": "7",
+          "meals": {
+            "pt": "Café da manhã + Jantar",
+            "it": "Colazione + Cena",
+            "en": "Breakfast + Dinner",
+            "ar": "إفطار + عشاء",
+            "es": "Desayuno + Cena"
+          },
+          "description": {
+            "ar": "اليوم السابع — باموكالي → أفسس → إزمير أو كوشاداسي (حوالي 3 ساعات)\nإفطار في الفندق. الانطلاق لزيارة أطلال أفسس، التي كانت خامس أكبر مدينة في العصر الروماني. خلال زيارتنا سنشاهد مكتبة سيلسوس الشهيرة (ثاني أهم مكتبة بعد مكتبة الإسكندرية)، المسرح، الأوديون، معبد هادريان، بيت الحب، الأغورا، شارع الرخام والمسرح الكبير. بعد ذلك، زيارة منزل السيدة مريم العذراء، حيث يُعتقد أن مريم جاءت إلى أفسس مع القديس يوحنا وعاشت هناك حتى انتقالها (حسب العقيدة الكاثوليكية) أو رقادها (حسب المعتقدات الأرثوذكسية). نظراً لكون هذا البيت مكان حج، يزوره العديد من السياح المسيحيين طوال العام. بعد الظهر، توقف في مركز إنتاج الجلود. حيث أن أفسس هي مركز لدباغة الجلود منذ العصور القديمة، ستتاح لنا فرصة شراء ملابس جلدية بأسعار معقولة جداً. سنشاهد أيضاً عرض أزياء لبعض من أكثر الجاكيتات أناقة في البلاد. بعد ذلك، النقل إلى الفندق. العشاء والإقامة في الفندق. الوجبات: إفطار وعشاء",
+            "en": "Day 7 — Pamukkale → Ephesus → Izmir or Kusadasi (approx. 3 hours)\nBreakfast at the hotel. Departure to visit the ruins of Ephesus, which was the fifth largest city of the Roman era. During our visit we will appreciate the famous Library of Celsus (the second most important after that of Alexandria), the theater, the Odeon, the Temple of Hadrian, the House of Love, the Agora, Marble Street and the Great Theater. Next, we will visit the House of the Virgin Mary, where it is believed that Mary came to Ephesus together with Saint John and lived there until her Assumption (according to Catholic doctrine) or Dormition (according to Orthodox beliefs). As this house is a place of pilgrimage, it is visited by numerous Christian tourists throughout the year. In the afternoon, stop at a leather production center. Since Ephesus is a center of leather tanning since ancient times, we will have the opportunity to buy leather clothing at very reasonable prices. We will also see a fashion show with some of the most elegant jackets in the country. Afterwards, transfer to the hotel. Dinner and accommodation at the hotel. Meals: Breakfast and dinner",
+            "es": "7 Día — Pamukkale → Éfeso → Esmirna o Kusadasi (Aprox 3 horas)\nDesayuno en el hotel. Salida para visitar las ruinas de Éfeso, fue la quinta gran ciudad de la época Romana. Durante nuestra visita apreciaremos la famosa biblioteca de Celso (la segunda más importante después de la de Alejandría), el teatro, el Odeón, el Templo de Adriano, la Casa de Amor, el Ágora, la calle de Mármol y el Gran Teatro. A continuación, visitaremos la casa de la Virgen María donde se supone que María llegó a Éfeso junto con San Juan y vivió allí hasta su Asunción (según la doctrina católica) o Dormición (según las creencias ortodoxas). Como esta casa es un lugar de peregrinación se visita por numerosos turistas cristianos a menudo durante el año. Por la tarde paramos en un centro de producción de cuero. Como Éfeso es un centro de piel de curtiduría desde la época antigua tendremos posibilidad de comprar algunas ropas de cuero con el precio más razonable. También veremos un desfile de moda en el que nos expondrán unas de las chaquetas más elegantes del país. A continuación, traslado a su hotel. Cena y alojamiento en el hotel. Comidas: Desayuno y cena",
+            "it": "7° Giorno — Pamukkale → Efeso → Smirne o Kusadasi (circa 3 ore)\nColazione in hotel. Partenza per visitare le rovine di Efeso, che fu la quinta città più grande dell’epoca romana. Durante la nostra visita apprezzeremo la famosa Biblioteca di Celso (la seconda più importante dopo quella di Alessandria), il teatro, l’Odeon, il Tempio di Adriano, la Casa dell’Amore, l’Agorà, la Via del Marmo e il Grande Teatro. Successivamente, visiteremo la Casa della Vergine Maria, dove si ritiene che Maria sia giunta a Efeso insieme a San Giovanni e vi abbia vissuto fino alla sua Assunzione (secondo la dottrina cattolica) o Dormizione (secondo le credenze ortodosse). Poiché questa casa è un luogo di pellegrinaggio, è visitata da numerosi turisti cristiani durante tutto l’anno. Nel pomeriggio, sosta in un centro di produzione di pelletteria. Poiché Efeso è un centro di concia delle pelli fin dall’antichità, avremo l’opportunità di acquistare abbigliamento in pelle a prezzi molto ragionevoli. Assisteremo anche a una sfilata di moda con alcune delle giacche più eleganti del paese. Successivamente, trasferimento in hotel. Cena e sistemazione in hotel. Pasti: Colazione e cena",
+            "pt": "7º Dia — Pamukkale → Éfeso → Esmirna ou Kusadasi (Aprox 3 horas)\nCafé da manhã no hotel. Saída para visitar as ruínas de Éfeso, que foi a quinta maior cidade da época romana. Durante nossa visita apreciaremos a famosa Biblioteca de Celso (a segunda mais importante depois da de Alexandria), o teatro, o Odeão, o Templo de Adriano, a Casa do Amor, a Ágora, a Rua de Mármore e o Grande Teatro. Em seguida, visitaremos a Casa da Virgem Maria, onde se acredita que Maria chegou a Éfeso junto com São João e ali viveu até sua Assunção (segundo a doutrina católica) ou Dormição (segundo as crenças ortodoxas). Como esta casa é um local de peregrinação, é visitada por numerosos turistas cristãos durante todo o ano. À tarde, paramos em um centro de produção de couro. Como Éfeso é um centro de curtume desde a antiguidade, teremos a oportunidade de comprar roupas de couro a preços muito razoáveis. Também veremos um desfile de moda com algumas das jaquetas mais elegantes do país. Em seguida, transfer para o seu hotel. Jantar e hospedagem no hotel. Refeições: Café da manhã e jantar"
+          }
+        },
+        {
+          "day": "8",
+          "meals": {
+            "pt": "Café da manhã + Jantar",
+            "it": "Colazione + Cena",
+            "en": "Breakfast + Dinner",
+            "ar": "إفطار + عشاء",
+            "es": "Desayuno + Cena"
+          },
+          "description": {
+            "ar": "اليوم الثامن — إزمير أو كوشاداسي → بودروم (حوالي ساعتين ونصف)\nإفطار والنقل إلى بودروم (سائق فقط). وقت حر بعد الظهر. الوجبات: إفطار وعشاء",
+            "en": "Day 8 — Izmir or Kusadasi → Bodrum (approx. 2h30min)\nBreakfast and transfer to Bodrum (driver only). Free afternoon. Meals: Breakfast and dinner",
+            "es": "8 Día — Esmirna o Kusadasi → Bodrum (Aprox 2h30min)\nDesayuno y traslado a Bodrum (solo con conductor). Tarde libre. Comidas: Desayuno y cena",
+            "it": "8° Giorno — Smirne o Kusadasi → Bodrum (circa 2h30min)\nColazione e trasferimento a Bodrum (solo autista). Pomeriggio libero. Pasti: Colazione e cena",
+            "pt": "8º Dia — Esmirna ou Kusadasi → Bodrum (Aprox 2h30min)\nCafé da manhã e transfer para Bodrum (apenas motorista). Tarde livre. Refeições: Café da manhã e jantar"
+          }
+        },
+        {
+          "day": "9",
+          "meals": {
+            "pt": "Café da manhã + Jantar",
+            "it": "Colazione + Cena",
+            "en": "Breakfast + Dinner",
+            "ar": "إفطار + عشاء",
+            "es": "Desayuno + Cena"
+          },
+          "description": {
+            "ar": "اليوم التاسع — بودروم\nيوم حر، إقامة وعشاء. الوجبات: إفطار وعشاء",
+            "en": "Day 9 — Bodrum\nFree day, accommodation and dinner. Meals: Breakfast and dinner",
+            "es": "9 Dia — Bodrum\nDía libre, alojamiento y cena. Comidas: Desayuno y cena",
+            "it": "9° Giorno — Bodrum\nGiorno libero, sistemazione e cena. Pasti: Colazione e cena",
+            "pt": "9º Dia — Bodrum\nDia livre, hospedagem e jantar. Refeições: Café da manhã e jantar"
+          }
+        },
+        {
+          "day": "10",
+          "meals": {
+            "pt": "Café da manhã",
+            "it": "Colazione",
+            "en": "Breakfast",
+            "ar": "إفطار",
+            "es": "Desayuno"
+          },
+          "description": {
+            "ar": "اليوم العاشر — بودروم → إسطنبول\nإفطار. في الوقت المتفق عليه، النقل إلى المطار لاستقلال رحلة جوية إلى إسطنبول. الوصول والنقل إلى الفندق المقرر. الإقامة. الوجبات: إفطار",
+            "en": "Day 10 — Bodrum → Istanbul\nBreakfast. At the agreed time, transfer to the airport to take a flight to Istanbul. Arrival and transfer to the designated hotel. Accommodation. Meals: Breakfast",
+            "es": "10 Dia — Bodrum → Estambul\nDesayuno. A la hora acordada traslado al aeropuerto para tomar vuelo con destino a Estambul. Llegada y traslado al hotel previsto. Alojamiento. Comidas: Desayuno",
+            "it": "10° Giorno — Bodrum → Istanbul\nColazione. All’orario concordato trasferimento in aeroporto per prendere il volo per Istanbul. Arrivo e trasferimento all’hotel previsto. Sistemazione. Pasti: Colazione",
+            "pt": "10º Dia — Bodrum → Istambul\nCafé da manhã. No horário combinado transfer para o aeroporto para pegar voo com destino a Istambul. Chegada e transfer para o hotel previsto. Hospedagem. Refeições: Café da manhã"
+          }
+        },
+        {
+          "day": "11",
+          "meals": {
+            "pt": "Café da manhã",
+            "it": "Colazione",
+            "en": "Breakfast",
+            "ar": "إفطار",
+            "es": "Desayuno"
+          },
+          "description": {
+            "ar": "اليوم الحادي عشر — إسطنبول\nيوم حر. إمكانية القيام بجولة كلاسيكية في إسطنبول. الوجبات: إفطار",
+            "en": "Day 11 — Istanbul\nFree day. Possibility to take a Classic Tour of Istanbul. Meals: Breakfast",
+            "es": "11 Dia — Estambul\nDía libre. Posibilidad de tomar un Tour Clásico por Estambul. Comidas: Desayuno",
+            "it": "11° Giorno — Istanbul\nGiorno libero. Possibilità di fare un Tour Classico di Istanbul. Pasti: Colazione",
+            "pt": "11º Dia — Istambul\nDia livre. Possibilidade de fazer um Tour Clássico por Istambul. Refeições: Café da manhã"
+          }
+        },
+        {
+          "day": "12",
+          "meals": {
+            "pt": "Café da manhã",
+            "it": "Colazione",
+            "en": "Breakfast",
+            "ar": "إفطار",
+            "es": "Desayuno"
+          },
+          "description": {
+            "ar": "اليوم الثاني عشر — المغادرة من إسطنبول\nإفطار في الفندق. في الوقت المتفق عليه، النقل إلى المطار. الوجبات: إفطار (طالما أن موعد النقل يسمح بذلك)",
+            "en": "Day 12 — Departure from Istanbul\nBreakfast at the hotel. At the agreed time, transfer to the airport. Meals: Breakfast (provided the transfer schedule allows it)",
+            "es": "12 Día — Salida de Estambul\nDesayuno en el hotel. En la hora combinada, traslado al aeropuerto. Comidas: Desayuno (siempre y cuando el horario del traslado lo permita)",
+            "it": "12° Giorno — Partenza da Istanbul\nColazione in hotel. All’orario concordato, trasferimento in aeroporto. Pasti: Colazione (sempre che l’orario del trasferimento lo permetta)",
+            "pt": "12º Dia — Partida de Istambul\nCafé da manhã no hotel. No horário combinado, transfer para o aeroporto. Refeições: Café da manhã (desde que o horário do transfer permita)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "REG-08",
+      "name": {
+        "ar": "ستوب أوفر — توقف في إسطنبول",
+        "en": "Stop Over — Stop in Istanbul",
+        "es": "Stop Over — Parada en Estambul",
+        "it": "Stop Over — Sosta a Istanbul",
+        "pt": "Stop Over — Parada em Istambul"
+      },
+      "duration": {
+        "ar": "3 أيام / 2 ليالي",
+        "en": "3 Days / 2 Nights",
+        "es": "3 Días / 2 Noches",
+        "it": "3 Giorni / 2 Notti",
+        "pt": "3 Dias / 2 Noites"
+      },
+      "highlights": {
+        "ar": "إسطنبول",
+        "en": "Istanbul",
+        "es": "Estambul",
+        "it": "Istanbul",
+        "pt": "Istambul"
+      },
+      "overview": {
+        "ar": "باقة توقف قصيرة في إسطنبول مع وقت حر وجولات اختيارية.",
+        "en": "A short stopover package in Istanbul with free time and optional tours.",
+        "es": "Un paquete de escala corta en Estambul con tiempo libre y tours opcionales.",
+        "it": "Un pacchetto di sosta breve a Istanbul con tempo libero e tour opzionali.",
+        "pt": "Um pacote de escala curta em Istambul com tempo livre e passeios opcionais."
+      },
+      "code": {
+        "ar": "REG-08",
+        "en": "REG-08",
+        "es": "REG-08",
+        "it": "REG-08",
+        "pt": "REG-08"
+      },
+      "minPax": {
+        "ar": "2 شخص",
+        "en": "2 pax",
+        "es": "2 pax",
+        "it": "2 pax",
+        "pt": "2 pax"
+      },
+      "slug": "reg-08-stop-over",
+      "days": [
+        {
+          "day": "1",
+          "meals": {
+            "pt": "Refeições no hotel",
+            "it": "Pasti in hotel",
+            "en": "Meals at hotel",
+            "ar": "وجبات بالفندق",
+            "es": "Comidas en el hotel"
+          },
+          "description": {
+            "ar": "اليوم الأول — إسطنبول\nالوصول إلى إسطنبول والنقل إلى الفندق. الإقامة في الفندق.",
+            "en": "Day 1 — Istanbul\nArrival in Istanbul and transfer to the hotel. Accommodation at the hotel.",
+            "es": "1 Día — Estambul\nLlegada a Estambul y traslado al hotel. Alojamiento en el hotel.",
+            "it": "1° Giorno — Istanbul\nArrivo a Istanbul e trasferimento in hotel. Sistemazione in hotel.",
+            "pt": "1º Dia — Istambul\nChegada a Istambul e transfer para o hotel. Hospedagem no hotel."
+          }
+        },
+        {
+          "day": "2",
+          "meals": {
+            "pt": "Café da manhã",
+            "it": "Colazione",
+            "en": "Breakfast",
+            "ar": "إفطار",
+            "es": "Desayuno"
+          },
+          "description": {
+            "ar": "اليوم الثاني — إسطنبول\nيوم حر. أو إمكانية القيام بجولة كلاسيكية في المدينة أو جولة في البوسفور.\nجولة ليلية اختيارية: عرض في إسطنبول: 99 دولاراً أمريكياً (مشروبات، مقبلات، عرض، نقل) للشخص الواحد.\nالوجبات: إفطار",
+            "en": "Day 2 — Istanbul\nFree day. Or possibility of taking a Classic Tour of the city or a Bosphorus Tour.\nOptional night tour: Show in Istanbul: 99 USD (Drinks, appetizers, Show, Transfer) per person.\nMeals: Breakfast",
+            "es": "2 Día — Estambul\nDía libre. O posibilidad de tomar un tour Clásico por la ciudad o un tour por el Bósforo.\nTour nocturno opcional: Espectáculo en Estambul: 99 USD (Bebidas, entremeses, Show, Traslado) por persona.\nComidas: Desayuno",
+            "it": "2° Giorno — Istanbul\nGiorno libero. Oppure possibilità di fare un Tour Classico della città o un Tour del Bosforo.\nTour notturno opzionale: Spettacolo a Istanbul: 99 USD (Bevande, stuzzichini, Spettacolo, Trasferimento) a persona.\nPasti: Colazione",
+            "pt": "2º Dia — Istambul\nDia livre. Ou possibilidade de fazer um Tour Clássico pela cidade ou um Tour do Bósforo.\nTour noturno opcional: Espetáculo em Istambul: 99 USD (Bebidas, petiscos, Espetáculo, Transfer) por pessoa.\nRefeições: Café da manhã"
+          }
+        },
+        {
+          "day": "3",
+          "meals": {
+            "pt": "Café da manhã",
+            "it": "Colazione",
+            "en": "Breakfast",
+            "ar": "إفطار",
+            "es": "Desayuno"
+          },
+          "description": {
+            "ar": "اليوم الثالث — إسطنبول ← المغادرة\nإفطار في الفندق. النقل إلى المطار.\nالوجبات: إفطار (طالما أن موعد النقل يسمح بذلك)\nملاحظة: يمكن تغيير ترتيب البرنامج.\nنهاية خدماتنا.",
+            "en": "Day 3 — Istanbul → Departure\nBreakfast at the hotel. Transfer to the airport.\nMeals: Breakfast (provided the transfer schedule allows it)\nNOTE: THE ORDER OF THE ITINERARY CAN BE CHANGED.\nEND OF OUR SERVICES.",
+            "es": "3 Día — Estambul → Salida\nDesayuno en el hotel. Traslado al aeropuerto.\nComidas: Desayuno (siempre y cuando el horario de traslado lo permita)\nANOTACIÓN: EL ORDEN DEL ITINERARIO SE PUEDE CAMBIAR.\nFIN DE NUESTROS SERVICIOS.",
+            "it": "3° Giorno — Istanbul → Partenza\nColazione in hotel. Trasferimento in aeroporto.\nPasti: Colazione (sempre che l'orario del trasferimento lo permetta)\nNOTA: L'ORDINE DELL'ITINERARIO PUÒ ESSERE MODIFICATO.\nFINE DEI NOSTRI SERVIZI.",
+            "pt": "3º Dia — Istambul → Partida\nCafé da manhã no hotel. Transfer para o aeroporto.\nRefeições: Café da manhã (desde que o horário do transfer permita)\nNOTA: A ORDEM DO ITINERÁRIO PODE SER ALTERADA.\nFIM DOS NOSSOS SERVIÇOS."
+          }
+        }
+      ]
+    },
+    {
+      "id": "REG-09",
+      "name": {
+        "ar": "تركيا بلا عجلة",
+        "en": "Turkey Without Rush",
+        "es": "Turquía Sin Prisas",
+        "it": "Turchia Senza Fretta",
+        "pt": "Turquia Sem Pressa"
+      },
+      "duration": {
+        "ar": "9 أيام / 8 ليالي",
+        "en": "9 Days / 8 Nights",
+        "es": "9 Días / 8 Noches",
+        "it": "9 Giorni / 8 Notti",
+        "pt": "9 Dias / 8 Noites"
+      },
+      "highlights": {
+        "ar": "إسطنبول | كابادوكيا | كوشاداسي | باموكالي | أفسس",
+        "en": "Istanbul | Cappadocia | Kusadasi | Pamukkale | Ephesus",
+        "es": "Estambul | Capadocia | Kusadasi | Pamukkale | Éfeso",
+        "it": "Istanbul | Cappadocia | Kusadasi | Pamukkale | Efeso",
+        "pt": "Istambul | Capadócia | Kusadasi | Pamukkale | Éfeso"
+      },
+      "overview": {
+        "ar": "برنامج مريح يجمع بين روائع إسطنبول، سحر كابادوكيا، جمال باموكالي الأبيض، وعظمة أفسس الأثرية مع إقامة في كوشاداسي.",
+        "en": "A relaxed program combining the wonders of Istanbul, the magic of Cappadocia, the white beauty of Pamukkale, and the grandeur of Ephesus with accommodation in Kusadasi.",
+        "es": "Un programa relajado que combina las maravillas de Estambul, la magia de Capadocia, la belleza blanca de Pamukkale y la grandeza de Éfeso con alojamiento en Kusadasi.",
+        "it": "Un programma rilassato che combina le meraviglie di Istanbul, la magia della Cappadocia, la bellezza bianca di Pamukkale e la grandiosità di Efeso con sistemazione a Kusadasi.",
+        "pt": "Um programa relaxado que combina as maravilhas de Istambul, a magia da Capadócia, a beleza branca de Pamukkale e a grandeza de Éfeso com hospedagem em Kusadasi."
+      },
+      "code": {
+        "ar": "REG-09",
+        "en": "REG-09",
+        "es": "REG-09",
+        "it": "REG-09",
+        "pt": "REG-09"
+      },
+      "minPax": {
+        "ar": "2 شخص",
+        "en": "2 pax",
+        "es": "2 pax",
+        "it": "2 pax",
+        "pt": "2 pax"
+      },
+      "slug": "reg-09-turkey-without-rush",
+      "days": [
+        {
+          "day": "1",
+          "meals": {
+            "pt": "Refeições no hotel",
+            "it": "Pasti in hotel",
+            "en": "Meals at hotel",
+            "ar": "وجبات بالفندق",
+            "es": "Comidas en el hotel"
+          },
+          "description": {
+            "ar": "اليوم الأول — الوصول إلى إسطنبول\nالوصول والمساعدة. النقل إلى الفندق. الإقامة في الفندق.",
+            "en": "Day 1 — Arrival in Istanbul\nArrival and assistance. Transfer to the hotel. Accommodation at the hotel.",
+            "es": "1 Día — Llegada a Estambul\nLlegada y asistencia. Traslado al hotel. Alojamiento en el hotel.",
+            "it": "1° Giorno — Arrivo a Istanbul\nArrivo e assistenza. Trasferimento in hotel. Sistemazione in hotel.",
+            "pt": "1º Dia — Chegada a Istambul\nChegada e assistência. Transfer para o hotel. Hospedagem no hotel."
+          }
+        },
+        {
+          "day": "2",
+          "meals": {
+            "pt": "Café da manhã + Almoço",
+            "it": "Colazione + Pranzo",
+            "en": "Breakfast + Lunch",
+            "ar": "إفطار + غداء",
+            "es": "Desayuno + Almuerzo"
+          },
+          "description": {
+            "ar": "اليوم الثاني — إسطنبول (جولة كاملة في المدينة القديمة)\nإفطار في الفندق. رحلة يوم كامل في المدينة القديمة. صباحاً، سنقوم بجولة بانورامية خارجية لآيا صوفيا، واحدة من أكثر المعالم شهرة في إسطنبول، تحفة معمارية رائعة نقدمها للزائر؛ كما تُعتبر واحدة من أكبر وأفخم الكنائس في العالم، وهي اليوم مسجد. بعد ذلك، سنزور قصر توبكابي (مع دخول الحريم)، المكان الذي عاش فيه السلاطين بين 1478 و1856. توبكابي ليس بناءً واحداً، بل مجمع أثري عضوي يتكون من عدة أكشاك وحدائق ومناطق منتشرة تقع في الحي التاريخي عند مدخل القرن الذهبي. ثم نتجه إلى الجامع الأزرق، المعجب بمآذنه الستة العالية ومدرجات وقبابه التي ترتفع في وسط المبنى؛ ستلاحظ أن المهندس المعماري حقق هدفه دون شك: الكمال مع هذا العمل المذهل. غداء. بعد الظهر، زيارة ميدان سباق الخيل الروماني (حقبة سيبتيموس سيفيروس)، المكان الذي أقيمت فيه سباقات المركبات والسيرك، والتي كانت مصدر ترفيه لسكان القسطنطينية لأكثر من ألف عام. النقل إلى الفندق والإقامة.\nالوجبات: إفطار وغداء",
+            "en": "Day 2 — Istanbul (Full Day Old City Tour)\nBreakfast at the hotel. Full-day excursion through the ancient city. In the morning, we will have a panoramic external visit to Hagia Sophia, one of the most iconic landmarks of Istanbul, a beautiful architectural marvel we offer to the visitor; also regarded as one of the largest and most imposing churches in the world, and today it is a Mosque. Next, we will visit Topkapi Palace (with entrance to the Harem), the place where the sultans lived between 1478 and 1856. Topkapi is not a single structure but an organic monumental complex formed by various kiosks, gardens and scattered areas located in the historic district at the entrance of the Golden Horn. We continue to the Blue Mosque, admired for its six tall minarets, terraces and domes rising in the center of the building; you will see that the architect achieved his goal without doubt: perfection with this impressive work. Lunch. In the afternoon, the Roman Hippodrome (from the time of Septimius Severus), the space where chariot races and circuses took place, which served as entertainment for the inhabitants of Constantinople for over a thousand years. Transfer to the hotel and accommodation.\nMeals: Breakfast and lunch",
+            "es": "2 Día — Estambul (Excursión de día completo por la ciudad antigua)\nDesayuno en el hotel. Excursión de día completo por la ciudad antigua. En la mañana haremos una visita panorámica a Santa Sofía (visita externa), uno de los recintos más identificativos de Estambul, hermosa maravilla arquitectónica que ofrecemos al visitante; además contemplada como una de las iglesias más grandes e imponentes del mundo, y hoy en día es una Mezquita. A continuación, visitaremos el Palacio Topkapi (con entrada al Harén), lugar donde vivieron los sultanes entre 1478 y 1856. Topkapi no es una estructura única, sino un complejo monumental orgánico formado por diversos quioscos, jardines y zonas repartidas que se ubican en la barriada o casco histórico a la entrada del Cuerno de Oro. Seguimos hacia la Mezquita Azul, admirada por sus seis altos minaretes, terrazas y cúpulas que se alzan en el centro del edificio; comprobarás que el arquitecto consiguió su objetivo sin dudas: la perfección con esta impresionante obra. Almuerzo. Por la tarde, Hipódromo Romano (época de Séptimo Severo), espacio donde tuvieron lugar las carreras de cuadrigas y circos, que sirvieron de diversión a los habitantes de Constantinopla durante más de mil años. Traslado al hotel y alojamiento.\nComidas: Desayuno y almuerzo",
+            "it": "2° Giorno — Istanbul (Gita di un giorno intero nella città antica)\nColazione in hotel. Escursione di un giorno intero nella città antica. Al mattino, faremo una visita panoramica esterna a Santa Sofia, uno dei luoghi più iconici di Istanbul, una meraviglia architettonica che offriamo al visitatore; considerata anche una delle chiese più grandi e imponenti del mondo, e oggi è una Moschea. Successivamente, visiteremo il Palazzo Topkapi (con ingresso all'Harem), il luogo dove vissero i sultani tra il 1478 e il 1856. Topkapi non è una struttura singola, ma un complesso monumentale organico formato da vari chioschi, giardini e aree sparse situate nel quartiere storico all'ingresso del Corno d'Oro. Proseguiamo verso la Moschea Blu, ammirata per i suoi sei alti minareti, terrazze e cupole che si ergono al centro dell'edificio; vedrete che l'architetto ha raggiunto il suo obiettivo senza dubbio: la perfezione con quest'opera impressionante. Pranzo. Nel pomeriggio, l'Ippodromo Romano (epoca di Settimio Severo), lo spazio dove si svolgevano le corse delle quadrighe e i circhi, che servirono come intrattenimento per gli abitanti di Costantinopoli per oltre mille anni. Trasferimento in hotel e sistemazione.\nPasti: Colazione e pranzo",
+            "pt": "2º Dia — Istambul (Excursão de dia inteiro pela cidade antiga)\nCafé da manhã no hotel. Excursão de dia inteiro pela cidade antiga. Pela manhã, faremos uma visita panorâmica externa a Santa Sofia, um dos locais mais emblemáticos de Istambul, uma bela maravilha arquitetônica que oferecemos ao visitante; também contemplada como uma das maiores e mais imponentes igrejas do mundo, e hoje é uma Mesquita. Em seguida, visitaremos o Palácio Topkapi (com entrada no Harém), o lugar onde os sultões viveram entre 1478 e 1856. Topkapi não é uma estrutura única, mas um complexo monumental orgânico formado por vários quiosques, jardins e áreas distribuídas localizadas no bairro histórico na entrada do Corno de Ouro. Continuamos para a Mesquita Azul, admirada por seus seis altos minaretes, terraços e cúpulas que se erguem no centro do edifício; você perceberá que o arquiteto alcançou seu objetivo sem dúvida: a perfeição com esta obra impressionante. Almoço. À tarde, o Hipódromo Romano (época de Sétimo Severo), o espaço onde aconteciam as corridas de bigas e circos, que serviram de entretenimento para os habitantes de Constantinopla por mais de mil anos. Transfer para o hotel e hospedagem.\nRefeições: Café da manhã e almoço"
+          }
+        },
+        {
+          "day": "3",
+          "meals": {
+            "pt": "Café da manhã + Jantar",
+            "it": "Colazione + Cena",
+            "en": "Breakfast + Dinner",
+            "ar": "إفطار + عشاء",
+            "es": "Desayuno + Cena"
+          },
+          "description": {
+            "ar": "اليوم الثالث — إسطنبول ← كابادوكيا\nإفطار وزيارة سوق التوابل. نواصل ركوب القارب لجولة في البوسفور (عبارة عادية) على طول بحر مرمرة على جانبي المدينة: الآسيوي والأوروبي. خلال هذه الجولة يمكنكم مشاهدة معالم مثل: قصر دولمة بهجة، قصر جراغان، قلعة روملي حصار، وغيرها. النزول. بعد الغداء، نواصل بزيارة منطقة تقسيم، قلب إسطنبول العصري النابض بالحياة. نبدأ في ميدان تقسيم عند نصب الجمهورية، ونسير في شارع الاستقلال الحيوي. خلال الجولة، نكتشف نقاطاً تاريخية وثقافية مهمة: صهريج مقسم، الكنيسة الأرمنية الكاثوليكية، الكنيسة الأرثوذكسية اليونانية، وممر الزهور الأنيق. نمر بسوق السمك ومدرسة الدراويش، ممثلي إحدى الطرق الصوفية المهمة في الإسلام. ننهي رحلتنا في الحي الساحر حيث يقع برج غلاطة (الدخول غير مشمول)، أيقونة إسطنبول التي بناها الجنويون في القرن الرابع عشر ورمز المدينة. العودة إلى الفندق. النقل إلى المطار لاستقلال الرحلة الجوية إلى كابادوكيا. الوصول والنقل إلى الفندق المقرر. الإقامة.\nالوجبات: إفطار وعشاء",
+            "en": "Day 3 — Istanbul → Cappadocia\nBreakfast and visit to the Spice Market. We continue to board the boat for the Bosphorus tour (regular ferry) along the Sea of Marmara on both sides of the city: Asian and European. During this tour you can see monuments such as: Dolmabahçe Palace, Çırağan Palace, Rumeli Hisarı Fortress, among others. Disembarkation. Then after lunch, we continue with a visit to the Taksim area, the vibrant modern heart of Istanbul. We start at Taksim Square, by the Republic Monument, and walk along lively Istiklal Street. During the tour, we discover important historical and cultural points: Maksem Cistern, the Armenian Catholic Church, the Greek Orthodox Church, and the elegant Flower Passage. We pass by the Fish Market and the Whirling Dervish School, representatives of an important mystical order of Islam. We end our excursion in the charming neighborhood where Galata Tower is located (entrance not included), an icon of Istanbul built by the Genoese in the 14th century and symbol of the city. Return to the hotel. Transfer to the airport to take your flight to Cappadocia. Arrival and transfer to the designated hotel. Accommodation.\nMeals: Breakfast and dinner",
+            "es": "3 Día — Estambul → Capadocia\nDesayuno y visita al mercado de especias. Seguimos a tomar el barco para el recorrido por El Bósforo (barco regular) realizándose a lo largo del Mar de Mármara por ambos lados de la ciudad: Asiática y Europea. Durante este recorrido podrán contemplar monumentos como: Palacios de Dolmabahçe, Çırağan, La fortaleza de Rumeli Hisarı, entre otros. Desembarque. Luego después del almuerzo, continuamos con una visita a la zona de Taksim, el vibrante corazón moderno de Estambul. Iniciaremos en la Plaza Taksim, junto al Monumento de la República, y caminaremos por la animada calle Istiklal. Durante el recorrido, descubriremos importantes puntos históricos y culturales: la Cisterna de Maksem, la Iglesia Católica Armenia, la Iglesia Ortodoxa Griega y el elegante Pasaje de las Flores. Pasaremos por el Mercado del Pescado y la escuela de los Derviches, representantes de una importante orden mística del islam. Finalizaremos nuestra excursión en el encantador barrio donde se encuentra la Torre de Gálata (entrada no incluída), un ícono de Estambul construido por los genoveses en el siglo XIV y símbolo de la ciudad. Regreso al hotel. Traslado al aeropuerto para tomar su vuelo a Capadocia. Llegada y traslado al hotel previsto. Alojamiento.\nComidas: Desayuno y cena",
+            "it": "3° Giorno — Istanbul → Cappadocia\nColazione e visita al Mercato delle Spezie. Proseguiamo per imbarcarci per il giro del Bosforo (traghetto regolare) lungo il Mar di Marmara su entrambi i lati della città: Asiatico ed Europeo. Durante questo giro potrete ammirare monumenti come: Palazzo Dolmabahçe, Çırağan, Fortezza di Rumeli Hisarı, tra gli altri. Sbarco. Dopo pranzo, continuiamo con una visita alla zona di Taksim, il vibrante cuore moderno di Istanbul. Inizieremo in Piazza Taksim, presso il Monumento della Repubblica, e cammineremo per la vivace Via Istiklal. Durante il percorso scopriremo importanti punti storici e culturali: la Cisterna di Maksem, la Chiesa Cattolica Armena, la Chiesa Ortodossa Greca e l'elegante Passaggio dei Fiori. Passeremo dal Mercato del Pesce e dalla scuola dei Dervisci, rappresentanti di un importante ordine mistico dell'Islam. Concluderemo la nostra escursione nell'incantevole quartiere dove sorge la Torre di Galata (ingresso non incluso), un'icona di Istanbul costruita dai genovesi nel XIV secolo e simbolo della città. Rientro in hotel. Trasferimento in aeroporto per prendere il volo per la Cappadocia. Arrivo e trasferimento all'hotel previsto. Sistemazione.\nPasti: Colazione e cena",
+            "pt": "3º Dia — Istambul → Capadócia\nCafé da manhã e visita ao Mercado de Especiarias. Seguimos para embarcar no barco para o passeio pelo Bósforo (barco regular) ao longo do Mar de Mármara por ambos os lados da cidade: Asiático e Europeu. Durante este passeio poderão contemplar monumentos como: Palácios de Dolmabahçe, Çırağan, Fortaleza de Rumeli Hisarı, entre outros. Desembarque. Depois do almoço, continuamos com uma visita à zona de Taksim, o vibrante coração moderno de Istambul. Começaremos na Praça Taksim, junto ao Monumento da República, e caminharemos pela animada Rua Istiklal. Durante o percurso, descobriremos importantes pontos históricos e culturais: a Cisterna de Maksem, a Igreja Católica Armênia, a Igreja Ortodoxa Grega e a elegante Galeria das Flores. Passaremos pelo Mercado de Peixe e pela escola dos Dervixes, representantes de uma importante ordem mística do Islã. Finalizaremos nossa excursão no encantador bairro onde se encontra a Torre de Gálata (entrada não incluída), um ícone de Istambul construído pelos genoveses no século XIV e símbolo da cidade. Regresso ao hotel. Transfer para o aeroporto para pegar seu voo para a Capadócia. Chegada e transfer para o hotel previsto. Hospedagem.\nRefeições: Café da manhã e jantar"
+          }
+        },
+        {
+          "day": "4",
+          "meals": {
+            "pt": "Café da manhã",
+            "it": "Colazione",
+            "en": "Breakfast",
+            "ar": "إفطار",
+            "es": "Desayuno"
+          },
+          "description": {
+            "ar": "اليوم الرابع — كابادوكيا\nرحلة اختيارية بالمنطاد. إفطار في الفندق. يوم مخصص لزيارة هذه المنطقة الرائعة الفريدة في العالم: وادي غوريم مع كنائسه المنحوتة في الصخر برسومات من القرنين العاشر والحادي عشر؛ زيارة قرية أوتشيسار الكهفية، وادي الحب. في الطريق، زيارة إحدى المدن تحت الأرض العديدة في كابادوكيا التي بنتها المجتمعات المسيحية للحماية من الهجمات العربية. تحتفظ المدينة تحت الأرض بالإسطبلات والقاعات المشتركة وقاعة الاجتماعات والغرف الصغيرة للعائلات. وقت حر لزيارة ورش الحرف اليدوية مثل السجاد والعقيق والأحجار شبه الكريمة. ليلاً، رحلة اختيارية لحضور عرض رقصات تقليدية من المنطقة.",
+            "en": "Day 4 — Cappadocia\nOPTIONAL BALLOON EXCURSION. Breakfast at the hotel. Day dedicated to visiting this fantastic region, unique in the world: Göreme Valley with its rock-hewn churches with paintings from the 10th and 11th centuries; visit to the troglodyte village of Uçhisar, Love Valley. On the way, visit to one of the numerous underground cities of Cappadocia built by Christian communities to protect themselves from Arab attacks. The underground city preserves stables, common rooms, meeting room and small rooms for families. Free time to visit artisan workshops such as carpets, onyx and semi-precious stones. In the evening, optional excursion to attend a show of typical dances of the region.",
+            "es": "4 Día — Capadocia\nEXCURSIÓN OPCIONAL EN GLOBO. Desayuno en el hotel. Día dedicado a la visita de esta fantástica región, única en el mundo: Valle de Göreme con sus iglesias rupestres con pinturas de los siglos X y XI; visita al pueblo troglodita de Uçhisar, Valle del Amor. En el camino, visita a una de las innumerables ciudades subterráneas de Capadocia, construidas por las comunidades cristianas para protegerse de los ataques árabes. La ciudad subterránea conserva los establos, salas comunes, sala de reuniones y pequeñas habitaciones para las familias. Tiempo libre para visita a talleres artesanales como alfombras, ónix y piedras semipreciosas. Por la noche se ofrece una excursión opcional para asistir a ver un show de danzas típicas de la región.",
+            "it": "4° Giorno — Cappadocia\nGIRO IN MONGOLFIERA OPZIONALE. Colazione in hotel. Giornata dedicata alla visita di questa fantastica regione, unica al mondo: Valle di Göreme con le sue chiese rupestri con affreschi dei secoli X e XI; visita al villaggio troglodita di Uçhisar, Valle dell'Amore. Durante il percorso, visita a una delle numerose città sotterranee della Cappadocia costruite dalle comunità cristiane per proteggersi dagli attacchi arabi. La città sotterranea conserva stalle, sale comuni, sala riunioni e piccole stanze per le famiglie. Tempo libero per visitare laboratori artigianali come tappeti, onice e pietre semipreziose. Alla sera, escursione opzionale per assistere a uno spettacolo di danze tipiche della regione.",
+            "pt": "4º Dia — Capadócia\nEXCURSÃO OPCIONAL DE BALÃO. Café da manhã no hotel. Dia dedicado a visitar esta fantástica região, única no mundo: Vale de Göreme com suas igrejas rupestres com pinturas dos séculos X e XI; visita à vila troglodita de Uçhisar, Vale do Amor. No caminho, visita a uma das inúmeras cidades subterrâneas da Capadócia construídas pelas comunidades cristãs para se protegerem dos ataques árabes. A cidade subterrânea preserva estábulos, salas comuns, sala de reuniões e pequenos cômodos para as famílias. Tempo livre para visitar oficinas artesanais como tapetes, ônix e pedras semipreciosas. À noite, excursão opcional para assistir a um espetáculo de danças típicas da região."
+          }
+        },
+        {
+          "day": "5",
+          "meals": {
+            "pt": "Café da manhã + Jantar",
+            "it": "Colazione + Cena",
+            "en": "Breakfast + Dinner",
+            "ar": "إفطار + عشاء",
+            "es": "Desayuno + Cena"
+          },
+          "description": {
+            "ar": "اليوم الخامس — كابادوكيا ← كوشاداسي\nإفطار وانطلاق إلى المطار لاستقلال الرحلة الجوية إلى إزمير. الوصول والنقل إلى الفندق المقرر.\nالوجبات: إفطار وعشاء",
+            "en": "Day 5 — Cappadocia → Kusadasi\nBreakfast and departure to the airport to take your flight to Izmir. Arrival and transfer to the designated hotel.\nMeals: Breakfast and dinner",
+            "es": "5 Día — Capadocia → Kusadasi\nDesayuno y salida hacia el aeropuerto para tomar su vuelo con destino a Esmirna. Llegada y traslado al hotel previsto.\nComidas: Desayuno y cena",
+            "it": "5° Giorno — Cappadocia → Kusadasi\nColazione e partenza per l'aeroporto per prendere il volo per Smirne. Arrivo e trasferimento all'hotel previsto.\nPasti: Colazione e cena",
+            "pt": "5º Dia — Capadócia → Kusadasi\nCafé da manhã e saída para o aeroporto para pegar seu voo para Esmirna. Chegada e transfer para o hotel previsto.\nRefeições: Café da manhã e jantar"
+          }
+        },
+        {
+          "day": "6",
+          "meals": {
+            "pt": "Café da manhã + Jantar",
+            "it": "Colazione + Cena",
+            "en": "Breakfast + Dinner",
+            "ar": "إفطار + عشاء",
+            "es": "Desayuno + Cena"
+          },
+          "description": {
+            "ar": "اليوم السادس — كوشاداسي ← باموكالي ← كوشاداسي\nإفطار وانطلاق إلى باموكالي ووقت حر في \"قلعة القطن\"، الفريدة في العالم مع المسابح الحرارية من أصل كلسي والشلالات المتحجرة. هيرابوليس هي إحدى المواقع الأثرية الكبرى في الأناضول، والتي تجعل المكان، إلى جانب جاذبية مسابح القطن، نقطة اهتمام كبير. حالياً تقع باموكالي بجوار مدينة هيرابوليس القديمة. تم إعلان الموقع كموقع تراث عالمي من قبل اليونسكو واعترف به كأحد أهم وأجذب المراكز السياحية في العالم. مدينة باموكالي تستمد اسمها الذي يعني \"قلعة القطن\" من تكوينات طبقات الحجر الجيري البيضاء. هيرابوليس تسمى أيضاً \"المدينة المقدسة\" بسبب المعابد والمباني الدينية العديدة. ما سيجذبنا بلا شك هو جمال الحجارة البيضاء (الترافرتين) التي تغطي جميع المسابح الطبيعية التي تشكلت بالمياه الحرارية أيضاً. عند الانتهاء، النقل إلى الفندق. العشاء والإقامة.\nالوجبات: إفطار وعشاء",
+            "en": "Day 6 — Kusadasi → Pamukkale → Kusadasi\nBreakfast and departure to Pamukkale and free time at the \"Cotton Castle\", unique in the world with its thermal pools of calcareous origin and petrified waterfalls. Hierapolis is one of the great archaeological sites of Anatolia, which, together with the attraction of the cotton pools, makes the place a point of great interest. Currently Pamukkale is located right next to the Ancient City of Hierapolis. The site was declared a UNESCO World Heritage Site and recognized as one of the most relevant and attractive tourist centers in the world. The city of Pamukkale gets its name meaning \"Cotton Castle\" from the formations of white limestone layers. Hierapolis is also called \"the Holy City\" due to numerous temples and religious buildings. What will undoubtedly attract us is the beauty of the white stones (travertines) that cover all the natural pools formed by the thermal water as well. At the end, transfer to the hotel. Dinner and accommodation.\nMeals: Breakfast and dinner",
+            "es": "6 Día — Kusadasi → Pamukkale → Kusadasi\nDesayuno y salida a Pamukkale y tiempo libre en el \"Castillo de Algodón\", único en el mundo con las piscinas termales de origen calcárea y las cascadas petrificadas. Hierápolis es uno de los grandes yacimientos de Anatolia, que, junto a la atracción de las piscinas de algodón, hacen del lugar un punto de gran interés. En la actualidad Pamukkale se encuentra ubicada justo al lado de la Antigua Ciudad de Hierápolis. La localidad fue declarada Patrimonio de la Humanidad por la UNESCO y reconocida como uno de los más relevantes y atractivos centros turísticos del mundo. La ciudad de Pamukkale recibe su nombre que significa \"Castillo de Algodón\" de las formaciones de capas blancas de piedra caliza. Hierápolis se llama también \"la Ciudad Sagrada\" debido a numerosos templos y edificios religiosos. Lo que nos atraerá sin duda la belleza de las piedras blancas (travertinos) que cubren todas las piscinas naturales que se formaron por el agua termal también. Al término, traslado al hotel. Cena y alojamiento.\nComidas: Desayuno y cena",
+            "it": "6° Giorno — Kusadasi → Pamukkale → Kusadasi\nColazione e partenza per Pamukkale e tempo libero al \"Castello di Cotone\", unico al mondo con le sue piscine termali di origine calcarea e le cascate pietrificate. Hierapolis è uno dei grandi siti archeologici dell'Anatolia che, insieme all'attrazione delle piscine di cotone, rendono il luogo di grande interesse. Oggi Pamukkale si trova proprio accanto all'Antica Città di Hierapolis. È stata dichiarata Patrimonio dell'Umanità dall'UNESCO e riconosciuta come uno dei centri turistici più rilevanti e attraenti del mondo. La città di Pamukkale prende il nome che significa \"Castello di Cotone\" dalle formazioni di strati bianchi di calcare. Hierapolis è anche chiamata \"la Città Santa\" per i suoi numerosi templi ed edifici religiosi. La bellezza delle pietre bianche (travertini) che ricoprono tutte le piscine naturali formate dall'acqua termale ci attrarrà senza dubbio. Al termine, trasferimento in hotel. Cena e sistemazione.\nPasti: Colazione e cena",
+            "pt": "6º Dia — Kusadasi → Pamukkale → Kusadasi\nCafé da manhã e partida para Pamukkale e tempo livre no \"Castelo de Algodão\", único no mundo com suas piscinas termais de origem calcária e cachoeiras petrificadas. Hierápolis é um dos grandes sítios arqueológicos da Anatólia que, junto com a atração das piscinas de algodão, tornam o local de grande interesse. Atualmente, Pamukkale está localizada ao lado da Antiga Cidade de Hierápolis. Foi declarada Patrimônio Mundial pela UNESCO e reconhecida como um dos centros turísticos mais relevantes e atraentes do mundo. A cidade de Pamukkale recebe seu nome que significa \"Castelo de Algodão\" das formações de camadas brancas de calcário. Hierápolis também é chamada de \"Cidade Sagrada\" devido aos seus numerosos templos e edifícios religiosos. A beleza das pedras brancas (travertinos) que cobrem todas as piscinas naturais formadas pela água termal nos atrairá sem dúvida. Ao final, transfer para o hotel. Jantar e hospedagem.\nRefeições: Café da manhã e jantar"
+          }
+        },
+        {
+          "day": "7",
+          "meals": {
+            "pt": "Café da manhã + Jantar",
+            "it": "Colazione + Cena",
+            "en": "Breakfast + Dinner",
+            "ar": "إفطار + عشاء",
+            "es": "Desayuno + Cena"
+          },
+          "description": {
+            "ar": "اليوم السابع — كوشاداسي ← أفسس ← إزمير أو كوشاداسي\nإفطار في الفندق. الانطلاق لزيارة أطلال أفسس، التي كانت خامس أكبر مدينة في العصر الروماني. خلال زيارتنا سنستمتع بمشاهدة مكتبة سيلسوس الشهيرة بعد الإسكندرية، والمسرح وبعض المعابد الرومانية والهلنستية، والأوديون، ومعبد هادريان، وبيت الحب، والأغورا، وشارع الرخام والمسرح أيضاً. بعد ذلك، سنزور منزل السيدة مريم العذراء حيث يُعتقد أن مريم وصلت إلى أفسس مع القديس يوحنا وعاشت هناك حتى انتقالها (حسب العقيدة الكاثوليكية) أو رقادها (حسب المعتقدات الأرثوذكسية). نظراً لأن هذا البيت هو مكان حج، يزوره العديد من السياح المسيحيين غالباً على مدار العام. بعد الظهر، نتوقف في مركز لإنتاج الجلود. نظراً لأن أفسس كانت مركزاً للدباغة منذ العصور القديمة، ستتاح لنا فرصة شراء بعض الملابس الجلدية بأفضل الأسعار. سنشاهد أيضاً عرض أزياء حيث سيتم عرض بعض من أكثر الجواكيت أناقة في البلاد. ثم إلى الفندق. العشاء والإقامة في الفندق.\nالوجبات: إفطار وعشاء",
+            "en": "Day 7 — Kusadasi → Ephesus → Izmir or Kusadasi\nBreakfast at the hotel. Departure to visit the ruins of Ephesus, which was the fifth great city of the Roman era. During our visit we will appreciate the famous Library of Celsus after Alexandria, the theater and some Roman and Hellenic temples, the Odeon, the Temple of Hadrian, the House of Love, the Agora, Marble Street and the Theater as well. Next, we will visit the House of the Virgin Mary where it is supposed that Mary came to Ephesus together with Saint John and lived there until her Assumption (according to Catholic doctrine) or Dormition (according to Orthodox beliefs). As this house is a place of pilgrimage, it is visited by numerous Christian tourists often throughout the year. In the afternoon we stop at a leather production center. Since Ephesus has been a leather tanning center since ancient times, we will have the opportunity to buy some leather clothes at the most reasonable price. We will also see a fashion show in which some of the most elegant jackets in the country will be displayed. Then to your hotel. Dinner and accommodation at the hotel.\nMeals: Breakfast and dinner",
+            "es": "7 Día — Kusadasi → Éfeso → Esmirna o Kusadasi\nDesayuno en el hotel. Salida para visitar las ruinas de Éfeso, fue la quinta gran ciudad de la época Romana. Durante nuestra visita apreciaremos la famosa biblioteca de Celso después de Alejandría, el teatro y algunos templos romanos y helenos, el Odeón, el Templo de Adriano, la Casa de Amor, el Ágora, la calle de Mármol y el Teatro también. A continuación, visitaremos la casa de la Virgen María donde se supone que María llegó a Éfeso junto con San Juan y vivió allí hasta su Asunción (según la doctrina católica) o Dormición (según las creencias ortodoxas). Como esta casa es un lugar de peregrinación se visita por numerosos turistas cristianos a menudo durante el año. Por la tarde paramos en un centro de producción de cuero. Como Éfeso es un centro de piel de curtiduría desde la época antigua tendremos posibilidad de comprar algunas ropas de cuero con el precio más razonable. También veremos un desfile de moda en el que nos expondrán unas de las chaquetas más elegantes del país. A continuación, a su hotel. Cena y alojamiento en el hotel.\nComidas: Desayuno y cena",
+            "it": "7° Giorno — Kusadasi → Efeso → Smirne o Kusadasi\nColazione in hotel. Partenza per visitare le rovine di Efeso, che fu la quinta città più grande dell'epoca romana. Durante la nostra visita apprezzeremo la famosa Biblioteca di Celso dopo Alessandria, il teatro e alcuni templi romani ed ellenici, l'Odeon, il Tempio di Adriano, la Casa dell'Amore, l'Agorà, la Via del Marmo e anche il Teatro. Successivamente, visiteremo la Casa della Vergine Maria, dove si ritiene che Maria sia giunta a Efeso insieme a San Giovanni e vi abbia vissuto fino alla sua Assunzione (secondo la dottrina cattolica) o Dormizione (secondo le credenze ortodosse). Poiché questa casa è un luogo di pellegrinaggio, è visitata da numerosi turisti cristiani durante tutto l'anno. Nel pomeriggio, sosta in un centro di produzione di pelletteria. Poiché Efeso è un centro di concia delle pelli fin dall'antichità, avremo l'opportunità di acquistare abbigliamento in pelle al prezzo più ragionevole. Assisteremo anche a una sfilata di moda in cui verranno esposte alcune delle giacche più eleganti del paese. Successivamente, al vostro hotel. Cena e sistemazione in hotel.\nPasti: Colazione e cena",
+            "pt": "7º Dia — Kusadasi → Éfeso → Esmirna ou Kusadasi\nCafé da manhã no hotel. Saída para visitar as ruínas de Éfeso, que foi a quinta grande cidade da época romana. Durante nossa visita apreciaremos a famosa Biblioteca de Celso depois de Alexandria, o teatro e alguns templos romanos e helênicos, o Odeão, o Templo de Adriano, a Casa do Amor, a Ágora, a Rua de Mármore e também o Teatro. Em seguida, visitaremos a Casa da Virgem Maria, onde se supõe que Maria chegou a Éfeso junto com São João e ali viveu até sua Assunção (segundo a doutrina católica) ou Dormição (segundo as crenças ortodoxas). Como esta casa é um local de peregrinação, é visitada por numerosos turistas cristãos frequentemente durante o ano. À tarde, paramos em um centro de produção de couro. Como Éfeso é um centro de curtume desde a antiguidade, teremos a oportunidade de comprar algumas roupas de couro com o preço mais razoável. Também veremos um desfile de moda no qual serão exibidas algumas das jaquetas mais elegantes do país. Em seguida, ao seu hotel. Jantar e hospedagem no hotel.\nRefeições: Café da manhã e jantar"
+          }
+        },
+        {
+          "day": "8",
+          "meals": {
+            "pt": "Café da manhã",
+            "it": "Colazione",
+            "en": "Breakfast",
+            "ar": "إفطار",
+            "es": "Desayuno"
+          },
+          "description": {
+            "ar": "اليوم الثامن — كوشاداسي أو إزمير ← إسطنبول\nإفطار وانطلاق إلى الميناء لاستقلال الرحلة الجوية إلى إسطنبول. الوصول والإقامة في الفندق.\nالوجبات: إفطار",
+            "en": "Day 8 — Kusadasi or Izmir → Istanbul\nBreakfast and departure to the port to board the flight to Istanbul. Arrival and accommodation at the hotel.\nMeals: Breakfast",
+            "es": "8 Día — Kusadasi o Esmirna → Estambul\nDesayuno y salida hacia el puerto para abordar el vuelo a Estambul. Llegada y alojamiento en el hotel.\nComidas: Desayuno",
+            "it": "8° Giorno — Kusadasi o Smirne → Istanbul\nColazione e partenza per il porto per imbarcarsi sul volo per Istanbul. Arrivo e sistemazione in hotel.\nPasti: Colazione",
+            "pt": "8º Dia — Kusadasi ou Esmirna → Istambul\nCafé da manhã e saída para o porto para embarcar no voo para Istambul. Chegada e hospedagem no hotel.\nRefeições: Café da manhã"
+          }
+        },
+        {
+          "day": "9",
+          "meals": {
+            "pt": "Café da manhã",
+            "it": "Colazione",
+            "en": "Breakfast",
+            "ar": "إفطار",
+            "es": "Desayuno"
+          },
+          "description": {
+            "ar": "اليوم التاسع — المغادرة من إسطنبول\nإفطار في الفندق. في الوقت المتفق عليه، النقل إلى المطار.\nالوجبات: إفطار (طالما أن موعد إقلاع الرحلة يسمح بذلك)\nنهاية خدماتنا.",
+            "en": "Day 9 — Departure from Istanbul\nBreakfast at the hotel. At the agreed time, transfer to the airport.\nMeals: Breakfast (provided the flight departure schedule allows it)\nEND OF OUR SERVICES.",
+            "es": "9 Día — Salida de Estambul\nDesayuno en el hotel. En la hora combinada, traslado al aeropuerto.\nComidas: Desayuno (siempre y cuando sea posible por cuenta del horario de salida del vuelo)\nFIN DE NUESTROS SERVICIOS.",
+            "it": "9° Giorno — Partenza da Istanbul\nColazione in hotel. All'orario concordato, trasferimento in aeroporto.\nPasti: Colazione (sempre che l'orario di partenza del volo lo permetta)\nFINE DEI NOSTRI SERVIZI.",
+            "pt": "9º Dia — Partida de Istambul\nCafé da manhã no hotel. No horário combinado, transfer para o aeroporto.\nRefeições: Café da manhã (desde que o horário de partida do voo permita)\nFIM DOS NOSSOS SERVIÇOS."
+          }
+        }
+      ]
     }
   ]
 }
