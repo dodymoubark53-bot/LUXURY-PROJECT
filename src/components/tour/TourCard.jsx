@@ -10,17 +10,9 @@ const marketFlag = (market) => {
   return flags[market] ?? '🌍';
 };
 
-// Shared trip card used by destination pages (single-country) and the
-// multi-country programs page. Multi-country-only decorations (multiple
-// country flag chips, an optional highlights mini-list, a top-right badge,
-// and a custom link base) are rendered only when the corresponding props
-// are provided, so existing single-country cards stay visually identical.
 const TourCard = ({
   tour,
   linkBase = '/tours',
-  countries,
-  flags,
-  highlights,
 }) => {
   const { t } = useTranslation();
   const { formatPrice } = useCurrency();
@@ -28,9 +20,6 @@ const TourCard = ({
   const translatedDuration = t(`data.${tour.duration}`, tour.duration);
   const durationLabel = translatedDuration.split('/')[0].trim();
 
-  // Multi-country tours pass {countries}/{flags}; single-country tours use
-  // tour.market for a single flag. Keep the two paths visually consistent.
-  const isMultiCountry = Array.isArray(countries) && countries.length > 0;
   const detailUrl = `${linkBase}/${tour.slug}`;
 
   return (
@@ -45,18 +34,16 @@ const TourCard = ({
       {/* Image as Link */}
       <Link to={detailUrl} className="block relative h-[240px] overflow-hidden">
         <div className="absolute top-4 left-4 z-10 bg-obsidian-900/80 backdrop-blur-md text-gold-500 text-caption px-4 py-1.5 rounded-full border border-gold-500/30 shadow-glass">
-          {tour.minPax ? `${tour.minPax} · ` : ''}{isMultiCountry ? `${tour.days}d` : durationLabel}
+          {tour.minPax ? `${tour.minPax} · ` : ''}{durationLabel}
         </div>
 
-        {/* Badge (Best Seller / Popular / …) — only when the tour has one */}
         {tour.badge && (
           <div className="absolute top-4 right-4 z-10 bg-gold-500 text-obsidian-900 text-caption font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
             {t(`data.${tour.badge}`, tour.badge)}
           </div>
         )}
 
-        {/* Single market flag — only on single-country cards */}
-        {!isMultiCountry && tour.market && (
+        {tour.market && (
           <div className="absolute top-4 right-4 z-10 bg-obsidian-900/60 backdrop-blur-md text-base px-2.5 py-1 rounded-full border border-white/10 shadow-glass select-none">
             {marketFlag(tour.market)}
           </div>
@@ -70,21 +57,6 @@ const TourCard = ({
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-obsidian-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-        {/* Floating multi-country flag chips — bottom of the image */}
-        {isMultiCountry && (
-          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-1.5">
-            {countries.map((country, idx) => (
-              <span
-                key={idx}
-                className="bg-obsidian-950/80 backdrop-blur-sm border border-gold-500/20 text-ivory-50 text-[11px] px-2 py-0.5 rounded-full flex items-center gap-1.5 shadow-glass"
-              >
-                <span>{flags?.[idx]}</span>
-                <span className="font-medium">{t(`data.${country}`, country)}</span>
-              </span>
-            ))}
-          </div>
-        )}
       </Link>
 
       {/* Content */}
@@ -110,22 +82,6 @@ const TourCard = ({
         <p className="text-body-sm text-obsidian-500 line-clamp-3 mb-4 flex-grow">
           {t(`data.${tour.description}`, tour.description)}
         </p>
-
-
-
-        {/* Optional key-highlights mini-list (multi-country cards) */}
-        {Array.isArray(highlights || tour.highlights) && (highlights || tour.highlights).length > 0 && (
-          <div className="border-t border-gold-500/10 pt-4 mb-4">
-            <ul className="grid grid-cols-1 gap-y-1.5">
-              {(highlights || tour.highlights).slice(0, 3).map((hl, idx) => (
-                <li key={idx} className="text-[12px] text-obsidian-500 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold-500 shrink-0"></span>
-                  <span className="truncate">{t(`data.${hl}`, hl)}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
 
         {/* Footer */}
         <div className="flex items-center justify-between pt-4 border-t border-gold-500/10 mt-auto">

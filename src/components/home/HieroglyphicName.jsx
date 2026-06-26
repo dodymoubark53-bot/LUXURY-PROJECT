@@ -86,13 +86,7 @@ const HieroglyphicName = () => {
           max_tokens: 1000,
           messages: [{
             role: 'user', content:
-              `You are an expert Egyptologist and linguist.
-The user entered their name in ${LANG_NAMES[currentLang]}: "${trimmed}".
-Identify the phonetic pronunciation of this name, then transliterate those sounds into Egyptian hieroglyphics.
-Return ONLY a JSON object, no markdown, no backticks:
-{"glyphs":"hieroglyphic Unicode chars wrapped in 𓍹...𓍺","translit":"standard Egyptological transliteration like d-i-n-ꜣ","note":"one short interesting fact about this name max 10 words"}
-Use real Unicode Egyptian hieroglyphs U+13000–U+1342F. Always wrap glyphs in cartouche 𓍹 𓍺.
-Key mappings: a=𓄿 b=𓃀 d=𓂧 e/i=𓇋 f=𓆑 g=𓎼 h=𓉔 k=𓎡 l=𓃭 m=𓅓 n=𓈖 o=𓂝 p=𓊪 r=𓂋 s=𓋴 t=𓏏 u/w=𓅱 y=𓇌 z=𓊃 sh=𓌀 kh=𓐍`
+              `You are an expert Egyptologist and linguist.\nThe user entered their name in ${LANG_NAMES[currentLang]}: "${trimmed}".\nIdentify the phonetic pronunciation of this name, then transliterate those sounds into Egyptian hieroglyphics.\nReturn ONLY a JSON object, no markdown, no backticks:\n{"glyphs":"hieroglyphic Unicode chars wrapped in 𓍹...𓍺","translit":"standard Egyptological transliteration like d-i-n-ꜣ","note":"one short interesting fact about this name max 10 words"}\nUse real Unicode Egyptian hieroglyphs U+13000–U+1342F. Always wrap glyphs in cartouche 𓍹 𓍺.\nKey mappings: a=𓄿 b=𓃀 d=𓂧 e/i=𓇋 f=𓆑 g=𓎼 h=𓉔 k=𓎡 l=𓃭 m=𓅓 n=𓈖 o=𓂝 p=𓊪 r=𓂋 s=𓋴 t=𓏏 u/w=𓅱 y=𓇌 z=𓊃 sh=𓌀 kh=𓐍`
           }]
         })
       });
@@ -157,27 +151,44 @@ Key mappings: a=𓄿 b=𓃀 d=𓂧 e/i=𓇋 f=𓆑 g=𓎼 h=𓉔 k=𓎡 l=𓃭 m
         <div className="absolute bottom-0" style={{ left: '8%', borderLeft: '45px solid transparent', borderRight: '45px solid transparent', borderBottom: '80px solid #4A2E10', opacity: 0.3 }} />
       </div>
 
-      {/* Content: Horus full background left + Card overlay */}
+      {/* Content: Horus anchored left + Card overlay */}
       <div className="relative z-10 flex-1 flex items-center w-full">
-        {/* Horus - full background anchored left */}
+        {/* Horus - anchored to right with small gap */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="absolute inset-0 flex items-center justify-start overflow-hidden pl-1 lg:pl-2"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: '-500px',
+            bottom: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+            paddingRight: '10px',
+            pointerEvents: 'none',
+            zIndex: 0,
+          }}
         >
           <img
             src="/imgs/hero-hiero.png"
             alt="Horus"
-            className="h-full w-full object-contain object-left max-h-[98%] drop-shadow-[0_0_150px_rgba(201,168,76,0.5)]"
-            style={{ animation: 'hieroSpinOnce 1s ease-out forwards, hieroFloat 6s ease-in-out 1.2s infinite' }}
+            className="drop-shadow-[0_0_150px_rgba(201,168,76,0.5)]"
+            style={{
+              height: '98%',
+              width: 'auto',
+              display: 'block',
+              animation: 'hieroSpinOnce 1s ease-out forwards, hieroFloat 6s ease-in-out 1.2s infinite',
+            }}
           />
         </motion.div>
 
-        {/* Card overlay on the right */}
+        {/* Card overlay on the left */}
         <div className="container mx-auto px-6 w-full relative z-10">
-          <div className="flex justify-end lg:mr-8">
+          <div className="flex justify-start lg:ml-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -185,153 +196,153 @@ Key mappings: a=𓄿 b=𓃀 d=𓂧 e/i=𓇋 f=𓆑 g=𓎼 h=𓉔 k=𓎡 l=𓃭 m
               transition={{ duration: 0.8 }}
               className="w-full max-w-[480px] lg:max-w-[520px]"
             >
-            <div
-              className="relative w-full max-w-[480px] lg:max-w-[520px]"
-              style={{
-                backgroundImage: 'url(/imgs/form-phronic.jpeg)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                border: '2px solid rgba(201, 168, 76, 0.5)',
-                borderRadius: '4px',
-                padding: '40px 36px 36px',
-                boxShadow: '0 0 60px rgba(201, 168, 76, 0.2), 0 32px 80px rgba(0, 0, 0, 0.8)',
-              }}
-            >
-              <div className="absolute" style={{ top: '10px', left: '10px', width: '18px', height: '18px', borderColor: 'rgba(201, 168, 76, 0.6)', borderStyle: 'solid', borderWidth: '2px 0 0 2px' }} />
-              <div className="absolute" style={{ bottom: '10px', right: '10px', width: '18px', height: '18px', borderColor: 'rgba(201, 168, 76, 0.6)', borderStyle: 'solid', borderWidth: '0 2px 2px 0' }} />
+              <div
+                className="relative w-full max-w-[480px] lg:max-w-[520px]"
+                style={{
+                  backgroundImage: 'url(/imgs/form-phronic.jpeg)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  border: '2px solid rgba(201, 168, 76, 0.5)',
+                  borderRadius: '4px',
+                  padding: '40px 36px 36px',
+                  boxShadow: '0 0 60px rgba(201, 168, 76, 0.2), 0 32px 80px rgba(0, 0, 0, 0.8)',
+                }}
+              >
+                <div className="absolute" style={{ top: '10px', left: '10px', width: '18px', height: '18px', borderColor: 'rgba(201, 168, 76, 0.6)', borderStyle: 'solid', borderWidth: '2px 0 0 2px' }} />
+                <div className="absolute" style={{ bottom: '10px', right: '10px', width: '18px', height: '18px', borderColor: 'rgba(201, 168, 76, 0.6)', borderStyle: 'solid', borderWidth: '0 2px 2px 0' }} />
 
-              <div className="relative z-10">
-                <div className="text-center text-[38px] mb-[6px]" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.9)) drop-shadow(0 0 8px rgba(0,0,0,0.8))' }}>
-                  {EYE}
-                </div>
+                <div className="relative z-10">
+                  <div className="text-center text-[38px] mb-[6px]" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.9)) drop-shadow(0 0 8px rgba(0,0,0,0.8))' }}>
+                    {EYE}
+                  </div>
 
-                <div className="text-[22px] font-bold tracking-[0.18em] text-center uppercase mb-[4px]" style={{ color: '#1A0A00', textShadow: '0 1px 0 rgba(255,200,80,0.4), 1px 1px 0 rgba(255,200,80,0.2)', WebkitTextStroke: '0.5px rgba(100,50,0,0.3)', fontFamily: 'Georgia, serif' }}>
-                  Hieroglyphic
-                </div>
-                <div className="text-center text-[11px] font-bold tracking-[0.2em] uppercase mb-[24px]" style={{ color: '#2A1200', textShadow: '0 1px 2px rgba(255,220,100,0.3)' }}>
-                  Name Translator &middot; Ancient Egypt
-                </div>
+                  <div className="text-[22px] font-bold tracking-[0.18em] text-center uppercase mb-[4px]" style={{ color: '#1A0A00', textShadow: '0 1px 0 rgba(255,200,80,0.4), 1px 1px 0 rgba(255,200,80,0.2)', WebkitTextStroke: '0.5px rgba(100,50,0,0.3)', fontFamily: 'Georgia, serif' }}>
+                    Hieroglyphic
+                  </div>
+                  <div className="text-center text-[11px] font-bold tracking-[0.2em] uppercase mb-[24px]" style={{ color: '#2A1200', textShadow: '0 1px 2px rgba(255,220,100,0.3)' }}>
+                    Name Translator &middot; Ancient Egypt
+                  </div>
 
-                <div className="text-[10px] font-bold tracking-[0.2em] uppercase mb-[10px] text-center" style={{ color: '#1A0A00', textShadow: '0 1px 2px rgba(255,200,80,0.3)' }}>
-                  Choose your language
-                </div>
-                <div className="flex gap-[6px] flex-wrap justify-center mb-[22px]">
-                  {LANGUAGES.map(l => (
-                    <button
-                      key={l.code}
-                      onClick={() => { setCurrentLang(l.code); setName(''); setResult(null); setError(null); }}
-                      className="px-[10px] py-[7px] text-[11px] font-bold tracking-[0.08em] whitespace-nowrap transition-all"
-                      style={{
-                        background: currentLang === l.code ? 'rgba(201, 168, 76, 0.85)' : 'rgba(255, 240, 180, 0.6)',
-                        border: currentLang === l.code ? '1.5px solid #7A4F00' : '1.5px solid rgba(100, 60, 0, 0.5)',
-                        borderRadius: '3px',
-                        color: currentLang === l.code ? '#0F0500' : '#2A1000',
-                        fontFamily: 'Georgia, serif',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      {l.label}
-                    </button>
-                  ))}
-                </div>
+                  <div className="text-[10px] font-bold tracking-[0.2em] uppercase mb-[10px] text-center" style={{ color: '#1A0A00', textShadow: '0 1px 2px rgba(255,200,80,0.3)' }}>
+                    Choose your language
+                  </div>
+                  <div className="flex gap-[6px] flex-wrap justify-center mb-[22px]">
+                    {LANGUAGES.map(l => (
+                      <button
+                        key={l.code}
+                        onClick={() => { setCurrentLang(l.code); setName(''); setResult(null); setError(null); }}
+                        className="px-[10px] py-[7px] text-[11px] font-bold tracking-[0.08em] whitespace-nowrap transition-all"
+                        style={{
+                          background: currentLang === l.code ? 'rgba(201, 168, 76, 0.85)' : 'rgba(255, 240, 180, 0.6)',
+                          border: currentLang === l.code ? '1.5px solid #7A4F00' : '1.5px solid rgba(100, 60, 0, 0.5)',
+                          borderRadius: '3px',
+                          color: currentLang === l.code ? '#0F0500' : '#2A1000',
+                          fontFamily: 'Georgia, serif',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        {l.label}
+                      </button>
+                    ))}
+                  </div>
 
-                <div className="flex items-center gap-[10px] mb-[20px]">
-                  <div className="flex-1 h-[1.5px]" style={{ background: 'linear-gradient(to right, transparent, rgba(80,40,0,0.5), transparent)' }} />
-                  <span style={{ color: '#C9A84C', fontSize: '12px', opacity: 0.6 }}>{SNAKE}</span>
-                  <div className="flex-1 h-[1.5px]" style={{ background: 'linear-gradient(to right, transparent, rgba(80,40,0,0.5), transparent)' }} />
-                </div>
+                  <div className="flex items-center gap-[10px] mb-[20px]">
+                    <div className="flex-1 h-[1.5px]" style={{ background: 'linear-gradient(to right, transparent, rgba(80,40,0,0.5), transparent)' }} />
+                    <span style={{ color: '#C9A84C', fontSize: '12px', opacity: 0.6 }}>{SNAKE}</span>
+                    <div className="flex-1 h-[1.5px]" style={{ background: 'linear-gradient(to right, transparent, rgba(80,40,0,0.5), transparent)' }} />
+                  </div>
 
-                <div
-                  className="text-[10px] font-bold tracking-[0.15em] uppercase mb-[10px]"
-                  style={{ color: '#1A0A00', textShadow: '0 1px 2px rgba(255,200,80,0.3)', textAlign: 'left', direction: 'ltr' }}
-                >
-                  Enter your name
-                </div>
-                <div className="relative mb-[18px]">
-                  <span className="absolute top-1/2 -translate-y-1/2 text-[18px] pointer-events-none left-[14px]" style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.6))' }}>
-                    {OWL}
-                  </span>
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    placeholder={langInfo.placeholder}
-                    maxLength={30}
-                    className="outline-none"
-                    style={{
-                      width: '100%',
-                      background: 'rgba(255, 245, 200, 0.7)',
-                      border: '1.5px solid rgba(100, 60, 0, 0.4)',
-                      borderRadius: '3px',
-                      fontFamily: 'Georgia, serif',
-                      fontSize: '16px',
-                      color: '#1A0800',
-                      fontWeight: 'bold',
-                      letterSpacing: '0.1em',
-                      padding: '13px 16px 13px 44px',
-                      textAlign: 'left',
-                      direction: 'ltr',
-                    }}
-                  />
-                </div>
-
-                <button
-                  onClick={doTranslate}
-                  disabled={loading}
-                  className="w-full py-[13px] text-[12px] font-bold tracking-[0.22em] uppercase cursor-pointer disabled:opacity-50 border-none"
-                  style={{
-                    background: 'linear-gradient(135deg, #5A3A00, #C9A84C, #5A3A00)',
-                    borderRadius: '3px',
-                    color: '#1A0800',
-                    fontFamily: 'Georgia, serif',
-                    boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
-                  }}
-                >
-                  {INSCRIBE} Inscribe My Name {INSCRIBE}
-                </button>
-
-                {(result || loading) && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mt-[24px] p-[22px_18px] text-center rounded-[3px]"
-                    style={{ background: 'rgba(255, 245, 190, 0.65)', border: '1.5px solid rgba(100, 60, 0, 0.35)' }}
+                  <div
+                    className="text-[10px] font-bold tracking-[0.15em] uppercase mb-[10px]"
+                    style={{ color: '#1A0A00', textShadow: '0 1px 2px rgba(255,200,80,0.3)', textAlign: 'left', direction: 'ltr' }}
                   >
-                    {loading && (
-                      <div className="text-[13px] font-bold tracking-[0.15em]" style={{ color: '#3D1F00', animation: 'hieroPulse 1s infinite' }}>
-                        &#10267; Consulting the scribes&hellip;
-                      </div>
-                    )}
-                    {result && !loading && (
-                      <>
-                        <div className="text-[9px] font-bold tracking-[0.3em] uppercase mb-[14px]" style={{ color: '#2A1200' }}>
-                          Your name in the sacred script
+                    Enter your name
+                  </div>
+                  <div className="relative mb-[18px]">
+                    <span className="absolute top-1/2 -translate-y-1/2 text-[18px] pointer-events-none left-[14px]" style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.6))' }}>
+                      {OWL}
+                    </span>
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      placeholder={langInfo.placeholder}
+                      maxLength={30}
+                      className="outline-none"
+                      style={{
+                        width: '100%',
+                        background: 'rgba(255, 245, 200, 0.7)',
+                        border: '1.5px solid rgba(100, 60, 0, 0.4)',
+                        borderRadius: '3px',
+                        fontFamily: 'Georgia, serif',
+                        fontSize: '16px',
+                        color: '#1A0800',
+                        fontWeight: 'bold',
+                        letterSpacing: '0.1em',
+                        padding: '13px 16px 13px 44px',
+                        textAlign: 'left',
+                        direction: 'ltr',
+                      }}
+                    />
+                  </div>
+
+                  <button
+                    onClick={doTranslate}
+                    disabled={loading}
+                    className="w-full py-[13px] text-[12px] font-bold tracking-[0.22em] uppercase cursor-pointer disabled:opacity-50 border-none"
+                    style={{
+                      background: 'linear-gradient(135deg, #5A3A00, #C9A84C, #5A3A00)',
+                      borderRadius: '3px',
+                      color: '#1A0800',
+                      fontFamily: 'Georgia, serif',
+                      boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
+                    }}
+                  >
+                    {INSCRIBE} Inscribe My Name {INSCRIBE}
+                  </button>
+
+                  {(result || loading) && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="mt-[24px] p-[22px_18px] text-center rounded-[3px]"
+                      style={{ background: 'rgba(255, 245, 190, 0.65)', border: '1.5px solid rgba(100, 60, 0, 0.35)' }}
+                    >
+                      {loading && (
+                        <div className="text-[13px] font-bold tracking-[0.15em]" style={{ color: '#3D1F00', animation: 'hieroPulse 1s infinite' }}>
+                          &#10267; Consulting the scribes&hellip;
                         </div>
-                        <div className="text-[42px] leading-[1.4] tracking-[6px] mb-[12px]" style={{ color: '#3D1F00', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))', wordBreak: 'break-all' }}>
-                          {result.glyphs}
+                      )}
+                      {result && !loading && (
+                        <>
+                          <div className="text-[9px] font-bold tracking-[0.3em] uppercase mb-[14px]" style={{ color: '#2A1200' }}>
+                            Your name in the sacred script
+                          </div>
+                          <div className="text-[42px] leading-[1.4] tracking-[6px] mb-[12px]" style={{ color: '#3D1F00', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))', wordBreak: 'break-all' }}>
+                            {result.glyphs}
+                          </div>
+                          <div className="text-[12px] font-bold tracking-[0.12em] italic mb-[6px]" style={{ color: '#4A2800' }}>
+                            {result.translit}
+                          </div>
+                          <div className="text-[11px] tracking-[0.08em]" style={{ color: '#3A1F00' }}>
+                            {result.note}
+                          </div>
+                          <div className="mt-[10px] text-[13px] font-bold tracking-[0.2em]" style={{ color: '#5C3A00' }}>
+                            &#10022; {name.toUpperCase()} &#10022;
+                          </div>
+                        </>
+                      )}
+                      {error && (
+                        <div className="text-[12px] font-bold tracking-[0.1em]" style={{ color: '#8B0000' }}>
+                          {error}
                         </div>
-                        <div className="text-[12px] font-bold tracking-[0.12em] italic mb-[6px]" style={{ color: '#4A2800' }}>
-                          {result.translit}
-                        </div>
-                        <div className="text-[11px] tracking-[0.08em]" style={{ color: '#3A1F00' }}>
-                          {result.note}
-                        </div>
-                        <div className="mt-[10px] text-[13px] font-bold tracking-[0.2em]" style={{ color: '#5C3A00' }}>
-                          &#10022; {name.toUpperCase()} &#10022;
-                        </div>
-                      </>
-                    )}
-                    {error && (
-                      <div className="text-[12px] font-bold tracking-[0.1em]" style={{ color: '#8B0000' }}>
-                        {error}
-                      </div>
-                    )}
-                  </motion.div>
-                )}
+                      )}
+                    </motion.div>
+                  )}
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -359,4 +370,3 @@ Key mappings: a=𓄿 b=𓃀 d=𓂧 e/i=𓇋 f=𓆑 g=𓎼 h=𓉔 k=𓎡 l=𓃭 m
 };
 
 export default HieroglyphicName;
-
