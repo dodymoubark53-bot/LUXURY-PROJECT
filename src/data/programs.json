@@ -7579,6 +7579,345 @@
             "it": "Giorno 4: Sharm El Sheikh / Il Cairo. Colazione in hotel e partenza per l'Aeroporto di Sharm El Sheikh per imbarcarsi sul volo diretto all'Aeroporto Internazionale del Cairo. Ritorno al vostro paese d'origine. Fine dei nostri servizi.",
             "pt": "4º Dia: Sharm El Sheikh / Cairo. Café da manhã no Hotel e saída para o Aeroporto de Sharm El Sheikh, embarque em voo com destino ao Aeroporto Internacional do Cairo. Retorno ao seu país de origem. Fim dos nossos serviços."
           }
+        },
+        {
+          "id": "EGY-01",
+          "slug": "egy-01-cairo-and-athens",
+          "code": {
+            "es": "EGY-01",
+            "en": "EGY-01",
+            "pt": "EGY-01",
+            "it": "EGY-01",
+            "ar": "EGY-01"
+          },
+          "name": {
+            "es": "Cairo y Atenas 11 Días",
+            "en": "Cairo and Athens 11 Days",
+            "pt": "Cairo e Atenas 11 Dias",
+            "it": "Il Cairo e Atene 11 Giorni",
+            "ar": "القاهرة وأثينا 11 يومًا"
+          },
+          "duration": {
+            "es": "11 días / 10 noches",
+            "en": "11 days / 10 nights",
+            "pt": "11 dias / 10 noites",
+            "it": "11 giorni / 10 notti",
+            "ar": "11 أيام / 10 ليالٍ"
+          },
+          "minPax": {
+            "es": "2 Pax",
+            "en": "2 Pax",
+            "pt": "2 Pax",
+            "it": "2 Pax",
+            "ar": "فردان"
+          },
+          "highlights": {
+            "es": [
+              "Visita a las Pirámides de Giza y la Gran Esfinge",
+              "Navegación en crucero por el Nilo entre Aswan y Luxor",
+              "Exploración del Valle de los Reyes y los templos de Karnak y Luxor",
+              "Acrópolis de Atenas y el Partenón",
+              "Crucero de un día por las islas del Golfo Sarónico: Hidra, Poros y Egina"
+            ],
+            "en": [
+              "Visit to the Pyramids of Giza and the Great Sphinx",
+              "Nile Cruise sailing between Aswan and Luxor",
+              "Exploration of the Valley of the Kings and the temples of Karnak and Luxor",
+              "Acropolis of Athens and the Parthenon",
+              "One-day cruise to the Saronic Gulf islands: Hydra, Poros, and Aegina"
+            ],
+            "pt": [
+              "Visita às Pirâmides de Giza e à Grande Esfinge",
+              "Cruzeiro pelo Nilo entre Aswan e Luxor",
+              "Exploração do Vale dos Reis e dos templos de Karnak e Luxor",
+              "Acrópole de Atenas e o Partenon",
+              "Cruzeiro de um dia pelas ilhas do Golfo Sarónico: Hydra, Poros e Egina"
+            ],
+            "it": [
+              "Visita alle Piramidi di Giza e alla Grande Sfinge",
+              "Crociera sul Nilo tra Aswan e Luxor",
+              "Esplorazione della Valle dei Re e dei templi di Karnak e Luxor",
+              "Acropoli di Atene e il Partenone",
+              "Crociera di un giorno alle isole del Golfo Saronico: Idra, Poros ed Egina"
+            ],
+            "ar": [
+              "زيارة أهرامات الجيزة وأبو الهول",
+              "رحلة كروز النيل بين أسوان والأقصر",
+              "استكشاف وادي الملوك ومعبدي الكرنك والأقصر",
+              "أكروبوليس أثينا والبارثينون",
+              "رحلة بحرية ليوم واحد إلى جزر الخليج الساروني: هيدرا وبوروس وإيجينا"
+            ]
+          },
+          "includes": {
+            "es": [
+              "03 noches de Crucero Nilo en pensión completa sin bebidas",
+              "03 noches en El Cairo en alojamiento y desayuno",
+              "04 noches en Atenas en alojamiento y desayuno",
+              "Asistencia en el aeropuerto",
+              "Guía de habla hispana durante las visitas",
+              "Vuelos internacionales y domésticos CAI – ASW - LXR - CAI",
+              "Visitas, entradas y traslados según itinerario"
+            ],
+            "en": [
+              "03 nights of Nile Cruise on a full board basis without drinks",
+              "03 nights in Cairo on a Bed and Breakfast basis",
+              "04 nights in Athens on a Bed and Breakfast basis",
+              "Assistance at the airport",
+              "Spanish-speaking guide during the visits",
+              "International and domestic flights CAI – ASW - LXR - CAI",
+              "Visits, entrance fees, and transfers according to the itinerary"
+            ],
+            "pt": [
+              "03 noites de Cruzeiro pelo Nilo em regime de pensão completa sem bebidas",
+              "03 noites no Cairo em regime de Hospedagem e Café da manhã",
+              "04 noites em Atenas regime de Hospedagem e Café da manhã",
+              "Assistência no aeroporto",
+              "Guia de língua espanhola durante as visitas",
+              "Voos internacionais e domésticos CAI – ASW - LXR - CAI",
+              "Visitas, entradas e traslados segundo itinerário"
+            ],
+            "it": [
+              "03 notti di Crociera sul Nilo in regime di pensione completa senza bevande",
+              "03 notti al Cairo in regime di Pernottamento e Colazione",
+              "04 notti ad Atene in regime di Pernottamento e Colazione",
+              "Assistenza in aeroporto",
+              "Guida parlante spagnolo durante le visite",
+              "Voli internazionali e domestici CAI – ASW - LXR - CAI",
+              "Visite, ingressi e trasferimenti come da itinerario"
+            ],
+            "ar": [
+              "03 ليالٍ كروز النيل بنظام الإقامة الكاملة بدون مشروبات",
+              "03 ليالٍ في القاهرة بنظام المبيت والإفطار",
+              "04 ليالٍ في أثينا بنظام المبيت والإفطار",
+              "المساعدة في المطار",
+              "مرشد يتحدث اللغة الإسبانية خلال الزيارات",
+              "رحلات الطيران الدولية والداخلية CAI – ASW - LXR - CAI",
+              "الزيارات، التذاكر، والانتقالات حسب مسار الرحلة"
+            ]
+          },
+          "excludes": {
+            "es": [
+              "Vuelos internacionales",
+              "Visado de Egipto y asistencia $30 por persona",
+              "Propinas de viaje $45 por persona adulta o menor"
+            ],
+            "en": [
+              "International flights",
+              "Egypt visa and assistance $30 per person",
+              "Travel tips $45 per adult or child"
+            ],
+            "pt": [
+              "Voos internacionais",
+              "Visto do Egito e assistência $30 por pessoa",
+              "Gorjetas de viagem $45 por pessoa adulta ou menor"
+            ],
+            "it": [
+              "Voli internazionali",
+              "Visto per l'Egitto e assistenza $30 a persona",
+              "Mance di viaggio $45 per persona adulta o minore"
+            ],
+            "ar": [
+              "رحلات الطيران الدولية",
+              "تأشيرة مصر والمساعدة 30$ للشخص الواحد",
+              "إكراميات الرحلة 45$ لكل شخص بالغ أو طفل"
+            ]
+          },
+          "overview": {
+            "es": "Un viaje espectacular que combina dos civilizaciones legendarias: desde las Pirámides de Giza y el Nilo en Egipto hasta la Acrópolis de Atenas y las encantadoras islas del Golfo Sarónico en Grecia. Una experiencia única que abarca 11 días de historia, cultura y paisajes inolvidables.",
+            "en": "A spectacular journey combining two legendary civilizations: from the Pyramids of Giza and the Nile in Egypt to the Acropolis of Athens and the charming Saronic Gulf islands in Greece. A unique 11-day experience encompassing history, culture, and unforgettable landscapes.",
+            "pt": "Uma viagem espetacular que combina duas civilizações lendárias: desde as Pirâmides de Giza e o Nilo no Egito até a Acrópole de Atenas e as encantadoras ilhas do Golfo Sarónico na Grécia. Uma experiência única de 11 dias que abrange história, cultura e paisagens inesquecíveis.",
+            "it": "Un viaggio spettacolare che combina due civiltà leggendarie: dalle Piramidi di Giza e il Nilo in Egitto all'Acropoli di Atene e alle affascinanti isole del Golfo Saronico in Grecia. Un'esperienza unica di 11 giorni che abbraccia storia, cultura e paesaggi indimenticabili.",
+            "ar": "رحلة مذهلة تجمع بين حضارتين أسطوريتين: من أهرامات الجيزة والنيل في مصر إلى أكروبوليس أثينا وجزر الخليج الساروني الساحرة في اليونان. تجربة فريدة تمتد 11 يومًا تتضمن التاريخ والثقافة والمناظر الطبيعية التي لا تُنسى."
+          },
+          "days": [
+            {
+              "day": "1",
+              "meals": {
+                "es": "No incluye",
+                "en": "Not included",
+                "pt": "Não incluída",
+                "it": "Non inclusa",
+                "ar": "غير مشمول"
+              },
+              "description": {
+                "es": "Salida con vuelo regular con destino a El Cairo. Llegada al aeropuerto de El Cairo, trámite de visado. Asistencia por nuestro personal y traslado al hotel. Alojamiento.",
+                "en": "Departure on a regular flight to Cairo. Arrival at Cairo airport, visa processing. Assistance by our staff and transfer to the hotel. Accommodation.",
+                "pt": "Saída em voo regular com destino ao Cairo. Chegada ao aeroporto do Cairo, trâmite de visto. Assistência por nossa equipe e traslado ao hotel. Alojamento.",
+                "it": "Partenza con volo di linea con destinazione Il Cairo. Arrivo all'aeroporto del Cairo, pratiche per il visto. Assistenza da parte del nostro personale e trasferimento in hotel. Pernottamento.",
+                "ar": "المغادرة على متن رحلة طيران منتظمة متجهة إلى القاهرة. الوصول إلى مطار القاهرة، وإجراءات التأشيرة. المساعدة من قبل موظفينا والنقل إلى الفندق. المبيت."
+              }
+            },
+            {
+              "day": "2",
+              "meals": {
+                "es": "Desayuno",
+                "en": "Breakfast",
+                "pt": "Café da manhã",
+                "it": "Colazione",
+                "ar": "إفطار"
+              },
+              "description": {
+                "es": "Desayuno en el hotel. Por la mañana visita prevista al recinto de las Pirámides de Keops, Kefren, Micerinos y la Esfinge. Esta visita tiene una duración aprox. de 3 horas. Tras su realización, salida hacia al aeropuerto para tomar el vuelo doméstico CAI/ASW. Llegada a Aswan y traslado al barco. Opcionalmente, salida por carretera para visitar los templos de Abu Simbel por carretera, regreso a Aswan, embarque al crucero. Cena y noche a bordo.",
+                "en": "Breakfast at the hotel. In the morning, scheduled visit to the site of the Pyramids of Cheops, Chephren, Mykerinus, and the Sphinx. This visit lasts approx. 3 hours. After the visit, departure to the airport to take the domestic flight CAI/ASW. Arrival in Aswan and transfer to the ship. Optionally, departure by road to visit the temples of Abu Simbel, return to Aswan, embarkation on the cruise. Dinner and night on board.",
+                "pt": "Café da manhã no hotel. Pela manhã, visita prevista ao recinto das Pirâmides de Quéops, Quéfren, Miquerinos e a Esfinge. Esta visita tem uma duração aproximada de 3 horas. Após a sua realização, saída em direção ao aeroporto para pegar o voo doméstico CAI/ASW. Chegada a Aswan e traslado ao barco. Opcionalmente, saída por estrada para visitar os templos de Abu Simbel, retorno a Aswan, embarque no cruzeiro. Jantar e noite a bordo.",
+                "it": "Colazione in hotel. Al mattino visita prevista al sito delle Piramidi di Cheope, Chefren, Micerino e la Sfinge. Questa visita ha una durata di circa 3 ore. Dopo la quale, partenza per l'aeroporto per prendere il volo domestico CAI/ASW. Arrivo ad Assuan e trasferimento alla nave. Opzionalmente, partenza su strada per visitare i templi di Abu Simbel via terra, rientro ad Assuan, imbarco sulla crociera. Cena e notte a bordo.",
+                "ar": "وجبة الإفطار في الفندق. في الصباح الزيارة المقررة لمنطقة أهرامات خوفو، خفرع، منكاورع وأبو الهول. تستغرق هذه الزيارة حوالي 3 ساعات، وبعد الانتهاء منها المغادرة إلى المطار لاستقلال رحلة الطيران الداخلية CAI/ASW. الوصول إلى أسوان والنقل إلى السفينة. اختياريًا، المغادرة برًا لزيارة معابد أبو سمبل عن طريق البر، والعودة إلى أسوان للصعود إلى الكروز. العشاء والمبيت على المتن."
+              }
+            },
+            {
+              "day": "3",
+              "meals": {
+                "es": "Pensión completa",
+                "en": "Full board",
+                "pt": "Pensão completa",
+                "it": "Pensione completa",
+                "ar": "إقامة كاملة"
+              },
+              "description": {
+                "es": "Pensión completa a bordo. Salida para realizar la excursión del templo de Philae y a continuación navegación hacia Kom Ombo. Llegada al atardecer, se visita el templo de Kom Ombo. Navegación hacia Edfu. Noche a bordo.",
+                "en": "Full board on board. Departure for the excursion to the Philae temple and then navigation towards Kom Ombo. Arrival at sunset to visit the temple of Kom Ombo. Navigation towards Edfu. Night on board.",
+                "pt": "Pensão completa a bordo. Saída para realizar a excursão do templo de Philae e, a seguir, navegação em direção a Kom Ombo. Chegada ao entardecer, visita-se o templo de Kom Ombo. Navegação em direção a Edfu. Noite a bordo.",
+                "it": "Pensione completa a bordo. Partenza per l'escursione al tempio di Philae e successivamente navigazione verso Kom Ombo. Arrivo al tramonto, si visita il tempio di Kom Ombo. Navigazione verso Edfu. Notte a bordo.",
+                "ar": "إقامة كاملة على المتن. المغادرة للقيام برحلة معبد فيلة، وتلا ذلك الإبحار نحو كوم أمبو. الوصول عند الغروب لزيارة معبد كوم أمبو. الإبحار نحو إدفو. المبيت على المتن."
+              }
+            },
+            {
+              "day": "4",
+              "meals": {
+                "es": "Pensión completa",
+                "en": "Full board",
+                "pt": "Pensão completa",
+                "it": "Pensione completa",
+                "ar": "إقامة كاملة"
+              },
+              "description": {
+                "es": "Pensión completa a bordo. Salida para realizar la visita del Templo de Edfu dedicado al Dios Horus. Regreso al crucero y navegación hacia Esna, tras el paso por la esclusa llegada a Luxor. Dependiendo del horario de navegación del barco, pudieran realizarse visitas en esta tarde. Noche a bordo.",
+                "en": "Full board on board. Departure to visit the Edfu Temple dedicated to the God Horus. Return to the cruise and navigation towards Esna. After passing through the lock, arrival in Luxor. Depending on the ship's navigation schedule, visits could be made this afternoon. Night on board.",
+                "pt": "Pensão completa a bordo. Saída para realizar a visita do Templo de Edfu dedicado ao Deus Hórus. Regresso ao cruzeiro e navegação em direção a Esna, após a passagem pela eclusa, chegada a Luxor. Dependendo do horário de navegação do barco, poderiam ser realizadas visitas nesta tarde. Noite a bordo.",
+                "it": "Pensione completa a bordo. Partenza per effettuare la visita del Tempio di Edfu dedicato al Dio Horus. Ritorno alla crociera e navigazione verso Esna, dopo il passaggio attraverso la chiusa, arrivo a Luxor. A seconda dell'orario di navigazione della nave, potrebbero effettuarsi visite in questo pomeriggio. Notte a bordo.",
+                "ar": "إقامة كاملة على المتن. المغادرة للقيام بزيارة معبد إدفو المخصص للإله حورس. العودة إلى الكروز والإبحار نحو إسنا، وبعد المرور عبر الهويس الوصول إلى الأقصر. بناءً على جدول إبحار السفينة، قد يتم إجراء زيارات هذا المساء. المبيت على المتن."
+              }
+            },
+            {
+              "day": "5",
+              "meals": {
+                "es": "Desayuno",
+                "en": "Breakfast",
+                "pt": "Café da manhã",
+                "it": "Colazione",
+                "ar": "إفطار"
+              },
+              "description": {
+                "es": "Desayuno y checkout a las 8.00 hrs. Día dedicado a conocer Luxor: templo de Karnak, templo de Luxor, Colosos de Memnon, Templo funerario de la reina Hatshepsut y el Valle de los Reyes. A la hora prevista, salida hacia el aeropuerto para tomar el vuelo doméstico LXR/CAI. Llegada a El Cairo y traslado al hotel. Alojamiento.",
+                "en": "Breakfast and check-out at 08:00 hrs. Day dedicated to exploring Luxor: Karnak temple, Luxor temple, Colossi of Memnon, Mortuary Temple of Queen Hatshepsut, and the Valley of the Kings. At the scheduled time, departure to the airport to take the domestic flight LXR/CAI. Arrival in Cairo and transfer to the hotel. Accommodation.",
+                "pt": "Café da manhã e checkout às 08:00 hrs. Dia dedicado a conhecer Luxor: templo de Karnak, templo de Luxor, Colossos de Mênon, Templo funerário da rainha Hatshepsut e o Vale dos Reis. Na hora prevista, saída em direção ao aeroporto para pegar o voo doméstico LXR/CAI. Chegada ao Cairo e traslado ao hotel. Alojamento.",
+                "it": "Colazione e checkout alle ore 08:00. Giornata dedicata alla scoperta di Luxor: tempio di Karnak, tempio di Luxor, Colossi di Memnone, Tempio funerario della regina Hatshepsut e la Valle dei Re. All'ora prevista, partenza per l'aeroporto per prendere il volo domestico LXR/CAI. Arrivo al Cairo e trasferimento in hotel. Pernottamento.",
+                "ar": "وجبة الإفطار وتسجيل الخروج في الساعة 8:00 صباحًا. يوم مخصص للتعرف على الأقصر: معبد الكرنك، معبد الأقصر، تمثالا ممنون، المعبد الجنائزي للملكة حتشبسوت ووادي الملوك. في الوقت المحدد المغادرة إلى المطار لاستقلال رحلة الطيران الداخلية LXR/CAI. الوصول إلى القاهرة والنقل إلى الفندق. المبيت."
+              }
+            },
+            {
+              "day": "6",
+              "meals": {
+                "es": "Desayuno",
+                "en": "Breakfast",
+                "pt": "Café da manhã",
+                "it": "Colazione",
+                "ar": "إفطار"
+              },
+              "description": {
+                "es": "Desayuno y día libre. Existe una excursión programada opcional para conocer los sitios más emblemáticos de la ciudad: la Ciudadela de Saladino, Mezquita de Alabastro, Mercado de Khan el Khalili, Museo Egipcio y Barrio Copto acompañados de guía y en transporte privado. Su contratación es posible en el destino.",
+                "en": "Breakfast and free day. There is an optional scheduled excursion to visit the most emblematic sites of the city: the Citadel of Saladin, Alabaster Mosque, Khan el-Khalili Market, Egyptian Museum, and Coptic Quarter accompanied by a guide and in private transport. Booking is possible at the destination.",
+                "pt": "Café da manhã e dia livre. Existe uma excursão programada opcional para conhecer os locais mais emblemáticos da cidade: a Cidadela de Saladino, Mesquita de Alabastro, Mercado de Khan el Khalili, Museu Egípcio e Bairro Copta acompanhados de guia e em transporte privado. A sua contratação é possível no destino.",
+                "it": "Colazione e giornata libera. Esiste un'escursione programmata facoltativa per conoscere i siti più emblematici della città: la Cittadella di Saladino, la Moschea di Alabastro, il Mercato di Khan el-Khalili, il Museo Egizio e il Quartiere Copto accompagnati da una guida e in trasporto privato. La sua prenotazione è possibile a destinazione.",
+                "ar": "وجبة الإفطار ويوم حر. توجد رحلة مبرمجة اختيارية للتعرف على المواقع الأكثر تميزًا في المدينة: قلعة صلاح الدين، مسجد محمد علي (الألباستر)، سوق خان الخليلي، المتحف المصري والحي القبطي برفقة مرشد وفي وسائل نقل خاصة. يمكن التعاقد عليها في الوجهة."
+              }
+            },
+            {
+              "day": "7",
+              "meals": {
+                "es": "Desayuno",
+                "en": "Breakfast",
+                "pt": "Café da manhã",
+                "it": "Colazione",
+                "ar": "إفطار"
+              },
+              "description": {
+                "es": "Desayuno en el hotel. A la hora convenida, traslado al aeropuerto de El Cairo para tomar el vuelo a Atenas. Llegada al aeropuerto de Atenas y traslado al hotel elegido. Alojamiento.",
+                "en": "Breakfast at the hotel. At the agreed time, transfer to Cairo airport to take the flight to Athens. Arrival at Athens airport and transfer to the chosen hotel. Accommodation.",
+                "pt": "Café da manhã no hotel. Na hora combinada, traslado ao aeroporto do Cairo para pegar o voo para Atenas. Chegada ao aeroporto de Atenas e traslado ao hotel escolhido. Alojamento.",
+                "it": "Colazione in hotel. All'ora stabilita, trasferimento all'aeroporto del Cairo per prendere il volo per Atene. Arrivo all'aeroporto di Atene e trasferimento all'hotel scelto. Pernottamento.",
+                "ar": "وجبة الإفطار في الفندق. في الوقت المتفق عليه، النقل إلى مطار القاهرة لاستقلال رحلة الطيران إلى أثينا. الوصول إلى مطار أثينا والنقل إلى الفندق المختار. المبيت."
+              }
+            },
+            {
+              "day": "8",
+              "meals": {
+                "es": "Desayuno",
+                "en": "Breakfast",
+                "pt": "Café da manhã",
+                "it": "Colazione",
+                "ar": "إفطار"
+              },
+              "description": {
+                "es": "Desayuno. Salida para realizar la Visita de Ciudad ½ Día: Acrópolis + Panorámica de Atenas. El Partenón, símbolo clásico de la arquitectura. El tour panorámico nos lleva a la Tumba del soldado desconocido, el Parlamento y el Estadio Panathinaikon. Seguidamente iremos hacia la Biblioteca, la Academia y la Universidad. Tarde libre. Alojamiento.",
+                "en": "Breakfast. Departure for the ½ Day City Tour: Acropolis + Panoramic tour of Athens. The Parthenon, a classic symbol of architecture. The panoramic tour takes us to the Tomb of the Unknown Soldier, the Parliament, and the Panathenaic Stadium. Next, we will go towards the Library, the Academy, and the University. Free afternoon. Accommodation.",
+                "pt": "Café da manhã. Saída para realizar a Visita de Cidade ½ Dia: Acrópole + Panorâmica de Atenas. O Partenon, símbolo clássico da arquitetura. O tour panorâmico leva-nos ao Túmulo do soldado desconhecido, ao Parlamento e ao Estádio Panatenaico. Em seguida, iremos em direção à Biblioteca, à Academia e à Universidade. Tarde livre. Alojamento.",
+                "it": "Colazione. Partenza per effettuare la Visita della Città ½ Giornata: Acropoli + Panoramica di Atene. Il Partenone, simbolo classico dell'architettura. Il tour panoramico ci porta alla Tomba del Milite Ignoto, al Parlamento e allo Stadio Panathinaiko. Successivamente andremo verso la Biblioteca, l'Accademia e l'Università. Pomeriggio libero. Pernottamento.",
+                "ar": "وجبة الإفطار. المغادرة للقيام بزيارة المدينة نصف يوم: الأكروبوليس + جولة بانورامية في أثينا. البارثينون، الرمز الكلاسيكي للهندسة المعمارية. تأخذنا الجولة البانورامية إلى قبر الجندي المجهول، البرلمان، واستاد باناتينايكون. بعد ذلك سنتوجه نحو المكتبة، الأكاديمية، والجامعة. بعد الظهر حر. المبيت."
+              }
+            },
+            {
+              "day": "9",
+              "meals": {
+                "es": "Desayuno",
+                "en": "Breakfast",
+                "pt": "Café da manhã",
+                "it": "Colazione",
+                "ar": "إفطار"
+              },
+              "description": {
+                "es": "Desayuno. El Crucero de 1 Día nos da la oportunidad de conocer 3 islas del Golfo Sarónico: Hydra, la reina de las islas del Sarónico; Poros, la más pequeña de las tres, un paraíso verde lleno de limoneros y pinos; y Egina, la isla más grande del Golfo Sarónico con un notable patrimonio histórico. Regreso a Atenas por la tarde. Alojamiento.",
+                "en": "Breakfast. The 1-Day Cruise gives us the opportunity to visit 3 islands of the Saronic Gulf: Hydra, the queen of the Saronic islands; Poros, the smallest of the three, a green paradise full of lemon and pine trees; and Aegina, the largest island in the Saronic Gulf with a remarkable historical heritage. Return to Athens in the afternoon. Accommodation.",
+                "pt": "Café da manhã. O Cruzeiro de 1 Dia dá-nos a oportunidade de conhecer 3 ilhas do Golfo Sarónico: Hydra, a rainha das ilhas do Sarónico; Poros, a menor das três, um paraíso verde cheio de limoeiros e pinheiros; e Egina, a ilha maior do Golfo Sarónico com um notável patrimônio histórico. Regresso a Atenas à tarde. Alojamento.",
+                "it": "Colazione. La Crociera di 1 Giorno ci dà l'opportunità di conoscere 3 isole del Golfo Saronico: Hydra, la regina delle isole del Saronico; Poros, la più piccola delle tre, un paradiso verde pieno di limoni e pini; ed Egina, l'isola più grande del Golfo Saronico con un notevole patrimonio storico. Ritorno ad Atene nel pomeriggio. Pernottamento.",
+                "ar": "وجبة الإفطار. تمنحنا رحلة الكروز ليوم واحد الفرصة للتعرف على 3 جزر في الخليج الساروني: هيدرا، ملكة جزر الخليج الساروني؛ بوروس، الجزيرة الخلابة وهي الأصغر بين الثلاثة، جنة خضراء مليئة بأشجار الليمون والصنوبر؛ وإيجينا، أكبر جزيرة في الخليج الساروني ذات تراث تاريخي ملحوظ. العودة إلى أثينا بعد الظهر. المبيت."
+              }
+            },
+            {
+              "day": "10",
+              "meals": {
+                "es": "Desayuno",
+                "en": "Breakfast",
+                "pt": "Café da manhã",
+                "it": "Colazione",
+                "ar": "إفطار"
+              },
+              "description": {
+                "es": "Desayuno. Día libre.",
+                "en": "Breakfast. Free day.",
+                "pt": "Café da manhã. Dia livre.",
+                "it": "Colazione. Giornata libera.",
+                "ar": "وجبة الإفطار. يوم حر."
+              }
+            },
+            {
+              "day": "11",
+              "meals": {
+                "es": "Desayuno",
+                "en": "Breakfast",
+                "pt": "Café da manhã",
+                "it": "Colazione",
+                "ar": "إفطار"
+              },
+              "description": {
+                "es": "Desayuno. A la hora acordada, traslado al aeropuerto. Fin de nuestros servicios.",
+                "en": "Breakfast. At the agreed time, transfer to the airport. End of our services.",
+                "pt": "Café da manhã. Na hora acordada, traslado ao aeroporto. Fim dos nossos serviços.",
+                "it": "Colazione. All'orario concordato, trasferimento in aeroporto. Fine dei nostri servizi.",
+                "ar": "وجبة الإفطار. في الوقت المتفق عليه النقل إلى المطار. نهاية خدماتنا."
+              }
+            }
+          ]
         }
       ]
     }

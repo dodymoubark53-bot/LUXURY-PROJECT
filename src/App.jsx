@@ -276,14 +276,6 @@ function App() {
                     }
                   />
                   <Route
-                    path="honeymooners/:slug"
-                    element={
-                      <PageTransition>
-                        <HoneymoonersDetails />
-                      </PageTransition>
-                    }
-                  />
-                  <Route
                     path=":service"
                     element={
                       <PageTransition>
