@@ -49,7 +49,7 @@ const ReligiousTours = () => {
       <section className="relative w-full h-[450px] md:h-[650px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=1920&q=80"
+            src="https://thf.bing.com/th/id/R.e047649d8bd183efbdd320d17de8a8b1?rik=d18ZW0xT%2fK31lQ&pid=ImgRaw&r=0"
             alt="Religious Tours & Pilgrimages"
             className="w-full h-full object-cover object-center scale-105"
             loading="lazy"
@@ -272,7 +272,7 @@ const ReligiousTours = () => {
       <section className="bg-obsidian-900 text-ivory-50 py-20 px-6 relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-10"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=1920&q=80')" }}
+          style={{ backgroundImage: "url('https://thf.bing.com/th/id/R.e047649d8bd183efbdd320d17de8a8b1?rik=d18ZW0xT%2fK31lQ&pid=ImgRaw&r=0')" }}
         />
         <div className="container mx-auto text-center relative z-10 max-w-3xl">
           <span className="text-gold-500 uppercase tracking-widest text-caption font-semibold block mb-4">

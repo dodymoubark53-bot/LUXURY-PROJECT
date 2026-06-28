@@ -1,7 +1,7 @@
 {
     "tourId": "tunisia-8d-7n-tour",
     "baseRoute": "/tunisia-tour",
-    "imageFolder": "/IMGS/Tunisia",
+    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/0b/fb/1c/caption.jpg?w=1200&h=-1&s=1",
     "pricing": {
         "currency": "USD",
         "categories": [

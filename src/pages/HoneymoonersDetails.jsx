@@ -144,7 +144,7 @@ const HoneymoonersDetails = () => {
           initial={{ opacity: 0.8 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1920&q=80"
+          src="https://hl-tourism.com/media/typecms/Honeymoon_Planning_Guide_2025_Complete_Resource.webp"
           alt="Honeymoon in Egypt"
           className="w-full h-full object-cover"
           loading="eager"

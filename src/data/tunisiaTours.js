@@ -14,8 +14,8 @@ export const tunisiaTours = [{
   "rating": 4.9,
   "reviewCount": 142,
   "images": [
-    "/IMGS/Tunisia/hero.jpg",
-    "/IMGS/Tunisia/medina.jpg"
+    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/0b/fb/1c/caption.jpg?w=1200&h=-1&s=1",
+    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/0b/fb/1c/caption.jpg?w=1200&h=-1&s=1"
   ],
   "route": "/tunisia-tour",
   "highlights": [

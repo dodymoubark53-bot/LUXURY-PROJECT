@@ -22,8 +22,10 @@ const Tunez = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-obsidian-900 text-center px-6">
-        <div className="container mx-auto">
+      <section className="relative pt-32 pb-16 text-center px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://www.heritage.org/sites/default/files/styles/facebook_optimized/public/images/2017-06/Tunisia.jpg?itok=trkp0NK9')" }} />
+        <div className="absolute inset-0 bg-obsidian-900/70" />
+        <div className="relative z-10 container mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

@@ -11,7 +11,7 @@ const tours = [
     titleDefault: 'Honeymoon in Egypt',
     duration: '10 Days / 9 Nights',
     destinations: 'Cairo • Nile Cruise • Hurghada',
-    img: 'https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=800&q=80',
+    img: 'https://hl-tourism.com/media/typecms/Honeymoon_Planning_Guide_2025_Complete_Resource.webp',
     taglineKey: 'honeymooners.egyptTagline',
     taglineDefault: 'A perfect trip to celebrate love, combining history, culture, romance, and unforgettable moments on the Red Sea.'
   }
@@ -31,7 +31,7 @@ const Honeymooners = () => {
       <section className="relative w-full h-[500px] md:h-[650px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1920&q=80"
+            src="https://hl-tourism.com/media/typecms/Honeymoon_Planning_Guide_2025_Complete_Resource.webp"
             alt="Romantic sunset"
             className="w-full h-full object-cover"
             loading="lazy"
