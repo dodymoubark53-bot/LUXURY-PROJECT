@@ -79,7 +79,7 @@ const TourDetails = () => {
       {/* 3. Quick Info Bar */}
       <div className="container mx-auto px-6 -mt-12 relative z-20">
         <div className="bg-ivory-50 rounded-2xl shadow-card overflow-hidden">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-gray-100 border-b border-gray-100 bg-obsidian-50">
+          <div className="grid grid-cols-2 md:grid-cols-3 divide-x divide-y md:divide-y-0 divide-gray-100 border-b border-gray-100 bg-obsidian-50">
             <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
               <FaClock className="text-gold-500 text-2xl mb-1" />
               <span className="text-caption text-obsidian-500 uppercase">{t('tour.duration', 'Duration')}</span>
@@ -94,17 +94,6 @@ const TourDetails = () => {
               <FaUserFriends className="text-gold-500 text-2xl mb-1" />
               <span className="text-caption text-obsidian-500 uppercase">{t('tour.groupSize', 'Group Size')}</span>
               <span className="text-body-md font-semibold text-obsidian-900">{tour.market === 'Brasil' ? '2-16' : '2-12'}</span>
-            </div>
-            <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
-              <FaGlobe className="text-gold-500 text-2xl mb-1" />
-              <span className="text-caption text-obsidian-500 uppercase">{t('tour.languages', 'Languages')}</span>
-              <span className="text-body-md font-semibold text-obsidian-900">
-                {tour.language === 'pt-BR'
-                  ? t('languages.portuguese', 'Português')
-                  : tour.language === 'es'
-                    ? t('languages.spanish', 'Español')
-                    : t('languages.italian', 'Italiano')}
-              </span>
             </div>
           </div>
         </div>
@@ -121,14 +110,7 @@ const TourDetails = () => {
               <h2 className="text-display-lg text-obsidian-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
                 {t('tourDetail.overview', 'Overview')}
               </h2>
-              <p className="text-body-lg text-obsidian-500 leading-relaxed mb-6">{t(`data.${tour.overview}`, tour.overview)}</p>
-              <p className="text-body-lg text-obsidian-500 leading-relaxed">
-                {tour.language === 'pt-BR'
-                  ? t('tour.premiumImmersion', 'Imersão premium sob medida com serviços de classe executiva.')
-                  : tour.language === 'es'
-                    ? t('tour.spanishImmersion', 'Una inmersión premium diseñada a la medida con servicios de primera clase.')
-                    : t('tour.exclusiveJourney', 'Un viaggio esclusivo curato nei minimi dettagli per il massimo comfort.')}
-              </p>
+              <p className="text-body-lg text-obsidian-500 leading-relaxed">{t(`data.${tour.overview}`, tour.overview)}</p>
             </motion.div>
 
             {/* Highlights */}
@@ -153,6 +135,70 @@ const TourDetails = () => {
                 </ul>
               </motion.div>
             )}
+
+            {/* Itinerary */}
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="mt-16"
+            >
+              <div className="mb-10 text-center">
+                <span className="text-caption text-gold-500 uppercase tracking-[4px] font-semibold block mb-3">
+                  {t('tour.journeyDayByDay', 'YOUR JOURNEY DAY BY DAY')}
+                </span>
+                <h2 className="text-display-lg text-obsidian-900" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  {t('tourDetail.itinerary', 'Itinerary')}
+                </h2>
+                <div className="w-24 h-1 bg-gold-500 mx-auto mt-3"></div>
+              </div>
+
+              <div className="relative max-w-full">
+                <div className="absolute left-[1.1rem] top-0 bottom-0 w-1 bg-gold-400"></div>
+                <div className="space-y-6">
+                  {tour.itinerary && tour.itinerary.map((day) => (
+                    <div key={day.day} className="relative pl-10 md:pl-12">
+                      <div className="absolute left-[0.1rem] top-1 w-8 h-8 rounded-full bg-gold-500 text-white flex items-center justify-center text-sm font-bold shadow-md z-10">
+                        {day.day}
+                      </div>
+
+                      <div className="bg-ivory-50 rounded-2xl p-6 shadow-sm border border-gold-100 hover:shadow-md transition-shadow">
+                        <div className="flex items-center gap-3 mb-3">
+                          <span className="font-semibold text-obsidian-900">{t('tour.day', 'Day')} {day.day}</span>
+                          {day.title && (
+                            <span className="text-body-sm text-obsidian-500">{t(`data.${day.title}`, day.title)}</span>
+                          )}
+                          {day.meals && (
+                            <span className="text-caption text-obsidian-400 flex items-center gap-1 ml-auto">
+                              <FaBed className="text-gold-500" /> {t(`data.${day.meals}`, day.meals)}
+                            </span>
+                          )}
+                        </div>
+
+                        {day.description && (
+                          <p className="text-body-sm text-obsidian-500 leading-relaxed">{t(`data.${day.description}`, day.description)}</p>
+                        )}
+
+                        {!day.description && (
+                          <div className="space-y-2">
+                            {day.morning && (
+                              <p className="text-body-sm text-obsidian-500 leading-relaxed">{t(`data.${day.morning}`, day.morning)}</p>
+                            )}
+                            {day.afternoon && (
+                              <p className="text-body-sm text-obsidian-500 leading-relaxed">{t(`data.${day.afternoon}`, day.afternoon)}</p>
+                            )}
+                            {day.evening && (
+                              <p className="text-body-sm text-obsidian-500 leading-relaxed">{t(`data.${day.evening}`, day.evening)}</p>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
 
             {/* Pricing Tiers */}
             {tour.pricingTiers && (
@@ -249,71 +295,9 @@ const TourDetails = () => {
 
         </div>
 
-        {/* Itinerary – Full Width */}
         <div className="relative mt-24 mb-8">
           <div className="absolute inset-0 bg-gradient-to-r from-obsidian-50 via-gold-50/30 to-obsidian-50 rounded-3xl"></div>
           <div className="relative z-10 px-4 md:px-12 py-16">
-            <motion.div
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <div className="mb-10 text-center">
-                <span className="text-caption text-gold-500 uppercase tracking-[4px] font-semibold block mb-3">
-                  {t('tour.journeyDayByDay', 'YOUR JOURNEY DAY BY DAY')}
-                </span>
-                <h2 className="text-display-lg text-obsidian-900" style={{ fontFamily: "'Playfair Display', serif" }}>
-                  {t('tourDetail.itinerary', 'Itinerary')}
-                </h2>
-                <div className="w-24 h-1 bg-gold-500 mx-auto mt-3"></div>
-              </div>
-
-              <div className="relative max-w-4xl mx-auto">
-                <div className="absolute left-[1.1rem] top-0 bottom-0 w-1 bg-gold-400"></div>
-                <div className="space-y-6">
-                  {tour.itinerary && tour.itinerary.map((day) => (
-                    <div key={day.day} className="relative pl-10 md:pl-12">
-                      <div className="absolute left-[0.1rem] top-1 w-8 h-8 rounded-full bg-gold-500 text-white flex items-center justify-center text-sm font-bold shadow-md z-10">
-                        {day.day}
-                      </div>
-
-                      <div className="bg-ivory-50 rounded-2xl p-6 shadow-sm border border-gold-100 hover:shadow-md transition-shadow">
-                        <div className="flex items-center gap-3 mb-3">
-                          <span className="font-semibold text-obsidian-900">{t('tour.day', 'Day')} {day.day}</span>
-                          {day.title && (
-                            <span className="text-body-sm text-obsidian-500">{t(`data.${day.title}`, day.title)}</span>
-                          )}
-                          {day.meals && (
-                            <span className="text-caption text-obsidian-400 flex items-center gap-1 ml-auto">
-                              <FaBed className="text-gold-500" /> {t(`data.${day.meals}`, day.meals)}
-                            </span>
-                          )}
-                        </div>
-
-                        {day.description && (
-                          <p className="text-body-sm text-obsidian-500 leading-relaxed">{t(`data.${day.description}`, day.description)}</p>
-                        )}
-
-                        {!day.description && (
-                          <div className="space-y-2">
-                            {day.morning && (
-                              <p className="text-body-sm text-obsidian-500 leading-relaxed">{t(`data.${day.morning}`, day.morning)}</p>
-                            )}
-                            {day.afternoon && (
-                              <p className="text-body-sm text-obsidian-500 leading-relaxed">{t(`data.${day.afternoon}`, day.afternoon)}</p>
-                            )}
-                            {day.evening && (
-                              <p className="text-body-sm text-obsidian-500 leading-relaxed">{t(`data.${day.evening}`, day.evening)}</p>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
 
             {/* Included / Excluded */}
             <motion.div

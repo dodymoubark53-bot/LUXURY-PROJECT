@@ -7,13 +7,12 @@ import { FaCheckCircle, FaMapMarkerAlt, FaBed, FaClock, FaTag, FaChevronRight } 
 import { fadeInUp } from '../../animations/variants';
 import Button from '../../components/ui/Button';
 import BookingForm from '../../components/booking/BookingForm';
-import { useJordanProgram } from '../../hooks/useJordanPrograms';
+import { useMoroccoProgram } from '../../hooks/useMoroccoPrograms';
 
-const JordanProgramDetails = () => {
+const MoroccoProgramDetails = () => {
   const { t } = useTranslation();
   const { programId } = useParams();
-  const program = useJordanProgram(programId);
-  const [activeImage, setActiveImage] = useState(null);
+  const program = useMoroccoProgram(programId);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -27,7 +26,7 @@ const JordanProgramDetails = () => {
     );
   }
 
-  const { title, overview, duration, highlights, days, images, code, minPax } = program;
+  const { title, overview, duration, highlights, days, images, code, minPax, includes, excludes } = program;
 
   return (
     <div className="w-full bg-obsidian-50 min-h-screen">
@@ -36,13 +35,12 @@ const JordanProgramDetails = () => {
         <meta name="description" content={overview} />
       </Helmet>
 
-      {/* 1. Breadcrumb & Title */}
       <section className="pt-32 pb-10 bg-obsidian-900 text-center px-6">
         <div className="container mx-auto">
           <div className="flex items-center justify-center gap-2 text-caption text-gold-500 mb-4 uppercase tracking-wider">
             <Link to="/" className="hover:text-ivory-50 transition-colors">{t('nav.home', 'Home')}</Link>
             <span className="rtl-flip"><FaChevronRight className="text-[10px]" /></span>
-            <Link to="/destinations/jordan" className="hover:text-ivory-50 transition-colors">{t('dest.jordan.title', 'Jordan')}</Link>
+            <Link to="/destinations/morocco" className="hover:text-ivory-50 transition-colors">{t('dest.morocco.title', 'Morocco')}</Link>
             <span className="rtl-flip"><FaChevronRight className="text-[10px]" /></span>
             <span className="text-ivory-300">{title}</span>
           </div>
@@ -65,25 +63,19 @@ const JordanProgramDetails = () => {
         </div>
       </section>
 
-      {/* 2. Photo Gallery */}
-      <section className="relative w-full h-[50vh] lg:h-[70vh] overflow-hidden group cursor-pointer" onClick={() => setActiveImage(0)}>
+      <section className="relative w-full h-[50vh] lg:h-[70vh] overflow-hidden">
         <motion.img
-          key={activeImage}
           initial={{ opacity: 0.8 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          src={images[activeImage || 0]}
+          src={images[0]}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
+          className="w-full h-full object-cover"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-        <div className="absolute bottom-6 right-6 bg-obsidian-900/80 backdrop-blur-md px-4 py-2 rounded-full text-ivory-50 text-caption border border-gold-500/20">
-          {t('tour.clickGallery', 'Click to open gallery')}
-        </div>
+        <div className="absolute inset-0 bg-black/20" />
       </section>
 
-      {/* 3. Quick Info Bar */}
       <div className="container mx-auto px-6 -mt-12 relative z-20">
         <div className="bg-ivory-50 rounded-2xl shadow-card overflow-hidden">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-gray-100 border-b border-gray-100 bg-obsidian-50">
@@ -105,7 +97,7 @@ const JordanProgramDetails = () => {
             <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
               <FaMapMarkerAlt className="text-gold-500 text-2xl mb-1" />
               <span className="text-caption text-obsidian-500 uppercase">{t('tour.destination', 'Destination')}</span>
-              <span className="text-body-md font-semibold text-obsidian-900">{t('dest.jordan.title', 'Jordan')}</span>
+              <span className="text-body-md font-semibold text-obsidian-900">{t('dest.morocco.title', 'Morocco')}</span>
             </div>
           </div>
         </div>
@@ -113,9 +105,7 @@ const JordanProgramDetails = () => {
 
       <section className="container mx-auto px-6 pt-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-
           <div className="lg:col-span-2">
-
             <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               <h2 className="text-display-lg text-obsidian-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
                 {t('tourDetail.overview', 'Overview')}
@@ -124,13 +114,7 @@ const JordanProgramDetails = () => {
             </motion.div>
 
             {Array.isArray(highlights) && highlights.length > 0 && (
-              <motion.div
-                variants={fadeInUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="mt-16"
-              >
+              <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16">
                 <h2 className="text-display-lg text-obsidian-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
                   {t('tourDetail.highlights', 'Key Highlights')}
                 </h2>
@@ -183,7 +167,6 @@ const JordanProgramDetails = () => {
             </motion.div>
           </div>
 
-          {/* Sidebar - Booking Form */}
           <div className="lg:col-span-1">
             <div>
               <BookingForm tourTitle={title} />
@@ -191,15 +174,54 @@ const JordanProgramDetails = () => {
           </div>
         </div>
       </section>
+
+      {/* Includes & Excludes */}
+      <section className="container mx-auto px-6">
+        <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="max-w-4xl mx-auto mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {Array.isArray(includes) && includes.length > 0 && (
+              <div className="bg-ivory-50 rounded-xl p-6 shadow-sm border border-sage-200">
+                <h3 className="text-display-sm text-obsidian-900 mb-4 flex items-center gap-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  <FaCheckCircle className="text-sage-500" /> {t('tourDetail.included', 'Included')}
+                </h3>
+                <ul className="space-y-2">
+                  {includes.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-body-sm text-obsidian-700">
+                      <span className="w-1.5 h-1.5 rounded-full bg-sage-500 mt-2 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {Array.isArray(excludes) && excludes.length > 0 && (
+              <div className="bg-ivory-50 rounded-xl p-6 shadow-sm border border-red-200">
+                <h3 className="text-display-sm text-obsidian-900 mb-4 flex items-center gap-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  <span className="w-5 h-5 rounded-full bg-red-100 text-red-500 flex items-center justify-center text-xs font-bold">&#10005;</span> {t('tourDetail.excluded', 'Not Included')}
+                </h3>
+                <ul className="space-y-2">
+                  {excludes.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-body-sm text-obsidian-700">
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </motion.div>
+      </section>
+
       <section className="relative py-24 mt-8 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${images[0]})` }} />
         <div className="absolute inset-0 bg-obsidian-900/75" />
         <div className="relative z-10 container mx-auto px-6 text-center max-w-3xl">
           <span className="text-gold-500 uppercase tracking-widest text-sm font-semibold block mb-4">
-            {t('programs.customizeLabel', "DIDN'T FIND WHAT YOU'RE LOOKING FOR?")}
+            {t("programs.customizeLabel", "DIDN'T FIND WHAT YOU'RE LOOKING FOR?")}
           </span>
           <h2 className="text-display-xl text-ivory-50 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-            {t('programs.customizeTitle', 'Let us design your perfect Jordan journey')}
+            {t('programs.customizeTitle', 'Let us design your perfect Morocco journey')}
           </h2>
           <p className="text-body-lg text-ivory-300 mb-10">
             {t('programs.customizeDesc', 'Tell us your preferences, and our expert travel designers will craft a bespoke itinerary tailored just for you.')}
@@ -222,4 +244,4 @@ const JordanProgramDetails = () => {
   );
 };
 
-export default JordanProgramDetails;
+export default MoroccoProgramDetails;

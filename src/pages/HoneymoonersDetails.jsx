@@ -155,7 +155,6 @@ const HoneymoonersDetails = () => {
       {/* Overview + Includes + Sidebar */}
       <section className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          {/* Main Content */}
           <div className="lg:col-span-2">
             <motion.div variants={fadeInUp} className="mb-12">
               <h2 className="text-display-lg text-obsidian-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -166,33 +165,7 @@ const HoneymoonersDetails = () => {
               </p>
             </motion.div>
 
-            {/* Includes */}
-            <motion.div variants={fadeInUp} className="mb-16">
-              <h3 className="text-display-md text-obsidian-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-                {t('honeymooners.includes', 'Includes')}
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {includes.map((inc, i) => (
-                  <div key={i} className="flex items-center gap-3 bg-ivory-50 rounded-xl p-4 shadow-sm">
-                    <FaCheckCircle className="text-gold-500 shrink-0" size={18} />
-                    <span className="text-body-md text-obsidian-700 font-medium">{t(inc.key, inc.default)}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Sidebar - Booking Form */}
-          <motion.div variants={fadeInUp} className="lg:col-span-1">
-            <div>
-              <BookingForm tourTitle={t('honeymooners.egyptTitle', 'Honeymoon in Egypt')} />
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Itinerary */}
-        <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <div className="max-w-4xl mx-auto">
+            {/* Itinerary */}
             <motion.div variants={fadeInUp}>
               <h3 className="text-display-md text-obsidian-900 mb-8 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
                 {t('honeymooners.itinerary', 'Itinerary')}
@@ -224,26 +197,47 @@ const HoneymoonersDetails = () => {
                 </div>
               </div>
             </motion.div>
+          </div>
 
-            {/* CTA */}
-            <motion.div variants={fadeInUp} className="mt-16 text-center">
-              <div className="bg-gradient-to-r from-rose-50 to-gold-50 rounded-3xl p-10 shadow-lg border border-rose-200">
-                <FaHeart className="text-rose-400 text-4xl mx-auto mb-4" />
-                <h3 className="text-display-md text-obsidian-900 mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
-                  {t('honeymooners.ctaTitle', 'Ready to Celebrate Your Love?')}
-                </h3>
-                <p className="text-body-md text-obsidian-500 mb-6 max-w-lg mx-auto">
-                  {t('honeymooners.ctaDesc', 'Let our expert travel designers craft the perfect romantic getaway tailored just for you.')}
-                </p>
-                <Link
-                  to="/tailor-a-tour"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-rose-600 text-white font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-                >
-                  <FaHeart />
-                  {t('honeymooners.ctaBtn', 'Start Planning Your Honeymoon')}
-                </Link>
+          <motion.div variants={fadeInUp} className="lg:col-span-1">
+            <div>
+              <BookingForm tourTitle={t('honeymooners.egyptTitle', 'Honeymoon in Egypt')} />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Includes */}
+        <motion.div variants={fadeInUp} className="mt-16 max-w-4xl mx-auto">
+          <h3 className="text-display-md text-obsidian-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+            {t('honeymooners.includes', 'Includes')}
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {includes.map((inc, i) => (
+              <div key={i} className="flex items-center gap-3 bg-ivory-50 rounded-xl p-4 shadow-sm">
+                <FaCheckCircle className="text-gold-500 shrink-0" size={18} />
+                <span className="text-body-md text-obsidian-700 font-medium">{t(inc.key, inc.default)}</span>
               </div>
-            </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div variants={fadeInUp} className="mt-16 text-center">
+          <div className="bg-gradient-to-r from-rose-50 to-gold-50 rounded-3xl p-10 shadow-lg border border-rose-200">
+            <FaHeart className="text-rose-400 text-4xl mx-auto mb-4" />
+            <h3 className="text-display-md text-obsidian-900 mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+              {t('honeymooners.ctaTitle', 'Ready to Celebrate Your Love?')}
+            </h3>
+            <p className="text-body-md text-obsidian-500 mb-6 max-w-lg mx-auto">
+              {t('honeymooners.ctaDesc', 'Let our expert travel designers craft the perfect romantic getaway tailored just for you.')}
+            </p>
+            <Link
+              to="/tailor-a-tour"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-rose-600 text-white font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              <FaHeart />
+              {t('honeymooners.ctaBtn', 'Start Planning Your Honeymoon')}
+            </Link>
           </div>
         </motion.div>
       </section>

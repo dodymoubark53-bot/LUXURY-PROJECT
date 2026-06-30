@@ -212,21 +212,8 @@ const TurkeyProgramDetails = () => {
               </motion.div>
             )}
 
-          </div>
-
-          {/* Sidebar - Booking Form */}
-          <div className="lg:col-span-1">
-            <div>
-              <BookingForm tourTitle={title} transportChoice={transportChoice} requireTransportChoice={!!transportOptions} />
-            </div>
-          </div>
-        </div>
-
-        {/* Itinerary – Full Width */}
-        <div className="relative mt-24 mb-8">
-          <div className="absolute inset-0 bg-gradient-to-r from-obsidian-50 via-gold-50/30 to-obsidian-50 rounded-3xl"></div>
-          <div className="relative z-10 px-4 md:px-12 py-16">
-            <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            {/* Itinerary */}
+            <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16">
               <div className="mb-10 text-center">
                 <span className="text-caption text-gold-500 uppercase tracking-[4px] font-semibold block mb-3">
                   {t('tour.journeyDayByDay', 'YOUR JOURNEY DAY BY DAY')}
@@ -237,7 +224,7 @@ const TurkeyProgramDetails = () => {
                 <div className="w-24 h-1 bg-gold-500 mx-auto mt-3"></div>
               </div>
 
-              <div className="relative max-w-4xl mx-auto">
+              <div className="relative max-w-full">
                 <div className="absolute left-[1.1rem] top-0 bottom-0 w-1 bg-gold-400"></div>
                 <div className="space-y-6">
                   {days.map((day) => (
@@ -261,6 +248,13 @@ const TurkeyProgramDetails = () => {
                 </div>
               </div>
             </motion.div>
+          </div>
+
+          {/* Sidebar - Booking Form */}
+          <div className="lg:col-span-1">
+            <div>
+              <BookingForm tourTitle={title} transportChoice={transportChoice} requireTransportChoice={!!transportOptions} />
+            </div>
           </div>
         </div>
       </section>

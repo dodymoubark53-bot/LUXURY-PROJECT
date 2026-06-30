@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaPlus, FaMinus, FaCheckCircle, FaPaperPlane, FaGlobeAmericas, FaUser, FaFileInvoiceDollar, FaCalendarAlt, FaClock } from 'react-icons/fa';
+import { FaPlus, FaMinus, FaCheckCircle, FaPaperPlane, FaGlobeAmericas, FaUser, FaFileInvoiceDollar, FaCalendarAlt, FaClock, FaStar } from 'react-icons/fa';
 import InvoiceModal from './InvoiceModal';
 
 const API = 'http://localhost:5000/api';
@@ -23,14 +23,19 @@ const BookingForm = ({ tourTitle, transportChoice, requireTransportChoice }) => 
   const [tab, setTab] = useState('booking');
   const [status, setStatus] = useState('idle');
   const [langOpen, setLangOpen] = useState(null);
+  const [activityOpen, setActivityOpen] = useState(false);
   const [transportAlert, setTransportAlert] = useState(false);
   const [bookingResult, setBookingResult] = useState(null);
   const [showInvoice, setShowInvoice] = useState(false);
   const [error, setError] = useState('');
   const langRef = useRef(null);
+  const activityRef = useRef(null);
 
   useEffect(() => {
-    const onClick = (e) => { if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(null); };
+    const onClick = (e) => {
+      if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(null);
+      if (activityRef.current && !activityRef.current.contains(e.target)) setActivityOpen(false);
+    };
     document.addEventListener('mousedown', onClick);
     return () => document.removeEventListener('mousedown', onClick);
   }, []);
@@ -39,7 +44,7 @@ const BookingForm = ({ tourTitle, transportChoice, requireTransportChoice }) => 
   const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
 
   const [b, setB] = useState({
-    arrivalDate: '', departureDate: '', arrivalTime: '', departureTime: '', language: '',
+    arrivalDate: '', departureDate: '', arrivalTime: '', departureTime: '', language: '', activityType: '',
     adults: 1, children: 0, infants: 0,
     fullName: '', email: '', phone: '',
     invoiceType: 'personal', companyName: '', taxId: '', address: '', city: '', country: '',
@@ -81,6 +86,7 @@ const BookingForm = ({ tourTitle, transportChoice, requireTransportChoice }) => 
         arrivalTime: b.arrivalTime,
         departureTime: b.departureTime,
         language: b.language,
+        activityType: b.activityType,
         adults: b.adults,
         children: b.children,
         infants: b.infants,
@@ -231,6 +237,27 @@ const BookingForm = ({ tourTitle, transportChoice, requireTransportChoice }) => 
                           <span>{t(lang.labelKey, lang.fallback)}</span>
                         </button>
                       ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="relative" ref={activityRef}>
+                  <label className={labelClass}><FaStar className="inline mr-1.5 text-gold-400" size={11} />{t('booking.activityType', 'Type of Activity')}</label>
+                  <button type="button" onClick={() => setActivityOpen(!activityOpen)} className={`${inputClass} text-left flex items-center gap-2`}>
+                    {b.activityType ? (
+                      <span>{b.activityType === 'standard' ? t('booking.standardCategory', 'Standard Category') : t('booking.premiumCategory', 'Premium Category')}</span>
+                    ) : (
+                      <span className="text-ivory-400">{t('booking.selectActivity', 'Select...')}</span>
+                    )}
+                  </button>
+                  {activityOpen && (
+                    <div className="absolute z-50 top-full left-0 right-0 mt-1 bg-[#1a1a2e] border border-[rgba(201,162,39,0.15)] rounded-xl overflow-hidden shadow-xl">
+                      <button type="button" onClick={() => { updateB('activityType', 'standard'); setActivityOpen(false); }} className={`w-full text-left px-4 py-3 flex items-center gap-2 text-body-md transition-colors hover:bg-[rgba(255,252,247,0.06)] ${b.activityType === 'standard' ? 'text-gold-500 bg-[rgba(201,162,39,0.06)]' : 'text-ivory-50'}`}>
+                        {t('booking.standardCategory', 'Standard Category')}
+                      </button>
+                      <button type="button" onClick={() => { updateB('activityType', 'premium'); setActivityOpen(false); }} className={`w-full text-left px-4 py-3 flex items-center gap-2 text-body-md transition-colors hover:bg-[rgba(255,252,247,0.06)] ${b.activityType === 'premium' ? 'text-gold-500 bg-[rgba(201,162,39,0.06)]' : 'text-ivory-50'}`}>
+                        {t('booking.premiumCategory', 'Premium Category')}
+                      </button>
                     </div>
                   )}
                 </div>

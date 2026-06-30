@@ -37,6 +37,7 @@ const ReligiousTours = lazy(() => import("./pages/programs/ReligiousTours"));
 const TurkeyProgramDetails = lazy(() => import("./pages/programs/TurkeyProgramDetails"));
 const JordanProgramDetails = lazy(() => import("./pages/programs/JordanProgramDetails"));
 const DubaiProgramDetails = lazy(() => import("./pages/programs/DubaiProgramDetails"));
+const MoroccoProgramDetails = lazy(() => import("./pages/programs/MoroccoProgramDetails"));
 const Honeymooners = lazy(() => import("./pages/Honeymooners"));
 const HoneymoonersDetails = lazy(() => import("./pages/HoneymoonersDetails"));
 
@@ -248,6 +249,14 @@ function App() {
                     element={
                       <PageTransition>
                         <DubaiProgramDetails />
+                      </PageTransition>
+                    }
+                  />
+                  <Route
+                    path="morocco/:programId"
+                    element={
+                      <PageTransition>
+                        <MoroccoProgramDetails />
                       </PageTransition>
                     }
                   />

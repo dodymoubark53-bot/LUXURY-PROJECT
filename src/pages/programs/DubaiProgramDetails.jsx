@@ -145,103 +145,8 @@ const DubaiProgramDetails = () => {
               </motion.div>
             )}
 
-            {/* Pricing + Includes & Excludes side by side */}
+            {/* Itinerary */}
             <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16">
-              <h2 className="text-display-lg text-obsidian-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-                {t('dest.dubai.pricingTitle', 'Pricing')}
-              </h2>
-              {pricing && (
-                <div className="mb-8">
-                  <p className="text-body-xs text-obsidian-500 font-semibold mb-3 uppercase tracking-wider">
-                    {t('dest.dubai.netPrices', 'NET PRICES PER PERSON (MINIMUM 2 PASSENGERS TOGETHER)')}
-                  </p>
-                  <div className="overflow-x-auto rounded-xl border border-gold-500/10">
-                    <table className="w-full text-left border-collapse text-body-sm">
-                      <thead>
-                        <tr className="bg-obsidian-900 text-ivory-50">
-                          <th className="px-3 py-2.5 font-semibold text-xs uppercase tracking-wider">{t('dest.dubai.hotelOrSimilar', 'HOTEL OR SIMILAR')}</th>
-                          <th className="px-3 py-2.5 font-semibold text-xs uppercase tracking-wider whitespace-nowrap">
-                            {t('dest.dubai.pricesWinter', 'WINTER')}
-                            {pricing.winterDates && <span className="block font-normal text-[10px] opacity-75">{pricing.winterDates}</span>}
-                          </th>
-                          <th className="px-3 py-2.5 font-semibold text-xs uppercase tracking-wider whitespace-nowrap">
-                            {t('dest.dubai.pricesSummer', 'SUMMER')}
-                            {pricing.summerDates && <span className="block font-normal text-[10px] opacity-75">{pricing.summerDates}</span>}
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {pricing.hotels.map((hotel, idx) => (
-                          <tr key={idx} className="border-b border-gold-500/10 even:bg-obsidian-50">
-                            <td className="px-3 py-2.5 text-obsidian-700 font-medium text-xs md:text-body-sm">{hotel}</td>
-                            <td className="px-3 py-2.5 text-obsidian-600 text-xs md:text-body-sm whitespace-nowrap">
-                              {t('dest.dubai.pricesDbl', 'DBL')}: ${pricing.winter[idx].dbl}
-                              <span className="text-obsidian-400"> / {t('dest.dubai.pricesSglSup', 'SGL SUP')}: ${pricing.winter[idx].sgl}</span>
-                            </td>
-                            <td className="px-3 py-2.5 text-obsidian-600 text-xs md:text-body-sm whitespace-nowrap">
-                              {t('dest.dubai.pricesDbl', 'DBL')}: ${pricing.summer[idx].dbl}
-                              <span className="text-obsidian-400"> / {t('dest.dubai.pricesSglSup', 'SGL SUP')}: ${pricing.summer[idx].sgl}</span>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  <p className="text-caption text-obsidian-400 italic mt-2">
-                    {t('dest.dubai.priceNote', '(DBL: Double Room / SGL SUP: Single Supplement)')}
-                  </p>
-                </div>
-              )}
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {Array.isArray(includes) && includes.length > 0 && (
-                  <div className="bg-ivory-50 rounded-xl p-6 shadow-sm border border-sage-200">
-                    <h3 className="text-display-sm text-obsidian-900 mb-4 flex items-center gap-2" style={{ fontFamily: "'Playfair Display', serif" }}>
-                      <FaCheckCircle className="text-sage-500" /> {t('tourDetail.included', 'Included')}
-                    </h3>
-                    <ul className="space-y-2">
-                      {includes.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-body-sm text-obsidian-700">
-                          <span className="w-1.5 h-1.5 rounded-full bg-sage-500 mt-2 shrink-0" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {Array.isArray(excludes) && excludes.length > 0 && (
-                  <div className="bg-ivory-50 rounded-xl p-6 shadow-sm border border-red-200">
-                    <h3 className="text-display-sm text-obsidian-900 mb-4 flex items-center gap-2" style={{ fontFamily: "'Playfair Display', serif" }}>
-                      <span className="w-5 h-5 rounded-full bg-red-100 text-red-500 flex items-center justify-center text-xs font-bold">&#10005;</span> {t('tourDetail.excluded', 'Not Included')}
-                    </h3>
-                    <ul className="space-y-2">
-                      {excludes.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-body-sm text-obsidian-700">
-                          <span className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 shrink-0" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-
-          </div>
-
-          {/* Sidebar - Booking Form */}
-          <div className="lg:col-span-1">
-            <div>
-              <BookingForm tourTitle={title} />
-            </div>
-          </div>
-        </div>
-
-        {/* Itinerary */}
-        <div className="relative mt-24 mb-8">
-          <div className="absolute inset-0 bg-gradient-to-r from-obsidian-50 via-gold-50/30 to-obsidian-50 rounded-3xl"></div>
-          <div className="relative z-10 px-4 md:px-12 py-16">
-            <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               <div className="mb-10 text-center">
                 <span className="text-caption text-gold-500 uppercase tracking-[4px] font-semibold block mb-3">
                   {t('tour.journeyDayByDay', 'YOUR JOURNEY DAY BY DAY')}
@@ -252,7 +157,7 @@ const DubaiProgramDetails = () => {
                 <div className="w-24 h-1 bg-gold-500 mx-auto mt-3"></div>
               </div>
 
-              <div className="relative max-w-4xl mx-auto">
+              <div className="relative max-w-full">
                 <div className="absolute left-[1.1rem] top-0 bottom-0 w-1 bg-gold-400"></div>
                 <div className="space-y-6">
                   {days.map((day) => (
@@ -277,7 +182,96 @@ const DubaiProgramDetails = () => {
               </div>
             </motion.div>
           </div>
+
+          {/* Sidebar - Booking Form */}
+          <div className="lg:col-span-1">
+            <div>
+              <BookingForm tourTitle={title} />
+            </div>
+          </div>
         </div>
+
+        {/* Pricing + Includes & Excludes side by side */}
+        <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16">
+          <h2 className="text-display-lg text-obsidian-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+            {t('dest.dubai.pricingTitle', 'Pricing')}
+          </h2>
+          {pricing && (
+            <div className="mb-8">
+              <p className="text-body-xs text-obsidian-500 font-semibold mb-3 uppercase tracking-wider">
+                {t('dest.dubai.netPrices', 'NET PRICES PER PERSON (MINIMUM 2 PASSENGERS TOGETHER)')}
+              </p>
+              <div className="overflow-x-auto rounded-xl border border-gold-500/10">
+                <table className="w-full text-left border-collapse text-body-sm">
+                  <thead>
+                    <tr className="bg-obsidian-900 text-ivory-50">
+                      <th className="px-3 py-2.5 font-semibold text-xs uppercase tracking-wider">{t('dest.dubai.hotelOrSimilar', 'HOTEL OR SIMILAR')}</th>
+                      <th className="px-3 py-2.5 font-semibold text-xs uppercase tracking-wider whitespace-nowrap">
+                        {t('dest.dubai.pricesWinter', 'WINTER')}
+                        {pricing.winterDates && <span className="block font-normal text-[10px] opacity-75">{pricing.winterDates}</span>}
+                      </th>
+                      <th className="px-3 py-2.5 font-semibold text-xs uppercase tracking-wider whitespace-nowrap">
+                        {t('dest.dubai.pricesSummer', 'SUMMER')}
+                        {pricing.summerDates && <span className="block font-normal text-[10px] opacity-75">{pricing.summerDates}</span>}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {pricing.hotels.map((hotel, idx) => (
+                      <tr key={idx} className="border-b border-gold-500/10 even:bg-obsidian-50">
+                        <td className="px-3 py-2.5 text-obsidian-700 font-medium text-xs md:text-body-sm">{hotel}</td>
+                        <td className="px-3 py-2.5 text-obsidian-600 text-xs md:text-body-sm whitespace-nowrap">
+                          {t('dest.dubai.pricesDbl', 'DBL')}: ${pricing.winter[idx].dbl}
+                          <span className="text-obsidian-400"> / {t('dest.dubai.pricesSglSup', 'SGL SUP')}: ${pricing.winter[idx].sgl}</span>
+                        </td>
+                        <td className="px-3 py-2.5 text-obsidian-600 text-xs md:text-body-sm whitespace-nowrap">
+                          {t('dest.dubai.pricesDbl', 'DBL')}: ${pricing.summer[idx].dbl}
+                          <span className="text-obsidian-400"> / {t('dest.dubai.pricesSglSup', 'SGL SUP')}: ${pricing.summer[idx].sgl}</span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-caption text-obsidian-400 italic mt-2">
+                {t('dest.dubai.priceNote', '(DBL: Double Room / SGL SUP: Single Supplement)')}
+              </p>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {Array.isArray(includes) && includes.length > 0 && (
+              <div className="bg-ivory-50 rounded-xl p-6 shadow-sm border border-sage-200">
+                <h3 className="text-display-sm text-obsidian-900 mb-4 flex items-center gap-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  <FaCheckCircle className="text-sage-500" /> {t('tourDetail.included', 'Included')}
+                </h3>
+                <ul className="space-y-2">
+                  {includes.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-body-sm text-obsidian-700">
+                      <span className="w-1.5 h-1.5 rounded-full bg-sage-500 mt-2 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {Array.isArray(excludes) && excludes.length > 0 && (
+              <div className="bg-ivory-50 rounded-xl p-6 shadow-sm border border-red-200">
+                <h3 className="text-display-sm text-obsidian-900 mb-4 flex items-center gap-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  <span className="w-5 h-5 rounded-full bg-red-100 text-red-500 flex items-center justify-center text-xs font-bold">&#10005;</span> {t('tourDetail.excluded', 'Not Included')}
+                </h3>
+                <ul className="space-y-2">
+                  {excludes.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-body-sm text-obsidian-700">
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </motion.div>
       </section>
 
       {/* Hotels */}

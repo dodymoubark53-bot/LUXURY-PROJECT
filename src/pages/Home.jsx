@@ -11,6 +11,7 @@ import HieroglyphicName from "../components/home/HieroglyphicName";
 import { useTurkeyPrograms } from "../hooks/useTurkeyPrograms";
 import { useJordanPrograms } from "../hooks/useJordanPrograms";
 import { useDubaiPrograms } from "../hooks/useDubaiPrograms";
+import { useMoroccoPrograms } from "../hooks/useMoroccoPrograms";
 import { transportation } from "../data/transportation";
 import { useCurrency } from "../context/CurrencyContext";
 import rawProgramData from "../data/programs.json";
@@ -128,6 +129,24 @@ const Home = () => {
     market: "Global",
     highlights: dp.highlights,
     code: dp.code
+  }));
+
+  const moroccoPrograms = useMoroccoPrograms();
+  const formattedMoroccoTours = moroccoPrograms.map((mp) => ({
+    id: mp.id,
+    slug: mp.slug,
+    destination: "morocco",
+    title: mp.title,
+    description: mp.overview,
+    duration: mp.duration,
+    price: mp.raw?.price || 899,
+    rating: 4.8,
+    reviewCount: 120,
+    images: mp.images,
+    type: mp.raw?.type || "Cultural Tour",
+    market: "Global",
+    highlights: mp.highlights,
+    code: mp.code
   }));
 
   // Hero Video State
@@ -342,7 +361,9 @@ const Home = () => {
         ? formattedJordanTours
         : activeDestination === "dubai"
           ? formattedDubaiTours
-          : tours.filter((t) => t.destination === activeDestination)
+          : activeDestination === "morocco"
+            ? formattedMoroccoTours
+            : tours.filter((t) => t.destination === activeDestination)
     : [];
 
   const featuredToursList = [
@@ -353,7 +374,7 @@ const Home = () => {
         t.destination === "jordan" &&
         t.id !== tours.find((x) => x.destination === "jordan")?.id,
     ),
-    tours.find(
+    formattedMoroccoTours[0] || tours.find(
       (t) =>
         t.destination === "morocco" &&
         t.id !== tours.find((x) => x.destination === "morocco")?.id,
@@ -635,7 +656,9 @@ const Home = () => {
                   ? formattedJordanTours.length
                   : dest.id === "dubai"
                     ? formattedDubaiTours.length
-                    : tours.filter((t) => t.destination === dest.id).length;
+                    : dest.id === "morocco"
+                      ? formattedMoroccoTours.length
+                      : tours.filter((t) => t.destination === dest.id).length;
               const isActive = activeDestination === dest.id;
 
               return (

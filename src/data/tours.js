@@ -29,7 +29,7 @@ const baseTours = [
       "Assistência no Aeroporto conforme roteiro",
       "Passeio no Cairo às Pirâmides e Esfinge, Memphis e Sakkara, Mastabas e Pirâmide de Teti",
       "Passeio e entrada ao Grand Egyptian Museum, Mesquita, Bairro Copta e Mercado Khan El Khalili",
-      "Guias de língua portuguesa (não nativo)",
+      
       "Visto obrigatório 35$ pp, um representante lhe aguardando no desembarque para lhe entregar o visto e lhe auxiliar na imigração"
     ],
     "excluded": [
@@ -71,8 +71,7 @@ const baseTours = [
       "Assistência no Aeroporto conforme roteiro",
       "Passeio no Cairo às Pirâmides e Esfinge, Memphis e Sakkara, Mastabas e Pirâmide de Teti",
       "Visita a Alexandria de um dia inteiro com almoço incluso (sem bebidas)",
-      "Passeio e entrada ao Grand Egyptian Museum, Mesquita, Bairro Copta e Mercado Khan El Khalili",
-      "Guias de língua portuguesa (não nativo)"
+      "Passeio e entrada ao Grand Egyptian Museum, Mesquita, Bairro Copta e Mercado Khan El Khalili"
     ],
     "excluded": [
       "Todas as bebidas durante o almoço e jantar nos passeios não estão inclusas",
@@ -115,8 +114,7 @@ const baseTours = [
       "Traslados: Aeroporto / Hotel / Aeroporto em serviço regular.",
       "Assistência nos Aeroportos conforme roteiro",
       "Todas as visitas durante o cruzeiro mencionadas no itinerário em serviço regular",
-      "Passeio no Cairo às Pirâmides e Esfinge + Fábrica de papiros e Novo Museu (GEM)",
-      "Guias de língua portuguesa (não nativo)"
+      "Passeio no Cairo às Pirâmides e Esfinge + Fábrica de papiros e Novo Museu (GEM)"
     ],
     "excluded": [
       "Todas as bebidas durante o almoço e jantar nos passeios não estão inclusas",
@@ -167,7 +165,7 @@ const baseTours = [
       "Passeio no Cairo às Pirâmides e Esfinge + Memphis & Sakkara e Fábrica de papiros",
       "Passeio ao Novo Museu (GEM), Mesquita de Alabastro, Cidadela de Saladino, Bairro Copta e Mercado Khan El Khalili",
       "Todas as visitas durante o cruzeiro mencionadas no itinerário em serviço regular",
-      "Guias de língua portuguesa (não nativo)",
+      
       "Visto obrigatório, um representante lhe aguardando no desembarque para lhe entregar o visto e lhe auxiliar na imigração"
     ],
     "excluded": [
@@ -220,7 +218,7 @@ const baseTours = [
       "Assistência nos aeroportos conforme roteiro",
       "Todas as visitas durante o cruzeiro mencionadas no roteiro em serviço regular",
       "Passeio no Cairo às 3 Pirâmides e Esfinge",
-      "Guias de língua portuguesa (não nativos)"
+      
     ],
     "excluded": [
       "Todas as bebidas durante o almoço e jantar nos passeios não estão inclusas",
@@ -313,8 +311,7 @@ const baseTours = [
       "Traslados: Aeroporto / Hotel / Aeroporto em serviço regular.",
       "Assistência nos Aeroportos conforme roteiro",
       "Todas as visitas durante o cruzeiro mencionadas no itinerário em serviço regular",
-      "Passeio no Cairo às Pirâmides e Esfinge + Fábrica de papiros",
-      "Guias de língua portuguesa (não nativo)"
+      "Passeio no Cairo às Pirâmides e Esfinge + Fábrica de papiros"
     ],
     "excluded": [
       "Todas as bebidas durante o almoço e jantar nos passeios não estão inclusas",
@@ -367,7 +364,7 @@ const baseTours = [
       "01 noite de hospedagem em Abu Simbel na categoria escolhida com café da manhã e taxas;",
       "Traslados IN / OUT em serviço regular;",
       "Todas as visitas durante o cruzeiro mencionadas no itinerário em serviço regular;",
-      "Tours conforme descritos no roteiro e entradas, com guias de língua portuguesa (não nativos) em serviço regular;",
+      
       "Todos os veículos para traslados e tours com ar-condicionado."
     ],
     "excluded": [
@@ -457,7 +454,7 @@ const baseTours = [
       "01 noite de hospedagem em Alexandria em hotel de categoria eleita com café da manhã e taxas;",
       "VISITA ÀS PIRÂMIDES, ESFINGE E FÁBRICA DE PAPIROS e Novo Museu;",
       "Traslados IN / OUT em serviços regulares;",
-      "Tours conforme descritos acima no roteiro e entradas, com guias de fala portuguesa (não nativos) em serviço regular;",
+      
       "Todas as visitas durante o cruzeiro mencionadas no itinerário em serviço regular;",
       "Todos os veículos para traslados e tours com ar-condicionado;",
       "Visto obrigatório, um representante lhe aguardando no desembarque para lhe entregar o visto e lhe auxiliar na imigração."

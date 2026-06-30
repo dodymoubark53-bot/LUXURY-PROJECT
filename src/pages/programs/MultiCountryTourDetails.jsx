@@ -91,7 +91,7 @@ const MultiCountryTourDetails = () => {
       {/* 3. Quick Info Bar */}
       <div className="container mx-auto px-6 -mt-12 relative z-20">
         <div className="bg-ivory-50 rounded-2xl shadow-card overflow-hidden">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-gray-100 border-b border-gray-100 bg-obsidian-50">
+          <div className="grid grid-cols-2 md:grid-cols-3 divide-x divide-y md:divide-y-0 divide-gray-100 border-b border-gray-100 bg-obsidian-50">
             <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
               <FaClock className="text-gold-500 text-2xl mb-1" />
               <span className="text-caption text-obsidian-500 uppercase">{t('tour.duration', 'Duration')}</span>
@@ -101,15 +101,6 @@ const MultiCountryTourDetails = () => {
               <FaTag className="text-gold-500 text-2xl mb-1" />
               <span className="text-caption text-obsidian-500 uppercase">{t('tour.tourType', 'Tour Type')}</span>
               <span className="text-body-md font-semibold text-obsidian-900">{t(`data.${tour.type}`, tour.type)}</span>
-            </div>
-            <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
-              <FaGlobe className="text-gold-500 text-2xl mb-1" />
-              <span className="text-caption text-obsidian-500 uppercase">{t('tour.languages', 'Languages')}</span>
-              <span className="text-body-md font-semibold text-obsidian-900">
-                {tour.language === 'es'
-                  ? t('languages.spanish', 'Español')
-                  : t('languages.english', 'English')}
-              </span>
             </div>
             <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
               <FaUserFriends className="text-gold-500 text-2xl mb-1" />
@@ -157,21 +148,8 @@ const MultiCountryTourDetails = () => {
               </motion.div>
             )}
 
-          </div>
-
-          {/* Sidebar - Booking Form */}
-          <div className="lg:col-span-1">
-            <div>
-              <BookingForm tourTitle={tour.title} />
-            </div>
-          </div>
-        </div>
-
-        {/* Itinerary – Full Width */}
-        <div className="relative mt-24 mb-8">
-          <div className="absolute inset-0 bg-gradient-to-r from-obsidian-50 via-gold-50/30 to-obsidian-50 rounded-3xl"></div>
-          <div className="relative z-10 px-4 md:px-12 py-16">
-            <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            {/* Itinerary */}
+            <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16">
               <div className="mb-10 text-center">
                 <span className="text-caption text-gold-500 uppercase tracking-[4px] font-semibold block mb-3">
                   {t('tour.journeyDayByDay', 'YOUR JOURNEY DAY BY DAY')}
@@ -182,7 +160,7 @@ const MultiCountryTourDetails = () => {
                 <div className="w-24 h-1 bg-gold-500 mx-auto mt-3"></div>
               </div>
 
-              <div className="relative max-w-4xl mx-auto">
+              <div className="relative max-w-full">
                 <div className="absolute left-[1.1rem] top-0 bottom-0 w-1 bg-gold-400"></div>
                 <div className="space-y-6">
                   {tour.itinerary && tour.itinerary.map((day) => (
@@ -206,6 +184,19 @@ const MultiCountryTourDetails = () => {
                 </div>
               </div>
             </motion.div>
+          </div>
+
+          {/* Sidebar - Booking Form */}
+          <div className="lg:col-span-1">
+            <div>
+              <BookingForm tourTitle={tour.title} />
+            </div>
+          </div>
+        </div>
+
+        <div className="relative mt-24 mb-8">
+          <div className="absolute inset-0 bg-gradient-to-r from-obsidian-50 via-gold-50/30 to-obsidian-50 rounded-3xl"></div>
+          <div className="relative z-10 px-4 md:px-12 py-16">
 
             {/* Included / Excluded - Country Split (mct-006) or Legacy */}
             <motion.div

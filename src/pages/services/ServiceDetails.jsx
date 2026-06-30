@@ -104,7 +104,7 @@ const ServiceDetails = () => {
           {/* Quick Info Bar - standalone overlapping */}
           <div className="container mx-auto px-6 -mt-12 relative z-20">
             <div className="bg-ivory-50 rounded-2xl shadow-card overflow-hidden">
-              <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-gray-100 border-b border-gray-100 bg-obsidian-50">
+              <div className="grid grid-cols-2 md:grid-cols-3 divide-x divide-y md:divide-y-0 divide-gray-100 border-b border-gray-100 bg-obsidian-50">
                 <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
                   <FaClock className="text-gold-500 text-2xl mb-1" />
                   <span className="text-caption text-obsidian-500 uppercase">{t('tour.duration', 'Duration')}</span>
@@ -119,11 +119,6 @@ const ServiceDetails = () => {
                   <FaUserFriends className="text-gold-500 text-2xl mb-1" />
                   <span className="text-caption text-obsidian-500 uppercase">{t('tour.groupSize', 'Group Size')}</span>
                   <span className="text-body-md font-semibold text-obsidian-900">2-16</span>
-                </div>
-                <div className="p-6 flex flex-col items-center justify-center text-center gap-2">
-                  <FaGlobe className="text-gold-500 text-2xl mb-1" />
-                  <span className="text-caption text-obsidian-500 uppercase">{t('tour.languages', 'Languages')}</span>
-                  <span className="text-body-md font-semibold text-obsidian-900">{t('languages.spanish', 'Español')}</span>
                 </div>
               </div>
             </div>
