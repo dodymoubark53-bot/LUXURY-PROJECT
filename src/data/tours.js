@@ -28,13 +28,12 @@ const baseTours = [
       "Traslados: Aeroporto / Hotel / Aeroporto em serviço regular.",
       "Assistência no Aeroporto conforme roteiro",
       "Passeio no Cairo às Pirâmides e Esfinge, Memphis e Sakkara, Mastabas e Pirâmide de Teti",
-      "Passeio e entrada ao Grand Egyptian Museum, Mesquita, Bairro Copta e Mercado Khan El Khalili",
-      
-      "Visto obrigatório 35$ pp, um representante lhe aguardando no desembarque para lhe entregar o visto e lhe auxiliar na imigração"
+      "Passeio e entrada ao Grand Egyptian Museum, Mesquita, Bairro Copta e Mercado Khan El Khalili"
     ],
     "excluded": [
       "Todas as bebidas durante o almoço e jantar nos passeios não estão inclusas",
-      "Gorjetas aos maleteiros e carregadores obrigatórias"
+      "Gorjetas aos maleteiros e carregadores obrigatórias",
+      "Visto obrigatório 35$ pp, um representante lhe aguardando no desembarque para lhe entregar o visto e lhe auxiliar na imigração"
     ],
     "itinerary": [
       { "day": 1, "title": "Chegada no Aeroporto Internacional do Cairo", "description": "Chegada ao Aeroporto do Cairo e traslado para o Hotel. Conforme o horário de chegada é possível oferecer algum passeio opcional." },

@@ -36,8 +36,8 @@ const Contact = () => {
                   <div>
                     <h4 className="text-caption text-gold-500 uppercase tracking-widest mb-1">{t('contact.office', 'Address')}</h4>
                     <p className="text-body-md text-ivory-300">
-                      {t('contact.address', '5 Hussein Said St, Old Hadayk El Ahram First floor Flat 102 – 103')}<br />
-                      {t('contact.address2', 'Haram - Giza – Egypt')}
+                      5 Hussein Said St, Old Hadayk El Ahram First floor Flat 102 – 103<br />
+                      Haram - Giza – Egypt
                     </p>
                   </div>
                 </div>

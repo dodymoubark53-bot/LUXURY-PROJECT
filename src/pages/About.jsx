@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 
 const styles = `
   :root {
@@ -700,32 +701,6 @@ const styles = `
   }
 `;
 
-const teamMembers = [
-  { initials: 'MS', name: 'Miguel Selma', role: 'General Director', country: '🇪🇸 Spain', offset: '0px', delay: '.05s' },
-  { initials: 'GF', name: 'Giovanni Fiore', role: 'Commercial Director', country: '🇮🇹 Italy', offset: '38px', delay: '.1s' },
-  { initials: 'VB', name: 'Vinicius Barcellos', role: 'Commercial Director', country: '🇧🇷 Brazil', offset: '8px', delay: '.15s' },
-  { initials: 'SM', name: 'Sonia Melo', role: 'Sales Director', country: '🇧🇷 Brazil', offset: '46px', delay: '.2s' },
-  { initials: 'LR', name: 'Luciana Rovaroto', role: 'Customer Service', country: '🇧🇷 Brazil', offset: '2px', delay: '.25s' },
-  { initials: 'RP', name: 'Ramiro Poggi', role: 'Commercial Director', country: '🇦🇷 Argentina', offset: '32px', delay: '.3s' },
-  { initials: 'EC', name: 'Edgar Cañón', role: 'Commercial Director', country: '🇨🇴 Colombia', offset: '14px', delay: '.35s' },
-];
-
-const statsData = [
-  { count: 17, suffix: '+', label: 'Years of Experience' },
-  { count: 95654, suffix: '', label: 'Travelers in 2025' },
-  { count: 438, suffix: '', label: 'Employees' },
-  { count: 182, suffix: '', label: 'Official Guides' },
-  { count: 4, suffix: '', label: 'International Offices' },
-];
-
-const heroStatsData = [
-  { count: 17, label: 'Years' },
-  { count: 95654, label: 'Travelers 2025' },
-  { count: 438, label: 'Employees' },
-  { count: 182, label: 'Official Guides' },
-  { count: 4, label: "Int'l Offices" },
-];
-
 const chartData = [
   { year: '2018', value: '24,000', pct: 25 },
   { year: '2019', value: '32,993', pct: 34 },
@@ -734,32 +709,8 @@ const chartData = [
   { year: '2024', value: '95,654', pct: 100 },
 ];
 
-const eventsData = [
-  { year: '—', text: 'International Sports Tourism Forum, in cooperation with the Ministry of Tourism of Egypt — delegations from 12 countries, 150+ guests, and 48 leading sports-marketing companies.' },
-  { year: '2013', text: 'World Sports Conference, with the participation of Joaquín, star of Spanish football.' },
-  { year: '2014–15', text: 'Tourism Business Conference in Mexico.' },
-  { year: '2015', text: 'Conference of Travel Journalists Associations from Spain, South America, and Central America.' },
-  { year: '2016', text: 'Abu Al-Ahly Futsal Club trip to Barcelona.' },
-  { year: '2016–17', text: 'International Conferences of the Egyptian Dental Union.' },
-  { year: '2018', text: 'Trip of the Spanish Shooting Team and International Championship in Egypt.' },
-  { year: '2019', text: 'FIIAPP International Conference and the Egypt–Brazil Economic Conference.' },
-];
-
-const servicesData = [
-  { num: '01', title: 'Inbound Travel', desc: 'Receptive travel in Egypt.' },
-  { num: '02', title: 'Outbound Travel', desc: 'Travel from Egypt to anywhere in the world.' },
-  { num: '03', title: 'Corporate Travel', desc: 'Tailored travel solutions for businesses.' },
-  { num: '04', title: 'Leisure Travel', desc: 'Custom leisure experiences.' },
-];
-
-const valuesData = [
-  { title: '17+ Years', desc: 'Of experience' },
-  { title: 'International', desc: 'Presence' },
-  { title: 'Personalized', desc: 'Service & 24/7 support' },
-  { title: 'Quality & Trust', desc: 'Safety in every detail' },
-];
-
 const About = () => {
+  const { t } = useTranslation();
   const pageRef = useRef(null);
 
   useEffect(() => {
@@ -844,8 +795,8 @@ const About = () => {
   return (
     <div className="about-page" ref={pageRef}>
       <Helmet>
-        <title>About Us | Dunas Travel</title>
-        <meta name="description" content="Discover our story. Dunas Travel Group — 17+ years designing and operating travel experiences for tour operators and agencies across Europe and Latin America." />
+        <title>{t('about.seoTitle', 'About Us | Dunas Travel')}</title>
+        <meta name="description" content={t('about.seoDescNew', 'Discover our story. Dunas Travel Group — 17+ years designing and operating travel experiences for tour operators and agencies across Europe and Latin America.')} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -855,9 +806,9 @@ const About = () => {
 
       <header className="hero" id="about-hero">
         <div className="hero-watermark">DT</div>
-        <div className="hero-eyebrow eyebrow">DESTINATION MANAGEMENT COMPANY · EGYPT · EST. 2010</div>
-        <h1>We connect destinations,<br />create <em>experiences</em>,<br />and build trust.</h1>
-        <p className="sub">Dunas Travel Group — 17+ years designing and operating travel experiences for tour operators and agencies across Europe and Latin America.</p>
+        <div className="hero-eyebrow eyebrow">{t('about.heroEyebrow')}</div>
+        <h1 dangerouslySetInnerHTML={{ __html: t('about.heroTitle') }} />
+        <p className="sub">{t('about.heroSub')}</p>
 
         <div className="routes-wrap" id="routesWrap">
           <svg viewBox="0 0 980 260" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
@@ -884,72 +835,84 @@ const About = () => {
             <g fontFamily="Space Grotesk, sans-serif" fontSize="14" fill="#F8F3E6" letterSpacing="0.5">
               <circle cx="490" cy="140" r="8" fill="#E8CB72" />
               <circle cx="490" cy="140" r="14" fill="none" stroke="#E8CB72" strokeOpacity="0.5" strokeWidth="1.5" />
-              <text x="490" y="168" textAnchor="middle" fill="#E8CB72" fontWeight="600" fontSize="15">CAIRO · HQ</text>
+              <text x="490" y="168" textAnchor="middle" fill="#E8CB72" fontWeight="600" fontSize="15">{t('about.mapCairo')}</text>
               <circle cx="210" cy="65" r="5" fill="#F8F3E6" />
-              <text x="210" y="50" textAnchor="middle" fontSize="14">MADRID</text>
+              <text x="210" y="50" textAnchor="middle" fontSize="14">{t('about.mapMadrid')}</text>
               <circle cx="470" cy="28" r="5" fill="#F8F3E6" />
-              <text x="470" y="14" textAnchor="middle" fontSize="14">ITALY</text>
+              <text x="470" y="14" textAnchor="middle" fontSize="14">{t('about.mapItaly')}</text>
               <circle cx="700" cy="175" r="5" fill="#F8F3E6" />
-              <text x="700" y="200" textAnchor="middle" fontSize="14">BRAZIL</text>
+              <text x="700" y="200" textAnchor="middle" fontSize="14">{t('about.mapBrazil')}</text>
               <circle cx="150" cy="185" r="4" fill="rgba(248,243,230,0.7)" />
-              <text x="150" y="208" textAnchor="middle" fill="rgba(248,243,230,0.6)" fontSize="12">COLOMBIA</text>
+              <text x="150" y="208" textAnchor="middle" fill="rgba(248,243,230,0.6)" fontSize="12">{t('about.mapColombia')}</text>
               <circle cx="230" cy="225" r="4" fill="rgba(248,243,230,0.7)" />
-              <text x="230" y="245" textAnchor="middle" fill="rgba(248,243,230,0.6)" fontSize="12">ARGENTINA</text>
+              <text x="230" y="245" textAnchor="middle" fill="rgba(248,243,230,0.6)" fontSize="12">{t('about.mapArgentina')}</text>
               <circle cx="640" cy="230" r="4" fill="rgba(248,243,230,0.7)" />
-              <text x="640" y="250" textAnchor="middle" fill="rgba(248,243,230,0.6)" fontSize="12">MEXICO</text>
+              <text x="640" y="250" textAnchor="middle" fill="rgba(248,243,230,0.6)" fontSize="12">{t('about.mapMexico')}</text>
             </g>
           </svg>
         </div>
 
         <div className="hero-stats">
-          {heroStatsData.map((s, i) => (
+          {[
+            { count: 17, labelKey: 'about.heroStatsYears' },
+            { count: 95654, labelKey: 'about.heroStatsTravelers' },
+            { count: 438, labelKey: 'about.heroStatsEmployees' },
+            { count: 182, labelKey: 'about.heroStatsGuides' },
+            { count: 4, labelKey: 'about.heroStatsOffices' },
+          ].map((s, i) => (
             <div key={i}>
               <div className="num" data-count={s.count}>0</div>
-              <div className="lbl">{s.label}</div>
+              <div className="lbl">{t(s.labelKey)}</div>
             </div>
           ))}
         </div>
 
-        <div className="scroll-cue"><span>Scroll</span><div className="line"></div></div>
+        <div className="scroll-cue"><span>{t('about.heroScroll')}</span><div className="line"></div></div>
       </header>
 
       <section className="section-light" id="who">
         <div className="section-head reveal">
-          <span className="eyebrow" style={{ color: 'var(--royal)' }}>01 — WHO WE ARE</span>
-          <h2>Local expertise. Global<br />standards.</h2>
+          <span className="eyebrow" style={{ color: 'var(--royal)' }}>{t('about.whoEyebrow')}</span>
+          <h2 dangerouslySetInnerHTML={{ __html: t('about.whoTitle') }} />
           <div className="rule"></div>
         </div>
         <div className="who-grid">
           <div className="reveal">
-            <p>With over <b>17 years of experience</b>, Dunas Travel Group is a leading Destination Management Company (DMC) in Egypt, specializing in the design and full management of travel experiences for tour operators and travel agencies around the world.</p>
-            <p>Our combination of local expertise, proprietary infrastructure, and a highly qualified team enables us to deliver customized solutions with the highest standards of quality, efficiency, and service.</p>
-            <p>We operate our own offices in <b>Egypt, Spain, Italy, and Brazil</b>, and maintain a strong commercial presence across Latin America's key markets.</p>
+            <p dangerouslySetInnerHTML={{ __html: t('about.whoP1') }} />
+            <p>{t('about.whoP2')}</p>
+            <p dangerouslySetInnerHTML={{ __html: t('about.whoP3') }} />
             <div className="feature-pair">
               <div className="feature-card">
-                <div className="ftitle">Specialists</div>
-                <p>Deep expertise in the Hispanic and Latin American markets.</p>
+                <div className="ftitle">{t('about.specialistsTitle')}</div>
+                <p>{t('about.specialistsDesc')}</p>
               </div>
               <div className="feature-card">
-                <div className="ftitle">Own Operations</div>
-                <p>Full control of services and infrastructure at the destination.</p>
+                <div className="ftitle">{t('about.ownOpsTitle')}</div>
+                <p>{t('about.ownOpsDesc')}</p>
               </div>
             </div>
           </div>
           <div className="presence-box reveal">
-            <h3>International Presence</h3>
+            <h3>{t('about.presenceTitle')}</h3>
             <div className="presence-list">
-              <div className="presence-row"><span className="k">Sales Offices</span><span className="v">Egypt · Spain · Italy · Brazil</span></div>
-              <div className="presence-row"><span className="k">Commercial Network</span><span className="v">Argentina · Colombia · Mexico · Peru</span></div>
-              <div className="presence-row"><span className="k">&nbsp;</span><span className="v">Ecuador · Chile · Panama · Costa Rica</span></div>
-              <div className="presence-row"><span className="k">Languages</span><span className="v">Spanish · Portuguese · English · Italian · French</span></div>
+              <div className="presence-row"><span className="k">{t('about.presenceSales')}</span><span className="v">{t('about.presenceSalesVal')}</span></div>
+              <div className="presence-row"><span className="k">{t('about.presenceNetwork')}</span><span className="v">{t('about.presenceNetworkVal')}</span></div>
+              <div className="presence-row"><span className="k">&nbsp;</span><span className="v">{t('about.presenceNetworkVal2')}</span></div>
+              <div className="presence-row"><span className="k">{t('about.presenceLanguages')}</span><span className="v">{t('about.presenceLanguagesVal')}</span></div>
             </div>
           </div>
         </div>
         <div className="stats-strip reveal">
-          {statsData.map((s, i) => (
+          {[
+            { count: 17, suffix: '+', labelKey: 'about.statYears' },
+            { count: 95654, suffix: '', labelKey: 'about.statTravelers' },
+            { count: 438, suffix: '', labelKey: 'about.statEmployees' },
+            { count: 182, suffix: '', labelKey: 'about.statGuides' },
+            { count: 4, suffix: '', labelKey: 'about.statOffices' },
+          ].map((s, i) => (
             <div className="stat-cell" key={i}>
               <div className="n" data-count={s.count} data-suffix={s.suffix}>0</div>
-              <div className="l">{s.label}</div>
+              <div className="l">{t(s.labelKey)}</div>
             </div>
           ))}
         </div>
@@ -957,13 +920,13 @@ const About = () => {
 
       <section className="section-dark">
         <div className="section-head reveal">
-          <span className="eyebrow">02 — GROWTH</span>
-          <h2>Sustained growth,<br />year after year.</h2>
+          <span className="eyebrow">{t('about.growthEyebrow')}</span>
+          <h2 dangerouslySetInnerHTML={{ __html: t('about.growthTitle') }} />
           <div className="rule"></div>
         </div>
         <div className="chart-wrap">
           <div className="reveal">
-            <p style={{ fontSize: 16, lineHeight: 1.85, color: 'rgba(248,243,230,.72)', fontWeight: 300 }}>Growth driven by our own infrastructure, multilingual guide network, and continued international expansion — from 24,000 travelers served in 2018 to over 95,000 in 2025.</p>
+            <p style={{ fontSize: 16, lineHeight: 1.85, color: 'rgba(248,243,230,.72)', fontWeight: 300 }}>{t('about.growthDesc')}</p>
           </div>
           <div className="chart reveal">
             {chartData.map((c, i) => (
@@ -978,85 +941,104 @@ const About = () => {
 
       <section className="section-light" id="institutional">
         <div className="section-head reveal">
-          <span className="eyebrow" style={{ color: 'var(--royal)' }}>03 — INSTITUTIONAL INFORMATION</span>
-          <h2>Built on licensed,<br />verifiable foundations.</h2>
+          <span className="eyebrow" style={{ color: 'var(--royal)' }}>{t('about.instEyebrow')}</span>
+          <h2 dangerouslySetInnerHTML={{ __html: t('about.instTitle') }} />
           <div className="rule"></div>
         </div>
         <div className="inst-grid reveal">
           <div className="inst-cell">
-            <div className="ic-label">Foundation</div>
-            <h4>March 16, 2010</h4>
-            <p>General Tourism, Category 1.</p>
+            <div className="ic-label">{t('about.instFoundation')}</div>
+            <h4>{t('about.instFoundationDate')}</h4>
+            <p>{t('about.instFoundationDesc')}</p>
           </div>
           <div className="inst-cell">
-            <div className="ic-label">License</div>
-            <h4>No. 1882</h4>
-            <p>Ministry of Tourism of Egypt.</p>
+            <div className="ic-label">{t('about.instLicense')}</div>
+            <h4>{t('about.instLicenseNo')}</h4>
+            <p>{t('about.instLicenseDesc')}</p>
           </div>
           <div className="inst-cell">
-            <div className="ic-label">Infrastructure</div>
-            <h4>156+ Delegates / 182+ Guides</h4>
-            <p>Multilingual team — Spanish, Portuguese, English, Italian, and French.</p>
+            <div className="ic-label">{t('about.instInfra')}</div>
+            <h4>{t('about.instInfraVal')}</h4>
+            <p>{t('about.instInfraDesc')}</p>
           </div>
           <div className="inst-cell">
-            <div className="ic-label">Partnerships</div>
-            <h4>Spanish Sports Council</h4>
-            <p>Member of the CSD for the organization of sports tourism events from our Madrid office.</p>
+            <div className="ic-label">{t('about.instPartnerships')}</div>
+            <h4>{t('about.instPartnershipsVal')}</h4>
+            <p>{t('about.instPartnershipsDesc')}</p>
           </div>
         </div>
         <div style={{ marginTop: 50 }} className="reveal">
-          <div className="ic-label eyebrow" style={{ color: 'var(--royal)' }}>ANNUAL PRESENCE AT TRADE SHOWS</div>
+          <div className="ic-label eyebrow" style={{ color: 'var(--royal)' }}>{t('about.instTradeShows')}</div>
           <div className="tradeshow-row" style={{ marginTop: 18 }}>
-            {['FITUR — Madrid', 'B-Travel — Barcelona', 'Expo México', 'WTM Latin America — Brazil', 'FIT — Argentina', 'BTL — Lisbon'].map((show, i) => (
-              <div className="tradeshow-chip" key={i}>{show}</div>
+            {[1,2,3,4,5,6].map((n) => (
+              <div className="tradeshow-chip" key={n}>{t('about.tradeShow' + n)}</div>
             ))}
           </div>
         </div>
         <div className="quote-block reveal">
-          <p>"At Dunas Travel Group, we build lasting relationships based on trust, operational excellence, and a deep knowledge of the destination."</p>
-          <span>Dunas Travel Group</span>
+          <p>{t('about.instQuote')}</p>
+          <span>{t('about.instQuoteAuthor')}</span>
         </div>
       </section>
 
       <section className="section-dark" id="events">
         <div className="section-head reveal">
-          <span className="eyebrow">04 — HIGH-IMPACT EVENTS &amp; CONGRESSES</span>
-          <h2>Driving tourism,<br />sport, and business.</h2>
+          <span className="eyebrow">{t('about.eventsEyebrow')}</span>
+          <h2 dangerouslySetInnerHTML={{ __html: t('about.eventsTitle') }} />
           <div className="rule"></div>
         </div>
         <div className="events-list reveal">
-          {eventsData.map((ev, i) => (
+          {[
+            { year: '\u2014', textKey: 'about.event1' },
+            { year: '2013', textKey: 'about.event2' },
+            { year: '2014\u201315', textKey: 'about.event3' },
+            { year: '2015', textKey: 'about.event4' },
+            { year: '2016', textKey: 'about.event5' },
+            { year: '2016\u201317', textKey: 'about.event6' },
+            { year: '2018', textKey: 'about.event7' },
+            { year: '2019', textKey: 'about.event8' },
+          ].map((ev, i) => (
             <div className="event-row" key={i}>
               <div className="eyr">{ev.year}</div>
-              <div className="etxt" dangerouslySetInnerHTML={{ __html: ev.text }} />
+              <div className="etxt">{t(ev.textKey)}</div>
             </div>
           ))}
         </div>
-        <p className="events-more reveal">In addition to numerous corporate, institutional, and sports events held in Egypt and abroad — each one strengthening our expertise and global positioning.</p>
+        <p className="events-more reveal">{t('about.eventsMore')}</p>
       </section>
 
       <section className="section-light" id="services">
         <div className="section-head reveal">
-          <span className="eyebrow" style={{ color: 'var(--royal)' }}>05 — WHY CHOOSE DUNAS TRAVEL</span>
-          <h2>Local expertise, personalized<br />service, world-class standards.</h2>
+          <span className="eyebrow" style={{ color: 'var(--royal)' }}>{t('about.servicesEyebrow')}</span>
+          <h2 dangerouslySetInnerHTML={{ __html: t('about.servicesTitle') }} />
           <div className="rule"></div>
         </div>
         <div className="services-grid reveal">
-          {servicesData.map((svc, i) => (
+          {[
+            { num: '01', titleKey: 'about.svc01.title', descKey: 'about.svc01.desc' },
+            { num: '02', titleKey: 'about.svc02.title', descKey: 'about.svc02.desc' },
+            { num: '03', titleKey: 'about.svc03.title', descKey: 'about.svc03.desc' },
+            { num: '04', titleKey: 'about.svc04.title', descKey: 'about.svc04.desc' },
+          ].map((svc, i) => (
             <div className="svc-card" key={i}>
               <span className="svc-num">{svc.num}</span>
               <div>
-                <div className="svc-title">{svc.title}</div>
-                <p>{svc.desc}</p>
+                <div className="svc-title">{t(svc.titleKey)}</div>
+                <p>{t(svc.descKey)}</p>
               </div>
             </div>
           ))}
         </div>
         <div className="values-row reveal">
-          {valuesData.map((v, i) => (
+          {[
+            { titleKey: 'about.val01.title', descKey: 'about.val01.desc' },
+            { titleKey: 'about.val02.title', descKey: 'about.val02.desc' },
+            { titleKey: 'about.val03.title', descKey: 'about.val03.desc' },
+            { titleKey: 'about.val04.title', descKey: 'about.val04.desc' },
+          ].map((v, i) => (
             <div className="value-item" key={i}>
-              <div className="vt">{v.title}</div>
-              <div className="vd">{v.desc}</div>
+              <div className="vt">{t(v.titleKey)}</div>
+              <div className="vd">{t(v.descKey)}</div>
             </div>
           ))}
         </div>
@@ -1064,25 +1046,33 @@ const About = () => {
 
       <section className="section-dark" id="team">
         <div className="section-head reveal" style={{ marginBottom: 80 }}>
-          <span className="eyebrow">06 — OUR TEAM</span>
-          <h2>One house, Six countries,<br />one standard of care.</h2>
+          <span className="eyebrow">{t('about.teamEyebrow')}</span>
+          <h2 dangerouslySetInnerHTML={{ __html: t('about.teamTitle') }} />
           <div className="rule"></div>
           <p style={{ marginTop: 24, fontSize: '13.5px', color: 'rgba(248,243,230,.6)', fontWeight: 300, lineHeight: 1.8, maxWidth: 520 }}>
-            From Cairo to Bogotá, our directors and specialists work as a single team — fluent in the cities, languages, and details that turn a trip into a story worth telling.
+            {t('about.teamDesc')}
           </p>
         </div>
         <div className="team-lead reveal">
-          <span className="team-badge">{'🇪🇬'} Egypt — Headquarters</span>
+          <span className="team-badge">{'🇪🇬'} {t('about.teamLeadBadge')}</span>
           <div className="avatar-frame">
             <div className="avatar-ring"></div>
             <div className="avatar"><span className="initials">AY</span><img alt="" /><span className="plus">+</span></div>
             <input type="file" accept="image/*" />
           </div>
-          <p className="member-name lead-name">Attia Yamany</p>
-          <p className="member-role">CEO <em>&amp; Founder</em></p>
+          <p className="member-name lead-name">{t('about.leadName')}</p>
+          <p className="member-role" dangerouslySetInnerHTML={{ __html: t('about.leadRole') }} />
         </div>
         <div className="team-grid">
-          {teamMembers.map((m, i) => (
+          {[
+            { initials: 'MS', name: 'Miguel Selma', roleKey: 'about.roleGeneralDirector', country: '\uD83C\uDDEA\uD83C\uDDF8 Spain', offset: '0px', delay: '.05s' },
+            { initials: 'GF', name: 'Giovanni Fiore', roleKey: 'about.roleCommercialDirector', country: '\uD83C\uDDEE\uD83C\uDDF9 Italy', offset: '38px', delay: '.1s' },
+            { initials: 'VB', name: 'Vinicius Barcellos', roleKey: 'about.roleCommercialDirector', country: '\uD83C\uDDE7\uD83C\uDDF7 Brazil', offset: '8px', delay: '.15s' },
+            { initials: 'SM', name: 'Sonia Melo', roleKey: 'about.roleSalesDirector', country: '\uD83C\uDDE7\uD83C\uDDF7 Brazil', offset: '46px', delay: '.2s' },
+            { initials: 'LR', name: 'Luciana Rovaroto', roleKey: 'about.roleCustomerService', country: '\uD83C\uDDE7\uD83C\uDDF7 Brazil', offset: '2px', delay: '.25s' },
+            { initials: 'RP', name: 'Ramiro Poggi', roleKey: 'about.roleCommercialDirector', country: '\uD83C\uDDE6\uD83C\uDDF7 Argentina', offset: '32px', delay: '.3s' },
+            { initials: 'EC', name: 'Edgar Ca\u00F1\u00F3n', roleKey: 'about.roleCommercialDirector', country: '\uD83C\uDDE8\uD83C\uDDF4 Colombia', offset: '14px', delay: '.35s' },
+          ].map((m, i) => (
             <div className="team-card reveal" key={i} style={{ '--offset': m.offset, transitionDelay: m.delay }}>
               <div className="avatar-frame">
                 <div className="avatar-ring"></div>
@@ -1090,7 +1080,7 @@ const About = () => {
                 <input type="file" accept="image/*" />
               </div>
               <p className="member-name">{m.name}</p>
-              <p className="member-role" dangerouslySetInnerHTML={{ __html: m.role.replace('Director', '<em>Director</em>') }} />
+              <p className="member-role" dangerouslySetInnerHTML={{ __html: t(m.roleKey) }} />
               <p className="member-country">{m.country}</p>
             </div>
           ))}

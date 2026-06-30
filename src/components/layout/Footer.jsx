@@ -116,7 +116,7 @@ const Footer = () => {
               <li className="flex items-start gap-2">
                 <FaMapMarkerAlt className="text-[#F5A623] mt-1 flex-shrink-0" size={14} />
                 <span className="text-white leading-snug">
-                  {t('footer.address', '5 Hussein Said St, Old Hadayk El Ahram, First floor, Flat 102 – 103, Haram - Giza – Egypt')}
+                  5 Hussein Said St, Old Hadayk El Ahram, First floor, Flat 102 – 103, Haram - Giza – Egypt
                 </span>
               </li>
               <li className="flex items-center gap-2">
