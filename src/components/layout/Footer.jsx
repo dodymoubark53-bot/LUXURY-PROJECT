@@ -51,7 +51,7 @@ const Footer = () => {
       <div className="relative z-10 w-full px-6 sm:px-12 lg:px-20 pt-8 sm:pt-10 lg:pt-12 flex flex-col sm:flex-row justify-between items-start gap-6">
         <div className="max-w-lg">
           <Link to="/" className="flex items-center mb-3">
-            <Logo theme="dark" height={85} />
+            <Logo theme="light" height={85} />
           </Link>
           <p className="text-white text-base sm:text-lg font-bold leading-snug">
             {t('footer.desc', 'Curating award-winning DUNAS TRAVEL experiences across Egypt, Jordan, and Turkey since 2010.')}

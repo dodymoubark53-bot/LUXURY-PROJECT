@@ -304,6 +304,11 @@ const TurkeyProgramDetails = () => {
           padding-bottom: 16px;
           scroll-snap-type: x mandatory;
           -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+        .related-carousel::-webkit-scrollbar {
+          display: none;
         }
         .related-carousel-item {
           flex: 0 0 auto;

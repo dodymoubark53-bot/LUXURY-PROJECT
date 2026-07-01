@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes, FaGlobe, FaChevronDown, FaUserCircle, FaSignOutAlt, FaBookmark } from 'react-icons/fa';
+import { FaBars, FaTimes, FaGlobe, FaChevronDown, FaUserCircle, FaSignOutAlt, FaBookmark, FaMoon, FaSun } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
 import LoginModal from '../auth/LoginModal';
 import Logo from '../ui/Logo';
 import CurrencySelector from '../ui/CurrencySelector';
@@ -22,6 +23,7 @@ const Navbar = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const isRtl = i18n.dir() === 'rtl';
 
   const changeLanguage = (lng) => {
@@ -240,6 +242,15 @@ const Navbar = () => {
 
         {/* Actions (Desktop) */}
         <div className="hidden lg:flex items-center gap-2 z-50">
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="w-9 h-9 rounded-full border border-obsidian-200 flex items-center justify-center text-white hover:text-[#F5A623] hover:border-[#F5A623] transition-all bg-obsidian-900/60 hover:bg-obsidian-900/80 shadow-[0_0_8px_rgba(0,0,0,0.5)] backdrop-blur-md"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <FaSun size={15} /> : <FaMoon size={15} />}
+          </button>
+
           {/* Profile */}
           <div className="relative">
             {user ? (
@@ -481,6 +492,18 @@ const Navbar = () => {
                     )}
                   </div>
                 ))}
+
+                {/* Mobile Theme Toggle */}
+                <div className="flex items-center justify-between mt-4 pt-4 border-t border-obsidian-100">
+                  <span className="text-obsidian-400 text-xs font-semibold tracking-wider uppercase">{t('nav.theme', 'Theme')}</span>
+                  <button
+                    onClick={toggleTheme}
+                    className="w-10 h-10 rounded-full border border-obsidian-200 flex items-center justify-center bg-white hover:bg-obsidian-50 transition-all"
+                    aria-label="Toggle theme"
+                  >
+                    {theme === 'dark' ? <FaSun className="text-amber-500" size={16} /> : <FaMoon className="text-indigo-600" size={16} />}
+                  </button>
+                </div>
 
                 {/* Mobile Currency Selector */}
                 <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-obsidian-100">

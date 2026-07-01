@@ -13,6 +13,7 @@ import { useJordanPrograms } from "../hooks/useJordanPrograms";
 import { useDubaiPrograms } from "../hooks/useDubaiPrograms";
 import { useMoroccoPrograms } from "../hooks/useMoroccoPrograms";
 import { transportation } from "../data/transportation";
+import useScrollAnimations from "../hooks/useScrollAnimations";
 import { useCurrency } from "../context/CurrencyContext";
 import rawProgramData from "../data/programs.json";
 const rawPrograms = rawProgramData.programs;
@@ -278,6 +279,7 @@ const Home = () => {
     }
   };
 
+  useScrollAnimations();
   const isRtl = i18n.dir() === 'rtl';
 
   const filteredVehicles =
@@ -425,22 +427,11 @@ const Home = () => {
           >
             <source src="/imgs/hero.mp4" type="video/mp4" />
           </video>
+          <div className="absolute inset-0 bg-obsidian-900/50"></div>
         </div>
 
-        {/* Sound Toggle */}
-        <button
-          onClick={toggleMute}
-          className="absolute bottom-4 sm:bottom-6 md:bottom-8 right-4 sm:right-6 md:right-8 z-20 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-obsidian-900/70 backdrop-blur-md border border-gold-500/30 flex items-center justify-center text-ivory-50 hover:text-gold-500 hover:bg-obsidian-900 transition-all shadow-lg"
-          aria-label={isMuted ? 'Unmute video' : 'Mute video'}
-        >
-          {isMuted ? <FaVolumeMute size={14} /> : <FaVolumeUp size={14} />}
-        </button>
-      </section>
-
-      {/* Search Section */}
-      <section className="relative py-16 md:py-20 overflow-hidden bg-cover bg-center" style={{ backgroundImage: 'url(/imgs/header.jpeg)' }}>
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10 container mx-auto px-3 sm:px-4 w-full max-w-5xl">
+        {/* Search Form */}
+        <div className="relative z-10 container mx-auto px-3 sm:px-4 w-full max-w-5xl -mt-8 md:-mt-4">
           <div className="bg-white/15 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] p-4 sm:p-5 md:p-6 lg:p-8 border border-white/20">
             <div className="grid grid-cols-2 md:grid-cols-5 gap-2 sm:gap-3">
               {/* Destination */}
@@ -587,10 +578,19 @@ const Home = () => {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Sound Toggle */}
+        <button
+          onClick={toggleMute}
+          className="absolute bottom-4 sm:bottom-6 md:bottom-8 right-4 sm:right-6 md:right-8 z-20 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-obsidian-900/70 backdrop-blur-md border border-gold-500/30 flex items-center justify-center text-ivory-50 hover:text-gold-500 hover:bg-obsidian-900 transition-all shadow-lg"
+          aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+        >
+          {isMuted ? <FaVolumeMute size={14} /> : <FaVolumeUp size={14} />}
+        </button>
       </section>
 
       {/* About the Company */}
-      <section className="py-12 bg-ivory-50">
+      <section className="py-12 bg-ivory-50 gsap-reveal">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             <motion.div

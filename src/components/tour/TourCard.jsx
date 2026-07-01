@@ -56,7 +56,30 @@ const TourCard = ({
           loading="lazy"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-obsidian-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {/* Hover Detail Card Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-obsidian-900/90 via-obsidian-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-400 flex flex-col justify-end p-5 translate-y-4 group-hover:translate-y-0">
+          <span className="text-gold-400 text-caption uppercase tracking-widest font-semibold mb-1">
+            {tour.code || t(`data.${tour.subtitle || tour.destination}`, tour.subtitle || tour.destination)}
+          </span>
+          <h4 className="text-white text-display-sm font-semibold mb-2 line-clamp-2">
+            {t(`data.${tour.title}`, tour.title)}
+          </h4>
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-gold-400 text-caption font-bold">
+              {formatPrice(tour.price)}
+            </span>
+            <span className="text-white/60 text-caption">|</span>
+            <span className="text-white/80 text-caption">
+              {durationLabel}
+            </span>
+          </div>
+          <p className="text-white/70 text-body-sm line-clamp-2 mb-2">
+            {t(`data.${tour.description}`, tour.description)}
+          </p>
+          <span className="text-gold-400 text-caption font-semibold tracking-wider uppercase">
+            {t('tourCard.viewDetails', 'View Details')} &rarr;
+          </span>
+        </div>
       </Link>
 
       {/* Content */}
