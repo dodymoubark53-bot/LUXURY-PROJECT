@@ -443,6 +443,7 @@ const Home = () => {
             loop
             muted
             playsInline
+            fetchpriority="high"
             className="w-full h-full object-cover md:object-[center_30%]"
           >
             <source src="/imgs/hero.mp4" type="video/mp4" />
@@ -773,15 +774,17 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="overflow-hidden w-full">
-          <div
-            className="flex tour-marquee-track w-max"
-            style={{
-              animation: `${isRtl ? 'tourMarqueeRTL' : 'tourMarquee'} 200s linear infinite`,
-              gap: "24px",
-              paddingLeft: "24px",
-            }}
-          >
+          <div className="overflow-hidden w-full">
+            <div
+              className="flex w-max"
+              style={{
+                animation: `${isRtl ? 'tourMarqueeRTL' : 'tourMarquee'} 200s linear infinite`,
+                gap: "24px",
+                paddingLeft: "24px",
+              }}
+              onMouseEnter={e => e.currentTarget.style.animationPlayState = 'paused'}
+              onMouseLeave={e => e.currentTarget.style.animationPlayState = 'running'}
+            >
             {[...allToursForMarquee, ...allToursForMarquee].map((tData, idx) => (
               <Link
                 key={`${tData.id}-${idx}`}
@@ -859,7 +862,7 @@ const Home = () => {
               viewport={{ once: true }}
               className="text-gold-500 uppercase tracking-widest text-caption block mb-4"
             >
-              GET AROUND IN STYLE
+              {t('home.transportSub', 'GET AROUND IN STYLE')}
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -868,7 +871,7 @@ const Home = () => {
               transition={{ delay: 0.2 }}
               className="text-display-lg text-obsidian-900 mb-6"
             >
-              Premium Transportation Services
+              {t('home.transportTitle', 'Premium Transportation Services')}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -877,8 +880,7 @@ const Home = () => {
               transition={{ delay: 0.3 }}
               className="text-body-lg text-obsidian-700 max-w-2xl mx-auto"
             >
-              Luxury vehicles and professional drivers — available across Egypt,
-              Jordan, Turkey & Tunisia
+              {t('home.transportDesc', 'Luxury vehicles and professional drivers — available across Egypt, Jordan, Turkey & Tunisia')}
             </motion.p>
             <motion.div
               initial={{ width: 0 }}
@@ -1362,7 +1364,14 @@ const Home = () => {
           </motion.div>
 
           <div className="overflow-hidden">
-            <div className="flex gap-6 marquee-track pb-4">
+            <div className="flex gap-6 pb-4"
+              style={{
+                width: 'max-content',
+                animation: `${isRtl ? 'marqueeVideoRTL' : 'marqueeVideo'} 40s linear infinite`,
+              }}
+              onMouseEnter={e => e.currentTarget.style.animationPlayState = 'paused'}
+              onMouseLeave={e => e.currentTarget.style.animationPlayState = 'running'}
+            >
               {[...videos, ...videos, ...videos].map((video, idx) => (
                 <motion.div
                   key={`${video.publicId}-${idx}`}

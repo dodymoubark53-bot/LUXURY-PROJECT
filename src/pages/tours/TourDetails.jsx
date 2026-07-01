@@ -308,7 +308,7 @@ const TourDetails = () => {
           {/* Sidebar - Booking Form */}
           <div className="lg:col-span-1">
             <div>
-              <BookingForm tourTitle={tour.title} />
+              <BookingForm tourTitle={t(`data.${tour.title}`, tour.title)} />
             </div>
           </div>
 

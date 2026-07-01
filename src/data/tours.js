@@ -554,6 +554,53 @@ const baseTours = [
       { "day": 8, "title": "gre001.day8.title", "description": "gre001.day8.desc", "meals": "Desayuno" },
       { "day": 9, "title": "gre001.day9.title", "description": "gre001.day9.desc", "meals": "Desayuno" }
     ]
+  },
+  {
+    id: "eg-completo-001",
+    slug: "complete-egypt-8d",
+    language: "en",
+    market: "Global",
+    type: "completoEgypt.type",
+    duration: "completoEgypt.duration",
+    destination: "egypt",
+    title: "completoEgypt.title",
+    overview: "completoEgypt.overview",
+    departures: "completoEgypt.departures",
+    price: 2890,
+    rating: 4.9,
+    reviewCount: 256,
+    images: ["https://images.unsplash.com/photo-1568322445389-f64ac2515020?auto=format&fit=crop&w=800&q=80"],
+    highlights: [
+      "completoEgypt.highlight.1",
+      "completoEgypt.highlight.2",
+      "completoEgypt.highlight.3",
+      "completoEgypt.highlight.4",
+      "completoEgypt.highlight.5",
+      "completoEgypt.highlight.6",
+    ],
+    included: [
+      "completoEgypt.incl.1",
+      "completoEgypt.incl.2",
+      "completoEgypt.incl.3",
+      "completoEgypt.incl.4",
+      "completoEgypt.incl.5",
+      "completoEgypt.incl.6",
+      "completoEgypt.incl.7",
+      "completoEgypt.incl.8",
+    ],
+    excluded: [
+      "completoEgypt.excl.1",
+    ],
+    itinerary: [
+      { day: 1, title: "completoEgypt.day1.title", description: "completoEgypt.day1.desc" },
+      { day: 2, title: "completoEgypt.day2.title", description: "completoEgypt.day2.desc" },
+      { day: 3, title: "completoEgypt.day3.title", description: "completoEgypt.day3.desc" },
+      { day: 4, title: "completoEgypt.day4.title", description: "completoEgypt.day4.desc" },
+      { day: 5, title: "completoEgypt.day5.title", description: "completoEgypt.day5.desc" },
+      { day: 6, title: "completoEgypt.day6.title", description: "completoEgypt.day6.desc" },
+      { day: 7, title: "completoEgypt.day7.title", description: "completoEgypt.day7.desc" },
+      { day: 8, title: "completoEgypt.day8.title", description: "completoEgypt.day8.desc" },
+    ],
   }
 ];
 

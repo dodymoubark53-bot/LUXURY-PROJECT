@@ -377,22 +377,6 @@ html {
     100% { transform: translateX(0); }
   }
 
-  /* ── Tour Marquee ─────────────────────────────────────────── */
-  .tour-marquee-track {
-    width: max-content;
-  }
-  .tour-marquee-track:hover {
-    animation-play-state: paused !important;
-  }
-  @keyframes tourMarquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  @keyframes tourMarqueeRTL {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
-  }
-
   /* ── Glassmorphism ──────────────────────────────────────────── */
   .glass-light {
     background: rgba(248, 249, 255, 0.12);
@@ -413,6 +397,24 @@ html {
     border: 1px solid rgba(245, 166, 35, 0.3);
     box-shadow: 0 0 24px rgba(245, 166, 35, 0.12);
   }
+}
+
+/* ── Marquee Keyframes (global) ──────────────────────────── */
+@keyframes tourMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes tourMarqueeRTL {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+@keyframes marqueeVideo {
+  0% { transform: translateX(-33.333%); }
+  100% { transform: translateX(0); }
+}
+@keyframes marqueeVideoRTL {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(33.333%); }
 }
 
 /* ── Cinematic Transitions ──────────────────────────────────────── */
