@@ -377,6 +377,22 @@ html {
     100% { transform: translateX(0); }
   }
 
+  /* ── Tour Marquee ─────────────────────────────────────────── */
+  .tour-marquee-track {
+    width: max-content;
+  }
+  .tour-marquee-track:hover {
+    animation-play-state: paused !important;
+  }
+  @keyframes tourMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes tourMarqueeRTL {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
   /* ── Glassmorphism ──────────────────────────────────────────── */
   .glass-light {
     background: rgba(248, 249, 255, 0.12);

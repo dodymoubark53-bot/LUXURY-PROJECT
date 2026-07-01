@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,6 +7,8 @@ import { FaStar, FaTimes, FaChevronLeft, FaChevronRight, FaVolumeUp, FaVolumeMut
 import Button from "../components/ui/Button";
 import TourCard from "../components/tour/TourCard";
 import { tours } from "../data/tours";
+import { turkeyTours } from "../data/turkeyTours";
+import { multiCountryTours } from "../data/multiCountryTours";
 import HieroglyphicName from "../components/home/HieroglyphicName";
 import { useTurkeyPrograms } from "../hooks/useTurkeyPrograms";
 import { useJordanPrograms } from "../hooks/useJordanPrograms";
@@ -149,6 +151,24 @@ const Home = () => {
     highlights: mp.highlights,
     code: mp.code
   }));
+
+  const allToursForMarquee = useMemo(() => {
+    const combined = [];
+    tours.forEach(tour => combined.push({ ...tour, description: tour.overview, link: `/tours/${tour.slug}` }));
+    formattedTurkeyTours.forEach(t => combined.push({ ...t, link: `/programs/turkey/${t.slug}` }));
+    formattedJordanTours.forEach(t => combined.push({ ...t, link: `/programs/jordan/${t.slug}` }));
+    formattedDubaiTours.forEach(t => combined.push({ ...t, link: `/programs/dubai/${t.slug}` }));
+    formattedMoroccoTours.forEach(t => combined.push({ ...t, link: `/programs/morocco/${t.slug}` }));
+    multiCountryTours.forEach(tour => combined.push({
+      id: tour.id, slug: tour.slug, destination: tour.destination,
+      title: tour.title, description: tour.overview || tour.description,
+      duration: tour.duration, price: tour.price, rating: tour.rating,
+      reviewCount: tour.reviewCount, images: tour.images, type: tour.type,
+      link: `/programs/multi-country/${tour.slug}`,
+    }));
+    turkeyTours.forEach(tour => combined.push({ ...tour, description: tour.overview, link: `/tours/${tour.slug}` }));
+    return combined;
+  }, [tours, formattedTurkeyTours, formattedJordanTours, formattedDubaiTours, formattedMoroccoTours]);
 
   // Hero Video State
   const videoRef = useRef(null);
@@ -739,7 +759,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Featured Tours */}
+      {/* All Tours Marquee */}
       <section className="py-12 bg-ivory-100 overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
@@ -751,21 +771,22 @@ const Home = () => {
             </h2>
             <div className="w-24 h-1 bg-gold-500 mx-auto mt-6"></div>
           </div>
+        </div>
 
-          <div className="flex gap-6 overflow-x-auto pb-8 pt-4 snap-x snap-mandatory no-scrollbar w-full px-4 md:px-0">
-            {featuredToursList.map((tData, idx) => (
-              <motion.div
-                key={tData.id}
-                className="min-w-[320px] md:min-w-[400px] snap-center shrink-0 group relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] transition-all duration-500 h-[450px]"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                whileHover={{
-                  y: -6,
-                  boxShadow: "0 0 32px rgba(245,166,35,0.22)",
-                  transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
-                }}
+        <div className="overflow-hidden w-full">
+          <div
+            className="flex tour-marquee-track w-max"
+            style={{
+              animation: `${isRtl ? 'tourMarqueeRTL' : 'tourMarquee'} 200s linear infinite`,
+              gap: "24px",
+              paddingLeft: "24px",
+            }}
+          >
+            {[...allToursForMarquee, ...allToursForMarquee].map((tData, idx) => (
+              <Link
+                key={`${tData.id}-${idx}`}
+                to={tData.link}
+                className="min-w-[320px] md:min-w-[400px] shrink-0 group relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] transition-all duration-500 h-[450px] block"
               >
                 <img
                   src={tData.images[0]}
@@ -801,29 +822,26 @@ const Home = () => {
                       </span>
                     </div>
 
-                    <Link
-                      to={`/tours/${tData.slug}`}
-                      className="block opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    >
+                    <div className="block opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <Button variant="outline-gold" className="w-full py-2">
                         {t("home.viewTour", "View Tour")}
                       </Button>
-                    </Link>
+                    </div>
                   </div>
                 </div>
-              </motion.div>
+              </Link>
             ))}
           </div>
+        </div>
 
-          <div className="flex justify-center mt-8">
-            <Button
-              variant="gold-glow"
-              className="px-8 py-3"
-              onClick={() => setIsAllToursPopupOpen(true)}
-            >
-              {t("home.exploreAllTours", "Explore All Tours")}
-            </Button>
-          </div>
+        <div className="flex justify-center mt-12">
+          <Button
+            variant="gold-glow"
+            className="px-8 py-3"
+            onClick={() => setIsAllToursPopupOpen(true)}
+          >
+            {t("home.exploreAllTours", "Explore All Tours")}
+          </Button>
         </div>
       </section>
 
@@ -1553,7 +1571,7 @@ const Home = () => {
 
               {/* Tours Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                {tours.map((tour) => (
+                {allToursForMarquee.map((tour) => (
                   <div
                     key={tour.id}
                     className="bg-white rounded-[10px] overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.1)] border border-gray-100 flex flex-col h-full text-left"
@@ -1582,7 +1600,7 @@ const Home = () => {
 
                     {/* View Details button at the bottom */}
                     <div className="p-3 pt-0 mt-auto">
-                      <Link to={`/tours/${tour.slug}`}>
+                      <Link to={tour.link}>
                         <Button
                           variant="outline-gold"
                           className="w-full py-2 text-sm text-center"
