@@ -245,28 +245,28 @@ const ServiceDetails = () => {
 
                 {/* Included / Excluded summary */}
                 {service.slug === 'egypt-jordan-combined-14d' ? (
-                  <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16 bg-ivory-50 p-8 rounded-2xl shadow-sm border border-obsidian-900/5 text-left space-y-12">
+                  <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16 bg-ivory-50 dark:bg-[#1a1a30] p-8 rounded-2xl shadow-sm border border-obsidian-900/5 dark:border-gray-700 text-left space-y-12">
                     
                     {/* Included Section */}
                     <div>
-                      <h2 className="text-display-md text-obsidian-900 mb-6 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      <h2 className="text-display-md text-obsidian-900 dark:text-[#e8e4e0] mb-6 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
                         {translateData('tour_jordan_includes_title', 'Package Includes')}
                       </h2>
                       <ul className="space-y-3 mb-8">
                         {['tour_jordan_includes_1', 'tour_jordan_includes_2', 'tour_jordan_includes_3', 'tour_jordan_includes_4', 'tour_jordan_includes_5', 'tour_jordan_includes_6'].map((key, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-obsidian-500">
-                            <FaCheckCircle className="text-sage-500 mt-1 flex-shrink-0" />
+                          <li key={idx} className="flex items-start gap-3 text-obsidian-500 dark:text-[#e8e4e0]">
+                            <FaCheckCircle className="text-sage-500 dark:text-green-400 mt-1 flex-shrink-0" />
                             <span>{translateData(key, key)}</span>
                           </li>
                         ))}
                       </ul>
 
-                      <h3 className="text-body-lg font-semibold text-sage-700 mb-4 flex items-center gap-2 font-display">
+                      <h3 className="text-body-lg font-semibold text-sage-700 dark:text-green-400 mb-4 flex items-center gap-2 font-display">
                         {translateData('tour_jordan_visited_title', 'Included Visits')}
                       </h3>
                       <ul className="space-y-3">
                         {['tour_jordan_visited_1', 'tour_jordan_visited_2', 'tour_jordan_visited_3'].map((key, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-obsidian-500">
+                          <li key={idx} className="flex items-start gap-3 text-obsidian-500 dark:text-[#e8e4e0]">
                             <FaMapMarkerAlt className="text-gold-500 mt-1 flex-shrink-0" />
                             <span>{translateData(key, key)}</span>
                           </li>
@@ -276,13 +276,13 @@ const ServiceDetails = () => {
 
                     {/* Excluded Section */}
                     <div>
-                      <h2 className="text-display-md text-obsidian-900 mb-6 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      <h2 className="text-display-md text-obsidian-900 dark:text-[#e8e4e0] mb-6 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
                         {translateData('tour_jordan_excludes_title', 'Package Does Not Include')}
                       </h2>
                       <ul className="space-y-3">
                         {['tour_jordan_excludes_1', 'tour_jordan_excludes_2'].map((key, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-obsidian-500">
-                            <FaTimesCircle className="text-red-500 mt-1 flex-shrink-0" />
+                          <li key={idx} className="flex items-start gap-3 text-obsidian-500 dark:text-[#e8e4e0]">
+                            <FaTimesCircle className="text-red-500 dark:text-red-300 mt-1 flex-shrink-0" />
                             <span>{translateData(key, key)}</span>
                           </li>
                         ))}
@@ -291,12 +291,12 @@ const ServiceDetails = () => {
 
                     {/* Accommodations Section */}
                     <div>
-                      <h2 className="text-display-md text-obsidian-900 mb-6 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      <h2 className="text-display-md text-obsidian-900 dark:text-[#e8e4e0] mb-6 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
                         {translateData('tour_jordan_hotels_title', 'Previewed Hotels')}
                       </h2>
                       <ul className="space-y-3">
                         {['tour_jordan_hotel_1', 'tour_jordan_hotel_2'].map((key, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-obsidian-500">
+                          <li key={idx} className="flex items-start gap-3 text-obsidian-500 dark:text-[#e8e4e0]">
                             <FaBed className="text-gold-500 mt-1 flex-shrink-0" />
                             <span>{translateData(key, key)}</span>
                           </li>
@@ -306,12 +306,12 @@ const ServiceDetails = () => {
 
                     {/* Price Section */}
                     <div>
-                      <h2 className="text-display-md text-obsidian-900 mb-6 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      <h2 className="text-display-md text-obsidian-900 dark:text-[#e8e4e0] mb-6 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
                         {translateData('tour_jordan_price_title', 'The Value (Price)')}
                       </h2>
                       <ul className="space-y-3">
                         {['tour_jordan_price_double', 'tour_jordan_price_single'].map((key, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-obsidian-500">
+                          <li key={idx} className="flex items-start gap-3 text-obsidian-500 dark:text-[#e8e4e0]">
                             <FaTag className="text-gold-500 mt-1 flex-shrink-0" />
                             <span>{translateData(key, key)}</span>
                           </li>
@@ -321,40 +321,40 @@ const ServiceDetails = () => {
 
                   </motion.div>
                 ) : service.slug === 'siwa-oasis-alexandria' ? (
-                  <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16 bg-ivory-50 p-8 rounded-2xl shadow-sm border border-obsidian-900/5 text-left">
-                    <h2 className="text-display-md text-obsidian-900 mb-6 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16 bg-ivory-50 dark:bg-[#1a1a30] p-8 rounded-2xl shadow-sm border border-obsidian-900/5 dark:border-gray-700 text-left">
+                    <h2 className="text-display-md text-obsidian-900 dark:text-[#e8e4e0] mb-6 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>
                       {translateData(service.title, service.title)} — {translateData('tour_siwa_includes_title', 'Package Includes')}
                     </h2>
                     <ul className="space-y-3">
                       {service.included.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-obsidian-500">
-                          <FaCheckCircle className="text-sage-500 mt-1 flex-shrink-0" />
+                        <li key={idx} className="flex items-start gap-3 text-obsidian-500 dark:text-[#e8e4e0]">
+                          <FaCheckCircle className="text-sage-500 dark:text-green-400 mt-1 flex-shrink-0" />
                           <span>{translateData(item, item)}</span>
                         </li>
                       ))}
                     </ul>
                   </motion.div>
                 ) : (
-                  <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16 bg-ivory-50 p-8 rounded-2xl shadow-sm border border-obsidian-900/5 text-left">
-                    <h2 className="text-display-md text-obsidian-900 mb-8 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t('tourDetail.incExc', "What's Included & Excluded")}</h2>
+                  <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16 bg-ivory-50 dark:bg-[#1a1a30] p-8 rounded-2xl shadow-sm border border-obsidian-900/5 dark:border-gray-700 text-left">
+                    <h2 className="text-display-md text-obsidian-900 dark:text-[#e8e4e0] mb-8 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t('tourDetail.incExc', "What's Included & Excluded")}</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div>
-                        <h3 className="text-body-lg font-semibold text-sage-700 mb-4 flex items-center gap-2 font-display">{t('tourDetail.included', 'Included')}</h3>
+                        <h3 className="text-body-lg font-semibold text-sage-700 dark:text-green-400 mb-4 flex items-center gap-2 font-display">{t('tourDetail.included', 'Included')}</h3>
                         <ul className="space-y-3">
                           {service.included.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-3 text-obsidian-500">
-                              <FaCheckCircle className="text-sage-500 mt-1" />
+                            <li key={idx} className="flex items-start gap-3 text-obsidian-500 dark:text-[#e8e4e0]">
+                              <FaCheckCircle className="text-sage-500 dark:text-green-400 mt-1" />
                               <span>{translateData(item, item)}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
                       <div>
-                        <h3 className="text-body-lg font-semibold text-red-700 mb-4 flex items-center gap-2 font-display">{t('tourDetail.excluded', 'Not Included')}</h3>
+                        <h3 className="text-body-lg font-semibold text-red-700 dark:text-red-300 mb-4 flex items-center gap-2 font-display">{t('tourDetail.excluded', 'Not Included')}</h3>
                         <ul className="space-y-3">
                           {service.excluded.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-3 text-obsidian-500">
-                              <FaTimesCircle className="text-red-500 mt-1" />
+                            <li key={idx} className="flex items-start gap-3 text-obsidian-500 dark:text-[#e8e4e0]">
+                              <FaTimesCircle className="text-red-500 dark:text-red-300 mt-1" />
                               <span>{translateData(item, item)}</span>
                             </li>
                           ))}
@@ -480,26 +480,26 @@ const ServiceDetails = () => {
               </motion.div>
 
               {/* Inclusions / Exclusions */}
-              <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-12 bg-ivory-50 p-8 rounded-2xl shadow-sm border border-obsidian-900/5 text-left">
-                <h2 className="text-display-md text-obsidian-900 mb-8 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t('tourDetail.incExc', "What's Included & Excluded")}</h2>
+              <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-12 bg-ivory-50 dark:bg-[#1a1a30] p-8 rounded-2xl shadow-sm border border-obsidian-900/5 dark:border-gray-700 text-left">
+                <h2 className="text-display-md text-obsidian-900 dark:text-[#e8e4e0] mb-8 font-display" style={{ fontFamily: "'Playfair Display', serif" }}>{t('tourDetail.incExc', "What's Included & Excluded")}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
-                    <h3 className="text-body-lg font-semibold text-sage-700 mb-4 flex items-center gap-2 font-display">{t('tourDetail.included', 'Included')}</h3>
+                    <h3 className="text-body-lg font-semibold text-sage-700 dark:text-green-400 mb-4 flex items-center gap-2 font-display">{t('tourDetail.included', 'Included')}</h3>
                     <ul className="space-y-3">
                       {service.included.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-obsidian-500">
-                          <FaCheckCircle className="text-sage-500 mt-1" />
+                        <li key={idx} className="flex items-start gap-3 text-obsidian-500 dark:text-[#e8e4e0]">
+                          <FaCheckCircle className="text-sage-500 dark:text-green-400 mt-1" />
                           <span>{translateData(item, item)}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <h3 className="text-body-lg font-semibold text-red-700 mb-4 flex items-center gap-2 font-display">{t('tourDetail.excluded', 'Not Included')}</h3>
+                    <h3 className="text-body-lg font-semibold text-red-700 dark:text-red-300 mb-4 flex items-center gap-2 font-display">{t('tourDetail.excluded', 'Not Included')}</h3>
                     <ul className="space-y-3">
                       {service.excluded.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-obsidian-500">
-                          <FaTimesCircle className="text-red-500 mt-1" />
+                        <li key={idx} className="flex items-start gap-3 text-obsidian-500 dark:text-[#e8e4e0]">
+                          <FaTimesCircle className="text-red-500 dark:text-red-300 mt-1" />
                           <span>{translateData(item, item)}</span>
                         </li>
                       ))}

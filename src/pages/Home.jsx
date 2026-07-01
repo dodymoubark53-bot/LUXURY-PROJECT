@@ -1299,7 +1299,7 @@ const Home = () => {
       </section>
 
       {/* Trusted Partners / Logos Section */}
-      <section className="py-[50px] px-[20px] bg-[#f8f8f8]">
+      <section className="py-[50px] px-[20px] bg-[#f8f8f8] dark:bg-[#1a1a30]">
         <div className="max-w-[1200px] mx-auto">
           <div className="flex flex-wrap items-center justify-center gap-6">
             {[
@@ -1312,12 +1312,12 @@ const Home = () => {
             ].map((logo, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all flex justify-center items-center h-[110px] w-[180px] p-5 hover:-translate-y-1"
+                className="logo-oval-bg bg-white rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all flex justify-center items-center h-[110px] w-[180px] p-5 hover:-translate-y-1"
               >
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="max-h-full max-w-full object-contain mix-blend-multiply"
+                  className="max-h-full max-w-full object-contain transition-all duration-300"
                 />
               </div>
             ))}

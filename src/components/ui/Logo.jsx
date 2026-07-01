@@ -1,21 +1,10 @@
-import { useTheme } from '../../context/ThemeContext';
-
-const Logo = ({ theme: propTheme, height = 60 }) => {
-  const { theme: siteTheme } = useTheme();
-
-  let effectiveTheme = propTheme || 'dark';
-  if (siteTheme === 'dark') effectiveTheme = 'light';
-
+const Logo = ({ height = 60 }) => {
   return (
     <img
       src="/dunas-travel-logo.png"
       alt="Dunas Travel"
-      className="flex-shrink-0 object-contain"
-      style={{
-        height: `${height}px`,
-        width: 'auto',
-        filter: effectiveTheme === 'light' ? 'brightness(0) invert(1)' : 'none',
-      }}
+      className="flex-shrink-0 object-contain dark:invert dark:brightness-200 transition-all duration-300"
+      style={{ height: `${height}px`, width: 'auto' }}
     />
   );
 };

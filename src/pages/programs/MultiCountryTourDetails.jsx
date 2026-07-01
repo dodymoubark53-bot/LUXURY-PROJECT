@@ -233,8 +233,8 @@ const MultiCountryTourDetails = () => {
                     </h3>
                     <ul className="flex flex-col gap-3">
                       {tour.tunisiaIncluded.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700">
-                          <FaCheck className="text-sage-500 mt-1 flex-shrink-0" />
+                        <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700 dark:text-[#e8e4e0]">
+                          <FaCheck className="text-sage-500 dark:text-green-400 mt-1 flex-shrink-0" />
                           <span>{t(`data.${item}`, item)}</span>
                         </li>
                       ))}
@@ -244,8 +244,8 @@ const MultiCountryTourDetails = () => {
                     </h3>
                     <ul className="flex flex-col gap-3">
                       {tour.tunisiaExcluded.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700">
-                          <FaTimes className="text-red-400 mt-1 flex-shrink-0" />
+                        <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700 dark:text-[#e8e4e0]">
+                          <FaTimes className="text-red-400 dark:text-red-300 mt-1 flex-shrink-0" />
                           <span>{t(`data.${item}`, item)}</span>
                         </li>
                       ))}
@@ -257,8 +257,8 @@ const MultiCountryTourDetails = () => {
                     </h3>
                     <ul className="flex flex-col gap-3">
                       {tour.egyptIncluded.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700">
-                          <FaCheck className="text-sage-500 mt-1 flex-shrink-0" />
+                        <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700 dark:text-[#e8e4e0]">
+                          <FaCheck className="text-sage-500 dark:text-green-400 mt-1 flex-shrink-0" />
                           <span>{t(`data.${item}`, item)}</span>
                         </li>
                       ))}
@@ -268,8 +268,8 @@ const MultiCountryTourDetails = () => {
                     </h3>
                     <ul className="flex flex-col gap-3">
                       {tour.egyptExcluded.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700">
-                          <FaTimes className="text-red-400 mt-1 flex-shrink-0" />
+                        <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700 dark:text-[#e8e4e0]">
+                          <FaTimes className="text-red-400 dark:text-red-300 mt-1 flex-shrink-0" />
                           <span>{t(`data.${item}`, item)}</span>
                         </li>
                       ))}
@@ -284,8 +284,8 @@ const MultiCountryTourDetails = () => {
                     </h3>
                     <ul className="flex flex-col gap-3">
                       {tour.included && tour.included.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700">
-                          <FaCheck className="text-sage-500 mt-1 flex-shrink-0" />
+                        <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700 dark:text-[#e8e4e0]">
+                          <FaCheck className="text-sage-500 dark:text-green-400 mt-1 flex-shrink-0" />
                           <span>{t(`data.${item}`, item)}</span>
                         </li>
                       ))}
@@ -297,8 +297,8 @@ const MultiCountryTourDetails = () => {
                     </h3>
                     <ul className="flex flex-col gap-3">
                       {tour.excluded && tour.excluded.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700">
-                          <FaTimes className="text-red-400 mt-1 flex-shrink-0" />
+                        <li key={idx} className="flex items-start gap-3 text-body-md text-obsidian-700 dark:text-[#e8e4e0]">
+                          <FaTimes className="text-red-400 dark:text-red-300 mt-1 flex-shrink-0" />
                           <span>{t(`data.${item}`, item)}</span>
                         </li>
                       ))}
