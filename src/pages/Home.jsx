@@ -197,16 +197,42 @@ const Home = () => {
   const TURKEY_IDS = ["REG-01", "IST-01", "REG-03", "REG-04"];
   const JORDAN_IDS = ["REG-15", "REG-16", "REG-17", "REG-18", "REG-19", "REG-20", "REG-21"];
   const DUBAI_IDS = ["REG-22", "REG-23", "REG-24", "REG-25", "REG-26", "REG-27", "REG-28"];
+  const EGYPT_IDS = ["REG-29"];
+  const MOROCCO_IDS = ["MRC-01"];
+
+  const programCountry = (id) => {
+    if (TURKEY_IDS.includes(id)) return "turkey";
+    if (JORDAN_IDS.includes(id)) return "jordan";
+    if (DUBAI_IDS.includes(id)) return "dubai";
+    if (EGYPT_IDS.includes(id)) return "egypt";
+    if (MOROCCO_IDS.includes(id)) return "morocco";
+    return "turkey";
+  };
 
   const getToursForDest = (destId) => {
     const lang = i18n.language;
     const langMap = { pt: 'pt-BR', en: 'en', es: 'es', it: 'it', ar: 'ar' };
     const tourLang = langMap[lang] || 'en';
     const result = [];
+    if (destId === "all") {
+      tours.forEach((tour) => {
+        result.push({ label: t(`tour.${tour.id}`, tour.title), url: `/tours/${tour.slug}`, id: `tour-${tour.slug}` });
+      });
+      rawPrograms.forEach((p) => {
+        const slug = slugify(p.id + "-" + p.name.en);
+        const country = programCountry(p.id);
+        result.push({ label: p.name[lang] || p.name.en, url: `/programs/${country}/${slug}`, id: `prog-${p.id}` });
+      });
+      multiCountryTours.forEach((mc) => {
+        const slug = mc.slug || slugify(mc.id + "-" + (mc.title || ""));
+        result.push({ label: mc.title, url: `/programs/multi-country/${slug}`, id: `multi-${mc.id}` });
+      });
+      return result;
+    }
     const filtered = tours.filter((t) => t.destination === destId && t.language === tourLang);
     const fallback = filtered.length === 0 ? tours.filter((t) => t.destination === destId) : [];
-    [...filtered, ...fallback].forEach((t) => {
-      result.push({ label: t(`tour.${t.id}`, t.title), url: `/tours/${t.slug}`, id: `tour-${t.slug}` });
+    [...filtered, ...fallback].forEach((tour) => {
+      result.push({ label: t(`tour.${tour.id}`, tour.title), url: `/tours/${tour.slug}`, id: `tour-${tour.slug}` });
     });
     if (destId === "turkey") {
       rawPrograms.filter((p) => TURKEY_IDS.includes(p.id)).forEach((p) => {
@@ -226,6 +252,18 @@ const Home = () => {
         result.push({ label: p.name[lang] || p.name.en, url: `/programs/dubai/${slug}`, id: `prog-${p.id}` });
       });
     }
+    if (destId === "morocco") {
+      rawPrograms.filter((p) => MOROCCO_IDS.includes(p.id)).forEach((p) => {
+        const slug = slugify(p.id + "-" + p.name.en);
+        result.push({ label: p.name[lang] || p.name.en, url: `/programs/morocco/${slug}`, id: `prog-${p.id}` });
+      });
+    }
+    if (destId === "egypt") {
+      rawPrograms.filter((p) => EGYPT_IDS.includes(p.id)).forEach((p) => {
+        const slug = slugify(p.id + "-" + p.name.en);
+        result.push({ label: p.name[lang] || p.name.en, url: `/programs/egypt/${slug}`, id: `prog-${p.id}` });
+      });
+    }
     return result;
   };
 
@@ -236,7 +274,7 @@ const Home = () => {
       const found = destTours.find((t) => t.id === searchTour);
       if (found) { window.location.href = found.url; return; }
     }
-    if (searchDest) {
+    if (searchDest && searchDest !== "all") {
       window.location.href = `/destinations/${searchDest}`;
     }
   };
@@ -465,7 +503,7 @@ const Home = () => {
                   onChange={(e) => { setSearchDest(e.target.value); setSearchTour(""); }}
                   className="w-full px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white text-[13px] sm:text-body-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B35] appearance-none cursor-pointer [&>option]:text-obsidian-900"
                 >
-                  <option value="" className="text-obsidian-900">{t('home.searchAllDest', 'All Destinations')}</option>
+                  <option value="all" className="text-obsidian-900">{t('home.searchAllDest', 'All Destinations')}</option>
                   {destinations.map((d) => (
                     <option key={d.id} value={d.id} className="text-obsidian-900">{d.label}</option>
                   ))}
