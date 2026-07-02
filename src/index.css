@@ -552,3 +552,9 @@ footer a.footer-social:hover {
 .dark .logo-oval-bg {
   background-color: #ffffff !important;
 }
+
+/* ── Search Options in Dark Mode ──────────────────────────────────── */
+.dark select option {
+  background-color: #1a1a30 !important;
+  color: #f0efe7 !important;
+}

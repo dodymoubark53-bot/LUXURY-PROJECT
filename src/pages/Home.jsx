@@ -175,7 +175,7 @@ const Home = () => {
   const [isMuted, setIsMuted] = useState(true);
 
   // Search Form State
-  const [searchDest, setSearchDest] = useState("");
+  const [searchDest, setSearchDest] = useState("all");
   const [searchTour, setSearchTour] = useState("");
   const [searchArrival, setSearchArrival] = useState("");
   const [searchDeparture, setSearchDeparture] = useState("");
@@ -194,9 +194,9 @@ const Home = () => {
 
   const slugify = (str) => str.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 
-  const TURKEY_IDS = ["REG-01", "IST-01", "REG-03", "REG-04"];
+  const TURKEY_IDS = ["REG-01", "IST-01", "REG-03", "REG-04", "REG-05", "REG-05-B", "REG-06", "REG-07", "REG-08", "REG-09", "REG-10", "REG-11", "REG-12", "REG-13", "REG-14"];
   const JORDAN_IDS = ["REG-15", "REG-16", "REG-17", "REG-18", "REG-19", "REG-20", "REG-21"];
-  const DUBAI_IDS = ["REG-22", "REG-23", "REG-24", "REG-25", "REG-26", "REG-27", "REG-28"];
+  const DUBAI_IDS = ["REG-22", "REG-23", "REG-24", "REG-25", "REG-26", "REG-27", "REG-28", "HM001", "HM002"];
   const EGYPT_IDS = ["REG-29"];
   const MOROCCO_IDS = ["MRC-01"];
 
@@ -209,60 +209,63 @@ const Home = () => {
     return "turkey";
   };
 
+  const allExtraTours = useMemo(() => ({
+    turkey: turkeyTours,
+  }), [turkeyTours]);
+
   const getToursForDest = (destId) => {
     const lang = i18n.language;
     const langMap = { pt: 'pt-BR', en: 'en', es: 'es', it: 'it', ar: 'ar' };
     const tourLang = langMap[lang] || 'en';
     const result = [];
+
+    const addTour = (tour, baseUrl) => {
+      const slug = tour.slug || slugify(tour.id + "-" + (tour.title || ""));
+      result.push({ label: t(`tour.${tour.id}`, tour.title), url: `${baseUrl}/${slug}`, id: `tour-${slug}` });
+    };
+
+    const addProgram = (p, country) => {
+      const slug = slugify(p.id + "-" + p.name.en);
+      result.push({ label: p.name[lang] || p.name.en, url: `/programs/${country}/${slug}`, id: `prog-${p.id}` });
+    };
+
     if (destId === "all") {
-      tours.forEach((tour) => {
-        result.push({ label: t(`tour.${tour.id}`, tour.title), url: `/tours/${tour.slug}`, id: `tour-${tour.slug}` });
-      });
-      rawPrograms.forEach((p) => {
-        const slug = slugify(p.id + "-" + p.name.en);
-        const country = programCountry(p.id);
-        result.push({ label: p.name[lang] || p.name.en, url: `/programs/${country}/${slug}`, id: `prog-${p.id}` });
-      });
+      tours.forEach((tour) => addTour(tour, "/tours"));
+      rawPrograms.forEach((p) => addProgram(p, programCountry(p.id)));
+      turkeyTours.forEach((tour) => addTour(tour, "/tours"));
       multiCountryTours.forEach((mc) => {
         const slug = mc.slug || slugify(mc.id + "-" + (mc.title || ""));
         result.push({ label: mc.title, url: `/programs/multi-country/${slug}`, id: `multi-${mc.id}` });
       });
       return result;
     }
+
     const filtered = tours.filter((t) => t.destination === destId && t.language === tourLang);
-    const fallback = filtered.length === 0 ? tours.filter((t) => t.destination === destId) : [];
+    const fallback = tours.filter((t) => t.destination === destId && t.language !== tourLang);
+    const seen = new Set();
     [...filtered, ...fallback].forEach((tour) => {
-      result.push({ label: t(`tour.${tour.id}`, tour.title), url: `/tours/${tour.slug}`, id: `tour-${tour.slug}` });
+      if (!seen.has(tour.id)) { seen.add(tour.id); addTour(tour, "/tours"); }
     });
+
+    const extra = allExtraTours[destId];
+    if (extra) {
+      extra.forEach((tour) => addTour(tour, "/tours"));
+    }
+
     if (destId === "turkey") {
-      rawPrograms.filter((p) => TURKEY_IDS.includes(p.id)).forEach((p) => {
-        const slug = slugify(p.id + "-" + p.name.en);
-        result.push({ label: p.name[lang] || p.name.en, url: `/programs/turkey/${slug}`, id: `prog-${p.id}` });
-      });
+      rawPrograms.filter((p) => TURKEY_IDS.includes(p.id)).forEach((p) => addProgram(p, "turkey"));
     }
     if (destId === "jordan") {
-      rawPrograms.filter((p) => JORDAN_IDS.includes(p.id)).forEach((p) => {
-        const slug = slugify(p.id + "-" + p.name.en);
-        result.push({ label: p.name[lang] || p.name.en, url: `/programs/jordan/${slug}`, id: `prog-${p.id}` });
-      });
+      rawPrograms.filter((p) => JORDAN_IDS.includes(p.id)).forEach((p) => addProgram(p, "jordan"));
     }
     if (destId === "dubai") {
-      rawPrograms.filter((p) => DUBAI_IDS.includes(p.id)).forEach((p) => {
-        const slug = slugify(p.id + "-" + p.name.en);
-        result.push({ label: p.name[lang] || p.name.en, url: `/programs/dubai/${slug}`, id: `prog-${p.id}` });
-      });
+      rawPrograms.filter((p) => DUBAI_IDS.includes(p.id)).forEach((p) => addProgram(p, "dubai"));
     }
     if (destId === "morocco") {
-      rawPrograms.filter((p) => MOROCCO_IDS.includes(p.id)).forEach((p) => {
-        const slug = slugify(p.id + "-" + p.name.en);
-        result.push({ label: p.name[lang] || p.name.en, url: `/programs/morocco/${slug}`, id: `prog-${p.id}` });
-      });
+      rawPrograms.filter((p) => MOROCCO_IDS.includes(p.id)).forEach((p) => addProgram(p, "morocco"));
     }
     if (destId === "egypt") {
-      rawPrograms.filter((p) => EGYPT_IDS.includes(p.id)).forEach((p) => {
-        const slug = slugify(p.id + "-" + p.name.en);
-        result.push({ label: p.name[lang] || p.name.en, url: `/programs/egypt/${slug}`, id: `prog-${p.id}` });
-      });
+      rawPrograms.filter((p) => EGYPT_IDS.includes(p.id)).forEach((p) => addProgram(p, "egypt"));
     }
     return result;
   };
@@ -501,11 +504,11 @@ const Home = () => {
                 <select
                   value={searchDest}
                   onChange={(e) => { setSearchDest(e.target.value); setSearchTour(""); }}
-                  className="w-full px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white text-[13px] sm:text-body-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B35] appearance-none cursor-pointer [&>option]:text-obsidian-900"
+                  className="w-full px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white text-[13px] sm:text-body-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B35] appearance-none cursor-pointer [&>option]:text-obsidian-900 [&>option]:dark:text-ivory-100 [&>option]:dark:bg-obsidian-800"
                 >
-                  <option value="all" className="text-obsidian-900">{t('home.searchAllDest', 'All Destinations')}</option>
+                  <option value="all" className="text-obsidian-900 dark:text-ivory-100 dark:bg-obsidian-800">{t('home.searchAllDest', 'All Destinations')}</option>
                   {destinations.map((d) => (
-                    <option key={d.id} value={d.id} className="text-obsidian-900">{d.label}</option>
+                    <option key={d.id} value={d.id} className="text-obsidian-900 dark:text-ivory-100 dark:bg-obsidian-800">{d.label}</option>
                   ))}
                 </select>
               </div>
@@ -519,11 +522,11 @@ const Home = () => {
                   value={searchTour}
                   onChange={(e) => setSearchTour(e.target.value)}
                   disabled={!searchDest}
-                  className="w-full px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white text-[13px] sm:text-body-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B35] appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed [&>option]:text-obsidian-900"
+                  className="w-full px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white text-[13px] sm:text-body-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B35] appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed [&>option]:text-obsidian-900 [&>option]:dark:text-ivory-100 [&>option]:dark:bg-obsidian-800"
                 >
-                  <option value="" className="text-obsidian-900">{t('home.searchAllTours', 'All Tours')}</option>
+                  <option value="" className="text-obsidian-900 dark:text-ivory-100 dark:bg-obsidian-800">{t('home.searchAllTours', 'All Tours')}</option>
                   {destTours.map((t) => (
-                    <option key={t.id} value={t.id} className="text-obsidian-900">{t.label}</option>
+                    <option key={t.id} value={t.id} className="text-obsidian-900 dark:text-ivory-100 dark:bg-obsidian-800">{t.label}</option>
                   ))}
                 </select>
               </div>
