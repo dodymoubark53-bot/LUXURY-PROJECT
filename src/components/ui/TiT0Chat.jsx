@@ -1,16 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
-const MSG_LIST = [
-  'مرحبا انا جايدر انا هنا لاجلك ❤️\u200f❤️',
-  'انا اتمني لك رحلة سعيدة وممتعه'
-];
-
-const CHAR_SPEED = 50;
-const HOLD_TIME = 5000;
-const ERASE_SPEED = 25;
-const IDLE_GAP = 5000;
+const CHAR_SPEED = 40;
+const HOLD_TIME = 3000;
+const ERASE_SPEED = 20;
+const IDLE_GAP = 1000;
 
 const TiT0Chat = () => {
+  const { t, i18n } = useTranslation();
   const [phase, setPhase] = useState('idle');
   const [buf, setBuf] = useState('');
   const [showDots, setShowDots] = useState(false);
@@ -18,6 +15,13 @@ const TiT0Chat = () => {
   
   const msgIdxRef = useRef(0);
   const idx = useRef(0);
+
+  const msgList = [
+    t('jaider.greeting_1', 'Hello, I am Jayder, I am here for you.'),
+    t('jaider.greeting_2', 'I wish you a happy and enjoyable trip.')
+  ];
+
+  const currentLang = i18n.language;
 
   useEffect(() => {
     let active = true;
@@ -28,17 +32,17 @@ const TiT0Chat = () => {
 
       while (active) {
         const currentIdx = msgIdxRef.current;
-        const target = MSG_LIST[currentIdx];
+        const target = msgList[currentIdx] || msgList[0];
 
         // 1. Show thinking dots
         setShowDots(true);
-        await new Promise(r => setTimeout(r, 1200));
+        await new Promise(r => setTimeout(r, 800));
         if (!active) break;
 
         // 2. Transition to bubble
         setShowBubble(true);
         setShowDots(false);
-        await new Promise(r => setTimeout(r, 300));
+        await new Promise(r => setTimeout(r, 200));
         if (!active) break;
 
         // 3. Typing phase
@@ -48,11 +52,11 @@ const TiT0Chat = () => {
           if (!active) break;
           setBuf(target.slice(0, idx.current + 1));
           idx.current++;
-          await new Promise(r => setTimeout(r, CHAR_SPEED + Math.random() * 15));
+          await new Promise(r => setTimeout(r, CHAR_SPEED + Math.random() * 10));
         }
         if (!active) break;
 
-        // 4. Holding phase (5 seconds)
+        // 4. Holding phase (3 seconds)
         setPhase('holding');
         await new Promise(r => setTimeout(r, HOLD_TIME));
         if (!active) break;
@@ -73,9 +77,9 @@ const TiT0Chat = () => {
         setShowBubble(false);
 
         // Move to next index (loop back after last)
-        msgIdxRef.current = (currentIdx + 1) % MSG_LIST.length;
+        msgIdxRef.current = (currentIdx + 1) % msgList.length;
 
-        // 7. Idle gap (5 seconds) before next message starts
+        // 7. Idle gap (1 second) before next message starts
         await new Promise(r => setTimeout(r, IDLE_GAP));
       }
     };
@@ -85,7 +89,7 @@ const TiT0Chat = () => {
     return () => {
       active = false;
     };
-  }, []);
+  }, [currentLang]);
 
   const isTyping = phase === 'typing';
 
@@ -111,7 +115,7 @@ const TiT0Chat = () => {
         }`}
       >
         <div className="relative bg-gradient-to-b from-white to-[#f4f7fa] rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.25)] px-4 py-2.5 border border-white/30 text-center">
-          <p className="text-xs sm:text-[13px] leading-relaxed text-[#1a2a4a] font-bold whitespace-normal break-words dir-rtl">
+          <p className="text-xs sm:text-[13px] leading-relaxed text-[#1a2a4a] font-bold whitespace-normal break-words dir-auto">
             {buf}
             {isTyping && (
               <span className="inline-block w-[1.5px] h-[1em] bg-[#1a2a4a] ml-0.5 align-middle animate-[blink_0.75s_step-end_infinite]" />
