@@ -205,7 +205,7 @@ const HoneymoonersDetails = () => {
 
           <motion.div variants={fadeInUp} className="lg:col-span-1">
             <div>
-              <BookingForm tourTitle={t('honeymooners.egyptTitle', 'Honeymoon in Egypt')} />
+              <BookingForm tourTitle={t('honeymooners.egyptTitle', 'Honeymoon in Egypt')} price={0} />
             </div>
           </motion.div>
         </div>

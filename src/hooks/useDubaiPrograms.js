@@ -46,6 +46,7 @@ export const useDubaiPrograms = () => {
           overview: getLangValue(prog.overview, activeLang),
           code: getLangValue(prog.code, activeLang),
           minPax: getLangValue(prog.minPax, activeLang),
+          price: prog.price || prog.priceFrom || prog.pricing?.winter?.[0]?.dbl || prog.pricing?.summer?.[0]?.dbl || 0,
           includes: getLangValue(prog.includes, activeLang),
           excludes: getLangValue(prog.excludes, activeLang),
           pricing: prog.pricing ? {
@@ -82,6 +83,22 @@ export const useDubaiPrograms = () => {
 export const useDubaiProgram = (programSlugOrId) => {
   const programs = useDubaiPrograms();
   if (!programSlugOrId) return null;
-  const lower = programSlugOrId.toLowerCase();
-  return programs.find((p) => p.slug.toLowerCase() === lower || p.id.toLowerCase() === lower) || null;
+  const raw = decodeURIComponent(programSlugOrId).toLowerCase().trim();
+  const clean = raw.replace(/^prog-/, '').replace(/[^a-z0-9]/g, '');
+
+  return (
+    programs.find((p) => {
+      const pId = p.id.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const pSlug = p.slug.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const pTitle = (p.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+      return (
+        pSlug === clean ||
+        pId === clean ||
+        pSlug.includes(clean) ||
+        clean.includes(pId) ||
+        clean.includes(pSlug) ||
+        (pTitle && (pTitle.includes(clean) || clean.includes(pTitle)))
+      );
+    }) || null
+  );
 };

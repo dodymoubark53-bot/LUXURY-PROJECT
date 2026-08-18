@@ -1,7 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaPlus, FaMinus, FaCheckCircle, FaPaperPlane, FaGlobeAmericas, FaUser, FaFileInvoiceDollar, FaCalendarAlt, FaClock, FaStar } from 'react-icons/fa';
 import InvoiceModal from './InvoiceModal';
+
+import { useCurrency } from '../../context/CurrencyContext';
 
 const API = import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api` : 'http://localhost:5000/api';
 
@@ -18,8 +20,9 @@ const languages = [
   { value: 'ar', flag: '🇪🇬', labelKey: 'languages.arabic', fallback: 'Arabic' },
 ];
 
-const BookingForm = ({ tourTitle, transportChoice, requireTransportChoice }) => {
+const BookingForm = ({ tourTitle, price, transportChoice, requireTransportChoice }) => {
   const { t } = useTranslation();
+  const { formatPrice } = useCurrency();
   const [tab, setTab] = useState('booking');
   const [status, setStatus] = useState('idle');
   const [langOpen, setLangOpen] = useState(null);
@@ -31,17 +34,11 @@ const BookingForm = ({ tourTitle, transportChoice, requireTransportChoice }) => 
   const langRef = useRef(null);
   const activityRef = useRef(null);
 
-  useEffect(() => {
-    const onClick = (e) => {
-      if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(null);
-      if (activityRef.current && !activityRef.current.contains(e.target)) setActivityOpen(false);
-    };
-    document.addEventListener('mousedown', onClick);
-    return () => document.removeEventListener('mousedown', onClick);
-  }, []);
-
-  const today = new Date();
-  const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+  const getTodayString = () => {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  };
+  const todayStr = getTodayString();
 
   const [b, setB] = useState({
     arrivalDate: '', departureDate: '', arrivalTime: '', departureTime: '', language: '', activityType: '',
@@ -53,6 +50,28 @@ const BookingForm = ({ tourTitle, transportChoice, requireTransportChoice }) => 
   const [passengerNames, setPassengerNames] = useState({});
 
   const [inq, setInq] = useState({ name: '', email: '', phone: '', language: '', message: '' });
+
+  const calculatedTotal = useMemo(() => {
+    let base = 0;
+    if (typeof price === 'number') {
+      base = price;
+    } else if (price) {
+      const match = price.toString().match(/\d+/);
+      if (match) base = parseInt(match[0]);
+    }
+
+    if (base === 0) return 0;
+
+    const categoryFactor = b.activityType === 'premium' ? 1.3 : 1.0;
+    const transportSupplement = transportChoice === 'train' ? 45 : 0;
+
+    const adultSum = (b.adults || 1) * (base * categoryFactor + transportSupplement);
+    const childSum = (b.children || 0) * ((base * 0.5) * categoryFactor + transportSupplement);
+
+    return Math.round(adultSum + childSum);
+  }, [price, b.adults, b.children, b.activityType, transportChoice]);
+
+  const formattedPrice = formatPrice(calculatedTotal);
 
   const updateB = (k, v) => {
     const num = ['adults', 'children', 'infants'];
@@ -414,8 +433,25 @@ const BookingForm = ({ tourTitle, transportChoice, requireTransportChoice }) => 
                   </div>
                 )}
 
-                <button type="submit" disabled={status === 'submitting'} className="w-full py-3 bg-gradient-to-r from-gold-500 to-gold-700 text-obsidian-900 font-bold rounded-xl shadow-[0_0_25px_rgba(201,162,39,0.2)] hover:shadow-[0_0_35px_rgba(201,162,39,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-[13px] uppercase tracking-[1.5px] flex items-center justify-center gap-2">
-                  {status === 'submitting' ? <span className="flex items-center gap-2"><span className="w-4 h-4 border-2 border-obsidian-900 border-t-transparent rounded-full animate-spin" />{t('common.sending', 'Sending...')}</span> : <><FaPaperPlane size={12} />{t('booking.sendInquiry', 'Book Now')}</>}
+                {/* Price Display Box */}
+                <div className="bg-gradient-to-r from-[rgba(201,162,39,0.12)] to-[rgba(201,162,39,0.04)] border border-[rgba(201,162,39,0.3)] rounded-xl px-4 py-3 flex items-center justify-between shadow-sm my-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-full bg-gold-500/20 flex items-center justify-center">
+                      <FaFileInvoiceDollar className="text-gold-400 text-xs" />
+                    </div>
+                    <span className="text-caption text-ivory-200 font-bold text-[12px] uppercase tracking-[1px]">
+                      {t('booking.totalPrice', 'Price')}
+                    </span>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-display-sm font-extrabold text-gold-400 text-[20px] font-display">
+                      {formattedPrice}
+                    </span>
+                  </div>
+                </div>
+
+                <button type="submit" disabled={status === 'submitting'} className="w-full py-3.5 bg-gradient-to-r from-gold-500 to-gold-700 text-obsidian-900 font-extrabold rounded-xl shadow-[0_0_25px_rgba(201,162,39,0.25)] hover:shadow-[0_0_35px_rgba(201,162,39,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-[14px] uppercase tracking-[1.5px] flex items-center justify-center gap-2">
+                  {status === 'submitting' ? <span className="flex items-center gap-2"><span className="w-4 h-4 border-2 border-obsidian-900 border-t-transparent rounded-full animate-spin" />{t('common.sending', 'Sending...')}</span> : <><FaPaperPlane size={12} />{t('booking.sendInquiry', 'Book Now')} — <span className="underline font-black">{formattedPrice}</span></>}
                 </button>
               </form>
             ) : (
@@ -460,8 +496,26 @@ const BookingForm = ({ tourTitle, transportChoice, requireTransportChoice }) => 
                   <label htmlFor="inquiry-msg" className={labelClass}>{t('booking.specialRequests', 'Message')}</label>
                   <textarea id="inquiry-msg" placeholder={t('booking.inquiryPlaceholder', 'Your message...')} value={inq.message} onChange={e => setInq(p => ({ ...p, message: e.target.value }))} rows="4" className={`${inputClass} resize-none`} />
                 </div>
-                <button type="submit" disabled={status === 'submitting'} className="w-full py-3 bg-gradient-to-r from-gold-500 to-gold-700 text-obsidian-900 font-bold rounded-xl shadow-[0_0_25px_rgba(201,162,39,0.2)] hover:shadow-[0_0_35px_rgba(201,162,39,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-[13px] uppercase tracking-[1.5px] flex items-center justify-center gap-2">
-                  {status === 'submitting' ? <span className="flex items-center gap-2"><span className="w-4 h-4 border-2 border-obsidian-900 border-t-transparent rounded-full animate-spin" />{t('common.sending', 'Sending...')}</span> : <><FaPaperPlane size={12} />{t('booking.sendInquiry', 'Book Now')}</>}
+
+                {/* Price Display Box */}
+                <div className="bg-gradient-to-r from-[rgba(201,162,39,0.12)] to-[rgba(201,162,39,0.04)] border border-[rgba(201,162,39,0.3)] rounded-xl px-4 py-3 flex items-center justify-between shadow-sm my-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 rounded-full bg-gold-500/20 flex items-center justify-center">
+                      <FaFileInvoiceDollar className="text-gold-400 text-xs" />
+                    </div>
+                    <span className="text-caption text-ivory-200 font-bold text-[12px] uppercase tracking-[1px]">
+                      {t('booking.totalPrice', 'Price')}
+                    </span>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-display-sm font-extrabold text-gold-400 text-[20px] font-display">
+                      {formattedPrice}
+                    </span>
+                  </div>
+                </div>
+
+                <button type="submit" disabled={status === 'submitting'} className="w-full py-3.5 bg-gradient-to-r from-gold-500 to-gold-700 text-obsidian-900 font-extrabold rounded-xl shadow-[0_0_25px_rgba(201,162,39,0.25)] hover:shadow-[0_0_35px_rgba(201,162,39,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-[14px] uppercase tracking-[1.5px] flex items-center justify-center gap-2">
+                  {status === 'submitting' ? <span className="flex items-center gap-2"><span className="w-4 h-4 border-2 border-obsidian-900 border-t-transparent rounded-full animate-spin" />{t('common.sending', 'Sending...')}</span> : <><FaPaperPlane size={12} />{t('booking.sendInquiry', 'Book Now')} — <span className="underline font-black">{formattedPrice}</span></>}
                 </button>
               </form>
             )}

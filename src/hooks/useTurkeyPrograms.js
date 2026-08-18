@@ -50,6 +50,7 @@ export const useTurkeyPrograms = () => {
         overview: getLangValue(prog.overview, activeLang),
         code: getLangValue(prog.code, activeLang),
         minPax: getLangValue(prog.minPax, activeLang),
+        price: prog.price || prog.priceFrom || prog.pricing?.winter?.[0]?.dbl || prog.pricing?.summer?.[0]?.dbl || 0,
         transportOptions: prog.transportOptions ? getLangValue(prog.transportOptions, activeLang) : null,
         days: prog.days.map((day) => ({
           day: day.day,
@@ -65,6 +66,22 @@ export const useTurkeyPrograms = () => {
 export const useTurkeyProgram = (programSlugOrId) => {
   const programs = useTurkeyPrograms();
   if (!programSlugOrId) return null;
-  const lower = programSlugOrId.toLowerCase();
-  return programs.find((p) => p.slug.toLowerCase() === lower || p.id.toLowerCase() === lower) || null;
+  const raw = decodeURIComponent(programSlugOrId).toLowerCase().trim();
+  const clean = raw.replace(/^prog-/, '').replace(/[^a-z0-9]/g, '');
+
+  return (
+    programs.find((p) => {
+      const pId = p.id.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const pSlug = p.slug.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const pTitle = (p.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+      return (
+        pSlug === clean ||
+        pId === clean ||
+        pSlug.includes(clean) ||
+        clean.includes(pId) ||
+        clean.includes(pSlug) ||
+        (pTitle && (pTitle.includes(clean) || clean.includes(pTitle)))
+      );
+    }) || null
+  );
 };

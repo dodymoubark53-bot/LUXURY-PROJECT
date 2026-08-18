@@ -226,7 +226,7 @@ const DubaiProgramDetails = () => {
           {/* Sidebar - Booking Form */}
           <div className="lg:col-span-1">
             <div>
-              <BookingForm tourTitle={title} />
+              <BookingForm tourTitle={title} price={program?.price || program?.priceFrom || 0} />
             </div>
           </div>
         </div>

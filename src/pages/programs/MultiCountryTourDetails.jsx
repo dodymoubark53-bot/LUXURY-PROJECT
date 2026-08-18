@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaChevronRight, FaClock, FaUserFriends, FaTag,
-  FaCheckCircle, FaTimesCircle
+  FaCheckCircle, FaTimesCircle, FaTimes
 } from 'react-icons/fa';
 import { multiCountryTours } from '../../data/multiCountryTours';
 import TourCard from '../../components/tour/TourCard';
@@ -19,7 +19,24 @@ const MultiCountryTourDetails = () => {
   const { t } = useTranslation();
   const { slug } = useParams();
 
-  const tour = multiCountryTours.find(t => t.slug === slug || t.id.toLowerCase() === (slug || '').toLowerCase());
+  const tour = useMemo(() => {
+    if (!slug) return null;
+    const raw = decodeURIComponent(slug).toLowerCase().trim();
+    const clean = raw.replace(/^multi-/, '').replace(/[^a-z0-9]/g, '');
+    return multiCountryTours.find((t) => {
+      const tId = t.id.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const tSlug = t.slug.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const tTitle = (t.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+      return (
+        tSlug === clean ||
+        tId === clean ||
+        tSlug.includes(clean) ||
+        clean.includes(tId) ||
+        clean.includes(tSlug) ||
+        (tTitle && (tTitle.includes(clean) || clean.includes(tTitle)))
+      );
+    });
+  }, [slug]);
   const shuffledTours = useMemo(() => [...multiCountryTours].sort(() => Math.random() - 0.5), []);
 
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -236,7 +253,7 @@ const MultiCountryTourDetails = () => {
           {/* Sidebar - Booking Form */}
           <div className="lg:col-span-1">
             <div>
-              <BookingForm tourTitle={tour.title} />
+              <BookingForm tourTitle={tour.title} price={tour?.price || 0} />
             </div>
           </div>
         </div>
