@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import { staggerContainer, fadeInUp } from '../animations/variants';
 import { FaChevronRight } from 'react-icons/fa';
 
+import { useCurrency } from '../context/CurrencyContext';
+
 const tours = [
   {
     id: 'honeymoon-egypt',
@@ -20,6 +22,7 @@ const tours = [
 
 const Honeymooners = () => {
   const { t } = useTranslation();
+  const { formatPrice } = useCurrency();
 
   return (
     <div className="w-full bg-obsidian-50 pb-24">
@@ -110,6 +113,14 @@ const Honeymooners = () => {
                   {t(item.taglineKey, item.taglineDefault)}
                 </p>
                 <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-100">
+                  <div>
+                    <span className="block text-caption text-obsidian-300 mb-1">
+                      {t('tourCard.from', 'from')}
+                    </span>
+                    <span className="text-display-md text-gold-700 font-bold">
+                      {formatPrice(0)}
+                    </span>
+                  </div>
                   <Link
                     to={`/programs/honeymooners/${item.id}`}
                     className="inline-flex items-center gap-2 bg-gradient-to-r from-gold-500 to-gold-600 text-obsidian-900 gold-btn-text font-bold px-6 py-3 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 shadow-md border-2 border-gold-400"

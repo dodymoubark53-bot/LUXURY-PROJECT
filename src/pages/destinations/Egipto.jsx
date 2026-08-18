@@ -6,9 +6,11 @@ import { staggerContainer, fadeInUp } from '../../animations/variants';
 import Button from '../../components/ui/Button';
 import TourCard from '../../components/tour/TourCard';
 import { tours } from '../../data/tours';
+import { useCurrency } from '../../context/CurrencyContext';
 
 const Egipto = () => {
   const { t } = useTranslation();
+  const { formatPrice } = useCurrency();
   const egyptTours = tours.filter((tour) => tour.destination === 'egypt');
 
   return (
@@ -118,7 +120,15 @@ const Egipto = () => {
               <p className="text-body-sm text-obsidian-500 dark:text-black line-clamp-3 mb-4 flex-grow">
                 {t('classic.shortDesc', 'Experience the timeless beauty of Egypt with our signature classic itinerary covering all the iconic landmarks.')}
               </p>
-              <div className="flex items-center justify-end pt-4 border-t border-gold-500/10 mt-auto">
+              <div className="flex items-center justify-between pt-4 border-t border-gold-500/10 mt-auto">
+                <div>
+                  <span className="block text-caption text-obsidian-300 mb-1">
+                    {t('tourCard.from', 'from')}
+                  </span>
+                  <span className="text-display-md text-gold-700 font-bold">
+                    {formatPrice(0)}
+                  </span>
+                </div>
                 <Link to="/programs/classic/classic-program" aria-label={`${t('tourCard.viewDetails', 'View Details')} - ${t('nav.classicProgram', 'Classic Program')}`}>
                   <Button variant="outline-gold" className="px-6 py-2 flex items-center gap-2" tabIndex={-1}>
                     {t('tourCard.viewDetails', 'View Details')} <span className="rtl-flip">&rarr;</span>
@@ -143,7 +153,15 @@ const Egipto = () => {
               <p className="text-body-sm text-obsidian-500 dark:text-black line-clamp-3 mb-4 flex-grow">
                 {t('dest.egypt.honeymoonersDesc', 'Celebrate your love with intimate candlelit dinners, private yacht cruises, and unmatched romantic luxury.')}
               </p>
-              <div className="flex items-center justify-end pt-4 border-t border-gold-500/10 mt-auto">
+              <div className="flex items-center justify-between pt-4 border-t border-gold-500/10 mt-auto">
+                <div>
+                  <span className="block text-caption text-obsidian-300 mb-1">
+                    {t('tourCard.from', 'from')}
+                  </span>
+                  <span className="text-display-md text-gold-700 font-bold">
+                    {formatPrice(0)}
+                  </span>
+                </div>
                 <Link to="/programs/honeymooners" aria-label={`${t('tourCard.viewDetails', 'View Details')} - ${t('nav.honeymooners', 'Honeymooners Package')}`}>
                   <Button variant="outline-gold" className="px-6 py-2 flex items-center gap-2" tabIndex={-1}>
                     {t('tourCard.viewDetails', 'View Details')} <span className="rtl-flip">&rarr;</span>
@@ -168,7 +186,15 @@ const Egipto = () => {
               <p className="text-body-sm text-obsidian-500 dark:text-black line-clamp-3 mb-4 flex-grow">
                 {t('dest.egypt.religiousDesc', 'A spiritual journey through Egypt tracing ancient Coptic monasteries and sacred sites.')}
               </p>
-              <div className="flex items-center justify-end pt-4 border-t border-gold-500/10 mt-auto">
+              <div className="flex items-center justify-between pt-4 border-t border-gold-500/10 mt-auto">
+                <div>
+                  <span className="block text-caption text-obsidian-300 mb-1">
+                    {t('tourCard.from', 'from')}
+                  </span>
+                  <span className="text-display-md text-gold-700 font-bold">
+                    {formatPrice(0)}
+                  </span>
+                </div>
                 <Link to="/programs/religious" aria-label={`${t('tourCard.viewDetails', 'View Details')} - ${t('nav.religious', 'Religious Programs')}`}>
                   <Button variant="outline-gold" className="px-6 py-2 flex items-center gap-2" tabIndex={-1}>
                     {t('tourCard.viewDetails', 'View Details')} <span className="rtl-flip">&rarr;</span>
@@ -193,7 +219,15 @@ const Egipto = () => {
               <p className="text-body-sm text-obsidian-500 dark:text-black line-clamp-3 mb-4 flex-grow">
                 {t('dest.egypt.multiCountryDesc', 'Explore combined itineraries spanning Egypt, Jordan, Turkey and beyond for a truly grand adventure.')}
               </p>
-              <div className="flex items-center justify-end pt-4 border-t border-gold-500/10 mt-auto">
+              <div className="flex items-center justify-between pt-4 border-t border-gold-500/10 mt-auto">
+                <div>
+                  <span className="block text-caption text-obsidian-300 mb-1">
+                    {t('tourCard.from', 'from')}
+                  </span>
+                  <span className="text-display-md text-gold-700 font-bold">
+                    {formatPrice(0)}
+                  </span>
+                </div>
                 <Link to="/programs/multi-country" aria-label={`${t('tourCard.viewDetails', 'View Details')} - ${t('nav.multiCountry', 'Multi-Country Tours')}`}>
                   <Button variant="outline-gold" className="px-6 py-2 flex items-center gap-2" tabIndex={-1}>
                     {t('tourCard.viewDetails', 'View Details')} <span className="rtl-flip">&rarr;</span>
@@ -218,7 +252,15 @@ const Egipto = () => {
               <p className="text-body-sm text-obsidian-500 dark:text-black line-clamp-3 mb-4 flex-grow">
                 {t('dest.egypt.extensionDesc', 'Extend your Egypt journey with added destinations like Hurghada, Sharm El Sheikh, or Siwa Oasis.')}
               </p>
-              <div className="flex items-center justify-end pt-4 border-t border-gold-500/10 mt-auto">
+              <div className="flex items-center justify-between pt-4 border-t border-gold-500/10 mt-auto">
+                <div>
+                  <span className="block text-caption text-obsidian-300 mb-1">
+                    {t('tourCard.from', 'from')}
+                  </span>
+                  <span className="text-display-md text-gold-700 font-bold">
+                    {formatPrice(0)}
+                  </span>
+                </div>
                 <Link to="/programs/extension" aria-label={`${t('tourCard.viewDetails', 'View Details')} - ${t('dest.egypt.extensionTitle', 'Egypt Extensions')}`}>
                   <Button variant="outline-gold" className="px-6 py-2 flex items-center gap-2" tabIndex={-1}>
                     {t('tourCard.viewDetails', 'View Details')} <span className="rtl-flip">&rarr;</span>

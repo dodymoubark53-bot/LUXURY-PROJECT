@@ -88,17 +88,17 @@ const Contact = () => {
           </div>
 
           {/* Form */}
-          <div className="lg:w-1/2 p-12">
-            <h3 className="text-display-md text-obsidian-900 mb-6">{t('contact.sendMessage', 'Send us a message')}</h3>
+          <div className="lg:w-1/2 p-12 bg-white dark:bg-[#1a1a30]">
+            <h3 className="text-display-md text-obsidian-900 dark:text-white mb-6">{t('contact.sendMessage', 'Send us a message')}</h3>
             <form className="flex flex-col gap-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input type="text" placeholder={t('contact.firstName', 'First Name')} required className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors" />
-                <input type="text" placeholder={t('contact.lastName', 'Last Name')} required className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors" />
+                <input type="text" placeholder={t('contact.firstName', 'First Name')} required className="w-full p-4 border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#0f0f1a] text-obsidian-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-lg focus:border-gold-500 outline-none transition-colors" />
+                <input type="text" placeholder={t('contact.lastName', 'Last Name')} required className="w-full p-4 border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#0f0f1a] text-obsidian-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-lg focus:border-gold-500 outline-none transition-colors" />
               </div>
-              <input type="email" placeholder={t('contact.emailPlaceholder', 'Email Address')} required className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors" />
-              <input type="tel" placeholder={t('contact.phonePlaceholder', 'Phone Number')} className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors" />
-              <textarea placeholder={t('contact.messagePlaceholder', 'How can we help you craft your perfect journey?')} rows="5" required className="w-full p-4 border border-gray-200 rounded-lg focus:border-gold-500 outline-none transition-colors resize-none"></textarea>
-              <Button variant="gold-glow" className="self-start px-8">{t('contact.sendBtn', 'Send Message')}</Button>
+              <input type="email" placeholder={t('contact.emailPlaceholder', 'Email Address')} required className="w-full p-4 border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#0f0f1a] text-obsidian-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-lg focus:border-gold-500 outline-none transition-colors" />
+              <input type="tel" placeholder={t('contact.phonePlaceholder', 'Phone Number')} className="w-full p-4 border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#0f0f1a] text-obsidian-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-lg focus:border-gold-500 outline-none transition-colors" />
+              <textarea placeholder={t('contact.messagePlaceholder', 'How can we help you craft your perfect journey?')} rows="5" required className="w-full p-4 border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#0f0f1a] text-obsidian-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-lg focus:border-gold-500 outline-none transition-colors resize-none"></textarea>
+              <Button variant="gold-glow" className="self-start px-8 dark:text-white">{t('contact.sendBtn', 'Send Message')}</Button>
             </form>
           </div>
 

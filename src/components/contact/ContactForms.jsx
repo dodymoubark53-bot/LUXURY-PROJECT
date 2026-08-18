@@ -552,6 +552,11 @@ const ContactForms = () => {
           border-radius: 0 !important;
         }
 
+        html.dark .submit-inquiry-btn,
+        .dark .submit-inquiry-btn {
+          color: #ffffff !important;
+        }
+
         .submit-inquiry-btn:hover {
           background-color: #F0C96A;
           box-shadow: 0 0 24px rgba(212, 168, 67, 0.35);
