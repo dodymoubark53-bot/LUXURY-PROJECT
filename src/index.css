@@ -652,3 +652,10 @@ footer a.footer-social:hover {
 .leaflet-control-attribution {
   display: none !important;
 }
+
+/* ── Leaflet Custom DivIcon Resets ──────────────────────────────── */
+.plane-marker,
+.custom-location-pin {
+  background: transparent !important;
+  border: none !important;
+}

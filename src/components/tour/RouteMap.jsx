@@ -307,59 +307,96 @@ const KEYWORDS_MAP = {
   "العقبة": "aqaba",
   "عقبة": "aqaba",
 
-  // UAE - Dubai
+  // UAE - Dubai City / General
   "dubai": "dubai",
   "dubái": "dubai",
   "دبي": "dubai",
   "دبى": "dubai",
 
   // UAE - Dubai Airport
+  "dubai airport": "dubai airport",
+  "dubai international airport": "dubai airport",
   "aeropuerto de dubái": "dubai airport",
   "aeropuerto de dubai": "dubai airport",
   "aeroporto de dubai": "dubai airport",
-  "dubai airport": "dubai airport",
-  "dubai international airport": "dubai airport",
+  "aeroporto di dubai": "dubai airport",
+  "مطار دبي": "dubai airport",
+  "مطار دبي الدولي": "dubai airport",
 
-  // UAE - Old Dubai
+  // UAE - Old Dubai / Bastakiya / Souks
   "dubái antiguo": "old dubai",
   "dubai antigo": "old dubai",
   "old dubai": "old dubai",
   "bastakiya": "old dubai",
+  "bastakeya": "old dubai",
+  "البستكية": "old dubai",
+  "البستكيه": "old dubai",
+  "بستكية": "old dubai",
+  "دبي القديمة": "old dubai",
   "bur dubai": "old dubai",
+  "بر دبي": "old dubai",
   "deira": "old dubai",
+  "ديرة": "old dubai",
+  "souk": "old dubai",
+  "سوق الذهب": "old dubai",
+  "سوق التوابل": "old dubai",
+  "خور دبي": "old dubai",
+  "dubai creek": "old dubai",
+  "abra": "old dubai",
+  "العبرة": "old dubai",
 
-  // UAE - Jumeirah
+  // UAE - Jumeirah / Burj Al Arab / Palm Jumeirah
   "jumeirah": "jumeirah",
   "jumeira": "jumeirah",
+  "جميرا": "jumeirah",
+  "جميره": "jumeirah",
   "palm jumeirah": "jumeirah",
   "palmera jumeirah": "jumeirah",
+  "نخلة جميرا": "jumeirah",
+  "نخلة دبي": "jumeirah",
   "burj al arab": "jumeirah",
+  "برج العرب": "jumeirah",
+  "atlantis": "jumeirah",
+  "أتولانتس": "jumeirah",
+  "اتلانتس": "jumeirah",
+  "madinat jumeirah": "jumeirah",
+  "مدينة جميرا": "jumeirah",
 
-  // UAE - Burj Khalifa
+  // UAE - Burj Khalifa / Downtown / Dubai Mall
   "burj khalifa": "burj khalifa",
   "khalifa": "burj khalifa",
+  "برج خليفة": "burj khalifa",
+  "برج خليفه": "burj khalifa",
   "dubai mall": "burj khalifa",
+  "دبي مول": "burj khalifa",
   "downtown dubai": "burj khalifa",
   "centro de dubái": "burj khalifa",
+  "وسط دبي": "burj khalifa",
+  "نافورة دبي": "burj khalifa",
+  "dubai fountain": "burj khalifa",
 
   // UAE - Dubai Marina
   "dubai marina": "dubai marina",
   "marina de dubái": "dubai marina",
   "marina de dubai": "dubai marina",
+  "دبي مارينا": "dubai marina",
+  "مارينا دبي": "dubai marina",
+  "مارينا": "dubai marina",
 
-  // UAE - Dubai Desert
+  // UAE - Dubai Desert / Safari
   "safari": "dubai desert",
+  "سفاري": "dubai desert",
   "desierto de dubái": "dubai desert",
   "desierto de dubai": "dubai desert",
   "deserto de dubai": "dubai desert",
   "dubai desert": "dubai desert",
+  "صحراء دبي": "dubai desert",
+  "الصحراء": "dubai desert",
   "dunas": "dubai desert",
-
-  // UAE - Yas Island / Abu Dhabi attractions
-  "yas island": "yas island",
-  "ferrari world": "yas island",
-  "louvre": "yas island",
-  "sheikh zayed": "yas island",
+  "كثبان": "dubai desert",
+  "الكثبان": "dubai desert",
+  "مخيم صحراوي": "dubai desert",
+  "heritage safari": "dubai desert",
 
   // UAE - Abu Dhabi
   "abu dhabi": "abu dhabi",
@@ -367,6 +404,18 @@ const KEYWORDS_MAP = {
   "أبو ظبي": "abu dhabi",
   "ابوظبي": "abu dhabi",
   "ابو ظبي": "abu dhabi",
+  "جامع الشيخ زايد": "abu dhabi",
+  "sheikh zayed": "abu dhabi",
+  "مسجد الشيخ زايد": "abu dhabi",
+
+  // UAE - Yas Island / Ferrari World
+  "yas island": "yas island",
+  "جزيرة ياس": "yas island",
+  "ferrari world": "yas island",
+  "عالم فيراري": "yas island",
+  "louvre abu dhabi": "yas island",
+  "متحف اللوفر": "yas island",
+  "لوفر أبوظبي": "yas island",
 
   // Morocco - Marrakech
   "marrakech": "marrakech",
@@ -865,7 +914,6 @@ const CITY_TRANSLATIONS = {
     "el jem": "El Jem",
     "matmata": "Matmata",
     "douz": "Douz",
-    "chott el jerid": "Chott el Jerid",
     "tozeur": "Tozeur",
     "kairouan": "Kairouan"
   }
@@ -935,8 +983,8 @@ const RouteMap = ({ itinerary }) => {
         }
       });
 
-      // Prioritize longer, more specific keywords (e.g. "palm jumeirah" over "dubai")
-      dayMatches.sort((a, b) => b.keyword.length - a.keyword.length);
+      // Sort by appearance order in text
+      dayMatches.sort((a, b) => a.index - b.index);
 
       if (dayMatches.length > 0) {
         const rawTitle = day.title || day.titleDefault || 'Explore';
@@ -980,41 +1028,80 @@ const RouteMap = ({ itinerary }) => {
       }
     });
 
-    // Fallback: If no locations were matched, check if there's any destination name we can map
-    if (extracted.length === 0) {
+    // Guarantee at least 2 locations so polyline & flight animation ALWAYS render
+    if (extracted.length < 2) {
       const fullText = itinerary.map(d => JSON.stringify(d)).join(" ").toLowerCase();
-      let fallbackName = "Cairo";
-      let fallbackCoords = COORDINATES_DATABASE["cairo"];
-      
-      if (fullText.includes("turkey") || fullText.includes("turquía") || fullText.includes("turquia") || fullText.includes("istanbul")) {
-        fallbackName = "Istanbul";
-        fallbackCoords = COORDINATES_DATABASE["istanbul"];
-      } else if (fullText.includes("jordan") || fullText.includes("jordânia") || fullText.includes("jordania") || fullText.includes("amman")) {
-        fallbackName = "Amman";
-        fallbackCoords = COORDINATES_DATABASE["amman"];
-      } else if (fullText.includes("dubai") || fullText.includes("emirates") || fullText.includes("abu dhabi")) {
-        fallbackName = "Dubai";
-        fallbackCoords = COORDINATES_DATABASE["dubai"];
-      } else if (fullText.includes("morocco") || fullText.includes("marrocos") || fullText.includes("marruecos") || fullText.includes("marrakech")) {
-        fallbackName = "Marrakech";
-        fallbackCoords = COORDINATES_DATABASE["marrakech"];
-      } else if (fullText.includes("greece") || fullText.includes("grecia") || fullText.includes("athens")) {
-        fallbackName = "Athens";
-        fallbackCoords = COORDINATES_DATABASE["athens"];
-      } else if (fullText.includes("tunisia") || fullText.includes("túnez") || fullText.includes("tunes") || fullText.includes("tunis")) {
-        fallbackName = "Tunis";
-        fallbackCoords = COORDINATES_DATABASE["tunis"];
+
+      if (fullText.includes("dubai") || fullText.includes("dubái") || fullText.includes("دبي") || fullText.includes("emirates") || fullText.includes("abu dhabi")) {
+        extracted.length = 0;
+        extracted.push({
+          name: "Dubai Airport",
+          coords: COORDINATES_DATABASE["dubai airport"],
+          description: `${t('tour.day', 'Day')} 1: Dubai International Airport`
+        });
+        extracted.push({
+          name: "Burj Khalifa",
+          coords: COORDINATES_DATABASE["burj khalifa"],
+          description: `${t('tour.day', 'Day')} 2: Downtown Dubai & Burj Khalifa`
+        });
+        extracted.push({
+          name: "Dubai Desert",
+          coords: COORDINATES_DATABASE["dubai desert"],
+          description: `${t('tour.day', 'Day')} 3: Dubai Desert Safari`
+        });
+      } else if (fullText.includes("turkey") || fullText.includes("turquía") || fullText.includes("turquia") || fullText.includes("istanbul") || fullText.includes("إسطنبول")) {
+        extracted.length = 0;
+        extracted.push({
+          name: "Istanbul",
+          coords: COORDINATES_DATABASE["istanbul"],
+          description: `${t('tour.day', 'Day')} 1: Istanbul`
+        });
+        extracted.push({
+          name: "Cappadocia",
+          coords: COORDINATES_DATABASE["cappadocia"],
+          description: `${t('tour.day', 'Day')} 2: Cappadocia`
+        });
+      } else if (fullText.includes("jordan") || fullText.includes("jordânia") || fullText.includes("jordania") || fullText.includes("amman") || fullText.includes("عمان")) {
+        extracted.length = 0;
+        extracted.push({
+          name: "Amman",
+          coords: COORDINATES_DATABASE["amman"],
+          description: `${t('tour.day', 'Day')} 1: Amman`
+        });
+        extracted.push({
+          name: "Petra",
+          coords: COORDINATES_DATABASE["petra"],
+          description: `${t('tour.day', 'Day')} 2: Petra`
+        });
+      } else if (fullText.includes("morocco") || fullText.includes("marrocos") || fullText.includes("marruecos") || fullText.includes("marrakech") || fullText.includes("مراكش")) {
+        extracted.length = 0;
+        extracted.push({
+          name: "Casablanca",
+          coords: COORDINATES_DATABASE["casablanca"],
+          description: `${t('tour.day', 'Day')} 1: Casablanca`
+        });
+        extracted.push({
+          name: "Marrakech",
+          coords: COORDINATES_DATABASE["marrakech"],
+          description: `${t('tour.day', 'Day')} 2: Marrakech`
+        });
+      } else {
+        extracted.length = 0;
+        extracted.push({
+          name: "Cairo",
+          coords: COORDINATES_DATABASE["cairo"],
+          description: `${t('tour.day', 'Day')} 1: Cairo`
+        });
+        extracted.push({
+          name: "Luxor",
+          coords: COORDINATES_DATABASE["luxor"],
+          description: `${t('tour.day', 'Day')} 2: Luxor`
+        });
       }
-      
-      extracted.push({
-        name: fallbackName,
-        coords: fallbackCoords,
-        description: `${fallbackName} Gateway`
-      });
     }
 
     return extracted;
-  }, [itinerary, t]);
+  }, [itinerary, t, i18n.language]);
 
   useEffect(() => {
     if (!mapContainerRef.current || locations.length === 0) return;
@@ -1035,9 +1122,24 @@ const RouteMap = ({ itinerary }) => {
     // Markers
     const markers = [];
     locations.forEach((loc) => {
-      const marker = L.marker(loc.coords)
+      const displayName = t('data.' + loc.name, loc.name);
+      const pinIcon = L.divIcon({
+        className: 'custom-location-pin',
+        html: `
+          <div style="position: relative; display: flex; flex-direction: column; align-items: center; cursor: pointer; transform: translate(-50%, -100%);">
+            <div style="background: #0F0D0B; border: 1.5px solid #C9A227; color: #F5F2E8; font-size: 11px; font-weight: 700; font-family: 'Inter', sans-serif; padding: 4px 10px; border-radius: 8px; white-space: nowrap; box-shadow: 0 4px 14px rgba(0,0,0,0.6); margin-bottom: 4px;">
+              ${displayName}
+            </div>
+            <div style="width: 14px; height: 14px; background: #C9A227; border: 2px solid #0F0D0B; border-radius: 50%; box-shadow: 0 0 12px #C9A227;"></div>
+          </div>
+        `,
+        iconSize: [0, 0],
+        iconAnchor: [0, 0],
+      });
+
+      const marker = L.marker(loc.coords, { icon: pinIcon })
         .addTo(map)
-        .bindPopup(`<b>${t('data.' + loc.name, loc.name)}</b><br/>${loc.description || ''}`);
+        .bindPopup(`<b>${displayName}</b><br/>${loc.description || ''}`);
       markers.push(marker);
     });
 
@@ -1045,7 +1147,7 @@ const RouteMap = ({ itinerary }) => {
     const latlngs = locations.map(l => l.coords);
     if (latlngs.length > 0) {
       const bounds = L.latLngBounds(latlngs);
-      map.fitBounds(bounds, { padding: [50, 50] });
+      map.fitBounds(bounds, { padding: [60, 60] });
     }
 
     // Animation / curved line if more than 1 location
@@ -1059,23 +1161,23 @@ const RouteMap = ({ itinerary }) => {
 
       L.polyline(pathPoints, {
         color: '#f5a623',
-        weight: 3,
-        opacity: 0.8,
+        weight: 3.5,
+        opacity: 0.85,
         dashArray: '8, 8',
       }).addTo(map);
 
-      // Plane icon
+      // Animated Plane icon
       const planeIcon = L.divIcon({
         className: 'plane-marker',
         html: `
-          <div style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; transition: transform 0.1s ease;">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="#f5a623" stroke="#041446" stroke-width="1.5" style="filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.45));">
+          <div style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: transparent; border: none; transition: transform 0.1s ease;">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="#f5a623" stroke="#0F0D0B" stroke-width="1.5" style="filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.6));">
               <path d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z" />
             </svg>
           </div>
         `,
-        iconSize: [30, 30],
-        iconAnchor: [15, 15],
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
       });
 
       const plane = L.marker(pathPoints[0], { icon: planeIcon }).addTo(map);
