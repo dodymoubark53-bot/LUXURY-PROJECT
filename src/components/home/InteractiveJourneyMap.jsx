@@ -161,12 +161,13 @@ const InteractiveJourneyMap = () => {
       zoomControl: true,
       scrollWheelZoom: false,
       zoomSnap: 0.5,
-      zoomDelta: 0.5
+      zoomDelta: 0.5,
+      attributionControl: false,
     }).setView(firstStopCoords, 6);
 
     // Leaflet Voyage tiles locked to English locale
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+      attribution: '',
       maxZoom: 18,
     }).addTo(map);
 
@@ -347,7 +348,7 @@ const InteractiveJourneyMap = () => {
             
             {/* 1. Destination Filter */}
             <div className="mb-5">
-              <label htmlFor="map-dest-select" className="block text-[11px] text-gold-400 uppercase tracking-widest mb-2 font-bold flex items-center gap-1.5">
+              <label htmlFor="map-dest-select" className="text-[11px] text-gold-400 uppercase tracking-widest mb-2 font-bold flex items-center gap-1.5">
                 <FaGlobe className="text-gold-500" /> Destination Region
               </label>
               <select
@@ -364,7 +365,7 @@ const InteractiveJourneyMap = () => {
 
             {/* 2. Journey Selector */}
             <div className="mb-6">
-              <label htmlFor="map-journey-select" className="block text-[11px] text-gold-400 uppercase tracking-widest mb-2 font-bold flex items-center gap-1.5">
+              <label htmlFor="map-journey-select" className="text-[11px] text-gold-400 uppercase tracking-widest mb-2 font-bold flex items-center gap-1.5">
                 <FaRoute className="text-gold-500" /> Select a Journey
               </label>
               <select

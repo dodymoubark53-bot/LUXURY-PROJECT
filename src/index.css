@@ -647,3 +647,8 @@ footer a.footer-social:hover {
   background-color: #1a1a30 !important;
   color: #f0efe7 !important;
 }
+
+/* ── Remove Leaflet Attribution ──────────────────────────────────── */
+.leaflet-control-attribution {
+  display: none !important;
+}
