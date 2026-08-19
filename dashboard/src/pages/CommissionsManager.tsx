@@ -17,14 +17,14 @@ import {
 } from 'lucide-react';
 
 const CommissionsManager = () => {
-  const { commissions, addCommission, updateCommission, deleteCommission, agents, bookings } = useData();
+  const { commissions, addCommission, updateCommission, deleteCommission, agents, bookings, t } = useData();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('ALL');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingId, setEditingId] = useState(null);
+  const [editingId, setEditingId] = useState<any>(null);
 
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<any>({
     bookingId: 'DUNAS-BK-1001',
     agentName: 'Carlos Eduardo Santos',
     companyName: 'CVC Viagens Brasil',
@@ -50,7 +50,7 @@ const CommissionsManager = () => {
     setIsModalOpen(true);
   };
 
-  const handleOpenEdit = (comm) => {
+  const handleOpenEdit = (comm: any) => {
     setEditingId(comm.id);
     setForm({
       bookingId: comm.bookingId || '',
@@ -65,7 +65,7 @@ const CommissionsManager = () => {
     setIsModalOpen(true);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const calculatedEarned = (Number(form.bookingAmount) * Number(form.rate)) / 100;
     const finalForm = { ...form, earnedAmount: calculatedEarned };
@@ -78,7 +78,7 @@ const CommissionsManager = () => {
     setIsModalOpen(false);
   };
 
-  const filteredCommissions = commissions.filter(c => {
+  const filteredCommissions = commissions.filter((c: any) => {
     const matchesSearch = (c.agentName || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
                           (c.bookingId || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
                           (c.companyName || '').toLowerCase().includes(searchQuery.toLowerCase());
@@ -86,9 +86,9 @@ const CommissionsManager = () => {
     return matchesSearch && matchesStatus;
   });
 
-  const totalCommissions = commissions.reduce((sum, c) => sum + Number(c.earnedAmount || 0), 0);
-  const pendingCommissions = commissions.filter(c => c.status === 'PENDING').reduce((sum, c) => sum + Number(c.earnedAmount || 0), 0);
-  const approvedCommissions = commissions.filter(c => c.status === 'APPROVED' || c.status === 'PAID').reduce((sum, c) => sum + Number(c.earnedAmount || 0), 0);
+  const totalCommissions = commissions.reduce((sum: number, c: any) => sum + Number(c.earnedAmount || 0), 0);
+  const pendingCommissions = commissions.filter((c: any) => c.status === 'PENDING').reduce((sum: number, c: any) => sum + Number(c.earnedAmount || 0), 0);
+  const approvedCommissions = commissions.filter((c: any) => c.status === 'APPROVED' || c.status === 'PAID').reduce((sum: number, c: any) => sum + Number(c.earnedAmount || 0), 0);
 
   return (
     <div className="space-y-6">
@@ -97,10 +97,10 @@ const CommissionsManager = () => {
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
             <DollarSign className="text-amber-500" />
-            <span>إدارة العمولات المالية B2B (Commissions Manager)</span>
+            <span>{t('commissionsManagerTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
-            متابعة عمولات وكلاء السفر الشركاء، مواعيد الصرف، وسجلات الصرف المالية.
+            {t('commissionsManagerSubtitle')}
           </p>
         </div>
 
@@ -109,29 +109,29 @@ const CommissionsManager = () => {
           className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-amber-500/20 shrink-0"
         >
           <Plus size={18} />
-          <span>إضافة سجل عمولة جديد</span>
+          <span>{t('addCommissionRecord')}</span>
         </button>
       </div>
 
       {/* Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">إجمالي العمولات المستحقة</span>
+          <span className="text-xs text-slate-400 font-medium">{t('totalDueCommissions')}</span>
           <p className="text-3xl font-black text-amber-400">${totalCommissions.toLocaleString()}</p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">عمولات قيد المراجعة والمعالجة</span>
+          <span className="text-xs text-slate-400 font-medium">{t('pendingReviewCommissions')}</span>
           <p className="text-3xl font-black text-yellow-400">${pendingCommissions.toLocaleString()}</p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">العمولات المعتمدة والمصروفة</span>
+          <span className="text-xs text-slate-400 font-medium">{t('approvedPaidCommissions')}</span>
           <p className="text-3xl font-black text-emerald-400">${approvedCommissions.toLocaleString()}</p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">دورة الصرف القادمة</span>
+          <span className="text-xs text-slate-400 font-medium">{t('nextPayoutCycle')}</span>
           <p className="text-2xl font-black text-blue-400">30 أغسطس 2026</p>
         </div>
       </div>
@@ -166,24 +166,24 @@ const CommissionsManager = () => {
 
       {/* Commissions Table View */}
       <div className="bg-[#161b22] border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
-        <div className="overflow-x-auto">
-          <table className="w-full text-right text-sm">
+        <div className="overflow-x-auto custom-scrollbar">
+          <table className="w-full min-w-[750px] text-right text-sm">
             <thead className="bg-[#0d1117] text-slate-400 font-bold border-b border-slate-800 text-xs">
               <tr>
-                <th className="p-4">رقم العملية</th>
-                <th className="p-4">رقم الحجز المرتبط</th>
-                <th className="p-4">الوكيل والشركة</th>
-                <th className="p-4">إجمالي الحجز</th>
-                <th className="p-4">نسبة العمولة</th>
-                <th className="p-4">مبلغ العمولة ($)</th>
-                <th className="p-4">حالة الصرف</th>
-                <th className="p-4">تاريخ الصرف</th>
-                <th className="p-4 text-center">الإجراءات</th>
+                <th className="p-4">{t('transactionId')}</th>
+                <th className="p-4">{t('linkedBookingId')}</th>
+                <th className="p-4">{t('agentAndCompany')}</th>
+                <th className="p-4">{t('totalBookingAmount')}</th>
+                <th className="p-4">{t('commissionRate')}</th>
+                <th className="p-4">{t('commissionAmountUSD')}</th>
+                <th className="p-4">{t('payoutStatus')}</th>
+                <th className="p-4">{t('payoutDate')}</th>
+                <th className="p-4 text-center">{t('actions')}</th>
               </tr>
             </thead>
 
             <tbody className="divide-y divide-slate-800/80">
-              {filteredCommissions.map((comm) => (
+              {filteredCommissions.map((comm: any) => (
                 <tr key={comm.id} className="hover:bg-slate-800/40 transition-colors">
                   <td className="p-4 font-mono text-xs text-slate-400 font-bold">{comm.id}</td>
 
@@ -238,8 +238,8 @@ const CommissionsManager = () => {
 
       {/* Add / Edit Commission Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-lg w-full my-auto p-6 space-y-4 text-xs">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-lg w-full my-auto p-4 sm:p-6 space-y-4 text-xs max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base">{editingId ? 'تعديل بيانات العمولة' : 'إضافة سجل عمولة جديد'}</h3>
               <button onClick={() => setIsModalOpen(false)} className="p-1.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white"><X size={18} /></button>

@@ -37,7 +37,7 @@ const LANGUAGES_SUPPORTED = [
 ];
 
 const TripsManager = () => {
-  const { trips, packages, addTrip, updateTrip, deleteTrip, updateTripTranslation, deleteTripTranslation } = useData();
+  const { trips, packages, addTrip, updateTrip, deleteTrip, updateTripTranslation, deleteTripTranslation, t } = useData();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -410,10 +410,10 @@ const TripsManager = () => {
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
             <Compass className="text-amber-500" />
-            <span>إدارة جميع بيانات وتفاصيل الرحلات والترجمات الـ 5</span>
+            <span>{t('tripsManagerTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
-            تعديل وتخصيص كافة بيانات الرحلة والتحكم الكامل في إضافة وتعديل وحذف ترجمات العناصر (Title, Overview, Key Highlights, Itinerary).
+            {t('tripsManagerSubtitle')}
           </p>
         </div>
 
@@ -461,16 +461,16 @@ const TripsManager = () => {
 
       {/* Trips Table List */}
       <div className="bg-[#161b22] border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
-        <div className="overflow-x-auto">
-          <table className="w-full text-right text-sm">
+        <div className="overflow-x-auto custom-scrollbar">
+          <table className="w-full min-w-[750px] text-right text-sm">
             <thead className="bg-slate-900/80 border-b border-slate-800 text-slate-400 text-xs uppercase font-semibold">
               <tr>
-                <th className="py-4 px-6">الرحلة</th>
-                <th className="py-4 px-4">الوجهة والمدة</th>
-                <th className="py-4 px-4">فئة الفندق</th>
-                <th className="py-4 px-4">الترجمات المتاحة</th>
-                <th className="py-4 px-4">السعر والتقييم</th>
-                <th className="py-4 px-6 text-left">الإجراءات</th>
+                <th className="py-4 px-6">{t('tourLabel')}</th>
+                <th className="py-4 px-4">{t('destinationDuration')}</th>
+                <th className="py-4 px-4">{t('hotelTier')}</th>
+                <th className="py-4 px-4">{t('availableTranslations')}</th>
+                <th className="py-4 px-4">{t('priceRating')}</th>
+                <th className="py-4 px-6 text-left">{t('actions')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60">
@@ -494,7 +494,7 @@ const TripsManager = () => {
                           </h4>
                           <div className="flex items-center gap-2">
                             <span className="text-[11px] text-slate-500 font-mono">ID: {trip.id}</span>
-                            {trip.popular && <span className="text-[10px] text-red-400 font-bold">🔥 أكثر إقبالاً</span>}
+                            {trip.popular && <span className="text-[10px] text-red-400 font-bold">{t('mostPopular')}</span>}
                           </div>
                         </div>
                       </div>
@@ -580,8 +580,8 @@ const TripsManager = () => {
 
       {/* TRANSFER TRIP TO ANOTHER DESTINATION / PACKAGE MODAL */}
       {transferTrip && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-lg w-full p-6 space-y-6 shadow-2xl">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-lg w-full p-4 sm:p-6 space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
             {/* Header */}
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <div className="flex items-center gap-3">
@@ -729,7 +729,7 @@ const TripsManager = () => {
             </div>
 
             {/* Modal Tabs Navigation */}
-            <div className="flex border-b border-slate-800 bg-[#0d1117] px-6 gap-2 overflow-x-auto">
+            <div className="flex border-b border-slate-800 bg-[#0d1117] px-4 sm:px-6 gap-2 overflow-x-auto custom-scrollbar">
               <button
                 onClick={() => setActiveTab('basic')}
                 className={`py-3 px-4 text-xs font-bold border-b-2 transition-all whitespace-nowrap ${

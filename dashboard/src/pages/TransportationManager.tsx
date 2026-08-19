@@ -3,7 +3,7 @@ import { useData } from '../context/DataContext';
 import { Bus, Plus, Trash2, Edit, X, Users } from 'lucide-react';
 
 const TransportationManager = () => {
-  const { transportation, addTransport, updateTransport, deleteTransport } = useData();
+  const { transportation, addTransport, updateTransport, deleteTransport, t } = useData();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingId, setEditingId] = useState(null);
@@ -32,7 +32,7 @@ const TransportationManager = () => {
     setIsModalOpen(true);
   };
 
-  const handleOpenEdit = (item) => {
+  const handleOpenEdit = (item: any) => {
     setEditingId(item.id);
     setForm({
       name: item.name || '',
@@ -46,7 +46,7 @@ const TransportationManager = () => {
     setIsModalOpen(true);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name) return alert('يرجى أدخال اسم المركبة');
 
@@ -64,10 +64,10 @@ const TransportationManager = () => {
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
             <Bus className="text-purple-400" />
-            <span>إدارة أسطول التنقل والسيارات</span>
+            <span>{t('transportationTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
-            التحكم في حافلات وسيارات Dunas Travel المتاحة للتوصيل والجولات.
+            {t('transportationSubtitle')}
           </p>
         </div>
 
@@ -76,12 +76,12 @@ const TransportationManager = () => {
           className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-purple-500 hover:bg-purple-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-purple-500/20 shrink-0"
         >
           <Plus size={18} />
-          <span>إضافة مركبة جديدة</span>
+          <span>{t('addVehicle')}</span>
         </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {transportation.map((item) => (
+        {transportation.map((item: any) => (
           <div key={item.id} className="bg-[#161b22] border border-slate-800 rounded-3xl overflow-hidden hover:border-purple-500/30 transition-all flex flex-col justify-between">
             <div>
               <div className="h-44 bg-slate-800 relative">
@@ -97,7 +97,7 @@ const TransportationManager = () => {
                   </span>
                 </div>
                 <div className="flex flex-wrap gap-1.5 pt-1">
-                  {item.features?.map((f, i) => (
+                  {item.features?.map((f: any, i: number) => (
                     <span key={i} className="text-[10px] bg-slate-900 text-slate-300 px-2 py-0.5 rounded-md border border-slate-800">{f}</span>
                   ))}
                 </div>

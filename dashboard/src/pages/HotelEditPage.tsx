@@ -749,8 +749,8 @@ const HotelEditPage = () => {
               </div>
 
               {/* Room Types Table */}
-              <div className="overflow-x-auto rounded-2xl border border-slate-800">
-                <table className="w-full text-right text-xs">
+              <div className="overflow-x-auto custom-scrollbar rounded-2xl border border-slate-800">
+                <table className="w-full min-w-[600px] text-right text-xs">
                   <thead className="bg-[#0d1117] text-slate-400 border-b border-slate-800">
                     <tr>
                       <th className="p-3">اسم الغرفة</th>

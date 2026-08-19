@@ -25,17 +25,17 @@ import {
 } from 'lucide-react';
 
 const BookingsManager = () => {
-  const { bookings, trips, packages, addBooking, updateBooking, deleteBooking } = useData();
+  const { bookings, trips, packages, addBooking, updateBooking, deleteBooking, t } = useData();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
 
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
-  const [editingBookingId, setEditingBookingId] = useState(null);
-  const [viewingBooking, setViewingBooking] = useState(null);
-  const [deleteConfirmId, setDeleteConfirmId] = useState(null);
+  const [editingBookingId, setEditingBookingId] = useState<any>(null);
+  const [viewingBooking, setViewingBooking] = useState<any>(null);
+  const [deleteConfirmId, setDeleteConfirmId] = useState<any>(null);
 
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<any>({
     customerName: '',
     customerEmail: '',
     customerPhone: '',
@@ -53,8 +53,8 @@ const BookingsManager = () => {
   });
 
   const allToursList = [
-    ...trips.map(t => ({ id: t.id, title: t.title, destination: t.destination, price: t.price })),
-    ...packages.map(p => ({ id: p.id, title: p.title, destination: p.destination, price: p.price }))
+    ...trips.map((t: any) => ({ id: t.id, title: t.title, destination: t.destination, price: t.price })),
+    ...packages.map((p: any) => ({ id: p.id, title: p.title, destination: p.destination, price: p.price }))
   ];
 
   const handleOpenAdd = () => {
@@ -78,7 +78,7 @@ const BookingsManager = () => {
     setIsFormModalOpen(true);
   };
 
-  const handleOpenEdit = (booking) => {
+  const handleOpenEdit = (booking: any) => {
     setEditingBookingId(booking.id);
     setForm({
       customerName: booking.customerName || '',
@@ -99,7 +99,7 @@ const BookingsManager = () => {
     setIsFormModalOpen(true);
   };
 
-  const handleSave = (e) => {
+  const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.customerName.trim()) return alert('يرجى أدخال اسم العميل');
 
@@ -112,8 +112,8 @@ const BookingsManager = () => {
       tripId: form.tripId,
       destination: form.destination,
       travelDate: form.travelDate,
-      guests: { adults: parseInt(form.adults) || 1, children: parseInt(form.children) || 0 },
-      totalAmount: parseFloat(form.totalAmount) || 0,
+      guests: { adults: parseInt(String(form.adults)) || 1, children: parseInt(String(form.children)) || 0 },
+      totalAmount: parseFloat(String(form.totalAmount)) || 0,
       paymentStatus: form.paymentStatus,
       bookingStatus: form.bookingStatus,
       specialRequests: form.specialRequests
@@ -128,13 +128,13 @@ const BookingsManager = () => {
     setIsFormModalOpen(false);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (id: any) => {
     deleteBooking(id);
     setDeleteConfirmId(null);
   };
 
   // Filter Bookings
-  const filteredBookings = bookings.filter(b => {
+  const filteredBookings = bookings.filter((b: any) => {
     const matchesSearch = 
       b.customerName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       b.customerEmail?.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -147,33 +147,33 @@ const BookingsManager = () => {
 
   // Calculate Metrics
   const totalBookingsCount = bookings.length;
-  const confirmedCount = bookings.filter(b => b.bookingStatus === 'CONFIRMED').length;
-  const pendingCount = bookings.filter(b => b.bookingStatus === 'PENDING').length;
-  const totalRevenue = bookings.reduce((sum, b) => sum + (b.totalAmount || 0), 0);
+  const confirmedCount = bookings.filter((b: any) => b.bookingStatus === 'CONFIRMED').length;
+  const pendingCount = bookings.filter((b: any) => b.bookingStatus === 'PENDING').length;
+  const totalRevenue = bookings.reduce((sum: number, b: any) => sum + (b.totalAmount || 0), 0);
 
-  const getStatusBadge = (status) => {
+  const getStatusBadge = (status: any) => {
     switch (status) {
       case 'CONFIRMED':
-        return <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"><CheckCircle size={12} /> مؤكد (CONFIRMED)</span>;
+        return <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"><CheckCircle size={12} /> {t('confirmed')}</span>;
       case 'PENDING':
-        return <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30"><Clock size={12} /> قيد الانتظار</span>;
+        return <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30"><Clock size={12} /> {t('pending')}</span>;
       case 'COMPLETED':
-        return <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30">مكتمل</span>;
+        return <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30">{t('completed')}</span>;
       case 'CANCELLED':
-        return <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/30"><XCircle size={12} /> ملغي</span>;
+        return <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/30"><XCircle size={12} /> {t('cancelled')}</span>;
       default:
         return <span className="text-xs text-slate-400">{status}</span>;
     }
   };
 
-  const getPaymentBadge = (payStatus) => {
+  const getPaymentBadge = (payStatus: any) => {
     switch (payStatus) {
       case 'PAID':
-        return <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">مدفوع بالكامل</span>;
+        return <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">{t('paid')}</span>;
       case 'PARTIAL':
-        return <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">مدفوع جزئياً</span>;
+        return <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">{t('partial')}</span>;
       default:
-        return <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">قيد الدفع</span>;
+        return <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">{t('unpaid')}</span>;
     }
   };
 
@@ -184,10 +184,10 @@ const BookingsManager = () => {
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
             <CalendarCheck className="text-emerald-400" />
-            <span>إدارة الحجوزات (Bookings Management System)</span>
+            <span>{t('bookingsManagerTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
-            متابعة وإدارة جميع حجوزات الرحلات والمدفوعات وبيانات المسافرين والمجموعات السياحية.
+            {t('bookingsManagerSubtitle')}
           </p>
         </div>
 
@@ -196,29 +196,29 @@ const BookingsManager = () => {
           className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-amber-500/20 shrink-0"
         >
           <Plus size={18} />
-          <span>إنشاء حجز جديد</span>
+          <span>{t('addBooking')}</span>
         </button>
       </div>
 
       {/* Summary Metrics Bar */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-[#161b22] border border-slate-800 rounded-2xl p-4 space-y-1">
-          <span className="text-xs font-semibold text-slate-400">إجمالي الحجوزات</span>
+          <span className="text-xs font-semibold text-slate-400">{t('totalBookings')}</span>
           <p className="text-2xl font-black text-white">{totalBookingsCount}</p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-2xl p-4 space-y-1">
-          <span className="text-xs font-semibold text-slate-400">الحجوزات المؤكدة</span>
+          <span className="text-xs font-semibold text-slate-400">{t('confirmedBookings')}</span>
           <p className="text-2xl font-black text-emerald-400">{confirmedCount}</p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-2xl p-4 space-y-1">
-          <span className="text-xs font-semibold text-slate-400">قيد الانتظار</span>
+          <span className="text-xs font-semibold text-slate-400">{t('pendingBookings')}</span>
           <p className="text-2xl font-black text-amber-400">{pendingCount}</p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-2xl p-4 space-y-1">
-          <span className="text-xs font-semibold text-slate-400">إجمالي قيم الحجوزات</span>
+          <span className="text-xs font-semibold text-slate-400">{t('totalRevenue')}</span>
           <p className="text-2xl font-black text-amber-400">${totalRevenue.toLocaleString()}</p>
         </div>
       </div>
@@ -229,7 +229,7 @@ const BookingsManager = () => {
           <Search size={18} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
-            placeholder="بحث برقم الحجز، اسم العميل، البريد، أو الرحلة..."
+            placeholder={t('search')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-[#0d1117] border border-slate-800 rounded-xl pr-10 pl-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500/50"
@@ -237,38 +237,38 @@ const BookingsManager = () => {
         </div>
 
         <div className="flex items-center gap-2 w-full sm:w-auto">
-          <span className="text-xs text-slate-400 whitespace-nowrap">الحالة:</span>
+          <span className="text-xs text-slate-400 whitespace-nowrap">{t('status')}:</span>
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
             className="bg-[#0d1117] border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500/50 w-full sm:w-auto"
           >
-            <option value="all">كل الحجوزات ({bookings.length})</option>
-            <option value="CONFIRMED">المؤكدة (CONFIRMED)</option>
-            <option value="PENDING">قيد الانتظار (PENDING)</option>
-            <option value="PAID">المدفوعة بالكامل (PAID)</option>
-            <option value="CANCELLED">الملغاة (CANCELLED)</option>
+            <option value="all">{t('all')} ({bookings.length})</option>
+            <option value="CONFIRMED">{t('confirmed')}</option>
+            <option value="PENDING">{t('pending')}</option>
+            <option value="PAID">{t('paid')}</option>
+            <option value="CANCELLED">{t('cancelled')}</option>
           </select>
         </div>
       </div>
 
       {/* Bookings Data Table */}
       <div className="bg-[#161b22] border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
-        <div className="overflow-x-auto">
-          <table className="w-full text-right text-sm">
+        <div className="overflow-x-auto custom-scrollbar">
+          <table className="w-full min-w-[750px] text-right text-sm">
             <thead className="bg-slate-900/80 border-b border-slate-800 text-slate-400 text-xs uppercase font-semibold">
               <tr>
-                <th className="py-4 px-6">رقم الحجز</th>
-                <th className="py-4 px-4">بيانات العميل</th>
-                <th className="py-4 px-4">الرحلة / الباكدج</th>
-                <th className="py-4 px-4">تاريخ السفر والركاب</th>
-                <th className="py-4 px-4">المبلغ والدفع</th>
-                <th className="py-4 px-4">حالة الحجز</th>
-                <th className="py-4 px-6 text-left">الإجراءات</th>
+                <th className="py-4 px-6">{t('bookingCode')}</th>
+                <th className="py-4 px-4">{t('customerDetails')}</th>
+                <th className="py-4 px-4">{t('tripOrPackage')}</th>
+                <th className="py-4 px-4">{t('travelDateAndGuests')}</th>
+                <th className="py-4 px-4">{t('amountAndPayment')}</th>
+                <th className="py-4 px-4">{t('bookingStatus')}</th>
+                <th className="py-4 px-6 text-left">{t('actions')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60">
-              {filteredBookings.map((bk) => (
+              {filteredBookings.map((bk: any) => (
                 <tr key={bk.id} className="hover:bg-slate-900/40 transition-colors">
                   <td className="py-4 px-6 font-mono font-bold text-amber-400 text-xs">
                     {bk.id}
@@ -377,8 +377,8 @@ const BookingsManager = () => {
 
       {/* VIEW BOOKING VOUCHER / INVOICE MODAL */}
       {viewingBooking && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-2xl w-full my-auto shadow-2xl overflow-hidden p-6 space-y-6">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-2xl w-full my-auto shadow-2xl overflow-hidden p-4 sm:p-6 space-y-6 max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-black">
@@ -451,8 +451,8 @@ const BookingsManager = () => {
 
       {/* CREATE / EDIT BOOKING MODAL */}
       {isFormModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-2xl w-full my-auto shadow-2xl overflow-hidden p-6 space-y-6">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-2xl w-full my-auto shadow-2xl overflow-hidden p-4 sm:p-6 space-y-6 max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <div>
                 <h3 className="font-bold text-white text-lg">{editingBookingId ? 'تعديل بيانت الحجز' : 'إنشاء حجز جديد'}</h3>

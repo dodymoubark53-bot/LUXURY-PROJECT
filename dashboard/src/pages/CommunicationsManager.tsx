@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 
 const CommunicationsManager: React.FC = () => {
-  const { communications, updateCommunication, deleteCommunication, addCommunication } = useData();
+  const { communications, updateCommunication, deleteCommunication, addCommunication, t } = useData();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
@@ -95,8 +95,8 @@ const CommunicationsManager: React.FC = () => {
       customerName: '',
       email: '',
       phone: '',
-      country: 'Egypt 🇪🇬',
-      subject: '',
+      country: 'Brasil 🇧🇷',
+      subject: 'استفسار جديد',
       message: '',
       source: 'Website Contact Form',
       status: 'Unread',
@@ -106,15 +106,15 @@ const CommunicationsManager: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
+      {/* Top Header Card */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#161b22] border border-slate-800 rounded-3xl p-6 shadow-xl">
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
-            <MessageSquare className="text-amber-500" />
-            <span>إدارة الاتصالات واستفسارات العملاء (Communications & Inbox)</span>
+            <Mail className="text-amber-500" size={28} />
+            <span>{t('communicationsTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
-            متابعة جميع استفسارات العملاء الواردة من نماذج الموقع، الواتساب، والبريد الإلكتروني وتحديد فريق العمل المتابع.
+            {t('communicationsSubtitle')}
           </p>
         </div>
 
@@ -123,7 +123,7 @@ const CommunicationsManager: React.FC = () => {
           className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-amber-500/20 shrink-0 cursor-pointer"
         >
           <MessageCircle size={18} />
-          <span>تسجيل استفسار جديد يدوي</span>
+          <span>{t('addManualInquiry')}</span>
         </button>
       </div>
 
@@ -131,7 +131,7 @@ const CommunicationsManager: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-[#161b22] border border-slate-800 rounded-2xl p-5 flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-400">إجمالي الرسائل والاستفسارات</p>
+            <p className="text-xs font-semibold text-slate-400">{t('totalMessagesInquiries')}</p>
             <h3 className="text-2xl font-black text-white mt-1">{totalCount}</h3>
           </div>
           <div className="p-3 rounded-2xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
@@ -141,7 +141,7 @@ const CommunicationsManager: React.FC = () => {
 
         <div className="bg-[#161b22] border border-slate-800 rounded-2xl p-5 flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-400">رسائل غير مقروءة</p>
+            <p className="text-xs font-semibold text-slate-400">{t('unreadMessagesCount')}</p>
             <h3 className="text-2xl font-black text-rose-400 mt-1">{unreadCount}</h3>
           </div>
           <div className="p-3 rounded-2xl bg-rose-500/10 text-rose-400 border border-rose-500/20">
@@ -151,7 +151,7 @@ const CommunicationsManager: React.FC = () => {
 
         <div className="bg-[#161b22] border border-slate-800 rounded-2xl p-5 flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-400">قيد المتابعة والتجهيز</p>
+            <p className="text-xs font-semibold text-slate-400">{t('inProgressPreparing')}</p>
             <h3 className="text-2xl font-black text-amber-400 mt-1">{inProgressCount}</h3>
           </div>
           <div className="p-3 rounded-2xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
@@ -161,7 +161,7 @@ const CommunicationsManager: React.FC = () => {
 
         <div className="bg-[#161b22] border border-slate-800 rounded-2xl p-5 flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-400">مكتمل ومجاب عليه</p>
+            <p className="text-xs font-semibold text-slate-400">{t('completedAndAnswered')}</p>
             <h3 className="text-2xl font-black text-emerald-400 mt-1">{resolvedCount}</h3>
           </div>
           <div className="p-3 rounded-2xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
@@ -176,7 +176,7 @@ const CommunicationsManager: React.FC = () => {
           <Search size={18} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
-            placeholder="بحث بالاسم، البريد الإلكتروني، أو عنوان الموضوع..."
+            placeholder={t('searchNameEmailSubject')}
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             className="w-full bg-[#0d1117] border border-slate-800 rounded-xl pr-10 pl-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500/50"
@@ -186,7 +186,7 @@ const CommunicationsManager: React.FC = () => {
         <div className="flex items-center gap-3 w-full sm:w-auto">
           <div className="flex items-center gap-1.5 text-xs text-slate-400">
             <Filter size={14} />
-            <span>الحالة:</span>
+            <span>{t('status')}:</span>
           </div>
           <select
             value={statusFilter}
@@ -214,16 +214,16 @@ const CommunicationsManager: React.FC = () => {
 
       {/* Communications Table */}
       <div className="bg-[#161b22] border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
-        <div className="overflow-x-auto">
-          <table className="w-full text-right text-xs">
+        <div className="overflow-x-auto custom-scrollbar">
+          <table className="w-full min-w-[700px] text-right text-xs">
             <thead className="bg-slate-900/80 border-b border-slate-800 text-slate-400 text-[11px] uppercase font-semibold">
               <tr>
-                <th className="py-4 px-6">العميل والمصدر</th>
-                <th className="py-4 px-4">موضوع الاستفسار والرسالة</th>
-                <th className="py-4 px-4">المكلف والمتابعة</th>
-                <th className="py-4 px-4">التاريخ والوقت</th>
-                <th className="py-4 px-4">الحالة</th>
-                <th className="py-4 px-6 text-left">الإجراءات</th>
+                <th className="py-4 px-6">{t('customerAndSource')}</th>
+                <th className="py-4 px-4">{t('subjectAndMessage')}</th>
+                <th className="py-4 px-4">{t('assignedAndFollowup')}</th>
+                <th className="py-4 px-4">{t('dateTime')}</th>
+                <th className="py-4 px-4">{t('status')}</th>
+                <th className="py-4 px-6 text-left">{t('actions')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60">
@@ -272,7 +272,7 @@ const CommunicationsManager: React.FC = () => {
                       <span className={`w-1.5 h-1.5 rounded-full ${
                         comm.status === 'Unread' ? 'bg-rose-400 animate-pulse' : comm.status === 'In Progress' ? 'bg-amber-400' : 'bg-emerald-400'
                       }`} />
-                      <span>{comm.status === 'Unread' ? 'غير مقروء' : comm.status === 'In Progress' ? 'قيد المتابعة' : 'مكتمل ومجاب'}</span>
+                      <span>{comm.status === 'Unread' ? t('unreadMessages') : comm.status === 'In Progress' ? t('inProgressStatus') : t('completedAndAnswered')}</span>
                     </span>
                   </td>
 
@@ -283,7 +283,7 @@ const CommunicationsManager: React.FC = () => {
                         className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 text-xs font-bold transition-all border border-slate-700 cursor-pointer"
                       >
                         <MessageSquare size={14} />
-                        <span>معاينة والرد</span>
+                        <span>{t('previewAndReply')}</span>
                       </button>
 
                       <button
@@ -313,8 +313,8 @@ const CommunicationsManager: React.FC = () => {
 
       {/* DETAIL & QUICK REPLY MODAL */}
       {selectedComm && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-2xl w-full p-6 space-y-6 shadow-2xl overflow-hidden">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-2xl w-full p-4 sm:p-6 space-y-6 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto custom-scrollbar">
             {/* Header */}
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <div className="flex items-center gap-3">

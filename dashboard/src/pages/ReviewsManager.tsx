@@ -3,7 +3,7 @@ import { useData } from '../context/DataContext';
 import { MessageSquare, Plus, Trash2, Edit, X, Star, Calendar, User } from 'lucide-react';
 
 const ReviewsManager = () => {
-  const { reviews, trips, addReview, updateReview, deleteReview } = useData();
+  const { reviews, trips, addReview, updateReview, deleteReview, t } = useData();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingId, setEditingId] = useState(null);
@@ -33,7 +33,7 @@ const ReviewsManager = () => {
     setIsModalOpen(true);
   };
 
-  const handleOpenEdit = (r) => {
+  const handleOpenEdit = (r: any) => {
     setEditingId(r.id);
     setForm({
       tripId: r.tripId || '',
@@ -47,7 +47,7 @@ const ReviewsManager = () => {
     setIsModalOpen(true);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.author || !form.comment) return alert('يرجى أدخال اسم الكاتب والتعليق');
 
@@ -65,10 +65,10 @@ const ReviewsManager = () => {
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
             <MessageSquare className="text-rose-400" />
-            <span>إدارة التعليقات والتقييمات على الرحلات</span>
+            <span>{t('reviewsManagerTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
-            مراجعة وإضافة وتعديل آراء العملاء وتجربتهم.
+            {t('reviewsManagerSubtitle')}
           </p>
         </div>
 
@@ -77,12 +77,12 @@ const ReviewsManager = () => {
           className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-rose-500 hover:bg-rose-400 text-white font-bold text-sm transition-all shadow-lg shadow-rose-500/20 shrink-0"
         >
           <Plus size={18} />
-          <span>إضافة تعليق جديد</span>
+          <span>{t('addReview')}</span>
         </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {reviews.map((rev) => (
+        {reviews.map((rev: any) => (
           <div key={rev.id} className="bg-[#161b22] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between space-y-4 hover:border-rose-500/30 transition-all">
             <div className="space-y-3">
               <div className="flex items-center justify-between">
@@ -136,12 +136,12 @@ const ReviewsManager = () => {
                 <select 
                   value={form.tripId} 
                   onChange={e => {
-                    const selTrip = trips.find(t => t.id === e.target.value);
+                    const selTrip = trips.find((t: any) => t.id === e.target.value);
                     setForm({ ...form, tripId: e.target.value, tripTitle: selTrip ? selTrip.title : '' });
                   }}
                   className="w-full bg-[#0d1117] border border-slate-800 rounded-xl p-2.5 text-white"
                 >
-                  {trips.map(t => (
+                  {trips.map((t: any) => (
                     <option key={t.id} value={t.id}>{t.title} ({t.id})</option>
                   ))}
                 </select>

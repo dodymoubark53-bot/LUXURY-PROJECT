@@ -52,7 +52,7 @@ const CompaniesManager = () => {
     setIsModalOpen(true);
   };
 
-  const handleOpenEdit = (comp) => {
+  const handleOpenEdit = (comp: any) => {
     setEditingId(comp.id);
     setForm({
       name: comp.name || '',
@@ -68,7 +68,7 @@ const CompaniesManager = () => {
     setIsModalOpen(true);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim()) return alert('يرجى أدخال اسم الشركة');
 
@@ -80,7 +80,7 @@ const CompaniesManager = () => {
     setIsModalOpen(false);
   };
 
-  const filteredCompanies = companies.filter(c => {
+  const filteredCompanies = companies.filter((c: any) => {
     const matchesSearch = (c.name || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
                           (c.taxId || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
                           (c.representative || '').toLowerCase().includes(searchQuery.toLowerCase());
@@ -88,8 +88,8 @@ const CompaniesManager = () => {
     return matchesSearch && matchesTier;
   });
 
-  const totalCreditLimit = companies.reduce((sum, c) => sum + Number(c.creditLimit || 0), 0);
-  const activeCompanies = companies.filter(c => c.status === 'ACTIVE').length;
+  const totalCreditLimit = companies.reduce((sum: number, c: any) => sum + Number(c.creditLimit || 0), 0);
+  const activeCompanies = companies.filter((c: any) => c.status === 'ACTIVE').length;
 
   return (
     <div className="space-y-6">
@@ -98,10 +98,10 @@ const CompaniesManager = () => {
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
             <Building2 className="text-amber-500" />
-            <span>شركات B2B الشريكة (B2B Enterprise Partners)</span>
+            <span>{t('companiesManagerTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
-            إدارة الشركات السياحية الشريكة، عقود B2B، الفئات، والحدود الائتمانية.
+            {t('companiesManagerSubtitle')}
           </p>
         </div>
 
@@ -110,31 +110,31 @@ const CompaniesManager = () => {
           className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-amber-500/20 shrink-0"
         >
           <Plus size={18} />
-          <span>إضافة شركة شريكة جديدة</span>
+          <span>{t('addPartnerCompany')}</span>
         </button>
       </div>
 
       {/* Summary Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">إجمالي الشركات المسجلة</span>
+          <span className="text-xs text-slate-400 font-medium">{t('totalRegisteredCompanies')}</span>
           <p className="text-3xl font-black text-white">{companies.length}</p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">العقود النشطة المفعّلة</span>
+          <span className="text-xs text-slate-400 font-medium">{t('activeActivatedContracts')}</span>
           <p className="text-3xl font-black text-emerald-400">{activeCompanies}</p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">شركات كبار الشخصيات VIP</span>
+          <span className="text-xs text-slate-400 font-medium">{t('vipCompanies')}</span>
           <p className="text-3xl font-black text-amber-400">
-            {companies.filter(c => c.tier === 'VIP' || c.tier === 'PLATINUM').length}
+            {companies.filter((c: any) => c.tier === 'VIP' || c.tier === 'PLATINUM').length}
           </p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">إجمالي التسهيلات الائتمانية</span>
+          <span className="text-xs text-slate-400 font-medium">{t('totalCreditLimits')}</span>
           <p className="text-3xl font-black text-blue-400">${totalCreditLimit.toLocaleString()}</p>
         </div>
       </div>
@@ -170,8 +170,8 @@ const CompaniesManager = () => {
 
       {/* Companies Table View */}
       <div className="bg-[#161b22] border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
-        <div className="overflow-x-auto">
-          <table className="w-full text-right text-sm">
+        <div className="overflow-x-auto custom-scrollbar">
+          <table className="w-full min-w-[750px] text-right text-sm">
             <thead className="bg-[#0d1117] text-slate-400 font-bold border-b border-slate-800 text-xs">
               <tr>
                 <th className="p-4">كود الشركة</th>
@@ -186,7 +186,7 @@ const CompaniesManager = () => {
             </thead>
 
             <tbody className="divide-y divide-slate-800/80">
-              {filteredCompanies.map((comp) => (
+              {filteredCompanies.map((comp: any) => (
                 <tr key={comp.id} className="hover:bg-slate-800/40 transition-colors">
                   <td className="p-4 font-mono text-xs text-slate-400 font-bold">{comp.id}</td>
 
@@ -252,8 +252,8 @@ const CompaniesManager = () => {
 
       {/* Add / Edit Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-lg w-full my-auto p-6 space-y-4 text-xs">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-lg w-full my-auto p-4 sm:p-6 space-y-4 text-xs max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base">{editingId ? 'تعديل بيانات الشركة الشريكة' : 'إضافة شركة سياحية شريكة جديد'}</h3>
               <button onClick={() => setIsModalOpen(false)} className="p-1.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white"><X size={18} /></button>

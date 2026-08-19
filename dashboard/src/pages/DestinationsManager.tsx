@@ -15,16 +15,16 @@ import {
 } from 'lucide-react';
 
 const DestinationsManager = () => {
-  const { trips, packages, deleteTrip, deletePackage } = useData();
+  const { trips, packages, deleteTrip, deletePackage, t } = useData();
   const [activeDestId, setActiveDestId] = useState('egypt');
 
   const activeDestObj = DESTINATIONS_LIST.find(d => d.id === activeDestId) || DESTINATIONS_LIST[0];
 
   // Trips assigned to active destination
-  const destTrips = trips.filter(t => t.destination?.toLowerCase() === activeDestId);
+  const destTrips = trips.filter((t: any) => t.destination?.toLowerCase() === activeDestId);
 
   // Packages assigned to active destination (specifically for Egypt's 5 packages)
-  const destPackages = packages.filter(p => p.destination?.toLowerCase() === activeDestId);
+  const destPackages = packages.filter((p: any) => p.destination?.toLowerCase() === activeDestId);
 
   return (
     <div className="space-y-8">
@@ -33,7 +33,7 @@ const DestinationsManager = () => {
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
             <Globe className="text-amber-400" />
-            <span>إدارة الواجهات الـ 8 (The 8 Destination Interfaces)</span>
+            <span>{t('destinationsManagerTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
             استعرض ورحلات كل واجهة سياحية بشكل منفصل مع إدارة باكدجز مصر الـ 5 المخصصة.
@@ -45,15 +45,15 @@ const DestinationsManager = () => {
           className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-amber-500/20 shrink-0"
         >
           <Plus size={18} />
-          <span>إضافة رحلة جديدة</span>
+          <span>{t('addTrip')}</span>
         </Link>
       </div>
 
       {/* 8 Destinations Tab Selector */}
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
-        {DESTINATIONS_LIST.map((dest) => {
+        {DESTINATIONS_LIST.map((dest: any) => {
           const isActive = activeDestId === dest.id;
-          const count = trips.filter(t => t.destination?.toLowerCase() === dest.id).length;
+          const count = trips.filter((t: any) => t.destination?.toLowerCase() === dest.id).length;
 
           return (
             <button
@@ -70,7 +70,7 @@ const DestinationsManager = () => {
               <span className="text-2xl">{dest.flag}</span>
               <span className="text-xs font-bold">{dest.nameAr}</span>
               <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-900 text-amber-400 border border-slate-800">
-                {count} رحلة
+                {count} {t('toursCountLabel')}
               </span>
             </button>
           );
@@ -83,17 +83,17 @@ const DestinationsManager = () => {
           <span className="text-4xl">{activeDestObj.flag}</span>
           <div>
             <h2 className="text-2xl font-black text-white">
-              واجهة {activeDestObj.nameAr} ({activeDestObj.nameEn})
+              {t('destination')}: {activeDestObj.nameAr} ({activeDestObj.nameEn})
             </h2>
             <p className="text-xs text-slate-300 mt-1">
-              عدد الرحلات المتاحة لهذه الواجهة: {destTrips.length} رحلات سياحية.
+              {t('availableToursForDest')} {destTrips.length} {t('toursCountLabel')}.
             </p>
           </div>
         </div>
 
         {activeDestId === 'egypt' && (
           <span className="text-xs font-bold text-amber-400 bg-amber-500/20 px-3.5 py-1.5 rounded-full border border-amber-500/30">
-            تتضمن برامج مصر الـ 5 الكلاسيكية وشهر العسل والدينية
+            {t('egyptInterfaceSubtitle')}
           </span>
         )}
       </div>
@@ -103,14 +103,14 @@ const DestinationsManager = () => {
         <div className="flex items-center justify-between">
           <h3 className="font-bold text-white text-lg flex items-center gap-2">
             <Compass size={20} className="text-amber-400" />
-            <span>رحلات واجهة {activeDestObj.nameAr}</span>
+            <span>{t('trips')} - {activeDestObj.nameAr}</span>
           </h3>
 
-          <span className="text-xs text-slate-400">إجمالي {destTrips.length} رحلة</span>
+          <span className="text-xs text-slate-400">{t('all')}: {destTrips.length} {t('toursCountLabel')}</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {destTrips.map((trip) => (
+          {destTrips.map((trip: any) => (
             <div 
               key={trip.id} 
               className="bg-[#161b22] border border-slate-800 rounded-3xl overflow-hidden hover:border-amber-500/40 transition-all flex flex-col justify-between"
@@ -180,10 +180,10 @@ const DestinationsManager = () => {
             <div>
               <h3 className="font-extrabold text-amber-400 text-lg flex items-center gap-2">
                 <Package size={22} />
-                <span>باكدجز وبرامج مصر الـ 5 (Exclusive Egypt 5 Programs)</span>
+                <span>{t('egypt5PackagesTitle')}</span>
               </h3>
               <p className="text-xs text-slate-300 mt-0.5">
-                البرامج الخمس الحصرية التي تظهر في واجهة مصر بعد الرحلات مباشرة (الكلاسيكي، شهر العسل، الدينية، الدول المتعددة، والامتدادات).
+                {t('egypt5PackagesSubtitle')}
               </p>
             </div>
 
@@ -196,7 +196,7 @@ const DestinationsManager = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {destPackages.map((pkg) => (
+            {destPackages.map((pkg: any) => (
               <div 
                 key={pkg.id} 
                 className="bg-[#161b22] border border-slate-800 rounded-3xl overflow-hidden hover:border-amber-500/40 transition-all flex flex-col justify-between"

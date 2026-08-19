@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 
 const ProfileManager = () => {
-  const { adminProfile, updateProfile } = useData();
+  const { adminProfile, updateProfile, t } = useData();
 
   const [activeTab, setActiveTab] = useState('info'); // 'info' | 'security' | 'notifications'
   const [successMessage, setSuccessMessage] = useState('');
@@ -27,7 +27,7 @@ const ProfileManager = () => {
   const defaultAvatar = 'https://res.cloudinary.com/tibx70zb/image/upload/v1787135165/ef80aed2-87a9-410f-a561-9dd5e04370b3_xffzmg.jpg';
 
   // Personal Info Form State
-  const [infoForm, setInfoForm] = useState({
+  const [infoForm, setInfoForm] = useState<any>({
     name: adminProfile.name || 'Attia Yamany',
     email: adminProfile.email || 'attia@dunastravel.com',
     phone: adminProfile.phone || '+20 100 123 4567',
@@ -39,7 +39,7 @@ const ProfileManager = () => {
   });
 
   // Password Security Form State
-  const [passForm, setPassForm] = useState({
+  const [passForm, setPassForm] = useState<any>({
     currentPassword: '',
     newPassword: '',
     confirmPassword: '',
@@ -47,19 +47,19 @@ const ProfileManager = () => {
   });
 
   // Notifications Form State
-  const [notifForm, setNotifForm] = useState({
+  const [notifForm, setNotifForm] = useState<any>({
     emailNotifications: adminProfile.emailNotifications ?? true,
     systemAlerts: adminProfile.systemAlerts ?? true
   });
 
-  const handleSaveInfo = (e) => {
+  const handleSaveInfo = (e: React.FormEvent) => {
     e.preventDefault();
     updateProfile(infoForm);
     setSuccessMessage('تم تحديث البيانات الشخصية بنجاح!');
     setTimeout(() => setSuccessMessage(''), 4000);
   };
 
-  const handleSaveSecurity = (e) => {
+  const handleSaveSecurity = (e: React.FormEvent) => {
     e.preventDefault();
     if (passForm.newPassword && passForm.newPassword !== passForm.confirmPassword) {
       return alert('كلمتا المرور الجديدة والتأكيد غير متطابقتين!');
@@ -70,7 +70,7 @@ const ProfileManager = () => {
     setTimeout(() => setSuccessMessage(''), 4000);
   };
 
-  const handleSaveNotifications = (e) => {
+  const handleSaveNotifications = (e: React.FormEvent) => {
     e.preventDefault();
     updateProfile(notifForm);
     setSuccessMessage('تم حفظ تفضيلات الإشعارات بنجاح!');
@@ -84,10 +84,10 @@ const ProfileManager = () => {
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
             <User className="text-amber-500" />
-            <span>الملف الشخصي للمدير (Admin Profile)</span>
+            <span>{t('adminProfileTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
-            إدارة بيانات حساب المدير، الأمان، كلمة المرور، وتفضيلات النظام.
+            {t('adminProfileSubtitle')}
           </p>
         </div>
 
@@ -138,20 +138,20 @@ const ProfileManager = () => {
             <div className="flex items-center justify-center sm:justify-start gap-3 pt-1 text-[11px] text-slate-400">
               <span className="flex items-center gap-1 text-emerald-400 font-bold">
                 <ShieldCheck size={13} />
-                <span>حساب موثق وآمن</span>
+                <span>{t('verifiedAccount')}</span>
               </span>
               <span>•</span>
-              <span>التوقيت: {infoForm.timezone}</span>
+              <span>{t('timezoneLabel')} {infoForm.timezone}</span>
             </div>
           </div>
         </div>
 
         <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 flex items-center gap-4 shrink-0">
           <div className="text-right">
-            <span className="text-[11px] text-slate-400 block font-semibold">حالة الحساب</span>
+            <span className="text-[11px] text-slate-400 block font-semibold">{t('accountStatusLabel')}</span>
             <span className="text-xs font-black text-emerald-400 flex items-center gap-1">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>نشط ومفعل (Active)</span>
+              <span>{t('activeAndEnabled')}</span>
             </span>
           </div>
         </div>
@@ -170,7 +170,7 @@ const ProfileManager = () => {
           `}
         >
           <User size={16} />
-          <span>1. البيانات الشخصية والحساب</span>
+          <span>{t('tabPersonalInfo')}</span>
         </button>
 
         <button
@@ -184,7 +184,7 @@ const ProfileManager = () => {
           `}
         >
           <KeyRound size={16} />
-          <span>2. الأمان وكلمة المرور</span>
+          <span>{t('tabSecurity')}</span>
         </button>
 
         <button
@@ -198,7 +198,7 @@ const ProfileManager = () => {
           `}
         >
           <Bell size={16} />
-          <span>3. تفضيلات الإشعارات</span>
+          <span>{t('tabNotificationPreferences')}</span>
         </button>
       </div>
 
@@ -207,12 +207,12 @@ const ProfileManager = () => {
         <form onSubmit={handleSaveInfo} className="bg-[#161b22] border border-slate-800 rounded-3xl p-6 space-y-6 text-xs">
           <h3 className="font-bold text-white text-base border-b border-slate-800 pb-3 flex items-center gap-2">
             <User size={18} className="text-amber-400" />
-            <span>تعديل البيانات الشخصية والمسمى الوظيفي</span>
+            <span>{t('editPersonalInfoTitle')}</span>
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block font-bold text-slate-300 mb-1.5">الاسم الكامل (Full Name)</label>
+              <label className="block font-bold text-slate-300 mb-1.5">{t('fullNameLabel')}</label>
               <input 
                 type="text" 
                 value={infoForm.name} 
@@ -223,7 +223,7 @@ const ProfileManager = () => {
             </div>
 
             <div>
-              <label className="block font-bold text-slate-300 mb-1.5">البريد الإلكتروني (Email)</label>
+              <label className="block font-bold text-slate-300 mb-1.5">{t('emailAddressLabel')}</label>
               <input 
                 type="email" 
                 value={infoForm.email} 
@@ -236,7 +236,7 @@ const ProfileManager = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block font-bold text-slate-300 mb-1.5">رقم الهاتف (Phone Number)</label>
+              <label className="block font-bold text-slate-300 mb-1.5">{t('phoneNumberLabel')}</label>
               <input 
                 type="text" 
                 value={infoForm.phone} 
@@ -246,7 +246,7 @@ const ProfileManager = () => {
             </div>
 
             <div>
-              <label className="block font-bold text-slate-300 mb-1.5">المسمى الوظيفي (Role & Title)</label>
+              <label className="block font-bold text-slate-300 mb-1.5">{t('roleAndTitleLabel')}</label>
               <input 
                 type="text" 
                 value={infoForm.role} 
@@ -258,7 +258,7 @@ const ProfileManager = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block font-bold text-slate-300 mb-1.5">اللغة المفضلة للوحة التحكم</label>
+              <label className="block font-bold text-slate-300 mb-1.5">{t('preferredLanguageLabel')}</label>
               <select 
                 value={infoForm.language} 
                 onChange={e => setInfoForm({ ...infoForm, language: e.target.value })} 
@@ -272,7 +272,7 @@ const ProfileManager = () => {
             </div>
 
             <div>
-              <label className="block font-bold text-slate-300 mb-1.5">المنطقة والتوقيت (Timezone)</label>
+              <label className="block font-bold text-slate-300 mb-1.5">{t('timezoneAndRegionLabel')}</label>
               <select 
                 value={infoForm.timezone} 
                 onChange={e => setInfoForm({ ...infoForm, timezone: e.target.value })} 
@@ -286,7 +286,7 @@ const ProfileManager = () => {
           </div>
 
           <div>
-            <label className="block font-bold text-slate-300 mb-1.5">نبذة تعريفية (Bio & Notes)</label>
+            <label className="block font-bold text-slate-300 mb-1.5">{t('bioAndNotesLabel')}</label>
             <textarea 
               rows={3} 
               value={infoForm.bio} 
@@ -301,7 +301,7 @@ const ProfileManager = () => {
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs hover:bg-amber-400 shadow-lg shadow-amber-500/20"
             >
               <Save size={16} />
-              <span>حفظ التغييرات</span>
+              <span>{t('saveChangesBtn')}</span>
             </button>
           </div>
         </form>

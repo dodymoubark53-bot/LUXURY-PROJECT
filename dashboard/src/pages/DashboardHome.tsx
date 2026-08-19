@@ -81,15 +81,15 @@ const DashboardHome: React.FC = () => {
     { 
       label: t('totalBookings'), 
       value: bookings.length, 
-      subtext: '+12% هذا الشهر', 
+      subtext: `+12% ${t('thisMonthGrowth')}`, 
       icon: CalendarCheck, 
       color: 'from-emerald-500/20 to-emerald-600/10 text-emerald-400 border-emerald-500/30', 
       link: '/bookings' 
     },
     { 
-      label: 'إجمالي إيرادات الحجوزات', 
+      label: t('totalBookingsRevenue'), 
       value: `$${totalRevenue.toLocaleString()}`, 
-      subtext: 'نمو متصاعد v3.0', 
+      subtext: t('ascendingGrowth'), 
       icon: DollarSign, 
       color: 'from-amber-500/20 to-amber-600/10 text-amber-400 border-amber-500/30', 
       link: '/bookings' 
@@ -97,7 +97,7 @@ const DashboardHome: React.FC = () => {
     { 
       label: t('activeTrips'), 
       value: trips.length, 
-      subtext: 'مترجمة للغات الـ 5', 
+      subtext: t('translated5Langs'), 
       icon: Compass, 
       color: 'from-blue-500/20 to-blue-600/10 text-blue-400 border-blue-500/30', 
       link: '/trips' 
@@ -105,23 +105,23 @@ const DashboardHome: React.FC = () => {
     { 
       label: t('specialPackages'), 
       value: packages.length, 
-      subtext: 'برامج مصر VIP', 
+      subtext: t('egyptVipPrograms'), 
       icon: Package, 
       color: 'from-purple-500/20 to-purple-600/10 text-purple-400 border-purple-500/30', 
       link: '/packages' 
     },
     { 
-      label: 'استفسارات ورسائل العملاء', 
+      label: t('customerInquiries'), 
       value: communications.length, 
-      subtext: `${unreadComms} غير مقروء`, 
+      subtext: `${unreadComms} ${t('unreadMessages')}`, 
       icon: MessageSquare, 
       color: 'from-rose-500/20 to-rose-600/10 text-rose-400 border-rose-500/30', 
       link: '/communications' 
     },
     { 
-      label: 'شركاء ووكلاء B2B', 
+      label: t('b2bSectionTitle'), 
       value: (companies.length + agents.length), 
-      subtext: 'شبكة الشركاء الدولية', 
+      subtext: t('b2bPartnersNetwork'), 
       icon: Building2, 
       color: 'from-indigo-500/20 to-indigo-600/10 text-indigo-400 border-indigo-500/30', 
       link: '/companies' 
@@ -129,15 +129,15 @@ const DashboardHome: React.FC = () => {
     { 
       label: t('approvedHotels'), 
       value: hotels.length, 
-      subtext: 'فنادق 5 و 4 نجوم', 
+      subtext: t('partnerHotelsStars'), 
       icon: Hotel, 
       color: 'from-teal-500/20 to-teal-600/10 text-teal-400 border-teal-500/30', 
       link: '/hotels' 
     },
     { 
-      label: 'التنبيهات والنظام', 
+      label: t('notifications'), 
       value: notifications.length, 
-      subtext: `${unreadNotifs} تنبيه جديد`, 
+      subtext: `${unreadNotifs} ${t('newAlerts')}`, 
       icon: Bell, 
       color: 'from-amber-500/20 to-amber-600/10 text-amber-300 border-amber-500/30', 
       link: '/notifications' 
@@ -158,10 +158,10 @@ const DashboardHome: React.FC = () => {
             </div>
             
             <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              لوحة التحكم المركزية - Dunas Travel Suite 👑
+              {t('dashboardCentralTitle')}
             </h1>
             <p className="text-slate-400 text-xs sm:text-sm max-w-3xl leading-relaxed">
-              إدارة متكاملة لـ 8 واجهات سياحية، الحجوزات، البرامج الفاخرة، الرسائل، والإشعارات المباشرة باللغات الخمس (العربية، الإسبانية، البرتغالية، الإنجليزية، الإيطالية).
+              {t('dashboardCentralDescription')}
             </p>
           </div>
 
@@ -224,10 +224,10 @@ const DashboardHome: React.FC = () => {
         <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
           <div className="flex items-center gap-2.5">
             <Globe className="text-amber-400" size={20} />
-            <h2 className="text-base font-bold text-white">الواجهات السياحية الـ 8 المعتمدة (Destinations)</h2>
+            <h2 className="text-base font-bold text-white">{t('destinationsApprovedTitle')}</h2>
           </div>
           <Link to="/destinations" className="text-xs font-bold text-amber-400 hover:underline">
-            عرض الكل ←
+            {t('viewAll')}
           </Link>
         </div>
 
@@ -242,7 +242,7 @@ const DashboardHome: React.FC = () => {
               >
                 <div className="text-2xl group-hover:scale-110 transition-transform">{dest.flag}</div>
                 <h4 className="font-bold text-white text-xs group-hover:text-amber-400 transition-colors">{dest.nameAr}</h4>
-                <p className="text-[10px] text-slate-500 font-mono">{count} رحلة</p>
+                <p className="text-[10px] text-slate-500 font-mono">{count} {t('toursCountLabel')}</p>
               </Link>
             );
           })}
@@ -258,10 +258,10 @@ const DashboardHome: React.FC = () => {
               <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
                 <BarChart3 size={20} />
               </div>
-              <h2 className="text-lg font-black text-white">اتجاه الإيرادات والنمو الشهري (Revenue Trend Analytics)</h2>
+              <h2 className="text-lg font-black text-white">{t('revenueTrendTitle')}</h2>
             </div>
             <p className="text-slate-400 text-xs">
-              تحليل شامل ومفصل لحركة الإيرادات، المبيعات الشهرية، ونسب النمو لعام 2026 مقارنة بالفترات السابقة.
+              {t('revenueTrendSubtitle')}
             </p>
           </div>
 
@@ -285,7 +285,7 @@ const DashboardHome: React.FC = () => {
         {/* Financial Highlights Sub-Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
           <div className="bg-[#0d1117] border border-slate-800 rounded-2xl p-4 space-y-1">
-            <span className="text-slate-400 font-semibold">معدل المبيعات الشهري</span>
+            <span className="text-slate-400 font-semibold">{t('monthlySalesRate')}</span>
             <div className="flex items-center justify-between">
               <h4 className="text-xl font-black text-white">$39,425/شهر</h4>
               <span className="text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20 flex items-center gap-0.5">
@@ -296,15 +296,15 @@ const DashboardHome: React.FC = () => {
           </div>
 
           <div className="bg-[#0d1117] border border-slate-800 rounded-2xl p-4 space-y-1">
-            <span className="text-slate-400 font-semibold">متوسط قيمة الحجز الفردي</span>
+            <span className="text-slate-400 font-semibold">{t('avgBookingValue')}</span>
             <div className="flex items-center justify-between">
               <h4 className="text-xl font-black text-amber-400">$1,850</h4>
-              <span className="text-slate-400 text-[11px]">لكل حاجز</span>
+              <span className="text-slate-400 text-[11px]">{t('perBooker')}</span>
             </div>
           </div>
 
           <div className="bg-[#0d1117] border border-slate-800 rounded-2xl p-4 space-y-1">
-            <span className="text-slate-400 font-semibold">الوجهة الأعلى تحصيلاً</span>
+            <span className="text-slate-400 font-semibold">{t('topRevenueDest')}</span>
             <div className="flex items-center justify-between">
               <h4 className="text-xl font-black text-white">🇪🇬 مصر (Egypt)</h4>
               <span className="text-amber-400 font-bold">48%</span>
@@ -312,10 +312,10 @@ const DashboardHome: React.FC = () => {
           </div>
 
           <div className="bg-[#0d1117] border border-slate-800 rounded-2xl p-4 space-y-1">
-            <span className="text-slate-400 font-semibold">معدل تحويل الحجوزات</span>
+            <span className="text-slate-400 font-semibold">{t('bookingConversionRate')}</span>
             <div className="flex items-center justify-between">
               <h4 className="text-xl font-black text-emerald-400">92.5%</h4>
-              <span className="text-emerald-400 font-bold text-[11px]">مكتمل ومؤكد</span>
+              <span className="text-emerald-400 font-bold text-[11px]">{t('completedConfirmed')}</span>
             </div>
           </div>
         </div>
@@ -327,9 +327,9 @@ const DashboardHome: React.FC = () => {
             <div className="flex items-center justify-between text-xs">
               <div className="flex items-center gap-2">
                 <TrendingUp size={16} className="text-emerald-400" />
-                <span className="font-bold text-slate-200">الرسم البياني لحركة الإيرادات الشهرية ($ USD)</span>
+                <span className="font-bold text-slate-200">{t('revenueChartTitle')}</span>
               </div>
-              <span className="text-slate-500 font-mono">أغسطس 2026: الأعلى نمواً 🔥</span>
+              <span className="text-slate-500 font-mono">{t('augustHighestGrowth')}</span>
             </div>
 
             {/* Bars Visualization */}
@@ -343,7 +343,7 @@ const DashboardHome: React.FC = () => {
                     {/* Tooltip on Hover */}
                     <div className="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-950 border border-slate-700 text-white px-2.5 py-1 rounded-xl text-[10px] font-mono font-bold whitespace-nowrap shadow-xl z-20 pointer-events-none">
                       <div>${item.rev.toLocaleString()}</div>
-                      <div className="text-amber-400 text-[9px]">{item.bookings} حجز ({item.growth})</div>
+                      <div className="text-amber-400 text-[9px]">{item.bookings} {t('bookingsCountSuffix')} ({item.growth})</div>
                     </div>
 
                     {/* Bar Line */}
@@ -358,7 +358,7 @@ const DashboardHome: React.FC = () => {
                       >
                         {isPeak && (
                           <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] font-black text-amber-400 bg-slate-950 px-1.5 py-0.5 rounded border border-amber-500/30 whitespace-nowrap">
-                            القمة 🔥
+                            {t('peakLabel')}
                           </div>
                         )}
                       </div>
@@ -386,7 +386,7 @@ const DashboardHome: React.FC = () => {
           <div className="bg-[#0d1117] border border-slate-800 rounded-2xl p-5 space-y-4">
             <div className="flex items-center gap-2 border-b border-slate-800/80 pb-3">
               <PieChart size={16} className="text-amber-400" />
-              <h3 className="font-bold text-white text-xs">توزيع الإيرادات حسب الواجهات الـ 8</h3>
+              <h3 className="font-bold text-white text-xs">{t('revenueByDest8')}</h3>
             </div>
 
             <div className="space-y-3.5 text-xs">
@@ -414,7 +414,7 @@ const DashboardHome: React.FC = () => {
                 to="/bookings"
                 className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition-colors"
               >
-                <span>استعراض تقارير المالية الحجز الكاملة</span>
+                <span>{t('fullFinancialReports')}</span>
                 <ArrowRight size={14} />
               </Link>
             </div>
@@ -430,25 +430,25 @@ const DashboardHome: React.FC = () => {
             <div className="space-y-1">
               <h2 className="text-lg font-bold text-white flex items-center gap-2">
                 <CalendarCheck className="text-emerald-400" size={20} />
-                <span>أحدث الحجوزات الواردة (Recent Bookings)</span>
+                <span>{t('recentBookings')}</span>
               </h2>
-              <p className="text-slate-400 text-xs">حجوزات المسافرين المباشرة مع تفاصيل الدفع والقيام</p>
+              <p className="text-slate-400 text-xs">{t('recentBookingsSubtitle')}</p>
             </div>
 
             <Link to="/bookings" className="text-xs font-bold text-emerald-400 hover:underline">
-              جميع الحجوزات ({bookings.length}) ←
+              {t('allBookingsLink')} ({bookings.length}) ←
             </Link>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-right text-xs">
+          <div className="overflow-x-auto custom-scrollbar">
+            <table className="w-full min-w-[550px] text-right text-xs">
               <thead className="bg-slate-900/80 border-b border-slate-800 text-slate-400 text-[11px] font-semibold">
                 <tr>
-                  <th className="py-3 px-4">كود الحجز</th>
-                  <th className="py-3 px-4">العميل والبلد</th>
-                  <th className="py-3 px-4">الرحلة/البرنامج</th>
-                  <th className="py-3 px-4">المبلغ ($)</th>
-                  <th className="py-3 px-4">الحالة</th>
+                  <th className="py-3 px-4">{t('bookingCode')}</th>
+                  <th className="py-3 px-4">{t('customerDetails')}</th>
+                  <th className="py-3 px-4">{t('tripOrPackage')}</th>
+                  <th className="py-3 px-4">{t('price')} ($)</th>
+                  <th className="py-3 px-4">{t('status')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/60">
@@ -467,7 +467,7 @@ const DashboardHome: React.FC = () => {
                       <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
                         b.status === 'Confirmed' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
                       }`}>
-                        {b.status || 'مؤكد'}
+                        {b.status || t('confirmed')}
                       </span>
                     </td>
                   </tr>
@@ -482,11 +482,11 @@ const DashboardHome: React.FC = () => {
           <div className="flex items-center justify-between border-b border-slate-800/80 pb-4">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
               <MessageSquare className="text-amber-400" size={20} />
-              <span>استفسارات العملاء</span>
+              <span>{t('customerInquiries')}</span>
             </h2>
 
             <Link to="/communications" className="text-xs font-bold text-amber-400 hover:underline">
-              الكل ({communications.length}) ←
+              {t('all')} ({communications.length}) ←
             </Link>
           </div>
 
@@ -498,7 +498,7 @@ const DashboardHome: React.FC = () => {
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                     comm.status === 'Unread' ? 'bg-rose-500/10 text-rose-400' : 'bg-emerald-500/10 text-emerald-400'
                   }`}>
-                    {comm.status === 'Unread' ? 'جديد' : 'مجاب'}
+                    {comm.status === 'Unread' ? t('unreadMessages') : t('answered')}
                   </span>
                 </div>
                 <p className="text-[11px] text-slate-300 font-semibold line-clamp-1">{comm.subject}</p>

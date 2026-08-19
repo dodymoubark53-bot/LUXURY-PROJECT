@@ -17,8 +17,8 @@ import {
 } from 'lucide-react';
 
 const HotelsManager = () => {
+  const { hotels, deleteHotel, t } = useData();
   const navigate = useNavigate();
-  const { hotels, deleteHotel } = useData();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [destinationFilter, setDestinationFilter] = useState('all');
@@ -45,10 +45,10 @@ const HotelsManager = () => {
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
             <Hotel className="text-emerald-400" size={28} />
-            <span>إدارة الفنادق المعتمدة (Hotels Manager)</span>
+            <span>{t('hotelsManagerTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
-            إدارة وتعديل بيانات الفنادق، المعارض، أنواع الغرف، والخدمات الخاصة بكل فندق.
+            {t('hotelsManagerSubtitle')}
           </p>
         </div>
 
@@ -57,7 +57,7 @@ const HotelsManager = () => {
           className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs transition-all shadow-lg shadow-emerald-500/20 shrink-0 cursor-pointer"
         >
           <Plus size={18} />
-          <span>إضافة فندق جديد</span>
+          <span>{t('addHotel')}</span>
         </button>
       </div>
 
@@ -69,7 +69,7 @@ const HotelsManager = () => {
             type="text"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            placeholder="ابحث باسم الفندق أو المدينة..."
+            placeholder={t('searchHotelOrCity')}
             className="w-full bg-[#0d1117] border border-slate-800 rounded-xl pr-10 pl-4 py-2.5 text-xs text-white placeholder-slate-500 focus:border-emerald-500 focus:outline-none"
           />
         </div>

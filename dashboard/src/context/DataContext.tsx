@@ -171,7 +171,14 @@ const initialEgyptPackages = [
     rating: 4.9,
     popular: true,
     image: 'https://res.cloudinary.com/degbrq3ck/image/upload/v1783029636/Classic_Program_gfal0s.jpg',
-    description: 'Experience the timeless beauty of Egypt with our signature classic itinerary covering Giza, Cairo & Nile Cruise.'
+    description: 'Experience the timeless beauty of Egypt with our signature classic itinerary covering Giza, Cairo & Nile Cruise.',
+    translations: {
+      ar: { title: 'البرنامج الكلاسيكي لمصر (8 أيام)', overview: 'رحلة كلاسيكية فاخرة تشمل الأهرامات والقاهرة وكروز النيل بالأقصر وأسوان.' },
+      en: { title: 'Egypt Classic Program (8 Days)', overview: 'Timeless classic itinerary covering Giza Pyramids, Cairo & Nile Cruise between Luxor & Aswan.' },
+      es: { title: 'Programa Clásico de Egipto (8 Días)', overview: 'Itinerario clásico inolvidable por las Pirámides de Guiza, El Cairo y Crucero por el Nilo.' },
+      pt: { title: 'Programa Clássico do Egito (8 Dias)', overview: 'Roteiro clássico abrangendo as Pirâmides de Gizé, Cairo e Cruzeiro pelo Rio Nilo.' },
+      it: { title: 'Programma Classico Egitto (8 Giorni)', overview: 'Itinerario classico che copre le Piramidi di Giza, Il Cairo e Crociera sul Nilo.' }
+    }
   }
 ];
 
@@ -190,7 +197,11 @@ const initialTrips = [
     inquiries: 120,
     images: ['https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=800&q=80'],
     translations: {
-      ar: { title: 'رحلة القاهرة السريعة والأهرامات', overview: 'برنامج مكثف لمدة 4 أيام يغطي أهرامات الجيزة، أبو الهول، والمتحف المصري الكبير.' }
+      ar: { title: 'رحلة القاهرة السريعة والأهرامات', overview: 'برنامج مكثف لمدة 4 أيام يغطي أهرامات الجيزة، أبو الهول، والمتحف المصري الكبير.' },
+      en: { title: 'Cairo Express & Pyramids Tour', overview: 'Intensive 4-day itinerary covering Giza Pyramids, Great Sphinx, and the Grand Egyptian Museum.' },
+      es: { title: 'Tour Cairo Exprés y Pirámides', overview: 'Itinerario intensivo de 4 días por las Pirámides de Guiza, Gran Esfinge y Gran Museo Egipcio.' },
+      pt: { title: 'Tour Cairo Expresso e Pirâmides', overview: 'Roteiro intensivo de 4 dias cobrindo as Pirâmides de Gizé, Grande Esfinge e Grande Museu Egípcio.' },
+      it: { title: 'Tour Cairo Express e Piramidi', overview: 'Itinerario intensivo di 4 giorni che copre le Piramidi di Giza, la Grande Sfinge e il Grande Museo Egizio.' }
     }
   }
 ];
@@ -233,7 +244,8 @@ const initialHotels = [
       ar: { name: 'فندق شتايجنبرجر التحرير بالقاهرة', description: 'فندق 5 نجوم فاخر في قلب القاهرة بالقرب من المتحف المصري.' },
       en: { name: 'Steigenberger Hotel El Tahrir Cairo', description: 'Luxury 5-star hotel in the heart of Downtown Cairo near the Egyptian Museum.' },
       es: { name: 'Hotel Steigenberger El Tahrir El Cairo', description: 'Hotel de lujo de 5 estrellas en el corazón de El Cairo.' },
-      pt: { name: 'Hotel Steigenberger El Tahrir Cairo', description: 'Hotel de luxo 5 estrelas no centro do Cairo.' }
+      pt: { name: 'Hotel Steigenberger El Tahrir Cairo', description: 'Hotel de luxo 5 estrelas no centro do Cairo.' },
+      it: { name: 'Hotel Steigenberger El Tahrir Il Cairo', description: 'Hotel di lusso a 5 stelle nel cuore del Cairo.' }
     }
   },
   {

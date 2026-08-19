@@ -33,7 +33,8 @@ const ContentManager = () => {
     faqs, 
     addFaq, 
     updateFaq, 
-    deleteFaq 
+    deleteFaq,
+    t
   } = useData();
 
   const [activeTab, setActiveTab] = useState<'hero' | 'about' | 'blogs' | 'faqs' | 'contact'>('hero');
@@ -161,10 +162,10 @@ const ContentManager = () => {
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
             <FileText className="text-emerald-400" size={28} />
-            <span>إدارة وتعديل محتوى الموقع (Content Manager)</span>
+            <span>{t('contentManagerTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
-            منظومة إدارة المحتوى الشاملة: عناوين الهيدر الرئيسي، قصة من نحن، مقالات المدونة السياحية، الأسئلة الشائعة، وروابط التواصل.
+            {t('contentManagerSubtitle')}
           </p>
         </div>
       </div>
@@ -550,8 +551,8 @@ const ContentManager = () => {
 
       {/* BLOG MODAL */}
       {isBlogModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-xl w-full p-6 space-y-4 shadow-2xl">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-xl w-full p-4 sm:p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-lg text-white">{editingBlogId ? 'تعديل المقال' : 'إضافة مقال جديد'}</h3>
               <button onClick={() => setIsBlogModalOpen(false)} className="text-slate-400 hover:text-white"><X size={18} /></button>
@@ -600,8 +601,8 @@ const ContentManager = () => {
 
       {/* FAQ MODAL */}
       {isFaqModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-md w-full p-4 sm:p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-lg text-white">{editingFaqId ? 'تعديل السؤال الشائع' : 'إضافة سؤال جديد'}</h3>
               <button onClick={() => setIsFaqModalOpen(false)} className="text-slate-400 hover:text-white"><X size={18} /></button>

@@ -27,7 +27,7 @@ const LANGUAGES_SUPPORTED = [
 ];
 
 const PackagesManager = () => {
-  const { packages, addPackage, updatePackage, deletePackage } = useData();
+  const { packages, addPackage, updatePackage, deletePackage, t } = useData();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingId, setEditingId] = useState(null);
@@ -343,10 +343,10 @@ const PackagesManager = () => {
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
             <Package className="text-blue-400" />
-            <span>إدارة الباكدجز والبرامج وتعديل الترجمات الـ 5 (Packages Manager)</span>
+            <span>{t('packagesManagerTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
-            إدارة كاملة لبرامج مصر الـ 5 والباكدجز الخاصة مع نظام تحكم شامل بالترجمات للغات الـ 5 (Title, Overview, Key Highlights, Itinerary).
+            {t('packagesManagerSubtitle')}
           </p>
         </div>
 
@@ -355,7 +355,7 @@ const PackagesManager = () => {
           className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-blue-500 hover:bg-blue-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-blue-500/20 shrink-0"
         >
           <Plus size={18} />
-          <span>إضافة باكدج جديد</span>
+          <span>{t('addPackage')}</span>
         </button>
       </div>
 
@@ -444,11 +444,11 @@ const PackagesManager = () => {
 
       {/* ADD / EDIT PACKAGE MODAL WITH 6-TABS AND 5-LANGUAGE TRANSLATIONS */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
           <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-5xl w-full max-h-[92vh] flex flex-col my-auto shadow-2xl overflow-hidden">
-            <div className="p-6 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
+            <div className="p-4 sm:p-6 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
               <div>
-                <h3 className="text-xl font-bold text-white">
+                <h3 className="text-lg sm:text-xl font-bold text-white">
                   {editingId ? 'تعديل جميع بيانات الباكدج والترجمات الـ 5' : 'إضافة باكدج جديد'}
                 </h3>
                 <p className="text-xs text-slate-400 mt-0.5">
@@ -460,7 +460,7 @@ const PackagesManager = () => {
             </div>
 
             {/* Tabs Header */}
-            <div className="flex border-b border-slate-800 bg-[#0d1117] px-6 gap-2 overflow-x-auto">
+            <div className="flex border-b border-slate-800 bg-[#0d1117] px-4 sm:px-6 gap-2 overflow-x-auto custom-scrollbar">
               <button onClick={() => setActiveTab('basic')} className={`py-3 px-4 text-xs font-bold border-b-2 transition-all whitespace-nowrap ${activeTab === 'basic' ? 'border-blue-500 text-blue-400' : 'border-transparent text-slate-400'}`}>1. البيانات الأساسية والسعر</button>
               <button onClick={() => setActiveTab('overview')} className={`py-3 px-4 text-xs font-bold border-b-2 transition-all whitespace-nowrap ${activeTab === 'overview' ? 'border-blue-500 text-blue-400' : 'border-transparent text-slate-400'}`}>2. الوصف والتوزيع الفندقي</button>
               <button onClick={() => setActiveTab('itinerary')} className={`py-3 px-4 text-xs font-bold border-b-2 transition-all whitespace-nowrap ${activeTab === 'itinerary' ? 'border-blue-500 text-blue-400' : 'border-transparent text-slate-400'}`}>3. البرنامج اليومي التفصيلي</button>

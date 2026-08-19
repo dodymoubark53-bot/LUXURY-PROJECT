@@ -20,7 +20,8 @@ import {
 const MediaManager = () => {
   const { 
     photos, addPhoto, updatePhoto, deletePhoto,
-    videos, addVideo, updateVideo, deleteVideo 
+    videos, addVideo, updateVideo, deleteVideo,
+    t 
   } = useData();
 
   const [activeTab, setActiveTab] = useState('photos'); // 'photos' | 'videos'
@@ -36,8 +37,8 @@ const MediaManager = () => {
   const [editingVideoId, setEditingVideoId] = useState(null);
   const [videoForm, setVideoForm] = useState({ title: '', description: '', publicId: '', dest: 'egypt', thumbnail: '' });
 
-  const [deleteConfirmObj, setDeleteConfirmObj] = useState(null); // { id, type: 'photo' | 'video' }
-  const [previewMedia, setPreviewMedia] = useState(null); // { type: 'photo' | 'video', url, title }
+  const [deleteConfirmObj, setDeleteConfirmObj] = useState<any>(null); // { id, type: 'photo' | 'video' }
+  const [previewMedia, setPreviewMedia] = useState<any>(null); // { type: 'photo' | 'video', url, title }
 
   // --- PHOTO HANDLERS ---
   const handleOpenAddPhoto = () => {
@@ -51,7 +52,7 @@ const MediaManager = () => {
     setIsPhotoModalOpen(true);
   };
 
-  const handleOpenEditPhoto = (photo) => {
+  const handleOpenEditPhoto = (photo: any) => {
     setEditingPhotoId(photo.id);
     setPhotoForm({
       title: photo.title || '',
@@ -62,9 +63,9 @@ const MediaManager = () => {
     setIsPhotoModalOpen(true);
   };
 
-  const handleSavePhoto = (e) => {
+  const handleSavePhoto = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!photoForm.src.trim()) return alert('يرجى أدخال رابط الصورة');
+    if (!photoForm.title.trim() || !photoForm.src.trim()) return alert('يرجى كتابة عنوان الصورة ورابطها');
 
     if (editingPhotoId) {
       updatePhoto(editingPhotoId, photoForm);
@@ -82,12 +83,12 @@ const MediaManager = () => {
       description: '',
       publicId: '',
       dest: 'egypt',
-      thumbnail: 'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=600&q=80'
+      thumbnail: ''
     });
     setIsVideoModalOpen(true);
   };
 
-  const handleOpenEditVideo = (video) => {
+  const handleOpenEditVideo = (video: any) => {
     setEditingVideoId(video.id);
     setVideoForm({
       title: video.title || '',
@@ -99,9 +100,9 @@ const MediaManager = () => {
     setIsVideoModalOpen(true);
   };
 
-  const handleSaveVideo = (e) => {
+  const handleSaveVideo = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!videoForm.title.trim()) return alert('يرجى أدخال عنوان الفيديو');
+    if (!videoForm.title.trim()) return alert('يرجى كتابة عنوان الفيديو');
 
     if (editingVideoId) {
       updateVideo(editingVideoId, videoForm);
@@ -121,14 +122,14 @@ const MediaManager = () => {
     setDeleteConfirmObj(null);
   };
 
-  // Filters
-  const filteredPhotos = photos.filter(p => {
+  // Filter Photos & Videos
+  const filteredPhotos = photos.filter((p: any) => {
     const matchesSearch = (p.title || '').toLowerCase().includes(searchQuery.toLowerCase()) || (p.src || '').toLowerCase().includes(searchQuery.toLowerCase());
     const matchesDest = destFilter === 'all' || (p.dest || '').toLowerCase() === destFilter.toLowerCase();
     return matchesSearch && matchesDest;
   });
 
-  const filteredVideos = videos.filter(v => {
+  const filteredVideos = videos.filter((v: any) => {
     const matchesSearch = (v.title || '').toLowerCase().includes(searchQuery.toLowerCase()) || (v.description || '').toLowerCase().includes(searchQuery.toLowerCase());
     const matchesDest = destFilter === 'all' || (v.dest || '').toLowerCase() === destFilter.toLowerCase();
     return matchesSearch && matchesDest;
@@ -141,10 +142,10 @@ const MediaManager = () => {
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
             <Film className="text-purple-400" />
-            <span>إدارة مكتبة الوسائط (Media Gallery Manager)</span>
+            <span>{t('mediaLibraryTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
-            التحكم الكامل في الصور والفيديوهات التي تظهر في صفحة المعرض والموقع الرئيسي.
+            {t('mediaLibrarySubtitle')}
           </p>
         </div>
 
@@ -155,7 +156,7 @@ const MediaManager = () => {
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-amber-500/20 shrink-0"
             >
               <Plus size={18} />
-              <span>إضافة صورة جديدة</span>
+              <span>{t('addPhoto')}</span>
             </button>
           ) : (
             <button
@@ -163,7 +164,7 @@ const MediaManager = () => {
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-purple-500 hover:bg-purple-400 text-white font-bold text-sm transition-all shadow-lg shadow-purple-500/20 shrink-0"
             >
               <Plus size={18} />
-              <span>إضافة فيديو جديد</span>
+              <span>{t('addVideo')}</span>
             </button>
           )}
         </div>
@@ -183,7 +184,7 @@ const MediaManager = () => {
             `}
           >
             <ImageIcon size={16} />
-            <span>معرض الصور (Photos Gallery)</span>
+            <span>{t('photosTab')}</span>
             <span className="px-2 py-0.5 rounded-full bg-slate-900/60 text-[10px]">{photos.length}</span>
           </button>
 
@@ -198,7 +199,7 @@ const MediaManager = () => {
             `}
           >
             <VideoIcon size={16} />
-            <span>مكتبة الفيديوهات (Videos Gallery)</span>
+            <span>{t('videosTab')}</span>
             <span className="px-2 py-0.5 rounded-full bg-slate-900/60 text-[10px]">{videos.length}</span>
           </button>
         </div>
@@ -210,7 +211,7 @@ const MediaManager = () => {
           <Search size={18} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
-            placeholder={activeTab === 'photos' ? "بحث باسم الصورة أو الرابط..." : "بحث باسم الفيديو أو الوصف..."}
+            placeholder={t('searchPhotoOrUrl')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-[#0d1117] border border-slate-800 rounded-xl pr-10 pl-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500/50"
@@ -242,7 +243,7 @@ const MediaManager = () => {
       {/* PHOTOS TAB CONTENT */}
       {activeTab === 'photos' && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filteredPhotos.map((photo) => (
+          {filteredPhotos.map((photo: any) => (
             <div 
               key={photo.id}
               className="bg-[#161b22] border border-slate-800 rounded-3xl overflow-hidden group hover:border-amber-500/40 transition-all flex flex-col justify-between"
@@ -305,7 +306,7 @@ const MediaManager = () => {
       {/* VIDEOS TAB CONTENT */}
       {activeTab === 'videos' && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredVideos.map((video) => (
+          {filteredVideos.map((video: any) => (
             <div 
               key={video.id}
               className="bg-[#161b22] border border-slate-800 rounded-3xl overflow-hidden group hover:border-purple-500/40 transition-all flex flex-col justify-between"
@@ -387,8 +388,8 @@ const MediaManager = () => {
 
       {/* ADD / EDIT PHOTO MODAL */}
       {isPhotoModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-md w-full my-auto shadow-2xl p-6 space-y-4 text-xs">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-md w-full my-auto shadow-2xl p-4 sm:p-6 space-y-4 text-xs max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base">{editingPhotoId ? 'تعديل بيانات الصورة' : 'إضافة صورة جديدة للمعرض'}</h3>
               <button onClick={() => setIsPhotoModalOpen(false)} className="p-1.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white"><X size={18} /></button>
@@ -444,8 +445,8 @@ const MediaManager = () => {
 
       {/* ADD / EDIT VIDEO MODAL */}
       {isVideoModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-md w-full my-auto shadow-2xl p-6 space-y-4 text-xs">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-md w-full my-auto shadow-2xl p-4 sm:p-6 space-y-4 text-xs max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base">{editingVideoId ? 'تعديل بيانات الفيديو' : 'إضافة فيديو جديد للمكتبة'}</h3>
               <button onClick={() => setIsVideoModalOpen(false)} className="p-1.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white"><X size={18} /></button>

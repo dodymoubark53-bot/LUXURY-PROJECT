@@ -15,19 +15,20 @@ import {
 } from 'lucide-react';
 
 const AgentsManager = () => {
-  const { agents, addAgent, updateAgent, deleteAgent, companies } = useData();
+  const { agents, companies, addAgent, updateAgent, deleteAgent, t } = useData();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingId, setEditingId] = useState(null);
+  const [editingId, setEditingId] = useState<any>(null);
 
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<any>({
     name: '',
-    companyName: 'CVC Viagens Brasil',
+    companyId: companies[0]?.id || 'COMP-001',
+    companyName: companies[0]?.name || 'Latam Travel Brasil',
     email: '',
     phone: '',
     commissionRate: 10,
-    walletBalance: 1000,
+    walletBalance: 0,
     status: 'ACTIVE'
   });
 
@@ -35,20 +36,22 @@ const AgentsManager = () => {
     setEditingId(null);
     setForm({
       name: '',
-      companyName: companies[0]?.name || 'CVC Viagens Brasil',
+      companyId: companies[0]?.id || 'COMP-001',
+      companyName: companies[0]?.name || 'Latam Travel Brasil',
       email: '',
       phone: '',
       commissionRate: 10,
-      walletBalance: 1000,
+      walletBalance: 0,
       status: 'ACTIVE'
     });
     setIsModalOpen(true);
   };
 
-  const handleOpenEdit = (agt) => {
+  const handleOpenEdit = (agt: any) => {
     setEditingId(agt.id);
     setForm({
       name: agt.name || '',
+      companyId: agt.companyId || '',
       companyName: agt.companyName || '',
       email: agt.email || '',
       phone: agt.phone || '',
@@ -59,9 +62,9 @@ const AgentsManager = () => {
     setIsModalOpen(true);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim()) return alert('يرجى أدخال اسم الوكيل');
+    if (!form.name.trim()) return alert('يرجى أدخال اسم وكيل السفر');
 
     if (editingId) {
       updateAgent(editingId, form);
@@ -71,14 +74,14 @@ const AgentsManager = () => {
     setIsModalOpen(false);
   };
 
-  const filteredAgents = agents.filter(a => {
+  const filteredAgents = agents.filter((a: any) => {
     return (a.name || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
            (a.companyName || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
            (a.email || '').toLowerCase().includes(searchQuery.toLowerCase());
   });
 
-  const totalWalletBalances = agents.reduce((sum, a) => sum + Number(a.walletBalance || 0), 0);
-  const avgCommission = agents.length > 0 ? (agents.reduce((sum, a) => sum + Number(a.commissionRate || 0), 0) / agents.length).toFixed(1) : 0;
+  const totalWalletBalances = agents.reduce((sum: number, a: any) => sum + Number(a.walletBalance || 0), 0);
+  const avgCommission = agents.length > 0 ? (agents.reduce((sum: number, a: any) => sum + Number(a.commissionRate || 0), 0) / agents.length).toFixed(1) : 0;
 
   return (
     <div className="space-y-6">
@@ -87,10 +90,10 @@ const AgentsManager = () => {
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
             <Users className="text-amber-500" />
-            <span>وكلاء السفر B2B (Travel Agents Manager)</span>
+            <span>{t('agentsManagerTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
-            إدارة وكلاء السفر المسجلين، نسب العمولات المستحقة، ورصيد الحسابات والمحافظ.
+            {t('agentsManagerSubtitle')}
           </p>
         </div>
 
@@ -99,30 +102,30 @@ const AgentsManager = () => {
           className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-amber-500/20 shrink-0"
         >
           <Plus size={18} />
-          <span>إضافة وكيل سفر جديد</span>
+          <span>{t('addTravelAgent')}</span>
         </button>
       </div>
 
       {/* Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">إجمالي الوكلاء المسجلين</span>
+          <span className="text-xs text-slate-400 font-medium">{t('totalRegisteredAgents')}</span>
           <p className="text-3xl font-black text-white">{agents.length}</p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">متوسط نسبة العمولة</span>
+          <span className="text-xs text-slate-400 font-medium">{t('avgCommissionRate')}</span>
           <p className="text-3xl font-black text-amber-400">{avgCommission}%</p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">إجمالي أرصدة المحافظ</span>
+          <span className="text-xs text-slate-400 font-medium">{t('totalWalletBalances')}</span>
           <p className="text-3xl font-black text-emerald-400">${totalWalletBalances.toLocaleString()}</p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">الحسابات النشطة</span>
-          <p className="text-3xl font-black text-blue-400">{agents.filter(a => a.status === 'ACTIVE').length}</p>
+          <span className="text-xs text-slate-400 font-medium">{t('activeAccounts')}</span>
+          <p className="text-3xl font-black text-blue-400">{agents.filter((a: any) => a.status === 'ACTIVE').length}</p>
         </div>
       </div>
 
@@ -132,7 +135,7 @@ const AgentsManager = () => {
           <Search size={18} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
-            placeholder="البحث باسم الوكيل، الشركة الشريكة، أو الإيميل..."
+            placeholder={t('searchAgentCompanyEmail')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-[#0d1117] border border-slate-800 rounded-xl pr-10 pl-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500/50"
@@ -142,23 +145,23 @@ const AgentsManager = () => {
 
       {/* Agents Table View */}
       <div className="bg-[#161b22] border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
-        <div className="overflow-x-auto">
-          <table className="w-full text-right text-sm">
+        <div className="overflow-x-auto custom-scrollbar">
+          <table className="w-full min-w-[750px] text-right text-sm">
             <thead className="bg-[#0d1117] text-slate-400 font-bold border-b border-slate-800 text-xs">
               <tr>
-                <th className="p-4">كود الوكيل</th>
-                <th className="p-4">اسم وكيل السفر</th>
-                <th className="p-4">الشركة الشريكة</th>
-                <th className="p-4">البريد والهاتف</th>
-                <th className="p-4">نسبة العمولة</th>
-                <th className="p-4">رصيد المحفظة</th>
-                <th className="p-4">الحالة</th>
-                <th className="p-4 text-center">الإجراءات</th>
+                <th className="p-4">{t('agentId')}</th>
+                <th className="p-4">{t('agentName')}</th>
+                <th className="p-4">{t('partnerCompany')}</th>
+                <th className="p-4">{t('emailAndPhone')}</th>
+                <th className="p-4">{t('commissionRate')}</th>
+                <th className="p-4">{t('walletBalance')}</th>
+                <th className="p-4">{t('status')}</th>
+                <th className="p-4 text-center">{t('actions')}</th>
               </tr>
             </thead>
 
             <tbody className="divide-y divide-slate-800/80">
-              {filteredAgents.map((agt) => (
+              {filteredAgents.map((agt: any) => (
                 <tr key={agt.id} className="hover:bg-slate-800/40 transition-colors">
                   <td className="p-4 font-mono text-xs text-slate-400 font-bold">{agt.id}</td>
 
@@ -220,8 +223,8 @@ const AgentsManager = () => {
 
       {/* Add / Edit Agent Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-lg w-full my-auto p-6 space-y-4 text-xs">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-lg w-full my-auto p-4 sm:p-6 space-y-4 text-xs max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base">{editingId ? 'تعديل بيانات وكيل السفر' : 'إضافة وكيل سفر B2B جديد'}</h3>
               <button onClick={() => setIsModalOpen(false)} className="p-1.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white"><X size={18} /></button>

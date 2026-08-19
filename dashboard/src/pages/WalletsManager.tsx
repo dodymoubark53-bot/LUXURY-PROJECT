@@ -16,20 +16,25 @@ import {
 } from 'lucide-react';
 
 const WalletsManager = () => {
-  const { wallets, addWallet, updateWallet, deleteWallet, agents } = useData();
+  const { wallets, addWallet, updateWallet, deleteWallet, topUpWallet, withdrawWallet, agents, t } = useData();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingId, setEditingId] = useState(null);
-  const [topUpModalWallet, setTopUpModalWallet] = useState(null); // { wallet, amount }
-  const [topUpAmount, setTopUpAmount] = useState(500);
+  const [editingId, setEditingId] = useState<any>(null);
 
-  const [form, setForm] = useState({
-    agentName: 'Carlos Eduardo Santos',
-    companyName: 'CVC Viagens Brasil',
-    balance: 4250,
-    totalDeposited: 15000,
-    totalWithdrawn: 10750,
+  // Top Up & Withdraw Modal States
+  const [topUpModal, setTopUpModal] = useState<any>(null); // wallet obj
+  const [topUpAmount, setTopUpAmount] = useState<number | string>(500);
+
+  const [withdrawModal, setWithdrawModal] = useState<any>(null);
+  const [withdrawAmount, setWithdrawAmount] = useState<number | string>(200);
+
+  const [form, setForm] = useState<any>({
+    agentName: agents[0]?.name || 'Carlos Eduardo Santos',
+    companyName: agents[0]?.companyName || 'CVC Viagens Brasil',
+    balance: 1000,
+    totalDeposited: 1000,
+    totalWithdrawn: 0,
     status: 'ACTIVE'
   });
 
@@ -46,7 +51,7 @@ const WalletsManager = () => {
     setIsModalOpen(true);
   };
 
-  const handleOpenEdit = (wlt) => {
+  const handleOpenEdit = (wlt: any) => {
     setEditingId(wlt.id);
     setForm({
       agentName: wlt.agentName || '',
@@ -59,26 +64,10 @@ const WalletsManager = () => {
     setIsModalOpen(true);
   };
 
-  const handleTopUpSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!topUpModalWallet) return;
-    const addedAmount = Number(topUpAmount);
-    if (isNaN(addedAmount) || addedAmount <= 0) return alert('يرجى أدخال مبلغ صحيح للشحن');
+    if (!form.agentName.trim()) return alert('يرجى أدخال اسم صاحب المحفظة');
 
-    const updatedBalance = Number(topUpModalWallet.balance || 0) + addedAmount;
-    const updatedDeposited = Number(topUpModalWallet.totalDeposited || 0) + addedAmount;
-
-    updateWallet(topUpModalWallet.id, {
-      balance: updatedBalance,
-      totalDeposited: updatedDeposited,
-      lastUpdated: new Date().toISOString().split('T')[0]
-    });
-
-    setTopUpModalWallet(null);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
     if (editingId) {
       updateWallet(editingId, form);
     } else {
@@ -87,15 +76,36 @@ const WalletsManager = () => {
     setIsModalOpen(false);
   };
 
-  const filteredWallets = wallets.filter(w => {
+  const handleTopUpSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!topUpModal) return;
+    const num = Number(topUpAmount);
+    if (isNaN(num) || num <= 0) return alert('يرجى أدخال مبلغ شحن صحيح');
+
+    topUpWallet(topUpModal.id, num);
+    setTopUpModal(null);
+  };
+
+  const handleWithdrawSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!withdrawModal) return;
+    const num = Number(withdrawAmount);
+    if (isNaN(num) || num <= 0) return alert('يرجى أدخال مبلغ سحب صحيح');
+    if (num > Number(withdrawModal.balance)) return alert('مبلغ السحب أكبر من الرصيد المتاح!');
+
+    withdrawWallet(withdrawModal.id, num);
+    setWithdrawModal(null);
+  };
+
+  const filteredWallets = wallets.filter((w: any) => {
     return (w.agentName || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
            (w.companyName || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
            (w.id || '').toLowerCase().includes(searchQuery.toLowerCase());
   });
 
-  const totalBalance = wallets.reduce((sum, w) => sum + Number(w.balance || 0), 0);
-  const totalDeposited = wallets.reduce((sum, w) => sum + Number(w.totalDeposited || 0), 0);
-  const totalWithdrawn = wallets.reduce((sum, w) => sum + Number(w.totalWithdrawn || 0), 0);
+  const totalBalance = wallets.reduce((sum: number, w: any) => sum + Number(w.balance || 0), 0);
+  const totalDeposited = wallets.reduce((sum: number, w: any) => sum + Number(w.totalDeposited || 0), 0);
+  const totalWithdrawn = wallets.reduce((sum: number, w: any) => sum + Number(w.totalWithdrawn || 0), 0);
 
   return (
     <div className="space-y-6">
@@ -104,10 +114,10 @@ const WalletsManager = () => {
         <div>
           <h1 className="text-2xl font-black text-white flex items-center gap-3">
             <Wallet className="text-amber-500" />
-            <span>محافظ شركاء B2B الرقمية (B2B Partner Wallets)</span>
+            <span>{t('walletsManagerTitle')}</span>
           </h1>
           <p className="text-slate-400 text-xs mt-1">
-            إدارة المحافظ الرقمية للوكالات الشريكة، عمليات الشحن الائتماني، والسحب.
+            {t('walletsManagerSubtitle')}
           </p>
         </div>
 
@@ -116,30 +126,30 @@ const WalletsManager = () => {
           className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-amber-500/20 shrink-0"
         >
           <Plus size={18} />
-          <span>إضافة محفظة رقمية جديدة</span>
+          <span>{t('addDigitalWallet')}</span>
         </button>
       </div>
 
       {/* Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">إجمالي أرصدة المحافظ</span>
+          <span className="text-xs text-slate-400 font-medium">{t('totalWalletBalances')}</span>
           <p className="text-3xl font-black text-emerald-400">${totalBalance.toLocaleString()}</p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">إجمالي عمليات الشحن والعمولات</span>
+          <span className="text-xs text-slate-400 font-medium">{t('totalTopupsCommissions')}</span>
           <p className="text-3xl font-black text-blue-400">${totalDeposited.toLocaleString()}</p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">إجمالي المبالغ المسحوبة</span>
+          <span className="text-xs text-slate-400 font-medium">{t('totalWithdrawnAmounts')}</span>
           <p className="text-3xl font-black text-amber-400">${totalWithdrawn.toLocaleString()}</p>
         </div>
 
         <div className="bg-[#161b22] border border-slate-800 rounded-3xl p-5 space-y-1">
-          <span className="text-xs text-slate-400 font-medium">المحافظ المفتوحة والنشطة</span>
-          <p className="text-3xl font-black text-purple-400">{wallets.filter(w => w.status === 'ACTIVE').length}</p>
+          <span className="text-xs text-slate-400 font-medium">{t('activeOpenWallets')}</span>
+          <p className="text-3xl font-black text-purple-400">{wallets.filter((w: any) => w.status === 'ACTIVE').length}</p>
         </div>
       </div>
 
@@ -149,7 +159,7 @@ const WalletsManager = () => {
           <Search size={18} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
-            placeholder="البحث باسم الوكيل، اسم الشركة، أو رقم المحفظة..."
+            placeholder={t('searchAgentCompanyWallet')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-[#0d1117] border border-slate-800 rounded-xl pr-10 pl-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500/50"
@@ -159,23 +169,23 @@ const WalletsManager = () => {
 
       {/* Wallets Table View */}
       <div className="bg-[#161b22] border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
-        <div className="overflow-x-auto">
-          <table className="w-full text-right text-sm">
+        <div className="overflow-x-auto custom-scrollbar">
+          <table className="w-full min-w-[750px] text-right text-sm">
             <thead className="bg-[#0d1117] text-slate-400 font-bold border-b border-slate-800 text-xs">
               <tr>
-                <th className="p-4">كود المحفظة</th>
-                <th className="p-4">اسم وكيل السفر</th>
-                <th className="p-4">الشركة الشريكة</th>
-                <th className="p-4">الرصيد المتاح ($)</th>
-                <th className="p-4">إجمالي الشحن ($)</th>
-                <th className="p-4">إجمالي المسحوبات ($)</th>
-                <th className="p-4">الحالة</th>
-                <th className="p-4 text-center">الإجراءات</th>
+                <th className="p-4">{t('walletCode')}</th>
+                <th className="p-4">{t('agentName')}</th>
+                <th className="p-4">{t('partnerCompany')}</th>
+                <th className="p-4">{t('availableBalanceUSD')}</th>
+                <th className="p-4">{t('totalTopupUSD')}</th>
+                <th className="p-4">{t('totalWithdrawalsUSD')}</th>
+                <th className="p-4">{t('status')}</th>
+                <th className="p-4 text-center">{t('actions')}</th>
               </tr>
             </thead>
 
             <tbody className="divide-y divide-slate-800/80">
-              {filteredWallets.map((wlt) => (
+              {filteredWallets.map((wlt: any) => (
                 <tr key={wlt.id} className="hover:bg-slate-800/40 transition-colors">
                   <td className="p-4 font-mono text-xs text-slate-400 font-bold">{wlt.id}</td>
 
@@ -217,12 +227,12 @@ const WalletsManager = () => {
                   <td className="p-4">
                     <div className="flex items-center justify-center gap-2">
                       <button 
-                        onClick={() => setTopUpModalWallet(wlt)} 
+                        onClick={() => setTopUpModal(wlt)} 
                         className="px-3 py-1.5 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 text-xs font-bold hover:text-slate-950 transition-all flex items-center gap-1"
                         title="شحن محفظة"
                       >
                         <Plus size={14} />
-                        <span>شحن</span>
+                        <span>{t('topUpBtn')}</span>
                       </button>
                       <button onClick={() => handleOpenEdit(wlt)} className="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white hover:bg-amber-500/20" title="تعديل">
                         <Edit size={15} />
@@ -248,19 +258,19 @@ const WalletsManager = () => {
       </div>
 
       {/* Top Up Wallet Modal */}
-      {topUpModalWallet && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-md w-full p-6 space-y-4 text-xs">
+      {topUpModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-md w-full p-4 sm:p-6 space-y-4 text-xs max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base">شحن رصيد المحفظة المالية</h3>
-              <button onClick={() => setTopUpModalWallet(null)} className="p-1.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white"><X size={18} /></button>
+              <button onClick={() => setTopUpModal(null)} className="p-1.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white"><X size={18} /></button>
             </div>
 
             <form onSubmit={handleTopUpSubmit} className="space-y-4">
               <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-1">
                 <span className="text-[11px] text-slate-400 block">المحفظة المستهدفة</span>
-                <p className="font-bold text-white text-sm">{topUpModalWallet.agentName}</p>
-                <span className="text-xs text-emerald-400 font-bold">الرصيد الحالي: ${Number(topUpModalWallet.balance).toLocaleString()}</span>
+                <p className="font-bold text-white text-sm">{topUpModal.agentName}</p>
+                <span className="text-xs text-emerald-400 font-bold">الرصيد الحالي: ${Number(topUpModal.balance).toLocaleString()}</span>
               </div>
 
               <div>
@@ -276,7 +286,7 @@ const WalletsManager = () => {
               </div>
 
               <div className="pt-3 border-t border-slate-800 flex justify-end gap-3">
-                <button type="button" onClick={() => setTopUpModalWallet(null)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 font-bold">إلغاء</button>
+                <button type="button" onClick={() => setTopUpModal(null)} className="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 font-bold">إلغاء</button>
                 <button type="submit" className="px-5 py-2 rounded-xl bg-emerald-500 text-slate-950 font-bold shadow-lg shadow-emerald-500/20">تأكيد شحن الرصيد</button>
               </div>
             </form>
@@ -286,8 +296,8 @@ const WalletsManager = () => {
 
       {/* Add / Edit Wallet Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-lg w-full my-auto p-6 space-y-4 text-xs">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-lg w-full my-auto p-4 sm:p-6 space-y-4 text-xs max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base">{editingId ? 'تعديل المحفظة المالية' : 'إضافة محفظة رقمية جديدة'}</h3>
               <button onClick={() => setIsModalOpen(false)} className="p-1.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white"><X size={18} /></button>

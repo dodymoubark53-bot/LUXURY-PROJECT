@@ -14,11 +14,15 @@ import {
   Filter, 
   X,
   Eye,
-  ExternalLink
+  ExternalLink,
+  CheckCircle2,
+  Tag,
+  Briefcase,
+  Info
 } from 'lucide-react';
 
 const NotificationsManager: React.FC = () => {
-  const { notifications, addNotification, markNotificationAsRead, markAllNotificationsAsRead, deleteNotification } = useData();
+  const { notifications, addNotification, markNotificationAsRead, markAllNotificationsAsRead, deleteNotification, t } = useData();
 
   const [typeFilter, setTypeFilter] = useState('all');
   const [showSendModal, setShowSendModal] = useState(false);
@@ -28,14 +32,8 @@ const NotificationsManager: React.FC = () => {
     title: '',
     message: '',
     type: 'Offer',
-    targetAudience: 'All Travelers',
-    icon: 'Sparkles'
-  });
-
-  const unreadCount = notifications.filter((n: any) => n.status === 'Unread').length;
-
-  const filteredNotifs = notifications.filter((n: any) => {
-    return typeFilter === 'all' || n.type === typeFilter;
+    targetAudience: 'الجميع (All Users)',
+    actionLink: '/trips'
   });
 
   const handleOpenNotificationDetail = (notif: any) => {
@@ -45,36 +43,54 @@ const NotificationsManager: React.FC = () => {
     }
   };
 
-  const handleSendNotification = (e: React.FormEvent) => {
+  const handleSendNotificationSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!sendForm.title || !sendForm.message) return alert('يرجى ملء كافة بيانات الإشعار');
+    if (!sendForm.title.trim() || !sendForm.message.trim()) return alert('يرجى ملء العنوان وتفاصيل الرسالة');
 
     addNotification({
-      ...sendForm,
-      status: 'Unread'
+      title: sendForm.title,
+      message: sendForm.message,
+      type: sendForm.type,
+      targetAudience: sendForm.targetAudience,
+      actionLink: sendForm.actionLink || '/notifications'
     });
 
-    alert('تم إرسال ونشر الإشعار بنجاح لجميع الأطراف المحددة!');
     setShowSendModal(false);
     setSendForm({
       title: '',
       message: '',
       type: 'Offer',
-      targetAudience: 'All Travelers',
-      icon: 'Sparkles'
+      targetAudience: 'الجميع (All Users)',
+      actionLink: '/trips'
     });
   };
+
+  const handleDeleteNotification = (id: string) => {
+    if (confirm('هل أنت متاكد من حذف هذا التنبيه؟')) {
+      deleteNotification(id);
+      setSelectedNotification(null);
+    }
+  };
+
+  const unreadCount = notifications.filter((n: any) => n.status === 'Unread').length;
+
+  const filteredNotifs = notifications.filter((n: any) => {
+    if (typeFilter === 'all') return true;
+    return n.type === typeFilter;
+  });
 
   const getTypeBadge = (type: string) => {
     switch (type) {
       case 'Booking':
-        return { bg: 'bg-blue-500/10 text-blue-400 border-blue-500/30', label: 'حجوزات', icon: <Calendar size={16} /> };
+        return { bg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30', label: t('newBookingLabel'), icon: <CheckCircle2 size={16} /> };
       case 'Offer':
-        return { bg: 'bg-amber-500/10 text-amber-400 border-amber-500/30', label: 'عرض خاص', icon: <Sparkles size={16} /> };
+        return { bg: 'bg-amber-500/10 text-amber-400 border-amber-500/30', label: t('specialOfferLabel'), icon: <Tag size={16} /> };
       case 'B2B':
-        return { bg: 'bg-purple-500/10 text-purple-400 border-purple-500/30', label: 'شركاء B2B', icon: <Building size={16} /> };
+        return { bg: 'bg-purple-500/10 text-purple-400 border-purple-500/30', label: t('categoryB2b'), icon: <Briefcase size={16} /> };
+      case 'System':
+        return { bg: 'bg-blue-500/10 text-blue-400 border-blue-500/30', label: t('categorySystem'), icon: <Info size={16} /> };
       default:
-        return { bg: 'bg-slate-800 text-slate-300 border-slate-700', label: 'تنبيه نظام', icon: <AlertCircle size={16} /> };
+        return { bg: 'bg-slate-800 text-slate-400 border-slate-700', label: type, icon: <Bell size={16} /> };
     }
   };
 
@@ -92,9 +108,9 @@ const NotificationsManager: React.FC = () => {
             )}
           </div>
           <div>
-            <h1 className="text-2xl font-black text-white">إدارة الإشعارات والتنبيهات (Notifications & Alerts)</h1>
+            <h1 className="text-2xl font-black text-white">{t('notificationsTitle')}</h1>
             <p className="text-slate-400 text-xs mt-1">
-              إرسال وتخصيص التنبيهات الفورية للعملاء، وكلاء B2B، واستعراض سجلات التنبيهات النظامية. اضغط على أي إشعار لاستعراض تفاصيله بالكامل.
+              {t('notificationsSubtitle')}
             </p>
           </div>
         </div>
@@ -105,7 +121,7 @@ const NotificationsManager: React.FC = () => {
             className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition-all border border-slate-700 cursor-pointer"
           >
             <CheckCheck size={16} className="text-emerald-400" />
-            <span>تحديد الكل كمقروء</span>
+            <span>{t('markAllAsRead')}</span>
           </button>
 
           <button
@@ -113,7 +129,7 @@ const NotificationsManager: React.FC = () => {
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs transition-all shadow-lg shadow-amber-500/20 cursor-pointer"
           >
             <Send size={16} />
-            <span>إرسال إشعار جديد</span>
+            <span>{t('sendNewAlert')}</span>
           </button>
         </div>
       </div>
@@ -122,16 +138,16 @@ const NotificationsManager: React.FC = () => {
       <div className="flex items-center justify-between bg-[#161b22] border border-slate-800 rounded-2xl p-4 text-xs">
         <div className="flex items-center gap-2 text-slate-400">
           <Filter size={15} />
-          <span>تصفية التنبيهات حسب الفئة:</span>
+          <span>{t('filterByCategory')}</span>
         </div>
 
         <div className="flex items-center gap-2 overflow-x-auto">
           {[
-            { id: 'all', label: 'الكل' },
-            { id: 'Booking', label: 'حجوزات' },
-            { id: 'Offer', label: 'عروض' },
-            { id: 'B2B', label: 'شركاء B2B' },
-            { id: 'System', label: 'النظام' }
+            { id: 'all', label: t('all') },
+            { id: 'Booking', label: t('categoryBookings') },
+            { id: 'Offer', label: t('categoryOffers') },
+            { id: 'B2B', label: t('categoryB2b') },
+            { id: 'System', label: t('categorySystem') }
           ].map(f => (
             <button
               key={f.id}
@@ -198,7 +214,7 @@ const NotificationsManager: React.FC = () => {
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 text-xs font-bold transition-all border border-slate-700 cursor-pointer"
                 >
                   <Eye size={14} />
-                  <span>عرض التفاصيل</span>
+                  <span>{t('viewDetails')}</span>
                 </button>
 
                 {isUnread && (
@@ -207,14 +223,14 @@ const NotificationsManager: React.FC = () => {
                     className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-slate-950 text-xs font-bold transition-all border border-emerald-500/20 cursor-pointer"
                   >
                     <Check size={14} />
-                    <span>تمت القراءة</span>
+                    <span>{t('readStatus')}</span>
                   </button>
                 )}
 
                 <button
                   onClick={() => deleteNotification(notif.id)}
                   className="p-2 rounded-xl bg-slate-800 hover:bg-red-500 text-slate-400 hover:text-white transition-colors border border-slate-700 cursor-pointer"
-                  title="حذف الإشعار"
+                  title={t('deleteNotification')}
                 >
                   <Trash2 size={16} />
                 </button>
@@ -233,8 +249,8 @@ const NotificationsManager: React.FC = () => {
 
       {/* NOTIFICATION DETAIL MODAL */}
       {selectedNotification && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-xl w-full p-6 space-y-6 shadow-2xl overflow-hidden">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-xl w-full p-4 sm:p-6 space-y-6 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto custom-scrollbar">
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <div className="flex items-center gap-3">
@@ -243,7 +259,7 @@ const NotificationsManager: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-black text-base text-white leading-snug">{selectedNotification.title}</h3>
-                  <p className="text-xs text-slate-400 mt-0.5">تفاصيل الإشعار وبياناته الكاملة</p>
+                  <p className="text-xs text-slate-400 mt-0.5">{t('notificationDetailsTitle')}</p>
                 </div>
               </div>
               <button
@@ -262,7 +278,7 @@ const NotificationsManager: React.FC = () => {
                 </span>
                 <span className="text-xs text-slate-300 font-semibold px-2.5 py-1 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-1.5">
                   <Users size={13} className="text-amber-400" />
-                  <span>المستهدف: {selectedNotification.targetAudience || 'الجميع'}</span>
+                  <span>{t('targetAudienceLabel')} {selectedNotification.targetAudience || 'الجميع'}</span>
                 </span>
               </div>
 
@@ -271,14 +287,14 @@ const NotificationsManager: React.FC = () => {
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                   selectedNotification.status === 'Unread' ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30' : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
                 }`}>
-                  {selectedNotification.status === 'Unread' ? 'غير مقروء' : 'تمت القراءة'}
+                  {selectedNotification.status === 'Unread' ? t('unreadMessages') : t('readStatus')}
                 </span>
               </div>
             </div>
 
             {/* Full Message Box */}
             <div className="space-y-2">
-              <label className="text-slate-400 text-xs font-bold block">محتوى الإشعار والتنبيه التفصيلي:</label>
+              <label className="text-slate-400 text-xs font-bold block">{t('detailedNotificationContent')}</label>
               <div className="bg-[#0d1117] border border-slate-800 rounded-2xl p-5 text-xs text-slate-100 leading-relaxed font-sans whitespace-pre-wrap">
                 {selectedNotification.message}
               </div>
@@ -287,12 +303,12 @@ const NotificationsManager: React.FC = () => {
             {/* Quick Navigation Action based on Type */}
             {selectedNotification.type === 'Booking' && (
               <div className="bg-blue-950/20 border border-blue-800/40 rounded-2xl p-4 flex items-center justify-between text-xs">
-                <span className="text-blue-300 font-semibold">هل ترغب في الانتقال إلى صفحة إدارة الحجوزات لمتابعة هذا الطلب؟</span>
+                <span className="text-blue-300 font-semibold">{t('goToBookingsPrompt')}</span>
                 <a
                   href="/bookings"
                   className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl bg-blue-500 hover:bg-blue-400 text-slate-950 font-bold transition-all shrink-0"
                 >
-                  <span>الانتقال للحجوزات</span>
+                  <span>{t('goToBookingsBtn')}</span>
                   <ExternalLink size={12} />
                 </a>
               </div>
@@ -305,7 +321,7 @@ const NotificationsManager: React.FC = () => {
                   href="/companies"
                   className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl bg-purple-500 hover:bg-purple-400 text-slate-950 font-bold transition-all shrink-0"
                 >
-                  <span>شركات B2B</span>
+                  <span>{t('goToCompaniesBtn')}</span>
                   <ExternalLink size={12} />
                 </a>
               </div>
@@ -322,7 +338,7 @@ const NotificationsManager: React.FC = () => {
                 className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-red-500/10 hover:bg-red-500 text-red-400 hover:text-white text-xs font-bold border border-red-500/20 transition-all cursor-pointer"
               >
                 <Trash2 size={14} />
-                <span>حذف الإشعار</span>
+                <span>{t('deleteNotification')}</span>
               </button>
 
               <button
@@ -330,7 +346,7 @@ const NotificationsManager: React.FC = () => {
                 onClick={() => setSelectedNotification(null)}
                 className="px-6 py-2.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition-colors cursor-pointer"
               >
-                إغلاق
+                {t('closeBtn')}
               </button>
             </div>
           </div>
@@ -339,8 +355,8 @@ const NotificationsManager: React.FC = () => {
 
       {/* SEND PUSH NOTIFICATION MODAL */}
       {showSendModal && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
-          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-lg w-full p-6 space-y-6 shadow-2xl">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto custom-scrollbar">
+          <div className="bg-[#161b22] border border-slate-800 rounded-3xl max-w-lg w-full p-4 sm:p-6 space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <div className="flex items-center gap-3">
                 <div className="p-2.5 rounded-2xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
@@ -356,7 +372,7 @@ const NotificationsManager: React.FC = () => {
               </button>
             </div>
 
-            <form onSubmit={handleSendNotification} className="space-y-4 text-xs">
+            <form onSubmit={handleSendNotificationSubmit} className="space-y-4 text-xs">
               <div>
                 <label className="block text-slate-300 font-semibold mb-1">عنوان الإشعار والتنبيه *</label>
                 <input
