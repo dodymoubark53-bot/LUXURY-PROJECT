@@ -64,7 +64,7 @@ const Services = () => {
           ) : service === 'cruises' ? (
             <>
               <img
-                src="/imgs/italy/Nile and Red Sea with Hurghada - Classic Version.jpg"
+                src="/imgs/egypt2/Nile and Red Sea with Hurghada - Classic Version.jpg"
                 alt="Nile River Cruise Luxury Egypt Sunset"
                 className="w-full h-full object-cover object-center"
                 loading="lazy"
@@ -202,7 +202,7 @@ const Services = () => {
                 <Link
                   key={item.id}
                   to={['hurghada-4d3n', 'sharm-4d3n', 'siwa-oasis-alexandria'].includes(item.slug) ? `/trips/${item.slug}` : `${prefix}/${item.category}/${item.slug}`}
-                  className="group block h-full flex flex-col cursor-pointer no-underline"
+                  className="group h-full flex flex-col cursor-pointer no-underline"
                 >
                   <motion.div
                     variants={fadeInUp}

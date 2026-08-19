@@ -10,7 +10,7 @@ export const services = [
     price: 0,
     rating: 4.8,
     reviewCount: 402,
-    images: ['/imgs/italy/Classic Program.jpg'],
+    images: ['/imgs/egypt2/Classic Program.jpg'],
     shortDesc: 'classic.shortDesc',
     overview: [
       'classic.overview'

@@ -16,7 +16,7 @@ const baseTours = [
     "price": 0,
     "rating": 4.7,
     "reviewCount": 312,
-    "images": ["/imgs/Brazil/Cairo Express.jpg"],
+    "images": ["/imgs/egypt/Cairo Express.jpg"],
     "highlights": [
       "Pirâmides de Giza e Esfinge",
       "Memphis e Sakkara",
@@ -56,7 +56,7 @@ const baseTours = [
     "price": 0,
     "rating": 4.8,
     "reviewCount": 198,
-    "images": ["/imgs/Brazil/Cairo Express with Alexandria.jpeg"],
+    "images": ["/imgs/egypt/Cairo Express with Alexandria.jpeg"],
     "highlights": [
       "Pirâmides de Giza e Esfinge",
       "Catacumbas de Kom El Shoqafa",
@@ -99,7 +99,7 @@ const baseTours = [
     "price": 0,
     "rating": 4.9,
     "reviewCount": 445,
-    "images": ["/imgs/Brazil/egito-classico-cairo-cruzeiro-no-nilo.jpg"],
+    "images": ["/imgs/egypt/egito-classico-cairo-cruzeiro-no-nilo.jpg"],
     "highlights": [
       "Pirâmides de Giza e Esfinge",
       "Cruzeiro no Rio Nilo",
@@ -148,7 +148,7 @@ const baseTours = [
     "price": 0,
     "rating": 4.8,
     "reviewCount": 367,
-    "images": ["/imgs/Brazil/cairo-with-cruise-sharm-el-sheikh.jpg"],
+    "images": ["/imgs/egypt/cairo-with-cruise-sharm-el-sheikh.jpg"],
     "highlights": [
       "Pirâmides de Giza, Esfinge, Memphis e Sakkara",
       "Novo Museu Egípcio (GEM) e Mesquita de Alabastro",
@@ -200,7 +200,7 @@ const baseTours = [
     "price": 0,
     "rating": 4.7,
     "reviewCount": 289,
-    "images": ["/imgs/Brazil/cairo-cruzeiro-mar-vermelho.jpg"],
+    "images": ["/imgs/egypt/cairo-cruzeiro-mar-vermelho.jpg"],
     "highlights": [
       "Hospedagem All-Inclusive em Hurghada",
       "Cruzeiro no Nilo completo",
@@ -295,7 +295,7 @@ const baseTours = [
     "price": 0,
     "rating": 4.8,
     "reviewCount": 214,
-    "images": ["/imgs/Brazil/cairo-with-cruise-sharm-el-sheikh-detail.jpg"],
+    "images": ["/imgs/egypt/cairo-with-cruise-sharm-el-sheikh-detail.jpg"],
     "highlights": [
       "Pirâmides de Giza e Esfinge",
       "Cruzeiro no Nilo de Luxor a Aswan",
@@ -349,7 +349,7 @@ const baseTours = [
     "price": 0,
     "rating": 5.0,
     "reviewCount": 178,
-    "images": ["/imgs/Brazil/The Great Ramses.png"],
+    "images": ["/imgs/egypt/The Great Ramses.png"],
     "highlights": [
       "Noite exclusiva em Abu Simbel",
       "Show de Luzes e Som nos Templos de Ramsés II",
@@ -439,7 +439,7 @@ const baseTours = [
     "price": 0,
     "rating": 4.9,
     "reviewCount": 143,
-    "images": ["/imgs/Brazil/Treasures of Egypt with Alexandria.jpg"],
+    "images": ["/imgs/egypt/Treasures of Egypt with Alexandria.jpg"],
     "highlights": [
       "Pirâmides de Giza e Esfinge",
       "Cruzeiro no Nilo de Aswan a Luxor",

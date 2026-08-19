@@ -153,7 +153,7 @@ export const blogs = [
     "date": "Jul 12, 2026",
     "relatedTour": { "slug": "cairo-express-4d", "label": "Cairo Express", "path": "/tours/cairo-express-4d" },
     "excerpt": "Explore the luxury of our custom Cairo Express program in Egypt. Discover why this 4 Dias / 3 Noites itinerary is perfect for your travel dreams with Dunas Trav",
-    "img": "/imgs/Brazil/Cairo Express.jpg",
+    "img": "/imgs/egypt/Cairo Express.jpg",
     "content": [
       "Few places on earth capture the imagination quite like Egypt. From the towering heights of the Great Pyramid of Giza to the serene flow of the Nile River, this ancient land is a living testament to human history and architectural grandeur. The \"Cairo Express\" package by Dunas Travel offers a carefully curated 4 Dias / 3 Noites itinerary designed to immerse you in the magic of the pharaohs. Whether you are gazing at the Sphinx, exploring the subterranean tombs in the Valley of the Kings, or relaxing by the crystal-clear waters of the Red Sea, every moment of this journey promises to be extraordinary. Written in a captivating storytelling tone, this travel guide will walk you through the key experiences that make this trip a must-book experience.",
       "## Why Visit Egypt",
@@ -176,7 +176,7 @@ export const blogs = [
     "date": "Jul 20, 2026",
     "relatedTour": { "slug": "cairo-express-alexandria-5d", "label": "Cairo Express com Alexandria", "path": "/tours/cairo-express-alexandria-5d" },
     "excerpt": "Explore the luxury of our custom Cairo Express com Alexandria program in Egypt. Discover why this 5 Dias / 4 Noites itinerary is perfect for your travel dreams ",
-    "img": "/imgs/Brazil/Cairo Express with Alexandria.jpeg",
+    "img": "/imgs/egypt/Cairo Express with Alexandria.jpeg",
     "content": [
       "Few places on earth capture the imagination quite like Egypt. From the towering heights of the Great Pyramid of Giza to the serene flow of the Nile River, this ancient land is a living testament to human history and architectural grandeur. The \"Cairo Express com Alexandria\" package by Dunas Travel offers a carefully curated 5 Dias / 4 Noites itinerary designed to immerse you in the magic of the pharaohs. Whether you are gazing at the Sphinx, exploring the subterranean tombs in the Valley of the Kings, or relaxing by the crystal-clear waters of the Red Sea, every moment of this journey promises to be extraordinary. Written in a captivating storytelling tone, this travel guide will walk you through the key experiences that make this trip a must-book experience.",
       "## Why Visit Egypt",
@@ -199,7 +199,7 @@ export const blogs = [
     "date": "Aug 02, 2026",
     "relatedTour": { "slug": "egito-classico-8d", "label": "Egito Clássico", "path": "/tours/egito-classico-8d" },
     "excerpt": "Explore the luxury of our custom Egito Clássico: Cairo + Cruzei... program in Egypt. Discover why this 8 Dias / 7 Noites itinerary is perfect for your travel dr",
-    "img": "/imgs/Brazil/egito-classico-cairo-cruzeiro-no-nilo.jpg",
+    "img": "/imgs/egypt/egito-classico-cairo-cruzeiro-no-nilo.jpg",
     "content": [
       "Few places on earth capture the imagination quite like Egypt. From the towering heights of the Great Pyramid of Giza to the serene flow of the Nile River, this ancient land is a living testament to human history and architectural grandeur. The \"Egito Clássico: Cairo + Cruzeiro no Nilo\" package by Dunas Travel offers a carefully curated 8 Dias / 7 Noites itinerary designed to immerse you in the magic of the pharaohs. Whether you are gazing at the Sphinx, exploring the subterranean tombs in the Valley of the Kings, or relaxing by the crystal-clear waters of the Red Sea, every moment of this journey promises to be extraordinary. Written in a captivating storytelling tone, this travel guide will walk you through the key experiences that make this trip a must-book experience.",
       "## Why Visit Egypt",
@@ -222,7 +222,7 @@ export const blogs = [
     "date": "Aug 18, 2026",
     "relatedTour": { "slug": "egito-classico-ii-9d", "label": "Egito Clássico II", "path": "/tours/egito-classico-ii-9d" },
     "excerpt": "Explore the luxury of our custom Egito Clássico II: Cairo + Cru... program in Egypt. Discover why this 9 Dias / 8 Noites itinerary is perfect for your travel dr",
-    "img": "/imgs/Brazil/cairo-with-cruise-sharm-el-sheikh.jpg",
+    "img": "/imgs/egypt/cairo-with-cruise-sharm-el-sheikh.jpg",
     "content": [
       "Few places on earth capture the imagination quite like Egypt. From the towering heights of the Great Pyramid of Giza to the serene flow of the Nile River, this ancient land is a living testament to human history and architectural grandeur. The \"Egito Clássico II: Cairo + Cruzeiro no Nilo\" package by Dunas Travel offers a carefully curated 9 Dias / 8 Noites itinerary designed to immerse you in the magic of the pharaohs. Whether you are gazing at the Sphinx, exploring the subterranean tombs in the Valley of the Kings, or relaxing by the crystal-clear waters of the Red Sea, every moment of this journey promises to be extraordinary. Written in a captivating storytelling tone, this travel guide will walk you through the key experiences that make this trip a must-book experience.",
       "## Why Visit Egypt",
@@ -245,7 +245,7 @@ export const blogs = [
     "date": "Sep 05, 2026",
     "relatedTour": { "slug": "egito-historico-10d", "label": "Egito Histórico", "path": "/tours/egito-historico-10d" },
     "excerpt": "Explore the luxury of our custom Egito Histórico: Cairo + Cruze... program in Egypt. Discover why this 10 Dias / 9 Noites itinerary is perfect for your travel d",
-    "img": "/imgs/Brazil/cairo-cruzeiro-mar-vermelho.jpg",
+    "img": "/imgs/egypt/cairo-cruzeiro-mar-vermelho.jpg",
     "content": [
       "Few places on earth capture the imagination quite like Egypt. From the towering heights of the Great Pyramid of Giza to the serene flow of the Nile River, this ancient land is a living testament to human history and architectural grandeur. The \"Egito Histórico: Cairo + Cruzeiro + Mar Vermelho\" package by Dunas Travel offers a carefully curated 10 Dias / 9 Noites itinerary designed to immerse you in the magic of the pharaohs. Whether you are gazing at the Sphinx, exploring the subterranean tombs in the Valley of the Kings, or relaxing by the crystal-clear waters of the Red Sea, every moment of this journey promises to be extraordinary. Written in a captivating storytelling tone, this travel guide will walk you through the key experiences that make this trip a must-book experience.",
       "## Why Visit Egypt",
@@ -268,7 +268,7 @@ export const blogs = [
     "date": "May 15, 2026",
     "relatedTour": { "slug": "cairo-cruzeiro-sharm-11d", "label": "Cairo c/ Cruzeiro + Sharm El Sheikh", "path": "/tours/cairo-cruzeiro-sharm-11d" },
     "excerpt": "Explore the luxury of our custom Cairo c/ Cruzeiro + Sharm El S... program in Egypt. Discover why this 11 Dias / 10 Noites itinerary is perfect for your travel ",
-    "img": "/imgs/Brazil/cairo-with-cruise-sharm-el-sheikh-detail.jpg",
+    "img": "/imgs/egypt/cairo-with-cruise-sharm-el-sheikh-detail.jpg",
     "content": [
       "Few places on earth capture the imagination quite like Egypt. From the towering heights of the Great Pyramid of Giza to the serene flow of the Nile River, this ancient land is a living testament to human history and architectural grandeur. The \"Cairo c/ Cruzeiro + Sharm El Sheikh\" package by Dunas Travel offers a carefully curated 11 Dias / 10 Noites itinerary designed to immerse you in the magic of the pharaohs. Whether you are gazing at the Sphinx, exploring the subterranean tombs in the Valley of the Kings, or relaxing by the crystal-clear waters of the Red Sea, every moment of this journey promises to be extraordinary. Written in a captivating storytelling tone, this travel guide will walk you through the key experiences that make this trip a must-book experience.",
       "## Why Visit Egypt",
@@ -291,7 +291,7 @@ export const blogs = [
     "date": "Jun 10, 2026",
     "relatedTour": { "slug": "grande-ramses-10d", "label": "O Grande Ramses", "path": "/tours/grande-ramses-10d" },
     "excerpt": "Explore the luxury of our custom O GRANDE RAMSES - DESCRITIVO C... program in Egypt. Discover why this 10 Dias / 9 Noites itinerary is perfect for your travel d",
-    "img": "/imgs/Brazil/The Great Ramses.png",
+    "img": "/imgs/egypt/The Great Ramses.png",
     "content": [
       "Few places on earth capture the imagination quite like Egypt. From the towering heights of the Great Pyramid of Giza to the serene flow of the Nile River, this ancient land is a living testament to human history and architectural grandeur. The \"O GRANDE RAMSES - DESCRITIVO COMPLETO (09 Noites / 10 Dias)\" package by Dunas Travel offers a carefully curated 10 Dias / 9 Noites itinerary designed to immerse you in the magic of the pharaohs. Whether you are gazing at the Sphinx, exploring the subterranean tombs in the Valley of the Kings, or relaxing by the crystal-clear waters of the Red Sea, every moment of this journey promises to be extraordinary. Written in a captivating storytelling tone, this travel guide will walk you through the key experiences that make this trip a must-book experience.",
       "## Why Visit Egypt",
@@ -314,7 +314,7 @@ export const blogs = [
     "date": "Jul 05, 2026",
     "relatedTour": { "slug": "tesouros-egipto-9d", "label": "Tesouros do Egito com Alexandria", "path": "/tours/tesouros-egipto-9d" },
     "excerpt": "Explore the luxury of our custom Tesouros do Egito com Alexandr... program in Egypt. Discover why this 9 Dias / 8 Noites itinerary is perfect for your travel dr",
-    "img": "/imgs/Brazil/Treasures of Egypt with Alexandria.jpg",
+    "img": "/imgs/egypt/Treasures of Egypt with Alexandria.jpg",
     "content": [
       "Few places on earth capture the imagination quite like Egypt. From the towering heights of the Great Pyramid of Giza to the serene flow of the Nile River, this ancient land is a living testament to human history and architectural grandeur. The \"Tesouros do Egito com Alexandria\" package by Dunas Travel offers a carefully curated 9 Dias / 8 Noites itinerary designed to immerse you in the magic of the pharaohs. Whether you are gazing at the Sphinx, exploring the subterranean tombs in the Valley of the Kings, or relaxing by the crystal-clear waters of the Red Sea, every moment of this journey promises to be extraordinary. Written in a captivating storytelling tone, this travel guide will walk you through the key experiences that make this trip a must-book experience.",
       "## Why Visit Egypt",

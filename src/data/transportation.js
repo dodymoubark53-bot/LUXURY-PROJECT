@@ -130,3 +130,5 @@ export const transportation = [
     features: ['AC', 'GPS', 'Airbag', 'WiFi', 'Professional Driver', 'Leather Seats', 'Mineral Water']
   }
 ];
+
+export const transportationData = transportation;

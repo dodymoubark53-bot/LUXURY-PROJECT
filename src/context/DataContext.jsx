@@ -1,101 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { tours as initialTours } from '../data/tours';
-import { transportation as initialTransportation } from '../data/transportation';
-
-// Initial Hotels Data
-const initialHotels = [
-  {
-    id: 'hotel-cairo-1',
-    name: 'Steigenberger Hotel El Tahrir',
-    destination: 'egypt',
-    city: 'Cairo',
-    stars: 5,
-    rating: 4.8,
-    pricePerNight: 180,
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
-    amenities: ['Pool', 'Free WiFi', 'Spa', 'Restaurant', 'Gym', 'Airport Transfer'],
-    description: 'Located in the heart of Downtown Cairo, steps away from the Egyptian Museum.'
-  },
-  {
-    id: 'hotel-luxor-1',
-    name: 'Sofitel Winter Palace Luxor',
-    destination: 'egypt',
-    city: 'Luxor',
-    stars: 5,
-    rating: 4.9,
-    pricePerNight: 240,
-    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80',
-    amenities: ['Historic Palace', 'Nile Views', 'Pool', 'Fine Dining', 'Gardens'],
-    description: 'A historic Victorian palace hotel on the banks of the River Nile in Luxor.'
-  },
-  {
-    id: 'hotel-istanbul-1',
-    name: 'Çırağan Palace Kempinski',
-    destination: 'turkey',
-    city: 'Istanbul',
-    stars: 5,
-    rating: 4.95,
-    pricePerNight: 450,
-    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80',
-    amenities: ['Bosphorus View', 'Infinity Pool', 'Turkish Bath', 'Helipad', 'Butler Service'],
-    description: 'A 19th-century Ottoman palace offering ultimate luxury on the shores of Bosphorus.'
-  },
-  {
-    id: 'hotel-petra-1',
-    name: 'Mövenpick Resort Petra',
-    destination: 'jordan',
-    city: 'Petra',
-    stars: 5,
-    rating: 4.7,
-    pricePerNight: 210,
-    image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80',
-    amenities: ['Roof Terrace', 'Pool', 'Oriental Craftwork', 'Close to Petra Entrance'],
-    description: 'Located directly at the entrance to the historic city of Petra.'
-  }
-];
-
-// Initial Packages Data
-const initialPackages = [
-  {
-    id: 'pkg-multi-1',
-    slug: 'egypt-jordan-grand-tour',
-    title: 'Grand Egypt & Jordan Discovery',
-    destination: 'Multi-Country',
-    countries: ['Egypt', 'Jordan'],
-    duration: '12 Days / 11 Nights',
-    price: 1890,
-    popular: true,
-    rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=800&q=80',
-    description: 'Combine the timeless pyramids of Egypt with the rose-red rock city of Petra and Wadi Rum desert.'
-  },
-  {
-    id: 'pkg-honey-1',
-    slug: 'nile-red-sea-honeymoon',
-    title: 'Romantic Nile Cruise & Red Sea Luxury',
-    destination: 'Egypt',
-    type: 'Honeymoon',
-    duration: '10 Days / 9 Nights',
-    price: 1650,
-    popular: true,
-    rating: 5.0,
-    image: 'https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=800&q=80',
-    description: 'Private Nile felucca dinners, luxury 5-star cruise, and romantic beach resort stay in Hurghada.'
-  },
-  {
-    id: 'pkg-turkey-1',
-    slug: 'cappadocia-istanbul-express',
-    title: 'Ottoman Heritage & Hot Air Balloons',
-    destination: 'Turkey',
-    type: 'Cultural',
-    duration: '8 Days / 7 Nights',
-    price: 1250,
-    popular: true,
-    rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=800&q=80',
-    description: 'Fly over magical fairy chimneys in Cappadocia and explore Hagia Sophia & Grand Bazaar.'
-  }
-];
+import { 
+  tripsData as initialTours, 
+  packagesData as initialPackages, 
+  transportationData as initialTransportation, 
+  hotelsData as initialHotels 
+} from '../data/index';
 
 // Initial Reviews Data
 const initialReviews = [
