@@ -7,7 +7,8 @@ import {
   FaChevronRight, FaClock, FaUserFriends, FaTag,
   FaMapMarkerAlt, FaBed, FaCheckCircle, FaTimes
 } from 'react-icons/fa';
-import { tours } from '../../data/tours';
+import { tours as staticTours } from '../../data/tours';
+import { useData } from '../../context/DataContext';
 import TourCard from '../../components/tour/TourCard';
 import { fadeInUp } from '../../animations/variants';
 import BookingForm from '../../components/booking/BookingForm';
@@ -20,12 +21,15 @@ const TourDetails = () => {
   const { t } = useTranslation();
   const { formatPrice } = useCurrency();
   const { slug } = useParams();
+  const { trips } = useData();
+
+  const allToursList = trips && trips.length > 0 ? trips : staticTours;
 
   const tour = useMemo(() => {
     if (!slug) return null;
     const raw = decodeURIComponent(slug).toLowerCase().trim();
     const clean = raw.replace(/^prog-/, '').replace(/[^a-z0-9]/g, '');
-    return tours.find((t) => {
+    return allToursList.find((t) => {
       const tId = t.id.toLowerCase().replace(/[^a-z0-9]/g, '');
       const tSlug = t.slug.toLowerCase().replace(/[^a-z0-9]/g, '');
       const tTitle = (t.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -38,8 +42,8 @@ const TourDetails = () => {
         (tTitle && (tTitle.includes(clean) || clean.includes(tTitle)))
       );
     });
-  }, [slug]);
-  const shuffledTours = useMemo(() => [...tours].sort(() => Math.random() - 0.5), []);
+  }, [slug, allToursList]);
+  const shuffledTours = useMemo(() => [...allToursList].sort(() => Math.random() - 0.5), [allToursList]);
 
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const carouselRef = useRef(null);

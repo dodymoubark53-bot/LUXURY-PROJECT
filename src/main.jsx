@@ -1,44 +1,26 @@
-import { StrictMode, useState, useEffect } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import { HelmetProvider } from 'react-helmet-async'
-import App from './App.jsx'
-import { initI18n } from './i18n'
-import './index.css'
+import './i18n'
+import App from './App'
 import { AuthProvider } from './context/AuthContext'
-import { CurrencyProvider } from './context/CurrencyContext'
 import { ThemeProvider } from './context/ThemeContext'
+import { CurrencyProvider } from './context/CurrencyContext'
+import { JaiderChatProvider } from './context/JaiderChatContext'
+import './index.css'
 
-function Root() {
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    initI18n().then(() => setReady(true));
-  }, []);
-
-  if (!ready) {
-    return (
-      <div className="flex h-screen items-center justify-center bg-white">
-        <div className="text-xl font-semibold text-amber-600">Loading...</div>
-      </div>
-    );
-  }
-
-  return (
-    <StrictMode>
-      <BrowserRouter>
-        <HelmetProvider>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <AuthProvider>
+        <ThemeProvider>
           <CurrencyProvider>
-            <ThemeProvider>
-              <AuthProvider>
-                <App />
-              </AuthProvider>
-            </ThemeProvider>
+            <JaiderChatProvider>
+              <App />
+            </JaiderChatProvider>
           </CurrencyProvider>
-        </HelmetProvider>
-      </BrowserRouter>
-    </StrictMode>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById('root')).render(<Root />)
+        </ThemeProvider>
+      </AuthProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
+)

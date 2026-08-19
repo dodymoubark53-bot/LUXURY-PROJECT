@@ -42,6 +42,7 @@ const Honeymooners = lazy(() => import("./pages/Honeymooners"));
 const HoneymoonersDetails = lazy(() => import("./pages/HoneymoonersDetails"));
 const MediaGallery = lazy(() => import("./pages/MediaGallery"));
 
+import { DataProvider } from "./context/DataContext";
 
 const PageTransition = ({ children }) => (
   <motion.div
@@ -120,7 +121,7 @@ function App() {
 
 
   return (
-    <>
+    <DataProvider>
       <motion.div
         style={{ scaleX: scrollYProgress, transformOrigin: "0%" }}
         className="fixed top-0 left-0 right-0 h-[3px] z-[9999] bg-gradient-to-r from-gold-500 via-gold-300 to-gold-500"
@@ -474,7 +475,7 @@ function App() {
           </AnimatePresence>
         </Suspense>
       )}
-    </>
+    </DataProvider>
   );
 }
 
